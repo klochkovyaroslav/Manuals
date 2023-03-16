@@ -1,0 +1,32 @@
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Как проверить версию пакета Linux перед его установкой \\\\\\\\\\\\\\\\\\\\\\\\
+
+
+	Существует множество способов найти версию пакета, даже если она еще не установлена в системах на основе DEB.
+
+apt show vim
+apt policy vim
+apt list vim
+
+	Использование Apt-get
+	Здесь опция -s указывает на симуляцию.
+apt-get -s install vim
+apt-get -s upgrade vim
+
+	Использование Aptitude
+aptitude versions vim
+aptitude -V -s install vim
+aptitude -V -s upgrade vim
+aptitude search vim -F "%c %p %d %V"
+
+-F используется, чтобы указать, какой формат должен использоваться для отображения вывода,
+%c – статус данного пакета (установлен или не установлен),
+%p – название пакета,
+%d – описание пакета,
+%V – версия пакета.
+
+	Использование Apt-кеша:
+apt-cache policy vim
+
+	Использование apt-show-version:
+sudo apt-get install apt-show-versions
+apt-show-versions vim

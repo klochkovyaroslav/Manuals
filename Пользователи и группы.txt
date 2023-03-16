@@ -1,0 +1,97 @@
+sudo cat /etc/passwd
+sudo cat /etc/group
+id; id -Gn; id -Gn postgres;
+groups; groups postgres; groups | wc -w;
+ls -l /home
+sudo cat/etc/shadow
+whoami
+pwd
+
+	Шаблон домашней директории
+ls -l /etc/skel 
+
+	Linux есть две известные команды для управления пользователями: useradd и adduser.
+	Adduser не является стандартной командой Linux это сценарий Perl, который использует команду useradd в фоновом режиме
+	adduser намного лучше создает новых пользователей в Linux
+	Useradd – это встроенная команда Linux
+sudo useradd -m testuser
+	Добавить пользователя в несколько групп -мы добавляем пользователя «testuser» в несколько групп, таких как admin, webadmin и developer.
+useradd -G admins,webadmin,developers testuser
+
+	-m -d создает пользователя с указанным домашним каталогом, 
+	-s устанавливает оболочку пользователя по умолчанию, т.е. /bin/bash. 
+	-c  добавляет дополнительную информацию о пользователе, 
+	-U создает/добавляет группу с тем же именем, что и пользователь.
+
+sudo useradd -m -d /var/www/testuser -s /bin/bash -c "testuser " -U testuser
+sudo useradd -d /home/test -m -s/bin/bash -c FullName,Phone,OtherInfo test && passwd test
+
+	Сменить оболочку: 
+sudo chsh -s /bin/bash testuser
+
+
+	Создайте пользователя с датой истечения срока действия учетной записи.
+useradd -e 2023-04-27 testuser
+	проверить возраст учетной записи
+chage -l testuser
+
+	Создайте пользователя с датой истечения срока действия пароля
+	Параметр -f  используется для определения количества дней после истечения срока
+	Значение 0 дезактивирует учетную запись пользователя, как только истек срок действия пароля.
+	-1, означает, что срок действия пароля не истекает.
+
+useradd -e 2023-04-27 -f 45 testuser
+
+	Добавьте пользователя без домашней директории, оболочки, группы и пользовательских комментариев
+	-M, чтобы создать пользователя без домашнего каталога пользователя, и использовали аргумент 
+	-N, который сообщает системе только о создании имени пользователя (без группы).
+	-r предназначен для создания системного пользователя.
+useradd -M -N -r -s /bin/false -c "Disabled Sedicomm Member" claytongush
+
+sudo cat /etc/shadow
+	Удаление пользователя без директории
+sudo userdel testuser
+	Полное Удаление пользователя с директорией
+sudo userdel -r testuser
+
+	Создать группу MyAdmins
+sudo groupadd MyAdmins
+sudo cat /etc/group
+
+	Удалить группу MyAdmins
+sudo groupdel MyAdmins
+
+	Добавить в группу MyAdmins
+sudo usermod -aG MyAdmins testuser
+
+	Удалить из группы MyAdmins
+sudo deluser testuser MyAdmins
+
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Назначить права на папку пользователю\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+	Если файловая система поддерживает acl, можно воспользоваться программами setfacl/getfacl:
+
+sudo getfacl /var/log/workspad/WorksPadClientLogs
+sudo setfacl -m u:workspad:rwx /var/log/workspad/WorksPadClientLogs
+	Удаление элементов из списка ACL происходит при помощи параметра –x
+sudo setfacl -x u:workspad /var/log/workspad/WorksPadClientLogs
+
+	Сбросить дополнительные ACL права с файла или папки можно через setfacl
+sudo setfacl -b /var/log/workspad/WorksPadClientLogs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

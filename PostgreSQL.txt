@@ -1,0 +1,173 @@
+\\\\\\\\\\\\\\\\\\ Centos 7 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+	Добавить официальный репозиторий PostgreSQL:
+yum -y install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+
+	Выполнить установку сервера PostgreSQL CentOS 7 версии 9.6:
+yum -y install postgresql96-server postgresql96-contrib pgagent_96
+
+
+	Инициализировать необходимую БД:
+/usr/pgsql-9.6/bin/postgresql96-setup initdb
+
+	Настройка PostgreSQL-9.6:
+/var/lib/pgsql/9.6/data/postgresql.conf
+listen_addresses = '*'
+
+/var/lib/pgsql/9.6/data/pg_hba.conf
+host    all             all             0.0.0.0/0               md5
+
+systemctl status postgresql-9.6
+systemctl enable postgresql-9.6
+systemctl start postgresql-9.6
+
+
+
+
+\\\\\\\\\\\\\\\\\\ Debian \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+ sudo apt-get remove --purge postgresql-1* -y
+
+	Команда для установки репозитория Debian:
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+	Добавить Ключ для Debian:
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+sudo apt update && sudo apt upgrade
+
+sudo apt-get install postgresql-14 postgresql-contrib
+
+или 
+
+sudo apt update && sudo apt upgrade
+sudo apt install postgresql postgresql-contrib
+
+
+
+
+
+sudo systemctl status postgresql
+
+
+	Настройка для подключение к удаленному серверу PostgreSQL
+
+В файле конфигурации(postgresql.conf) раздел "CONNECTIONS AND AUTHENTICATION"
+
+sudo nano /etc/postgresql/13/main/postgresql.conf
+
+#listen_addresses = 'localhost'         # what IP address(es) to listen on;
+Добавить:
+listen_addresses = '*' 
+
+	
+Редактируем файл pg_hba.conf
+sudo nano /etc/postgresql/13/main/pg_hba.conf
+
+Вместо:
+# IPv4 local connections:
+host    all             all             127.0.0.1         md5
+
+Вписываем:
+# IPv4 local connections:
+host    all             all             0.0.0.0/0         md5
+
+
+Перезапустите службу Postgres
+sudo systemctl stop postgresql
+sudo systemctl start postgresql
+sudo systemctl status postgresql
+
+
+	Создать нового пользователя(Роль) и создать новую базу. 
+	Подключаемся к Postgresql
+sudo -u postgres psql
+
+CREATE USER workspad;
+\du
+
+	Сменить пароль пользователю 
+ALTER USER workspad WITH ENCRYPTED PASSWORD 'W0rk$p@oI';
+
+	Включить в группу postgres:
+GRANT postgres TO workspad;
+\du
+
+	Исключить из группы postgres:
+REVOKE postgres FROM workspad;
+
+create database "WorksPad";
+\l
+
+	Предоставить все привилегии на базу WorksPad для роли: workspad
+
+GRANT ALL PRIVILEGES ON DATABASE WorksPad TO workspad;
+
+	Вывести все таблицы в PostgreSQL:
+	подключиться к этой БД
+\connect workspad
+\dt
+
+
+
+
+Создание ролей-Пользователь
+Пользователь — роль с правом входа
+CREATE my_user my_user LOGIN;
+или
+CREATE USER my_user;
+или
+createuser my_user
+
+Группа — роль без права входа (как правило)
+CREATE my_user my_user;
+или
+createuser --no-login my_user
+
+
+Удаление роли-Пользователь
+DROP my_user my_user;
+или
+dropuser my_user
+
+create database my_database;
+\list или \l
+drop database my_database;
+\q
+
+GRANT ALL PRIVILEGES ON DATABASE my_database TO my_user;
+
+
+Вывести все таблицы в PostgreSQL
+подключиться к этой БД
+\connect your_DB
+\dt
+
+
+
+
+psql -U sphone -d sphone -h 127.0.0.1
+select * from license;
+
+\q
+
+
+Восстановить Дамп БД sphone
+pg_restore -h 127.0.0.1 -p 5432 -U sphone -F c -d sphone /opt/distr/sphone.backup.sp445.2021.08.26
+
+
+Сделать Дамп таблицы license в БД sphone
+pg_dump -h 127.0.0.1 -p 5432 -U sphone --table=license -Fc --file=license.Fc.dump sphone
+
+
+Восстановить Дамп таблицы license в БД sphone
+pg_restore -h 127.0.0.1 -p 5432 -U sphone -d sphone -Fc /opt/distr/license.Fc.dump
+
+
+select "License" from public."ServerInfo";
+
+
+sudo pg_dump -h 127.0.0.1 -p 5432 -U workspad --table="public.\"ServerInfo\"" -Fc --file=ServerInfo.Fc.dump WorksPad
+
+
+W0rk$p@oI

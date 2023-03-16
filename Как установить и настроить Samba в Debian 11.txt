@@ -1,0 +1,104 @@
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Установка и настройка Samba на Ubuntu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+sudo apt update -y
+	Настройка даты и времени
+	При первоначальной настройке файлового хранилища очень важно уделить внимание настройке даты и времени, чтобы избежать проблем в будущем при поиске необходимых файлов и директорий.
+
+	Для настройки даты и времени используется утилита chrony. Ее демона можно добавить в автозагрузку сервера и время всегда будет актуальным. Отправим в терминал команду установки пакета:
+
+
+sudo apt install chrony -y
+
+sudo systemctl enable chrony
+sudo systemctl start chrony
+sudo timedatectl set-timezone Europe/Moscow
+
+
+
+sudo apt install samba -y
+sudo systemctl enable smbd - (sudo systemctl disable smbd)
+sudo systemctl start smbd
+sudo systemctl status smbd
+
+	Настройка Samba в Debian 11
+	Перед правкой конфигурационного файла Samba - smb.conf необходимо сделать его резервную копию чтобы в случае проблем можно было использовать конфигурационный файл по умолчанию. Для этого необходимо выполнить команду:
+
+sudo cp /etc/samba/smb.conf{,backup}
+
+
+		Настройка общей шары
+Для предоставления доступа к общим ресурсам в Samba есть 2 способа разграничения прав доступа - предоставление анонимного доступа (доступа не требующего прохождения аутентификации, т.е. всем пользователям) и предоставление доступа только конкретным пользователям. Рассмотрим оба способа.
+
+	Для начала необходимо создать директорию, к которой необходимо предоставить доступ:
+sudo mkdir -p /anonymous/files
+
+
+	Далее необходимо задать права и владельца на ранее созданную директорию для предоставления доступа. Сначала задаём права при помощи команды:
+sudo chmod -R 0755 /anonymous/files
+
+	Потом задаём владельца и группу при помощи команды:
+sudo chown -R nobody:nogroup /anonymous/files
+
+	После этого в файле конфигурации smb.conf необходимо вписать или привести к следующему виду блоки:
+sudo nano /etc/samba/smb.conf
+
+[global]
+workgroup = WORKGROUP
+server string = Samba Server %v
+netbios name = debian11
+security = user
+map to guest = bad user
+dns proxy = no
+[Anonymous]
+path = /anonymous/files
+browsable =yes
+writable = yes
+guest ok = yes
+read only = no
+
+
+
+
+	Сохраните изменения и закройте файл. Далее необходимо проверить конфигурационный файл на наличие ошибок при помощи команды:
+testparam
+
+
+
+
+		Настройка защищённой шары
+	Чтобы предоставить доступа к файлам и папкам определенным пользователям необходимо также создать директорию:
+
+sudo mkdir -p /files/samba/security
+
+	Далее необходимо создать группу, пользователей и добавить туда ранее созданных пользователей. Для этого необходимо выполнить следующие команды:
+sudo groupadd security_users
+
+sudo useradd sec1 -G security_users
+
+	Далее необходимо задать права и владельца на ранее созданную директорию при помощи команд:
+sudo chown -R root:security_users /files/samba/security/
+
+	Теперь необходимо добавить ранее созданного пользователя в базу данных Samba и задать ему пароль при помощи встроенной утилиты Samba под названием smbpasswd:
+sudo smbpasswd -a sec1
+
+	Далее необходимо добавить следующие строки в конфигурационный файл smb.conf:
+sudo nano /etc/samba/smb.conf
+
+[secured]
+path = /files/samba/security
+valid users = @sec1
+guest ok = no
+writable = yes
+browsable = yes
+
+	проверять на наличие ошибок после внесения любых изменений при помощи команды:
+testparam
+
+	Подключение к серверу Samba
+После проверки файла конфигурации на ошибки необходимо запустить сервисы Samba и включить их в автозагрузку при помощи следующих команд:
+
+sudo systemctl start smbd.service
+sudo systemctl enable smbd.service
+sudo systemctl start nmbd.service
+sudo systemctl enable nmbd.service
+

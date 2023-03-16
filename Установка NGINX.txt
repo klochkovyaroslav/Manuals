@@ -1,0 +1,71 @@
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Установка - NGINX Debian, Ubuntu \\\\\\\\\\\\\\\\\\\\\\\\\\
+
+	Установка и настройка прокси-сервера
+	Установите пакеты, необходимые для подключения apt-репозитория:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Debian \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+sudo apt install curl gnupg2 ca-certificates lsb-release debian-archive-keyring
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Ubuntu \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
+
+	Импортировать официальный ключ, используемый apt для проверки подлинности пакетов. Скачайте ключ
+curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
+
+	Проверьте, верный ли ключ был загружен:
+gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
+
+	Вывод команды должен содержать полный отпечаток ключа 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62:
+pub   rsa2048 2011-08-19 [SC] [expires: 2024-06-14]
+      573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
+uid                      nginx signing key <signing-key@nginx.com>
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Debian \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	Для подключения apt-репозитория для стабильной версии nginx, выполните следующую команду:
+echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
+http://nginx.org/packages/debian `lsb_release -cs` nginx" | sudo tee /etc/apt/sources.list.d/nginx.list
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Ubuntu \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	Для подключения apt-репозитория для стабильной версии nginx, выполните следующую команду:
+echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
+http://nginx.org/packages/debian `lsb_release -cs` nginx" | sudo tee /etc/apt/sources.list.d/nginx.list
+
+	Для использования пакетов из оффициального репозитория вместо распространяемых в дистрибутиве, настройте закрепление:
+echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n"     | sudo tee /etc/apt/preferences.d/99nginx
+
+	Установить nginx:
+sudo apt update
+sudo apt install nginx
+sudo systemctl status nginx.service
+
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Установка NGINX - CentOS, Oracle Linux, Rocky Linux, AlmaLinux \\\\\\\\\\\\\\\\\\\\\\\\\\
+
+	Установите пакеты, необходимые для подключения yum-репозитория:
+sudo yum install yum-utils
+
+	Для подключения yum-репозитория создайте файл с именем /etc/yum.repos.d/nginx.repo
+[nginx-stable]
+name=nginx stable repo
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
+
+[nginx-mainline]
+name=nginx mainline repo
+baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
+
+
+	По умолчанию используется репозиторий для стабильной версии nginx. Если предпочтительно использовать пакеты для основной версии nginx, выполните следующую команду:
+sudo yum-config-manager --enable nginx-mainline
+
+	Чтобы установить nginx, выполните следующую команду:
+sudo yum install nginx
+
