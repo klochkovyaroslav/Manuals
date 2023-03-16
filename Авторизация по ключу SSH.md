@@ -46,7 +46,7 @@ The fingerprint for the ECDSA key sent by the remote host is
 SHA256:nIr5Cr+I+hWAggSRBd3CFHQZMweQN4XM+ul4rLLkog0.
 Please contact your system administrator.  
 ```
-#### Очистить от старых записей
+#### Очистить от старых записей на локальном ПК
 
 ``` bash
 ssh-keygen -f "~/.ssh/known_hosts" -R "192.168.56.150"
