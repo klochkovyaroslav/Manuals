@@ -32,6 +32,22 @@ cat ~/.ssh/id_rsa.pub | ssh username@remote_host "mkdir -p ~/.ssh && cat >> ~/.s
 ssh username@remote_host
 ```
 
+### Отключение проверки пароля
+
+``` bash
+sudo vi /etc/ssh/sshd_config
+```
+
+PasswordAuthentication **no**  заменить на **yes**  
+
+Теперь сохраните файл и перезапустите службу ssh:  
+
+``` bash
+sudo service ssh restart  
+ ```
+ ``` bash
+sudo systemctl restart sshd
+ ```
 
 
 
