@@ -17,7 +17,7 @@ ssh-keygen
  Секретный ключ будет называться **id_rsa**, а публичный **id_rsa.pub**.  
  
  #### Загрузка ключа на удаленный сервер
- Скопировать ключ на удаленный сервер - это использовать утилиту ssh-copy-id  в файл **~/.ssh/authorized_keys**
+ Скопировать ключ с локального на удаленный сервер - это использовать утилиту ssh-copy-id  в файл **~/.ssh/authorized_keys**
  
 ``` bash  
 ssh-copy-id username@remote_host
@@ -51,6 +51,7 @@ Please contact your system administrator.
 ``` bash
 ssh-keygen -f "~/.ssh/known_hosts" -R "192.168.56.150"
 ```
+#### Выполнить на удаленном сервере
 
 ``` bash
 chmod 0644 ~/.ssh/authorized_keys
