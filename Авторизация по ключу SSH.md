@@ -34,6 +34,10 @@ cat ~/.ssh/id_rsa.pub | ssh username@remote_host "mkdir -p ~/.ssh && cat >> ~/.s
 cat ~/.ssh/id_rsa.pub | ssh root@ip-адрес-сервера 'cat >> ~/.ssh/authorized_keys'
 ```
 
+``` bash
+chmod 0644 ~/.ssh/authorized_keys
+```
+
 #### Можно подключаться к удаленному серверу
 
 ``` bash
