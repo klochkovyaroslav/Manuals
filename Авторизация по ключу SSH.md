@@ -69,7 +69,13 @@ ssh username@remote_host
 sudo vi /etc/ssh/sshd_config
 ```
 
-_**PasswordAuthentication**_ **no**  заменить на **yes**  
+_**PasswordAuthentication**_ **yes**  заменить на **no**  
+
+или   
+
+``` bash
+sed -i '65s/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config  
+```
 
 Теперь сохраните файл и перезапустите службу ssh:  
 
