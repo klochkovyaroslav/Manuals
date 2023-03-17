@@ -83,7 +83,8 @@ ansible_private_key_file=/home/vagrant/.ssh/authorized_keys
 #### Посмотреть список всех хостов в inventory:  
 
 ```bash
-ansible-inventory --list
+ansible-inventory --list  
+ansible-inventory --graph  
 ```
 
 #### Запустить проверку ping на всех хостах из файла hosts:  
