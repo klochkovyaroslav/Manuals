@@ -94,15 +94,34 @@ ansible-inventory --graph
 
 ```bash
 ansible all -m ping # Проверка доступности  
+
 ansible all -m setup # Информация о хосте  
+
 ansible all -m shell -a "cat /etc/*release" # Выполнить команду через shell  
+
 ansible all -m command -a "pwd" # Выполнить команду  
-ansible all -m copy -a "src=nginx.conf dest= /etc/nginx" # Копировать файл  
+
+ansible servers -m copy -a "src=nginx.conf dest= /etc/nginx" # Копировать файл на хосты для группы servers
+
 ansible all -m copy -a "src=nginx.conf dest= /etc/nginx mode 755" -b # Копировать файл на все хосты с заменой разрешений  от sudo  
+
 ansible all -m file -a "path=/etc/nginx/nginx.conf state=absent" -b # Удалить файл со всех хостов  
 
+ansible all -m get_url -a "url=https://github.com/klochkovyaroslav/Manuals.git dest=/tmp" -b # Скачать с URL  
 
+ansible all -m yum -a "name-stress state=installed" -b # Установить пакет stress на все хосты  
 
+ansible all -m apt -a "name-stress state=installed" -b # Установить пакет stress на все хосты  
+
+ansible all -m yum -a "name-stress state=removed" -b # Удалить пакет stress со всех хостов  
+
+ansible all -m uri -a "url=https://mail.ru" # Проверка доступности сайта по URL  
+
+ansible all -m yum -a "name=httpd state=latest" -b  Установить пакет httpd на все хосты  
+
+ansible all -m service -a "name=httpd state=started enabled=yes" -b  #Запускать сервис автоматически при старте системы  
+
+ansible all -m shell -a "ls /var" -v # Выполнить команду через shell с verbose (v, vv, vvv, vvvv)  
 ```
 
 
