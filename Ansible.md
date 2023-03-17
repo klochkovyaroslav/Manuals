@@ -94,10 +94,13 @@ ansible-inventory --graph
 
 В корне проекта создать каталог: **group_vars** и все переменные по возможности вынести в другие файлы  
 Имя файла должно быть равно "имея группы.yml" из файла "hosts"  
-В файле ./hosts **НЕ** должно остаться строк вида: _[servers_vars]_
+В файле ./hosts **НЕ** должно остаться строк вида: _[servers_vars]  
+!!! В виде исключения можно указать для одного хоста из группы: _[servers]_ 
+```
+[servers]  
+Linux_test2 ansible_host=192.168.56.150    password = P@ssw0rd
+```
 
-
-  
 
 ```bash
 nano group_vars/staging_DB.yml  
@@ -106,7 +109,10 @@ nano group_vars/staging_DB.yml
 ```
 ---
 ansible_user             : vagrant  
-ansible_private_key_file : /home/vagrant/.ssh/authorized_keys
+ansible_private_key_file : /home/vagrant/.ssh/authorized_keys  
+db_endpoint              : 192.168.56.50:4151  
+owner                    : vagrant  
+Location                 : Moscow
 ```
 
 
