@@ -4,7 +4,6 @@
 ```bash
 sudo nano ansible.cfg  
 ```
-
 ```
 [defaults]
 #Отключить в ssh проверку thingerprint  
@@ -12,27 +11,27 @@ host_key_checking = false
 inventory = ./hosts
 ```  
 ---
-## hosts
+## Файл Inventory или hosts
 
 ```bash
 sudo nano ./hosts  
 ```
-```
 
-#### Можно указать одиночные сервера:
+#### Можно указать одиночные сервера без группы:  
+
 192.168.56.10  
 192.168.56.21  
 
 или так:
-
+```
 Linux_pg ansible_host=192.168.56.250  
 Linux_ngx ansible_host=192.168.56.251  
 DEB_srv_ubuntu ansible_host=192.168.56.252  
 RPM_srv_centos ansible_host=192.168.56.253  
-
+```
 
 #### Можно создать группы серверов:
-
+```
 [staging_DB]  
 192.168.56.50  
 192.168.56.51  
@@ -48,21 +47,22 @@ RPM_srv_centos ansible_host=192.168.56.253
 [prod_DB]  
 192.168.56.160  
 192.168.56.161 
+```
 
 #### Можно создать новую группу серверов из уже существующих групп:
-
+```
 [staging_ALL:children]  
 staging_DB  
 staging_WEB  
 staging_APP 
-
+```
 или так:
-
+```
 [DB_ALL:children]  
 staging_DB  
 prod_DB  
-
-
+```
+```
 [servers]
 Linux_test ansible_host=192.168.56.150 ansible_user=vagrant  ansible_private_key_file=/home/vagrant/.ssh/authorized_keys
 ``` 
