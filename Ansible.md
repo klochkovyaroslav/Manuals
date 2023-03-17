@@ -80,7 +80,11 @@ Linux_test2 ansible_host=192.168.56.155
 ansible_user=vagrant  
 ansible_private_key_file=/home/vagrant/.ssh/authorized_keys  
 ```
+#### Посмотреть список всех хостов в inventory:  
 
+```bash
+ansible-inventory --list
+```
 
 #### Запустить проверку ping на всех хостах из файла hosts:  
 Запускаем Ansible:  
