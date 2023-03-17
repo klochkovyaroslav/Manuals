@@ -12,16 +12,17 @@ host_key_checking = false
 inventory = ./hosts
 ```  
 ---
-## Файл Inventory или hosts
+## Файл Inventory или hosts -  Простой вариант написания
 
 ```bash
 sudo nano ./hosts  
 ```
 
 #### Можно указать одиночные сервера без группы:  
-
+```
 192.168.56.10  
 192.168.56.21  
+```
 
 или так:
 ```
@@ -87,6 +88,28 @@ ansible_private_key_file=/home/vagrant/.ssh/authorized_keys
 ansible-inventory --list  
 ansible-inventory --graph  
 ```
+
+
+## Файл Inventory или hosts -  !!! БОЛЕЕ КОРРЕКТНЫЙ вариант написания  !!!
+
+В корне проекта создать каталог: **group_vars** и все переменные по возможности вынести в другие файлы  
+Имя файла должно быть равно "имея группы.yml" из файла "hosts"  
+В файле ./hosts **НЕ** должно остаться строк вида: _[servers_vars]_
+
+
+  
+
+```bash
+nano group_vars/staging_DB.yml  
+```
+
+```
+---
+ansible_user             : vagrant  
+ansible_private_key_file : /home/vagrant/.ssh/authorized_keys
+```
+
+
 
 #### Запустить проверку ping на всех хостах из файла hosts:  
 ---
