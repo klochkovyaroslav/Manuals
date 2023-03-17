@@ -89,13 +89,21 @@ ansible-inventory --graph
 ```
 
 #### Запустить проверку ping на всех хостах из файла hosts:  
-Запускаем Ansible:  
+---
+## Ansible Ad-Hoc Команды
 
 ```bash
-ansible all -m ping
+ansible all -m ping # Проверка доступности  
+ansible all -m setup # Информация о хосте  
+ansible all -m shell -a "cat /etc/*release" # Выполнить команду через shell  
+ansible all -m command -a "pwd" # Выполнить команду  
+ansible all -m copy -a "src=nginx.conf dest= /etc/nginx" # Копировать файл  
+ansible all -m copy -a "src=nginx.conf dest= /etc/nginx mode 755" -b # Копировать файл на все хосты с заменой разрешений  от sudo  
+ansible all -m file -a "path=/etc/nginx/nginx.conf state=absent" -b # Удалить файл со всех хостов  
+
+
+
 ```
-
-
 
 
 
