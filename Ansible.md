@@ -30,7 +30,15 @@ ansible all -m ping
 
 ---
 
-## Для работы клиентских Windows серверов файл ./hosts: 
+## Для работы клиентских Windows серверов  
+
+На Ansible сервере Нужно установить библиотеку **winrm**  
+
+```bash
+sudo pip install "pywinrm>=0.2.2"
+```
+
+файл ./hosts: 
 
 ```
 [windows_servers]
