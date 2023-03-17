@@ -64,8 +64,24 @@ prod_DB
 ```
 ```
 [servers]
-Linux_test ansible_host=192.168.56.150 ansible_user=vagrant  ansible_private_key_file=/home/vagrant/.ssh/authorized_keys
+Linux_test2 ansible_host=192.168.56.150 ansible_user=vagrant  ansible_private_key_file=/home/vagrant/.ssh/authorized_keys
+Linux_test2 ansible_host=192.168.56.155 ansible_user=vagrant  ansible_private_key_file=/home/vagrant/.ssh/authorized_keys
 ``` 
+
+Если в одной группе серверов есть одинаковые значения можно/НУЖНО объединять:  
+Будет выглядеть так:  
+
+```
+[servers]  
+Linux_test2 ansible_host=192.168.56.150
+Linux_test2 ansible_host=192.168.56.155
+
+[servers:vars]  
+ansible_user=vagrant  
+ansible_private_key_file=/home/vagrant/.ssh/authorized_keys  
+```
+
+
 #### Запустить проверку ping на всех хостах из файла hosts:  
 Запускаем Ansible:  
 
