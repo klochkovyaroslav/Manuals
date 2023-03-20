@@ -192,3 +192,27 @@ ansible windows_servers -m win_ping
 ```bash
 ansible windows_servers -m win_ping --ask-pass
 ```  
+
+## PlayBooks
+
+```
+---
+- name: Install web server
+  hosts: all
+  become: yes
+  
+  vars:
+    sourse_file: /tmp/nginx.conf
+    dest_file: /etc/nginx/
+  
+  tasks:
+  - name: Install Ndinx
+    yum:
+     name=nginx
+     state=latest
+     
+   tasks:
+     copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/  }}
+     
+  
+ 
