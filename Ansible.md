@@ -267,7 +267,7 @@ ansible windows_servers -m win_ping --ask-pass
 
 
 #### Пример3  
-Работа с Блоками и Условиями  
+Работа с Блоками: **block** и Условиями: **when**
 
 ```
 ---
@@ -313,8 +313,8 @@ ansible windows_servers -m win_ping --ask-pass
       - name: Install Nginx for Centos
         apt:
         update_cache: yes
-        name=nginx
-        state=latest
+        name: nginx
+        state: latest
       
       - name: Copy nginx.conf file    
         copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
@@ -335,8 +335,8 @@ ansible windows_servers -m win_ping --ask-pass
 handlers:
   - name: Restart nginx Centos
     service:
-      name=nginx
-      state=restarted
+      name: nginx
+      state: restarted
       
   - name: Restart nginx Debian
     service:
