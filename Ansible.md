@@ -265,4 +265,13 @@ ansible windows_servers -m win_ping --ask-pass
   var: rezult.cmd
 ```
   
+#### Пример3  
+Работа с Блоками и Условиями  
+
+```
+---
+- name: Bloki and Usloviya 
+  hosts: all
+  become:yes
   
+- 
