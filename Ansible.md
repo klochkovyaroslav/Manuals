@@ -349,7 +349,7 @@ handlers:
 ### Пример 4  
 Работа с Циклами: **Loop, With_Items, Until, With_Fileglob**  
 
-#### 4_1 (With_Items)
+#### 4_1 (Loop, With_Items)
 
 Loop и With_Items - одна и так же команда для разных версий Ansible  
 **With_Items** - работает до версии Ansible 2.4.    
@@ -370,4 +370,33 @@ Loop и With_Items - одна и так же команда для разных 
       - "Sergey"
       - "Maxim"
       - "Olga"
+```
+
+#### 4_2 Until
+
+```
+---
+- name: Loop Playboojk 
+  hosts: all
+  become:yes
+  
+  tasks: 
+  - name: Until example
+    shell: echo -n Z >> 1.txt && cat 1.txt  # -n не переводить на новую строку.
+    register: otvet
+    dalay: 2       # Делать с задержкой 2 сек
+    retries: 10    # Повторять 10 раз
+    until: otvet.stdout.find("ZZZZ")== false
+    
+  - name: Print output
+    debug: 
+      var: otver.stdout
+```
+
+
+
+
+
+
+
 ```
