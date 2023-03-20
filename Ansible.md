@@ -370,6 +370,21 @@ Loop и With_Items - одна и так же команда для разных 
       - "Sergey"
       - "Maxim"
       - "Olga"
+      
+      
+      
+   - name: Install some softs
+    yum:
+    name: {{ items }}
+    state: installed
+    with_items:
+    #loop:
+      - mc
+      - nano
+      - curl
+      - wget     
+      
+      
 ```
 
 #### 4_2 Until
@@ -386,7 +401,7 @@ Loop и With_Items - одна и так же команда для разных 
     register: otvet
     dalay: 2       # Делать с задержкой 2 сек
     retries: 10    # Повторять 10 раз
-    until: otvet.stdout.find("ZZZZ")== false
+    until: otvet.stdout.find("ZZZZ")== false   # Писать символ: Z в файл до того пока в stdout не будет найдено ZZZZ
     
   - name: Print output
     debug: 
