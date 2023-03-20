@@ -195,9 +195,8 @@ ansible windows_servers -m win_ping --ask-pass
 
 ## PlayBooks
 
-### Примеры написания playbook
+### Пример 1  
 
-#### Пример1
 Базывый playbook, работа с переменными секция (vars), использование модуля "**handlers**", вызов handler это модуль: "**notify**".  
 Можно создать отдельный playbook файл для секции handlers и далее вызвать в нужном playbook.  
 
@@ -233,7 +232,7 @@ ansible windows_servers -m win_ping --ask-pass
       state=restarted
 ```
 
-#### Пример2  
+#### Пример 2  
 Работа с переменными, вывод на экран модуль **debug**, соединенние переменных: модули **set_facts**, записать stdout bash команды в переменную: модуль **register**
 
 ```
@@ -266,7 +265,7 @@ ansible windows_servers -m win_ping --ask-pass
 ```
 
 
-#### Пример3  
+### Пример 3  
 Работа с Блоками: **block** и Условиями: **when**
 
 ```
@@ -343,4 +342,25 @@ handlers:
       name: nginx
       state: restarted       
       
+```
+
+
+
+### Пример 4  
+Работа с Циклами: **Loop, With_Items, Until, With_Fileglob**  
+
+Loop и With_Items - одна и так же команда для разных версий Ansible  
+**With_Items** - работает до версии Ansible 2.4.    
+**Loop** - работает от версии Ansible 2.5 и выше.  
+
+```
+---
+- name: Loop Playboojk 
+  hosts: all
+  become:yes
+  
+  tasks: 
+  - name Say Hellow to all
+  debug: msg
+
 ```
