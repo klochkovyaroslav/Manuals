@@ -349,6 +349,8 @@ handlers:
 ### Пример 4  
 Работа с Циклами: **Loop, With_Items, Until, With_Fileglob**  
 
+#### 4_1 (With_Items)
+
 Loop и With_Items - одна и так же команда для разных версий Ansible  
 **With_Items** - работает до версии Ansible 2.4.    
 **Loop** - работает от версии Ansible 2.5 и выше.  
@@ -360,7 +362,12 @@ Loop и With_Items - одна и так же команда для разных 
   become:yes
   
   tasks: 
-  - name Say Hellow to all
-  debug: msg
-
+  - name: Managers of my Project
+    debug: msg="Sales manager {{ items }}"
+    #with_items:
+    loop:
+      - "Ivan"
+      - "Sergey"
+      - "Maxim"
+      - "Olga"
 ```
