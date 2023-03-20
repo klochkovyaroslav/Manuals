@@ -215,7 +215,7 @@ nano install_nginx.yml
      
   - name: Copy nginx.conf file    
     copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
-    notify: Restarted nginx     #Вызвать handlers "Restarted nginx" для того что бы рестартануть уже запущенный сервис nginx
+    notify: Restart nginx     #Вызвать handlers "Restarted nginx" для того что бы рестартануть уже запущенный сервис nginx
      
   - name: Start and Enable service
     service: 
@@ -223,7 +223,7 @@ nano install_nginx.yml
       state=started enabled=yes
      
   handlers:
-  - name: Restarted nginx
+  - name: Restart nginx
     service:
       name=nginx
       state=restarted
