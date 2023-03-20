@@ -264,7 +264,8 @@ ansible windows_servers -m win_ping --ask-pass
 - debug: 
   var: rezult.cmd
 ```
-  
+
+
 #### Пример3  
 Работа с Блоками и Условиями  
 
@@ -274,4 +275,60 @@ ansible windows_servers -m win_ping --ask-pass
   hosts: all
   become:yes
   
-- 
+  vars:
+    sourse_file: /tmp/nginx.conf
+    dest_file: /etc/nginx/
+  
+  tasks: 
+  - block: # -----Block for RPM------
+      - name: Install Nginx for Centos
+        yum:
+        name=nginx
+        state=latest
+      
+      - name: Copy nginx.conf file    
+        copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
+        
+        notify: Restart nginx Centos
+        
+      - name: Start and Enable service
+        service: 
+        name=nginx
+        state=started enabled=yes
+        
+    when: 
+      ansible_os_family == "RedHat"
+      
+      
+      
+  
+  - block: # -----Block for DEB------
+      - name: Install Nginx for Centos
+        apt:
+        update_cache: yes
+        name=nginx
+        state=latest
+      
+      - name: Copy nginx.conf file    
+        copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
+        
+        notify: Restart nginx Centos
+        
+      - name: Start and Enable service
+        service: 
+        name=nginx
+        state=started enabled=yes
+        
+    when: 
+      ansible_os_family == "RedHat"
+      
+
+
+
+handlers:
+  - name: Restart nginx Centos
+    service:
+      name=nginx
+      state=restarted  
+      
+```
