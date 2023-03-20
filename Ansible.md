@@ -262,7 +262,7 @@ ansible windows_servers -m win_ping --ask-pass
 - shell: uptime
   register: rezult
 - debug: 
-  var: {{ rezult }} 
+  var: rezult.cmd
 ```
   
   
