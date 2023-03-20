@@ -234,7 +234,7 @@ ansible windows_servers -m win_ping --ask-pass
 ```
 
 #### Пример2  
-Работа с переменными, вывод на экран, соединенние переменных, debuging 
+Работа с переменными, вывод на экран модуль **debug**, соединенние переменных: модули **set_facts**, записать stdout  в переменную: модуль **register**
 
 ```
 ---
@@ -255,10 +255,14 @@ ansible windows_servers -m win_ping --ask-pass
     msg: "Vivesti na ekran: {{ var2 }}"
     
   - debug:
-  - set_fact: Soedinyaem_peremennie="{{ var1 }} {{ var2 }}"
+  - set_fact: Soedinyaem_peremennie="{{ var1 }} {{ var2 }}"   #соединенние переменных
   - debug:
       var: Soedinyaem_peremennie
-      
+     
+- shell: uptime
+  register: rezult
+- debug: 
+  var: {{ rezult }} 
 ```
   
   
