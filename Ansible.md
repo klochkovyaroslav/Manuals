@@ -232,3 +232,33 @@ ansible windows_servers -m win_ping --ask-pass
       name=nginx
       state=restarted
 ```
+
+#### Пример2  
+Работа с переменными, вывод на экран, соединенние переменных, debuging 
+
+```
+---
+- name: Variables example
+  hosts: all
+  become: yes
+  
+  vars:
+    var1: Test1
+    var2: Test2
+    
+  tasks:
+  - name Print var1 variable
+    debug:
+      var: var1
+      
+  - debug:
+    msg: "Vivesti na ekran: {{ var2 }}"
+    
+  - debug:
+  - set_fact: Soedinyaem_peremennie="{{ var1 }} {{ var2 }}"
+  - debug:
+      var: Soedinyaem_peremennie
+      
+```
+  
+  
