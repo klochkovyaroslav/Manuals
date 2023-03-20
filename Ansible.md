@@ -195,6 +195,8 @@ ansible windows_servers -m win_ping --ask-pass
 
 ## PlayBooks
 
+nano playbook1.yml
+
 ```
 ---
 - name: Install web server
@@ -206,13 +208,23 @@ ansible windows_servers -m win_ping --ask-pass
     dest_file: /etc/nginx/
   
   tasks:
-  - name: Install Ndinx
+  - name: Install Nginx
     yum:
-     name=nginx
-     state=latest
+      name=nginx
+      state=latest
      
-   tasks:
-     copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/  }}
+  - name: Copy nginx.conf file    
+    copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
+    notify: Restarted nginx     #Вызвать handlers "Restarted nginx" для того что бы рестартануть уже запущенный сервис nginx
      
-  
- 
+  - name: Start and Enable service
+    service: 
+      name=nginx
+      state=started enabled=yes
+     
+  handlers:
+  - name: Restarted nginx
+    service:
+      name=nginx
+      state=restarted
+```
