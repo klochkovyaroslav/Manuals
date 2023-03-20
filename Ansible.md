@@ -195,7 +195,11 @@ ansible windows_servers -m win_ping --ask-pass
 
 ## PlayBooks
 
-nano install_nginx.yml
+### Примеры написания playbook
+
+#### Пример1
+Базывый playbook, работа с переменными секция (vars), использование модуля "**handlers**", вызов handler это модуль: "**notify**". 
+Можно создать отдельный playbook файл для секции handlers и далее вызвать в нужном playbook.  
 
 ```
 ---
