@@ -195,7 +195,7 @@ ansible windows_servers -m win_ping --ask-pass
 
 ## PlayBooks
 
-nano playbook1.yml
+nano install_nginx.yml
 
 ```
 ---
