@@ -280,27 +280,34 @@ ansible windows_servers -m win_ping --ask-pass
     dest_file: /etc/nginx/
   
   tasks: 
+#############################################################################################  
+
   - block: # -----Block for RPM------
+  
+      - name: Install epel-release
+        yum:
+        name: epel-release
+        state: latest  
+    
       - name: Install Nginx for Centos
         yum:
-        name=nginx
-        state=latest
+        name: nginx
+        state: latest
       
       - name: Copy nginx.conf file    
         copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
-        
         notify: Restart nginx Centos
         
       - name: Start and Enable service
         service: 
-        name=nginx
-        state=started enabled=yes
+          name: nginx
+          state: started 
+          enabled: yes
         
     when: 
       ansible_os_family == "RedHat"
       
-      
-      
+###########################################################################################          
   
   - block: # -----Block for DEB------
       - name: Install Nginx for Centos
@@ -312,23 +319,28 @@ ansible windows_servers -m win_ping --ask-pass
       - name: Copy nginx.conf file    
         copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
         
-        notify: Restart nginx Centos
+        notify: Restart nginx Debian
         
       - name: Start and Enable service
         service: 
-        name=nginx
-        state=started enabled=yes
+          name: nginx
+          state: started
+          enabled: yes
         
     when: 
-      ansible_os_family == "RedHat"
+      ansible_os_family == "Debian"
       
-
-
+###########################################################################################
 
 handlers:
   - name: Restart nginx Centos
     service:
       name=nginx
-      state=restarted  
+      state=restarted
+      
+  - name: Restart nginx Debian
+    service:
+      name: nginx
+      state: restarted       
       
 ```
