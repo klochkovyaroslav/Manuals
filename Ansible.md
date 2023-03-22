@@ -476,15 +476,15 @@ handlers:
     service:
       name: nginx
       state: restarted
-when: 
-      ansible_os_family == "RedHat"
+    when: 
+        ansible_os_family == "RedHat"
       
   - name: Restart nginx Debian
     service:
       name: nginx
       state: restarted
-when: 
-      ansible_os_family == "Debian"      
+    when: 
+        ansible_os_family == "Debian"      
 
 
 
