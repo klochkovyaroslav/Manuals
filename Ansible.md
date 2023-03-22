@@ -503,3 +503,99 @@ handlers:
         ansible_os_family == "Debian"      
 
 ```
+
+
+### Пример 5
+Работа с шаблонами  
+Что бы создать шаблон **.j2** копируем уже существующий **nginx.conf** в **nginx.j2**  
+
+В файле **nginx.j2** подставляем требуемые переменые в формате: 
+_My Server IP : {{ ansible_default_ipv4.address }}_  
+_My Server Hostname : {{ ansible_hostname }}_  
+
+
+```
+---
+
+- name: With_Fileglob 
+  hosts: all
+  become:yes
+  
+  vars:
+    sourse_folder: /tmp/test
+    dest_folder: /etc/nginx/
+  
+  tasks: 
+#############################################################################################  
+
+  - block: # -----Block for RPM------
+  
+      - name: Install epel-release
+        yum:
+        name: epel-release
+        state: latest  
+    
+      - name: Install Nginx for Centos
+        yum:
+        name: nginx
+        state: latest
+              
+      - name: Start and Enable service
+        service: 
+          name: nginx
+          state: started 
+          enabled: yes
+        
+    when: 
+      ansible_os_family == "RedHat"
+      
+###########################################################################################          
+  
+  - block: # -----Block for DEB------
+      - name: Install Nginx for Centos
+        apt:
+        update_cache: yes
+        name: nginx
+        state: latest
+              
+      - name: Start and Enable service
+        service: 
+          name: nginx
+          state: started
+          enabled: yes
+        
+    when: 
+      ansible_os_family == "Debian"  
+      
+###########################################################################################      
+      
+    
+    
+    - name: Copy folder: tmp/test/  
+      copy: src={{ item }} dst={{ dest_folder}} mode 0555
+      with_fileglob: 
+        "{{ sourse_folder }}/*.*"
+        
+    - name: Genetate NGINX.CONF file
+      template: sec={{ source_folder }}/nginx.j2
+      
+      notify:
+        - Restart nginx Centos
+        - Restart nginx Debian            
+
+
+handlers:
+  - name: Restart nginx Centos
+    service:
+      name: nginx
+      state: restarted
+    when: 
+        ansible_os_family == "RedHat"
+      
+  - name: Restart nginx Debian
+    service:
+      name: nginx
+      state: restarted
+    when: 
+        ansible_os_family == "Debian"
+
