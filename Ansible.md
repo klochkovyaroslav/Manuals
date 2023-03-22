@@ -383,8 +383,6 @@ Loop и With_Items - одна и так же команда для разных 
        - nano
        - curl
        - wget     
-      
-      
 ```
 
 #### 4_2 Until
