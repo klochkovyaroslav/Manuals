@@ -463,8 +463,8 @@ Loop и With_Items - одна и так же команда для разных 
       ansible_os_family == "Debian"  
       
       
-    - name: Copy nginx.conf file    
-      copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
+    - name: Copy folder: test   
+      copy: src={{ sourse_folder }} dst={{ dest_folder}} mode 0555
       notify:
         - Restart nginx Centos
         - Restart nginx Debian
@@ -485,14 +485,5 @@ handlers:
       state: restarted
     when: 
         ansible_os_family == "Debian"      
-
-
-
-
-
-
-
-
-
 
 ```
