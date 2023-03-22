@@ -406,6 +406,89 @@ Loop и With_Items - одна и так же команда для разных 
       var: otver.stdout
 ```
 
+#### 4_3 With_Fileglob
+
+```
+---
+- name: With_Fileglob 
+  hosts: all
+  become:yes
+  
+  vars:
+    sourse_folder: /tmp/test
+    dest_folder: /etc/nginx/
+  
+  tasks: 
+#############################################################################################  
+
+  - block: # -----Block for RPM------
+  
+      - name: Install epel-release
+        yum:
+        name: epel-release
+        state: latest  
+    
+      - name: Install Nginx for Centos
+        yum:
+        name: nginx
+        state: latest
+      
+        
+      - name: Start and Enable service
+        service: 
+          name: nginx
+          state: started 
+          enabled: yes
+        
+    when: 
+      ansible_os_family == "RedHat"
+      
+###########################################################################################          
+  
+  - block: # -----Block for DEB------
+      - name: Install Nginx for Centos
+        apt:
+        update_cache: yes
+        name: nginx
+        state: latest
+      
+        
+      - name: Start and Enable service
+        service: 
+          name: nginx
+          state: started
+          enabled: yes
+        
+    when: 
+      ansible_os_family == "Debian"  
+      
+      
+    - name: Copy nginx.conf file    
+      copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
+      notify:
+        - Restart nginx Centos
+        - Restart nginx Debian
+      
+###########################################################################################
+
+handlers:
+  - name: Restart nginx Centos
+    service:
+      name: nginx
+      state: restarted
+when: 
+      ansible_os_family == "RedHat"
+      
+  - name: Restart nginx Debian
+    service:
+      name: nginx
+      state: restarted
+when: 
+      ansible_os_family == "Debian"      
+
+
+
+
 
 
 
