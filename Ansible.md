@@ -570,16 +570,17 @@ _My Server Hostname : {{ ansible_hostname }}_
       
 ###########################################################################################      
       
-    
-    
+ 
     - name: Copy folder: tmp/test/  
       copy: src={{ item }} dst={{ dest_folder}} mode 0555
       with_fileglob: 
         "{{ sourse_folder }}/*.*"
+      notify:
+        - Restart nginx Centos
+        - Restart nginx Debian 
         
     - name: Genetate NGINX.CONF file
-      template: sec={{ source_folder }}/nginx.j2
-      
+      template: sec={{ source_folder }}/nginx.j2 dst={{ dest_folder}}/nginx.conf mode 0555
       notify:
         - Restart nginx Centos
         - Restart nginx Debian            
