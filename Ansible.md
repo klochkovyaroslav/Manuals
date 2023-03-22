@@ -197,7 +197,7 @@ ansible windows_servers -m win_ping --ask-pass
 
 ### Пример 1  
 
-Базывый playbook, работа с переменными секция (vars), использование модуля "**handlers**", вызов handler это модуль: "**notify**".  
+Базовый playbook, работа с переменными секция (vars), использование модуля "**handlers**", вызов handler это модуль: "**notify**".  
 Можно создать отдельный playbook файл для секции handlers и далее вызвать в нужном playbook.  
 
 ```
@@ -600,4 +600,20 @@ handlers:
       state: restarted
     when: 
         ansible_os_family == "Debian"
+```
+
+### Создание Ролей - Roles
+В корне проекта создать каталог: **roles**  
+
+Перейти в каталог: **roles** и выполнить команду:  
+Создастся директория с именем: "install_nginx_web_server"содержащая подкаталоги с файлами .yml  
+Подкаталог test можно удалить.  
+
+
+```bash
+ansible-galaxy init install_nginx_web_server
+```
+
+```
+---
 ```
