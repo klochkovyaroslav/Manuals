@@ -374,15 +374,15 @@ Loop и With_Items - одна и так же команда для разных 
       
       
    - name: Install some softs
-    yum:
-    name: {{ items }}
-    state: installed
-    with_items:
-    #loop:
-      - mc
-      - nano
-      - curl
-      - wget     
+     yum:
+     name: {{ items }}
+     state: installed
+     with_items:
+     #loop:
+       - mc
+       - nano
+       - curl
+       - wget     
       
       
 ```
