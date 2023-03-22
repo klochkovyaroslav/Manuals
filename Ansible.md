@@ -432,8 +432,7 @@ Loop и With_Items - одна и так же команда для разных 
         yum:
         name: nginx
         state: latest
-      
-        
+              
       - name: Start and Enable service
         service: 
           name: nginx
@@ -451,8 +450,7 @@ Loop и With_Items - одна и так же команда для разных 
         update_cache: yes
         name: nginx
         state: latest
-      
-        
+              
       - name: Start and Enable service
         service: 
           name: nginx
@@ -462,14 +460,32 @@ Loop и With_Items - одна и так же команда для разных 
     when: 
       ansible_os_family == "Debian"  
       
+###########################################################################################      
       
-    - name: Copy folder: test   
-      copy: src={{ sourse_folder }} dst={{ dest_folder}} mode 0555
+      
+    - name: Copy folder: tmp/test/  
+    # Два способа скопировать все файлы из папки: /tmp/test/
+    # Первый способ через: loop
+      copy: src={{ sourse_folder }}/{{ item }} dst={{ dest_folder}} mode 0555
+      loop:
+        - "Index.html"
+        - "1.file"
+        - "2.file"
+        - "3.file"
+        - "4.file"
       notify:
         - Restart nginx Centos
         - Restart nginx Debian
-      
-###########################################################################################
+        
+        
+    # Второй способ через: with_fileglob  
+      copy: src={{ item }} dst={{ dest_folder}} mode 0555
+      with_fileglob: 
+        "{{ sourse_folder }}/*.*"
+      notify:
+        - Restart nginx Centos
+        - Restart nginx Debian            
+
 
 handlers:
   - name: Restart nginx Centos
