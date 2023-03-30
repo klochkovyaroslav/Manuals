@@ -38,7 +38,7 @@ sudo openssl req -out /tmp/workspad.csr -new -newkey rsa:2048 -nodes -keyout /tm
 ```bash
 sudo openssl x509 -noout -text -in /tmp/public_cert.crt
 
-openssl dhparam -text -noout -inform PEM -check -in /etc/openvpn-gost/easy-gost/keys/dh2048.pem
+sudo openssl dhparam -text -noout -inform PEM -check -in /etc/openvpn-gost/easy-gost/keys/dh2048.pem
 ```
 ### Информации о закрытом ключе:
 ```bash
