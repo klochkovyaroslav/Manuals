@@ -26,7 +26,7 @@ sudo openssl x509 -req -days 365 -in /tmp/request.csr -signkey /tmp/private.key 
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/private.key -out /tmp/public_cert.crt
 ```
 
-### Cсоздание: закрытого ключа, запроса на сертификат для выпуска сертификата в CA.
+### Cоздание: закрытого ключа, запроса на сертификат для выпуска сертификата в стороннем CA.
 
 ```bash
 sudo openssl req -out /tmp/workspad.csr -new -newkey rsa:2048 -nodes -keyout /tmp/private.key
