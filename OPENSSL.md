@@ -49,7 +49,11 @@ An optional company name []: SL
 ```bash
 sudo openssl x509 -noout -text -in /tmp/public_cert.crt
 
-sudo openssl dhparam -text -noout -inform PEM -check -in /etc/openvpn-gost/easy-gost/keys/dh2048.pem
+sudo openssl dhparam -text -noout -inform PEM -check -in /etc/openvpn-gost/easy-gost/keys/dh2048.pem  
+```
+### Информация о файле сертификата PKCS#12 (для *.pfx или *.p12):
+```bash
+sudo openssl pkcs12 -info -in /tmp/keyStore.p12
 ```
 ### Информации о закрытом ключе:
 ```bash
