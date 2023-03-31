@@ -209,7 +209,7 @@ sudo psql sphone_new < /tmp/back/sphone.dump
 sudo psql -1 sphone_new < /tmp/back/sphone.dump
 
 
-\\\\\\\\\\\\\\\\\\ Резервное копирование средсвами файловой системы \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\ Резервное копирование средствами файловой системы \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 1 Остановка службы
 2 Копирование
@@ -233,6 +233,43 @@ sudo tar -xf /tmp/back/backup.tar.bz
 sudo ls -l /var/lib/pgsql/data/
 
 sudo systemctl start postgresql.service
+
+
+
+\\\\\\\\\\\\\\\\\\ Резервное копирование - Непрерывное архивация \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+Для настройки архивания нужно предварительно сконфигурировать postgresql.conf
+Директивы:  wal_level, archive_mode, archive_commamd
+
+sudo mkdir archive_{c,b}
+
+Правим файл:
+sudo vi data/postgresql.conf
+
+wal_level=replica
+archive_mode=on
+archive_commamd= 'test ! -f /var/lib/pgsql/archive_c/%f && cp %p /var/lib/pgsql/archive_c/%f'
+
+sudo systemctl restart postgresql.service
+
+Для проверки что все заработало смотрим:
+
+sudo ls -l /var/lib/pgsql/archive_c
+Сначала должно быть пусто, а в каталоге 
+
+sudo ls -l /var/lib/pgsql/data/pg_wal
+Должен находиться первый файл журнала вида :000000010000000000000001
+
+Если еще раз перезапустить службу 
+sudo systemctl restart postgresql.service
+
+sudo ls -l /var/lib/pgsql/archive_c
+Видим что файл журнала закрылся и был сброшен в каталог для архивации
+А в файле
+sudo ls -l /var/lib/pgsql/data/pg_wal
+появтлся новый файл для архивации: 000000010000000000000001
+
+
 
 
 
