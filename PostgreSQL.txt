@@ -148,6 +148,9 @@ create database my_database;
 drop database my_database;
 \q
 
+ или из bash
+sudo dropdb my_database
+ 
 GRANT ALL PRIVILEGES ON DATABASE my_database TO my_user;
 
 
@@ -164,7 +167,8 @@ select * from license;
 
 \q
 
-## Резервное копирование. 
+\\\\\\\\\\\\\\\\\\ Резервное копирование  pg_dump \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 
 Восстановить Дамп БД sphone
 pg_restore -h 127.0.0.1 -p 5432 -U sphone -F c -d sphone /opt/distr/sphone.backup.sp445.2021.08.26
@@ -203,5 +207,32 @@ sudo psql sphone_new < /tmp/back/sphone.dump
 или --single-transaction
 
 sudo psql -1 sphone_new < /tmp/back/sphone.dump
+
+
+\\\\\\\\\\\\\\\\\\ Резервное копирование средсвами файловой системы \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+1 Остановка службы
+2 Копирование
+3 Запуск службы
+
+sudo systemctl stop postgresql.service
+
+Создаем архив:
+sudo tar -cjf backup.tar.bz /tmp/back/
+
+
+Для Восстанавления:
+Удаляем все из: 
+sudo rm -rf /var/lib/pgsql/data/*
+
+Посмотреть что лежит в архиве:
+sudo tar -tf /tmp/back/backup.tar.bz | head
+
+Восстанавливаем из архива:
+sudo tar -xf /tmp/back/backup.tar.bz
+sudo ls -l /var/lib/pgsql/data/
+
+sudo systemctl start postgresql.service
+
 
 
