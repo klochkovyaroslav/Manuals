@@ -79,3 +79,15 @@ sudo openssl rsa -noout -modulus -in /tmp/private.key | openssl md5
 sudo openssl x509 -inform DER -in /tmp/cert.cer -out /tmp/cert.crt  
 ### Конвертировать в формат PEM
 sudo openssl x509 -in /tmp/cert.cer -outform PEM -out /tmp/cert.crt
+
+## Конвертирование файла DER (.crt .cer .der) в PEM
+openssl x509 -inform der -in certificate.cer -out certificate.pem
+
+## Конвертирование файла PEM в DER:
+openssl x509 -outform der -in certificate.pem -out certificate.der
+
+## Конвертирование файла PKCS # 12 в PEM
+openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes
+
+## Конвертирование PEM файла и приватного ключа в PKCS # 12:
+openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt
