@@ -164,23 +164,44 @@ select * from license;
 
 \q
 
+## Резервное копирование. 
 
 Восстановить Дамп БД sphone
 pg_restore -h 127.0.0.1 -p 5432 -U sphone -F c -d sphone /opt/distr/sphone.backup.sp445.2021.08.26
 
-
 Сделать Дамп таблицы license в БД sphone
 pg_dump -h 127.0.0.1 -p 5432 -U sphone --table=license -Fc --file=license.Fc.dump sphone
-
 
 Восстановить Дамп таблицы license в БД sphone
 pg_restore -h 127.0.0.1 -p 5432 -U sphone -d sphone -Fc /opt/distr/license.Fc.dump
 
-
 select "License" from public."ServerInfo";
-
 
 sudo pg_dump -h 127.0.0.1 -p 5432 -U workspad --table="public.\"ServerInfo\"" -Fc --file=ServerInfo.Fc.dump WorksPad
 
-
 W0rk$p@oI
+
+
+Пример:
+Создаем дамп
+sudo pg_dump sphone > /tmp/back/sphone.dump
+
+Можно простостреть содержимое дампа
+sudo vi /tmp/back/sphone.dump
+
+
+Создаем новую базу - Восстанавливаемся из дампа в новую базу
+sudo createdb sphone_new
+sudo psql sphone_new < /tmp/back/sphone.dump
+
+
+Если были ошибки при восстановлении из дампа утилитой psql:
+Можно делать остановку восстановления дампа используя ключ:
+--set ON_ERROR_STOP=on
+или восстанавливать в отдной транзакции используя ключ:
+-1
+или --single-transaction
+
+sudo psql -1 sphone_new < /tmp/back/sphone.dump
+
+
