@@ -282,6 +282,7 @@ pg_basebackup -D archeve_b/ Ft -z
 ls archeve_b
 
 
+
 ## Процедуда восстановления из резервной копии.
 
 sudo systemctl stop postgresql.service
