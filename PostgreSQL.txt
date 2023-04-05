@@ -1,5 +1,11 @@
 \\\\\\\\\\\\\\\\\\ Centos 7 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+	Посмотреть что будет ставиться по умолчанию их текущего репозитория - (Centos 8)
+yum module list postgresql
+
+	Можно переключить поток по умолчанию - (Centos 8)
+yum module enebled postgresql:12
+
 	Добавить официальный репозиторий PostgreSQL:
 yum -y install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
 
