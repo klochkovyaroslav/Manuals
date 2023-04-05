@@ -236,7 +236,7 @@ sudo systemctl start postgresql.service
 
 
 
-\\\\\\\\\\\\\\\\\\ Резервное копирование - Непрерывное архивация \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\ Резервное копирование - Непрерывная архивация \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 Для настройки архивания нужно предварительно сконфигурировать postgresql.conf
 Директивы:  wal_level, archive_mode, archive_commamd
@@ -268,6 +268,65 @@ sudo ls -l /var/lib/pgsql/archive_c
 А в файле
 sudo ls -l /var/lib/pgsql/data/pg_wal
 появтлся новый файл для архивации: 000000010000000000000001
+
+    ## Процедура архиванции настроена.
+    
+## Процедуда создания базовой резервной копии (pg_basebackup).
+
+Заходим под пользователя postgres
+su - postgres
+ls archeve_b #Каталог для базовой резевной копии
+
+Создаем базовую резевную копию
+pg_basebackup -D archeve_b/ Ft -z
+ls archeve_b
+
+
+## Процедуда восстановления из резервной копии.
+
+sudo systemctl stop postgresql.service
+
+Заходим под пользователя postgres
+su - postgres
+cd data
+
+Удалить все содержимое
+rm -rf *
+
+Для восстановления нужно воспользоватьс архивом
+cp ../archive_b/base.tar.gz .
+
+Распоковать архив
+tar -xf base.tar.gz
+
+Сам архив можно уже удалить
+rm base.tar.gz
+
+Далее нужно восстановить каталог "pg_wal"
+cd pg_wal
+cp ../../archeve_b/pg_wal.tar.gz
+tar -xf pg_wal.tar.gz
+
+Сам архив можно уже удалить
+rm pg_wal.tar.gz
+
+ls ~/archive_c
+
+Копируем нужный файл журнала в даннй ситуации это: 000000010000000000000004
+cp ~/archive_c/000000010000000000000004 .
+exit
+
+sudo systemctl start postgresql.service
+Восстановление закончено
+
+
+
+
+
+
+
+
+
 
 
 
