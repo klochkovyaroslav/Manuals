@@ -11,3 +11,9 @@ for i in {18..19}; do ping -c3 "192.168.1.$i"; done
 ```bash
 !ss
 ```
+
+### Скопировать файл по сети на server2 в каталог: root
+
+```bash
+sudo scp file1.tar.gz root@server2:/root/
+```
