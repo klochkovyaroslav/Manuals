@@ -609,11 +609,22 @@ handlers:
 Создастся директория с именем: "install_nginx_web_server"содержащая подкаталоги с файлами .yml  
 Подкаталог test можно удалить.  
 
-
 ```bash
 ansible-galaxy init install_nginx_web_server
 ```
-
+Что бы потом запустить плейбук с ролями нужно в файле playbook.yml добавить роли 
 ```
----
+- name: Install nginx web server
+  hosts: all
+  become: yes
+  
+  roles:
+    - install_nginx_web_server
+    или так
+    - {role: install_nginx_web_server, when: ansible_system == 'Linux' }
+ ```
+Запускаем плейбук    
+    
+```bash
+ansible-playbook playbook.yml
 ```
