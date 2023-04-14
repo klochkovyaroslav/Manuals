@@ -602,6 +602,8 @@ handlers:
         ansible_os_family == "Debian"
 ```
 
+### Пример 6
+
 ### Создание Ролей - Roles
 В корне проекта создать каталог: **roles**  
 
@@ -629,6 +631,8 @@ ansible-galaxy init install_nginx_web_server
 ansible-playbook playbook.yml
 ```
 
+### Пример 7
+
 ### Внешние переменные - extra-vars
 Переменные extra-vars имеют наивысший приоритет  
 
@@ -654,6 +658,8 @@ ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB"
 ```bash
 ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
 ```
+
+### Пример 8
 
 ### Использование Import и Include.
 
