@@ -680,4 +680,44 @@ ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
       include: create_files.yml  mytext: "Example only Include"  # Можно переопределить переменную "mytext" на 'лету'.   
  ```
 
+Пример файлов create_files.yml и create_folders.yml
+Все вложенные каталоги создадутся автоматически при их отсутствии.  
 
+Создать файл "create_folders.yml" с содержимым:    
+
+```
+---
+- name: Create folder1
+  file:
+    path: /tmp/test/test_folder1 
+    state: directory
+    mode: 0755
+  
+- name: Create folder2
+  file:
+    path: /tmp/test/test_folder2
+    state: directory
+    mode: 0755
+```
+
+
+Создать файл "create_files.yml" с содержимым:  
+
+```
+---
+- name: Create file1
+  copy:
+    dest: /tmp/test/test_folder1/file_test1.txt 
+    content: |
+      Some test text1, in file_test1.txt
+      Some test text2, in file_test1.txt
+      Some test text3, {{ mytext }}
+  
+- name: Create file2
+  copy:
+    dest: /tmp/test/test_folder1/file_test2.txt 
+    content: |
+      Some other test text1, in file_test2.txt
+      Some other test text2, in file_test2.txt
+      Some other test text3, {{ mytext }}
+```
