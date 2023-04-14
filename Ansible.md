@@ -628,3 +628,56 @@ ansible-galaxy init install_nginx_web_server
 ```bash
 ansible-playbook playbook.yml
 ```
+
+### Внешние переменные - extra-vars
+Переменные extra-vars имеют наивысший приоритет  
+
+В файле плебука нужно указать переменную в скобках "{{}}"  
+Например:  
+
+```
+- name: Install nginx web server
+  hosts: "{{ MYHOSTS }}"
+  become: yes
+  
+  roles:
+    - {role: install_nginx_web_server, when: ansible_system == 'Linux' }
+ ```
+
+Запускаем плейбук    
+    
+```bash
+ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB"
+```
+Переменных можно указывать несколько, через "пробел", например:  
+
+```bash
+ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
+```
+
+### Использование Import и Include.
+
+Отличие **Import** от **Include** в том что при запуске плейбука ansible читает файл главного плейбука и:  
+При **Import** сразу же меняет содержимое того что написано в дерективе Import на содержмое файла импорта.  
+При **Include** меняет содержимое того что написано в дерективе Include на содержмое файла с Include только тогда когда доходит до выполнения директивы Include.  
+
+Пример файла плейбук
+
+```
+- name: Example Import Include
+  hosts: all
+  become: yes
+  
+  vars:
+    mytext: "Example for Import & Include"
+    tasks:
+    - name: Ping test
+      ping:
+      
+    - name: Create Folders # Эту строку можно не писать вообще.
+      import: create_folders.yml
+    - name: Create Files # Эту строку можно не писать вообще.
+      include: create_files.yml  mytext: "Example only Include"  # Можно переопределить переменную "mytext" на 'лету'.   
+ ```
+
+
