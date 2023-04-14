@@ -667,7 +667,7 @@ ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
 При **Import** сразу же меняет содержимое того что написано в дерективе Import на содержмое файла импорта.  
 При **Include** меняет содержимое того что написано в дерективе Include на содержмое файла с Include только тогда когда доходит до выполнения директивы Include.  
 
-Пример файла плейбук
+#### Пример файла основного playbook
 
 ```
 - name: Example Import Include
@@ -686,10 +686,10 @@ ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
       include: create_files.yml  mytext: "Example only Include"  # Можно переопределить переменную "mytext" на 'лету'.   
  ```
 
-Пример файлов create_files.yml и create_folders.yml
+#### Пример файлов create_files.yml и create_folders.yml
 Все вложенные каталоги создадутся автоматически при их отсутствии.  
 
-Создать файл "create_folders.yml" с содержимым:    
+#### Создать файл "create_folders.yml" с содержимым:    
 
 ```
 ---
@@ -707,7 +707,7 @@ ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
 ```
 
 
-Создать файл "create_files.yml" с содержимым:  
+#### Создать файл "create_files.yml" с содержимым:  
 
 ```
 ---
