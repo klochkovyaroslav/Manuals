@@ -1,40 +1,40 @@
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-			Установить Docker и docker-compose Debian/Ubuntu
+			РЈСЃС‚Р°РЅРѕРІРёС‚СЊ Docker Рё docker-compose Debian/Ubuntu
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 https://docs.docker.com/engine/install/debian/
 
 
-	Удалить старую версию:
+	РЈРґР°Р»РёС‚СЊ СЃС‚Р°СЂСѓСЋ РІРµСЂСЃРёСЋ:
 sudo apt-get remove docker docker-engine docker.io containerd runc
 
 	Update the apt package index:
 sudo apt-get update
-	Установка репозитория:
+	РЈСЃС‚Р°РЅРѕРІРєР° СЂРµРїРѕР·РёС‚РѕСЂРёСЏ:
 sudo apt-get install ca-certificates curl gnupg lsb-release
 
-	Добавить Ключ для Debian:
+	Р”РѕР±Р°РІРёС‚СЊ РљР»СЋС‡ РґР»СЏ Debian:
 sudo mkdir -m 0755 -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
-	Добавить Ключ для Ubuntu:
+	Р”РѕР±Р°РІРёС‚СЊ РљР»СЋС‡ РґР»СЏ Ubuntu:
 sudo mkdir -m 0755 -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
-	Команда для установки репозитория Debian:
+	РљРѕРјР°РЅРґР° РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё СЂРµРїРѕР·РёС‚РѕСЂРёСЏ Debian:
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-	Команда для установки репозитория Ubuntu:
+	РљРѕРјР°РЅРґР° РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё СЂРµРїРѕР·РёС‚РѕСЂРёСЏ Ubuntu:
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 sudo apt-get update
 
-	Если ошибка с ключем:
+	Р•СЃР»Рё РѕС€РёР±РєР° СЃ РєР»СЋС‡РµРј:
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 sudo apt-get update
 
-	Установка Docker Engine, containerd, и Docker Compose:
+	РЈСЃС‚Р°РЅРѕРІРєР° Docker Engine, containerd, Рё Docker Compose:
 sudo apt-get install docker-ce docker-ce-cli containerd.io
-или
+РёР»Рё
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 docker --version
@@ -44,44 +44,44 @@ docker compose version | awk '{print $4}'
 
 
 //////////////////////////////////////////////////////////////////////////
-		Установить Docker и docker-compose на Centos 7
+		РЈСЃС‚Р°РЅРѕРІРёС‚СЊ Docker Рё docker-compose РЅР° Centos 7
 //////////////////////////////////////////////////////////////////////////
 
 
-	Удалить старую версию:
+	РЈРґР°Р»РёС‚СЊ СЃС‚Р°СЂСѓСЋ РІРµСЂСЃРёСЋ:
 sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
 
 
-	Осуществить установку и настройку актуальных пакетов, о наличии которых нужно узнать на сайте производителя Docker:
-	Установка репозитория:
+	РћСЃСѓС‰РµСЃС‚РІРёС‚СЊ СѓСЃС‚Р°РЅРѕРІРєСѓ Рё РЅР°СЃС‚СЂРѕР№РєСѓ Р°РєС‚СѓР°Р»СЊРЅС‹С… РїР°РєРµС‚РѕРІ, Рѕ РЅР°Р»РёС‡РёРё РєРѕС‚РѕСЂС‹С… РЅСѓР¶РЅРѕ СѓР·РЅР°С‚СЊ РЅР° СЃР°Р№С‚Рµ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ Docker:
+	РЈСЃС‚Р°РЅРѕРІРєР° СЂРµРїРѕР·РёС‚РѕСЂРёСЏ:
 yum install -y yum-utils
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum makecache fast
 
 yum -y install docker-ce
-или
-	Установка Docker Engine, containerd, и Docker Compose:
+РёР»Рё
+	РЈСЃС‚Р°РЅРѕРІРєР° Docker Engine, containerd, Рё Docker Compose:
 yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-	Настроить запуск Docker со стартом системы:
+	РќР°СЃС‚СЂРѕРёС‚СЊ Р·Р°РїСѓСЃРє Docker СЃРѕ СЃС‚Р°СЂС‚РѕРј СЃРёСЃС‚РµРјС‹:
 systemctl enable docker
 
-	Запустить Docker с помощью команды:
+	Р—Р°РїСѓСЃС‚РёС‚СЊ Docker СЃ РїРѕРјРѕС‰СЊСЋ РєРѕРјР°РЅРґС‹:
 systemctl start docker
 
-	Выполнить установку компонентов docker-compose 
+	Р’С‹РїРѕР»РЅРёС‚СЊ СѓСЃС‚Р°РЅРѕРІРєСѓ РєРѕРјРїРѕРЅРµРЅС‚РѕРІ docker-compose 
 curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-	Настроить права доступа к установленным компонентам:
+	РќР°СЃС‚СЂРѕРёС‚СЊ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° Рє СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹Рј РєРѕРјРїРѕРЅРµРЅС‚Р°Рј:
 chmod +x /usr/local/bin/docker-compose
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-	Осуществить проверку версии установленных компонентов:
+	РћСЃСѓС‰РµСЃС‚РІРёС‚СЊ РїСЂРѕРІРµСЂРєСѓ РІРµСЂСЃРёРё СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹С… РєРѕРјРїРѕРЅРµРЅС‚РѕРІ:
 docker --version
 docker-compose --version
 docker-compose --version | awk '{print $3}'
 
-	Для ограничения параметров логирования выполнить команду создания файла daemon.json с редактированием, посредством редактора vi:
+	Р”Р»СЏ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ Р»РѕРіРёСЂРѕРІР°РЅРёСЏ РІС‹РїРѕР»РЅРёС‚СЊ РєРѕРјР°РЅРґСѓ СЃРѕР·РґР°РЅРёСЏ С„Р°Р№Р»Р° daemon.json СЃ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµРј, РїРѕСЃСЂРµРґСЃС‚РІРѕРј СЂРµРґР°РєС‚РѕСЂР° vi:
 vi /etc/docker/daemon.json
-Установить максимальные значения в файле daemon.json:
+РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РјР°РєСЃРёРјР°Р»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РІ С„Р°Р№Р»Рµ daemon.json:
 {
 "log-driver": "json-file",
 "log-opts": {
@@ -91,48 +91,48 @@ vi /etc/docker/daemon.json
 }
 
 //////////////////////////////////////////////////////////////////////////
-		Docker и docker-compose Установлены и настроены на Centos 7
+		Docker Рё docker-compose РЈСЃС‚Р°РЅРѕРІР»РµРЅС‹ Рё РЅР°СЃС‚СЂРѕРµРЅС‹ РЅР° Centos 7
 //////////////////////////////////////////////////////////////////////////
 
 
 
-	Установить docker-образы серверных компонентов из архива
+	РЈСЃС‚Р°РЅРѕРІРёС‚СЊ docker-РѕР±СЂР°Р·С‹ СЃРµСЂРІРµСЂРЅС‹С… РєРѕРјРїРѕРЅРµРЅС‚РѕРІ РёР· Р°СЂС…РёРІР°
 
-	Загрузить контейнеры:
+	Р—Р°РіСЂСѓР·РёС‚СЊ РєРѕРЅС‚РµР№РЅРµСЂС‹:
 docker load -i emm-docker.tar.gz
-	Посмотреть загруженние контейнеры: 
+	РџРѕСЃРјРѕС‚СЂРµС‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅРёРµ РєРѕРЅС‚РµР№РЅРµСЂС‹: 
 docker images -a
-	Запустить все контейнеры:
+	Р—Р°РїСѓСЃС‚РёС‚СЊ РІСЃРµ РєРѕРЅС‚РµР№РЅРµСЂС‹:
 docker-compose up -d
-	Посмотреть запущенные контейнеры:
+	РџРѕСЃРјРѕС‚СЂРµС‚СЊ Р·Р°РїСѓС‰РµРЅРЅС‹Рµ РєРѕРЅС‚РµР№РЅРµСЂС‹:
 docker ps -a
-	Остановить все контейнеры:
+	РћСЃС‚Р°РЅРѕРІРёС‚СЊ РІСЃРµ РєРѕРЅС‚РµР№РЅРµСЂС‹:
 docker-compose down -v
 
 
 
 
-\\\\\\\\\\\\\\\\\\\\\\\\\ К основным командам docker можно отнести:\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\ Рљ РѕСЃРЅРѕРІРЅС‹Рј РєРѕРјР°РЅРґР°Рј docker РјРѕР¶РЅРѕ РѕС‚РЅРµСЃС‚Рё:\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 docker info
 docker network ls
-docker network inspect "имя контенера"
-	Показать все контейнеры
+docker network inspect "РёРјСЏ РєРѕРЅС‚РµРЅРµСЂР°"
+	РџРѕРєР°Р·Р°С‚СЊ РІСЃРµ РєРѕРЅС‚РµР№РЅРµСЂС‹
 docker ps -a
-	Команда для запуска в контейнере
+	РљРѕРјР°РЅРґР° РґР»СЏ Р·Р°РїСѓСЃРєР° РІ РєРѕРЅС‚РµР№РЅРµСЂРµ
 docker exec -t -i nginx bash
-	Получать новые логи по мере появления
+	РџРѕР»СѓС‡Р°С‚СЊ РЅРѕРІС‹Рµ Р»РѕРіРё РїРѕ РјРµСЂРµ РїРѕСЏРІР»РµРЅРёСЏ
 docker logs -f --tail 10 nginx
 
 
-docker pull – скачивает образ
-docker run – запускает контейнер на основе образа
-docker ps – вызывает список запущенных контейнеров
-docker exec – позволяет выполнять команды в контейнере
-docker stop – останавливает контейнер
-docker rm – удаляет контейнер
-docker rmi – удаляет образ
+docker pull вЂ“ СЃРєР°С‡РёРІР°РµС‚ РѕР±СЂР°Р·
+docker run вЂ“ Р·Р°РїСѓСЃРєР°РµС‚ РєРѕРЅС‚РµР№РЅРµСЂ РЅР° РѕСЃРЅРѕРІРµ РѕР±СЂР°Р·Р°
+docker ps вЂ“ РІС‹Р·С‹РІР°РµС‚ СЃРїРёСЃРѕРє Р·Р°РїСѓС‰РµРЅРЅС‹С… РєРѕРЅС‚РµР№РЅРµСЂРѕРІ
+docker exec вЂ“ РїРѕР·РІРѕР»СЏРµС‚ РІС‹РїРѕР»РЅСЏС‚СЊ РєРѕРјР°РЅРґС‹ РІ РєРѕРЅС‚РµР№РЅРµСЂРµ
+docker stop вЂ“ РѕСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєРѕРЅС‚РµР№РЅРµСЂ
+docker rm вЂ“ СѓРґР°Р»СЏРµС‚ РєРѕРЅС‚РµР№РЅРµСЂ
+docker rmi вЂ“ СѓРґР°Р»СЏРµС‚ РѕР±СЂР°Р·
 
 
 docker pull mariadb
