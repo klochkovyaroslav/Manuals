@@ -126,6 +126,7 @@ docker exec -t -i nginx bash
 docker logs -f --tail 10 nginx
 
 
+docker search tomcat – поиск образа tomcat в dockerHUB  
 docker pull – скачивает образ
 docker run – запускает контейнер на основе образа
 docker ps – вызывает список запущенных контейнеров
