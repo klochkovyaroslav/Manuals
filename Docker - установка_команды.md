@@ -189,3 +189,9 @@ https://docs.docker.com/engine/install/debian/
 *`docker ps`*  
 *`docker commit "ID работающего контейнера" my_new_image:2.0.1`*  
 *`docker images`*  
+
+
+### Export/Import Docker Image в файл архива.  
+
+*`docker save my_new_image:2.0.1 > arch_name.tar`*  
+*`docker load -i arch_name.tar`*  
