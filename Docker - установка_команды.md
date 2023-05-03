@@ -145,8 +145,9 @@ https://docs.docker.com/engine/install/debian/
 
 #### Команда для запуска в контейнере  
 *`docker exec -t -i nginx bash`*  
--i в интерактивном режиме  
--t терминал  
+-i: в интерактивном режиме  
+-t: терминал  
+-d, --detach: Запуститиь контейнер в бекграунде
 
 #### Получать новые логи по мере появления  
 
@@ -173,3 +174,5 @@ https://docs.docker.com/engine/install/debian/
 *`docker stop mariadb adminer`*  
 *`docker rm mariadb adminer`*  
 *`docker rmi mariadb adminer`*  
+*`docker build -t my_new_image:1.0.0`*  
+-t: задаем имя образа, знак: задает тег для образа  
