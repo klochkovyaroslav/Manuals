@@ -1,45 +1,45 @@
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-			Установить Docker и docker-compose Debian/Ubuntu
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+#			Установить Docker и docker-compose Debian/Ubuntu
+
 https://docs.docker.com/engine/install/debian/
 
 
-	Удалить старую версию:
-sudo apt-get remove docker docker-engine docker.io containerd runc
+Удалить старую версию:  
+*`sudo apt-get remove docker docker-engine docker.io containerd runc`*  
 
-	Update the apt package index:
-sudo apt-get update
-	Установка репозитория:
-sudo apt-get install ca-certificates curl gnupg lsb-release
+Update the apt package index:  
+*`sudo apt-get update`*  
 
-	Добавить Ключ для Debian:
-sudo mkdir -m 0755 -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+Установка репозитория:  
+*`sudo apt-get install ca-certificates curl gnupg lsb-release`*  
 
-	Добавить Ключ для Ubuntu:
-sudo mkdir -m 0755 -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+Добавить Ключ для Debian:  
+*`sudo mkdir -m 0755 -p /etc/apt/keyrings`*
+*`curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`*  
 
-	Команда для установки репозитория Debian:
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+Добавить Ключ для Ubuntu:  
+*`sudo mkdir -m 0755 -p /etc/apt/keyrings`*
+*`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`*  
 
-	Команда для установки репозитория Ubuntu:
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+Команда для установки репозитория Debian:  
+*`echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`*  
 
-sudo apt-get update
+Команда для установки репозитория Ubuntu:  
+*`echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`*
 
-	Если ошибка с ключем:
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
-sudo apt-get update
+*`sudo apt-get update`*
 
-	Установка Docker Engine, containerd, и Docker Compose:
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+Если ошибка с ключем:  
+*`sudo chmod a+r /etc/apt/keyrings/docker.gpg`*
+*`sudo apt-get update
+
+	Установка Docker Engine, containerd, и Docker Compose:  
+*`sudo apt-get install docker-ce docker-ce-cli containerd.io`*  
 или
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+*`sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`*  
 
 
 
-#### Установка Docker Compose:
+#### Установка Docker Compose:  
 
 *`sudo curl -L "https://github.com/docker/compose/releases/download/v2.16.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`*  
 
@@ -49,114 +49,119 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 *`docker-compose --version`* 
 
-
-
-docker --version
-docker compose version
-docker compose version | awk '{print $4}'
+*`docker compose version | awk '{print $4}'`*
 
 
 
-//////////////////////////////////////////////////////////////////////////
-		Установить Docker и docker-compose на Centos 7
-//////////////////////////////////////////////////////////////////////////
+## Установить Docker и docker-compose на Centos 7
 
 
-	Удалить старую версию:
-sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+#### Удалить старую версию:  
+*`sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine`*
+
+### Осуществить установку и настройку актуальных пакетов, о наличии которых нужно узнать на сайте производителя Docker:  
+#### Установка репозитория:  
+
+*`yum install -y yum-utils`*  
+*`yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo`*  
+*`yum makecache fast`*  
+
+*`yum -y install docker-ce`*  
+или  
+
+#### Установка Docker Engine, containerd, и Docker Compose:  
+*`yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`*  
+
+#### Настроить запуск Docker со стартом системы:  
+*`systemctl enable docker`*
+
+#### Запустить Docker с помощью команды:  
+*`systemctl start docker`*
+
+#### Выполнить установку компонентов docker-compose  
+*`curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose`*  
+
+#### Настроить права доступа к установленным компонентам:  
+*`chmod +x /usr/local/bin/docker-compose`*  
+*`ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose`*  
+
+#### Осуществить проверку версии установленных компонентов:  
+
+*`docker --version`*  
+
+*`docker-compose --version`* 
+
+*`docker compose version | awk '{print $4}'`*
+
+#### Для ограничения параметров логирования выполнить команду создания файла daemon.json с редактированием, посредством редактора vi:  
+*`vi /etc/docker/daemon.json`*  
+#### Установить максимальные значения в файле daemon.json:  
+
+{  
+"log-driver": "json-file",  
+"log-opts": {  
+"max-size": "100m",  
+"max-file": "10"  
+}  
+}  
 
 
-	Осуществить установку и настройку актуальных пакетов, о наличии которых нужно узнать на сайте производителя Docker:
-	Установка репозитория:
-yum install -y yum-utils
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum makecache fast
-
-yum -y install docker-ce
-или
-	Установка Docker Engine, containerd, и Docker Compose:
-yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-	Настроить запуск Docker со стартом системы:
-systemctl enable docker
-
-	Запустить Docker с помощью команды:
-systemctl start docker
-
-	Выполнить установку компонентов docker-compose 
-curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-	Настроить права доступа к установленным компонентам:
-chmod +x /usr/local/bin/docker-compose
-ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-	Осуществить проверку версии установленных компонентов:
-docker --version
-docker-compose --version
-docker-compose --version | awk '{print $3}'
-
-	Для ограничения параметров логирования выполнить команду создания файла daemon.json с редактированием, посредством редактора vi:
-vi /etc/docker/daemon.json
-Установить максимальные значения в файле daemon.json:
-{
-"log-driver": "json-file",
-"log-opts": {
-"max-size": "100m",
-"max-file": "10"
-}
-}
-
-//////////////////////////////////////////////////////////////////////////
-		Docker и docker-compose Установлены и настроены на Centos 7
-//////////////////////////////////////////////////////////////////////////
+## Docker и docker-compose Установлены и настроены на Centos 7
 
 
+### Установить docker-образы серверных компонентов из архива  
 
-	Установить docker-образы серверных компонентов из архива
-
-	Загрузить контейнеры:
-docker load -i emm-docker.tar.gz
-	Посмотреть загруженние контейнеры: 
-docker images -a
-	Запустить все контейнеры:
-docker-compose up -d
-	Посмотреть запущенные контейнеры:
-docker ps -a
-	Остановить все контейнеры:
-docker-compose down -v
+Загрузить контейнеры:  
+*`docker load -i emm-docker.tar.gz`*  
+#### Посмотреть загруженние контейнеры:  
+*`docker images -a`*  
+#### Запустить все контейнеры:  
+*`docker-compose up -d`*  
+#### Посмотреть запущенные контейнеры:  
+*`docker ps -a`*  
+#### Остановить все контейнеры:  
+*`docker-compose down -v`*  
 
 
 
 
-\\\\\\\\\\\\\\\\\\\\\\\\\ К основным командам docker можно отнести:\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+## К основным командам docker можно отнести:
 
 
-docker info
-docker network ls
-docker network inspect "имя контенера"
-	Показать все контейнеры
-docker ps -a
-	Команда для запуска в контейнере
-docker exec -t -i nginx bash
-	Получать новые логи по мере появления
-docker logs -f --tail 10 nginx
+*`docker info`*  
+
+*`docker network ls`*  
+
+*`docker network inspect "имя контенера"`*  
+
+#### Показать все контейнеры  
+*`docker ps -a`*  
+
+#### Команда для запуска в контейнере  
+*`docker exec -t -i nginx bash`*  
+
+#### Получать новые логи по мере появления  
+
+*`docker logs -f --tail 10 nginx`*  
 
 
-docker search tomcat – поиск образа tomcat в dockerHUB  
-docker pull – скачивает образ
-docker run – запускает контейнер на основе образа
-docker ps – вызывает список запущенных контейнеров
-docker exec – позволяет выполнять команды в контейнере
-docker stop – останавливает контейнер
-docker rm – удаляет контейнер
-docker rmi – удаляет образ
+*`docker search tomcat`* – поиск образа tomcat в dockerHUB  
+*`docker pull`* – скачивает образ  
+*`docker run`* – запускает контейнер на основе образа  
+*`docker ps`* – вызывает список запущенных контейнеров  
+*`docker exec`* – позволяет выполнять команды в контейнере  
+*`docker stop`* – останавливает контейнер  
+*`docker rm`* – удаляет контейнер  
+*`docker rmi`* – удаляет образ  
 
 
-docker pull mariadb
-docker images
-docker run -p 127.0.0.1:3306:3306  --name mariadb -e MARIADB_ROOT_PASSWORD=superpass -d mariadb
-docker ps
-docker run --name adminer --link mariadb:db -p 8080:8080 -d adminer http://127.0.0.1:8080/
-docker exec -ti adminer sh
-cat /etc/hosts
-docker stop mariadb adminer
-docker rm mariadb adminer
-docker rmi mariadb adminer
+*`docker pull mariadb`*  
+*`docker images`*  
+*`docker run -p 127.0.0.1:3306:3306  --name mariadb -e MARIADB_ROOT_PASSWORD=superpass -d mariadb`*  
+*`docker ps`*  
+*`docker run --name adminer --link mariadb:db -p 8080:8080 -d adminer http://127.0.0.1:8080/`*  
+*`docker exec -ti adminer sh`*  
+*`cat /etc/hosts`*  
+*`docker stop mariadb adminer`*  
+*`docker rm mariadb adminer`*  
+*`docker rmi mariadb adminer`*  
