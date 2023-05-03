@@ -145,6 +145,8 @@ https://docs.docker.com/engine/install/debian/
 
 #### Команда для запуска в контейнере  
 *`docker exec -t -i nginx bash`*  
+-i в интерактивном режиме  
+-t терминал  
 
 #### Получать новые логи по мере появления  
 
@@ -152,7 +154,7 @@ https://docs.docker.com/engine/install/debian/
 
 
 *`docker search tomcat`* – поиск образа tomcat в dockerHUB  
-*`docker pull`* – скачивает образ  
+*`docker pull`* – скачивает образ с dockerHUB    
 *`docker run`* – запускает контейнер на основе образа  
 *`docker ps`* – вызывает список запущенных контейнеров  
 *`docker exec`* – позволяет выполнять команды в контейнере  
