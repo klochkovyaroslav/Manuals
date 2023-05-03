@@ -1,42 +1,46 @@
-#			Установить Docker и docker-compose Debian/Ubuntu
+# Установить Docker и docker-compose Debian/Ubuntu
 
 https://docs.docker.com/engine/install/debian/
 
 
-Удалить старую версию:  
+#### Удалить старую версию:  
 *`sudo apt-get remove docker docker-engine docker.io containerd runc`*  
 
-Update the apt package index:  
+#### Обновить информацию обо всех пакетах:
 *`sudo apt-get update`*  
 
-Установка репозитория:  
+#### Установка дополнительных компонентов:  
 *`sudo apt-get install ca-certificates curl gnupg lsb-release`*  
 
-Добавить Ключ для Debian:  
-*`sudo mkdir -m 0755 -p /etc/apt/keyrings`*
-*`curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`*  
+#### Добавить Ключ для Debian:  
+*`sudo mkdir -m 0755 -p /etc/apt/keyrings`*  
 
-Добавить Ключ для Ubuntu:  
-*`sudo mkdir -m 0755 -p /etc/apt/keyrings`*
-*`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`*  
+*`curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`*
 
-Команда для установки репозитория Debian:  
+#### Добавить Ключ для Ubuntu:  
+*`sudo mkdir -m 0755 -p /etc/apt/keyrings`*  
+
+*`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`*
+
+#### Команда для установки репозитория Debian:  
 *`echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`*  
 
-Команда для установки репозитория Ubuntu:  
+#### Команда для установки репозитория Ubuntu:  
 *`echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`*
 
-*`sudo apt-get update`*
+#### Обновить информацию обо всех пакетах:
 
-Если ошибка с ключем:  
+*`sudo apt-get update`*  
+
+#### Если ошибка с ключем:  
 *`sudo chmod a+r /etc/apt/keyrings/docker.gpg`*
 *`sudo apt-get update
 
-	Установка Docker Engine, containerd, и Docker Compose:  
+### Установка Docker Engine, containerd, и Docker Compose:  
+
 *`sudo apt-get install docker-ce docker-ce-cli containerd.io`*  
 или
 *`sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`*  
-
 
 
 #### Установка Docker Compose:  
@@ -44,6 +48,8 @@ Update the apt package index:
 *`sudo curl -L "https://github.com/docker/compose/releases/download/v2.16.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`*  
 
 *`sudo chmod +x /usr/local/bin/docker-compose`* 
+
+#### Проверка версии: 
 
 *`docker --version`*  
 
@@ -53,7 +59,7 @@ Update the apt package index:
 
 
 
-## Установить Docker и docker-compose на Centos 7
+# Установить Docker и docker-compose на Centos 7
 
 
 #### Удалить старую версию:  
