@@ -195,3 +195,8 @@ https://docs.docker.com/engine/install/debian/
 
 *`docker save my_new_image:2.0.1 > arch_name.tar`*  
 *`docker load -i arch_name.tar`*  
+
+#### Удалить все контейнеры и образы.
+
+*`docker rm -f $(docker ps -aq)`*  
+*`docker rmi -f $(docker images -q)`*  
