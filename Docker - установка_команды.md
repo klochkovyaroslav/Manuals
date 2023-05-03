@@ -175,4 +175,5 @@ https://docs.docker.com/engine/install/debian/
 *`docker rm mariadb adminer`*  
 *`docker rmi mariadb adminer`*  
 *`docker build -t my_new_image:1.0.0`*  
--t: задаем имя образа, знак: задает тег для образа  
+-t: задаем имя образа  
+: задает тег для образа  
