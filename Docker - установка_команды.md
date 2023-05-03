@@ -180,3 +180,5 @@ https://docs.docker.com/engine/install/debian/
 
 *`docker run -d -p 8080:80 my_new_image:1.0.0`*  
 *`docker tag my_new_image:1.0.0 my_new_image_ch:1.2.1`* -сделать копию образа с новым тегом.
+
+*`docker exec -ti "ID контейнера или имя контейнера"
