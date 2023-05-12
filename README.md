@@ -1,5 +1,21 @@
 # Manuals
 
+### NetworkManager service.
+
+```bash
+sudo systemctl start NetworkManager
+nmcli general status - состояние интерфейсов
+ip addr show
+ip -s link show enp4s0 -статистика по интерфейсу
+ip route show match 0/0 - посмотреть таблицу маршрутизации
+
+```
+
+```bash
+sudo systemctl status NetworkManager.service
+sudo systemctl restart NetworkManager.service
+```
+
 ### PING сразу нескольких машин по очереди.
 
 ```bash
