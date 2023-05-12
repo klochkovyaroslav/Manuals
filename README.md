@@ -8,6 +8,9 @@ nmcli general status - состояние интерфейсов
 nmcli device status
 nmcli general hostname - посмотреть имя хоста
 nmcli connection show - список доступных подключений
+nmcli connection add con-name "static" ifname enp2s0 autoconnect no type ethernet ip4 192.168.0.210 gw4 192.168.0.1 - Создание соединения с статическим адресом
+nmcli conn modify "static" ipv4.dns 8.8.8.8 - добавить DNS
+nmcli conn modify "static" +ipv4.dns 8.8.4.4 добавить еще DNS
 
 ip addr show
 ip -s link show enp4s0 -статистика по интерфейсу
