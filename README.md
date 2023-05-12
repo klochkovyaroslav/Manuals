@@ -5,6 +5,10 @@
 ```bash
 sudo systemctl start NetworkManager
 nmcli general status - состояние интерфейсов
+nmcli device status
+nmcli general hostname - посмотреть имя хоста
+nmcli connection show - список доступных подключений
+
 ip addr show
 ip -s link show enp4s0 -статистика по интерфейсу
 ip route show match 0/0 - посмотреть таблицу маршрутизации
