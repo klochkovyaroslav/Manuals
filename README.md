@@ -25,6 +25,17 @@ ss -tulpn
 ```bash
 sudo scp file1.tar.gz root@server2:/root/
 ```
+### TCPDUMP
+https://blog.sedicomm.com/2017/05/30/tcpdump-poleznoe-rukovodstvo-s-primerami/
+
+```bash
+sudo tcpdump -i eth0 port '(50001 or 443)'
+sudo tcpdump icmp  - конкретный тип трафика
+sudo tcpdump dst 192.168.0.100  - чтобы увидеть входящий трафик:
+sudo tcpdump net 192.168.0.100/24
+sudo tcpdump portrange 8000-9000
+sudo tcpdump -vv src mars and not dst port 22
+```
 
 ## AppArmor в Ubuntu и Debian
 
