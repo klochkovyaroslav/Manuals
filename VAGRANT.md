@@ -5,6 +5,7 @@ vagrant up
 
 vagrant global-status
 
+# Для обновления параметров ВМ
 vagrant provision
 
 vagrant ssh-config
