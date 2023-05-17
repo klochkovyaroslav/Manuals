@@ -27,31 +27,6 @@ sudo systemctl status NetworkManager.service
 sudo systemctl restart NetworkManager.service
 ```
 
-### PING сразу нескольких машин по очереди.
-
-```bash
-for i in {18..19}; do ping -c3 "192.168.1.$i"; done
-```
-
-### Повторить какие порты слушает сервер:
-
-```bash
-ss -tulpn
-```
-
-### Повторить предыдущую команду (ss -tulpn) в bash:
-
-```bash
-!ss
-или
-!!
-```
-
-### Скопировать файл по сети на server2 в каталог: root
-
-```bash
-sudo scp file1.tar.gz root@server2:/root/
-```
 ### TCPDUMP
 https://blog.sedicomm.com/2017/05/30/tcpdump-poleznoe-rukovodstvo-s-primerami/
 
@@ -88,8 +63,7 @@ sudo apt remove --assume-yes --purge apparmor
 ```
 
 
-
-### Утилита ldapsearch
+## Утилита ldapsearch
 
 #### Основные опции  
 
@@ -113,4 +87,38 @@ sudo apt remove --assume-yes --purge apparmor
 
 ```bash
 ldapsearch -x -b "DC=wp,DC=demo" -H "ldap://192.168.1.18" -W sAMAccountName=i.ivanov.sm -D "i.ivanov.sm@wp.demo"
+```
+
+
+## Команды - разное:
+
+### PING сразу нескольких машин по очереди.
+
+```bash
+for i in {18..19}; do ping -c3 "192.168.1.$i"; done
+```
+
+### Повторить какие порты слушает сервер:
+
+```bash
+ss -tulpn
+```
+
+### Повторить предыдущую команду (ss -tulpn) в bash:
+
+```bash
+!ss
+или
+!!
+```
+
+### Скопировать файл по сети на server2 в каталог: root
+
+```bash
+sudo scp file1.tar.gz root@server2:/root/
+```
+
+### Переименовать файл
+```bash
+sudo cp file1.txt{,.bak}
 ```
