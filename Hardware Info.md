@@ -52,3 +52,11 @@ cat /proc/scsi/scsi
 #Партиции диска
 cat /proc/partitions
 ```
+
+## Информация о жестких дисках сервера в Linux
+
+```bash
+yum install hdparm -y
+
+hdparm -I /dev/sdb
+```
