@@ -18,6 +18,10 @@ lsblk
 df -H
 
 free -m
+
+free -g
+
+vmstat -s
 ```
 
 ## dmidecode
