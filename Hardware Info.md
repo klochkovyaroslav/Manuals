@@ -22,6 +22,7 @@ free -m
 
 ## dmidecode
 
+```bash
 #посмотреть информацию о cpu  
 sudo dmidecode -t processor
 
@@ -30,3 +31,20 @@ sudo dmidecode -t memory
 
 #информация о bios  
 sudo dmidecode -t bios
+```
+
+## ФАЙЛЫ /PROC
+
+```bash
+#cpu информация  
+cat /proc/cpuinfo  
+
+#информация о памяти  
+cat /proc/meminfo  
+
+#SCSI/Sata устройства:  
+cat /proc/scsi/scsi  
+
+#Партиции диска
+cat /proc/partitions
+```
