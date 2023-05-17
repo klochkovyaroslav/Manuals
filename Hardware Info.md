@@ -5,6 +5,8 @@ lswh
 
 lshw -short
 
+lshw -class disk
+
 lscpu
 
 lspci
