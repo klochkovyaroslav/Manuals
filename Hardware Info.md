@@ -7,6 +7,8 @@ lshw -short
 
 lshw -class disk
 
+lshw -html > server_info.html
+
 lscpu
 
 lspci
@@ -37,6 +39,9 @@ sudo dmidecode -t memory
 
 #информация о bios  
 sudo dmidecode -t bios
+
+#информации о материнской плате
+dmidecode --type baseboard
 ```
 
 ## ФАЙЛЫ /PROC
