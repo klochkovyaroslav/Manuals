@@ -11,5 +11,7 @@ vagrant ssh
 
 vagrant halt
 
-agrant destroy -f
+vagrant destroy -f
+
+vagrant destroy [id]
 ```
