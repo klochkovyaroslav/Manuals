@@ -59,4 +59,6 @@ cat /proc/partitions
 yum install hdparm -y
 
 hdparm -I /dev/sdb
+
+smartctl -d ata -a -i /dev/sdb
 ```
