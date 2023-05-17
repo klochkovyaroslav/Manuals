@@ -9,6 +9,9 @@ vagrant up
 
 vagrant global-status
 
+# To prune the invalid entries
+vagrant global-status --prune
+
 # Для обновления параметров ВМ
 vagrant provision
 
