@@ -103,7 +103,7 @@ sudo apt remove --assume-yes --purge apparmor
 #### Пример:
 
 ```bash
-ldapsearch -x -b "DC=wp,DC=demo" -H "ldap://192.168.1.18" -W sAMAccountName=i.ivanov.sm -D "i.ivanov.sm@wp.demo"
+ldapsearch -x -b "DC=wp,DC=demo" -H "ldap://192.168.1.100" -W sAMAccountName=p.ivanov.sm -D "p.ivanov.sm@wp.demo"
 ```
 
 
