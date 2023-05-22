@@ -737,31 +737,32 @@ ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
 ansible-playbook playbook.yml --ask-become-pass  
 ```
 
-2 Способ использовать опцию: --ask-become-pass   
+2 Способ использовать опцию: ansible_become_password   
 
 ```bash
 ansible-playbook playbook.yml -e "ansible_become_password=p@$$w0rd"
 ```
 
-3 Способ использовать: Ansible Valt   
+3 Способ использовать: Ansible Valt  
 
+Create a new file named password.yml with the encrypted sudo password:  
 ```bash
 ansible-vault edit password.yml
 ```
-
+After providing a password for the Vault, the tool will open the password.yml file in a text editor where you can put your ansible_become_password:  
 ```bash
 ansible_become_password: p@$$w0rd
 ```
-
+Save and exit. Next create a vault.txt file with the password that you used while creating the password.yml file, e.g:
 ```bash
 echo "vaultPassw0rd" > vault.txt
 ```
-
+Ensure permissions on vault.txt are such that no one else can access it and do not add this file to a source control:
 ```bash
 chmod 600 vault.txt
 echo "vault.txt" >> .gitignore
 ```
-
+Finally run your playbook as follows:
 ```bash
 ansible-playbook playbook.yml -e '@password.yml'--vault-password-file=vault.txt
 ```
