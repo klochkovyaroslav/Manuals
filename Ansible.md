@@ -727,3 +727,42 @@ ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
       Some other test text2, in file_test2.txt
       Some other test text3, {{ mytext }}
 ```
+
+
+## Если при запуске playbook ошибка: Ansible – “sudo: a password is required”
+
+1 Способ использовать опцию: --ask-become-pass  
+
+```bash
+ansible-playbook playbook.yml --ask-become-pass  
+```
+
+2 Способ использовать опцию: --ask-become-pass   
+
+```bash
+ansible-playbook playbook.yml -e "ansible_become_password=p@$$w0rd"
+```
+
+3 Способ использовать: Ansible Valt   
+
+```bash
+ansible-vault edit password.yml
+```
+
+```bash
+ansible_become_password: p@$$w0rd
+```
+
+```bash
+echo "vaultPassw0rd" > vault.txt
+```
+
+```bash
+chmod 600 vault.txt
+echo "vault.txt" >> .gitignore
+```
+
+```bash
+ansible-playbook playbook.yml -e '@password.yml'--vault-password-file=vault.txt
+```
+
