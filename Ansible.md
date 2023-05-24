@@ -755,8 +755,15 @@ echo -n "DDrrGGvvHH" | ansible-vault encrypt_string  # Внести эту за�
           3536
 
   tasks:
-  - name: Install package mc
-    yum: name=mc state=latest
+  - name: Create confi file
+    copy:
+      dest: "/home/myconfig.conf"
+      content: |
+          port = 8080
+          log = 1month
+          home = /opt/nginx/config
+          user = admin
+          admin_password = {{ admin_password }}
     ```
 
 
