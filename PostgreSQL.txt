@@ -32,7 +32,6 @@ systemctl start postgresql-9.6
 
 
 
-
 \\\\\\\\\\\\\\\\\\ Debian \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
  sudo apt-get remove --purge postgresql-1* -y
@@ -51,10 +50,6 @@ sudo apt-get install postgresql-14 postgresql-contrib
 
 sudo apt update && sudo apt upgrade
 sudo apt install postgresql postgresql-contrib
-
-
-
-
 
 sudo systemctl status postgresql
 
@@ -81,6 +76,9 @@ host    all             all             127.0.0.1         md5
 # IPv4 local connections:
 host    all             all             0.0.0.0/0         md5
 
+Посмотреть параметры, использующихся сервером в данным момент, необходимо выполнить команду:
+
+psql -U sphone -h 127.0.0.1 -c " select name, setting, unit from pg_settings where name like 'tcp%';"
 
 Перезапустите службу Postgres
 sudo systemctl stop postgresql
