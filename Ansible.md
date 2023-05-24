@@ -733,7 +733,33 @@ ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
 ansible-vault create mysecret.txt  
 ansible-vault view mysecret.txt   
 ansible-vault edit mysecret.txt   
-ansible-vault rekey mysecret.txt   
+ansible-vault rekey mysecret.txt  
+ansible-playbook playbook11_vault.yml --ask-vault-pass  
+ansible-playbook playbook11_vault.yml --vault-password-file mypass.txt # Пароль в файле "mypass.txt"  
+ansible-vault encrypt_string # Можно зашифровать текст а не весь файл  
+или так  
+echo -n "DDrrGGvvHH" | ansible-vault encrypt_string  # Внести эту зашифрованную строку вместо переменной в виде
+
+```bash
+- name: Ansible Vault
+  hosts: rpm
+  become: yes
+
+  vars: 
+    admin_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          30636639613264373633643262353631376133626137623365306335333936663535313338363234
+          3438323461373333376265313133346538633863333836330a653437356530623063666464616236
+          63303736653764653739653265613132346136333463386263333762356430616462633138626366
+          6236393265373836300a316537373637653462306337323962663436383334616236333333646566
+          3536
+
+  tasks:
+  - name: Install package mc
+    yum: name=mc state=latest
+    ```
+
+
 
 
 
