@@ -781,9 +781,7 @@ echo -n "DDrrGGvvHH" | ansible-vault encrypt_string  # Внести эту за�
           home = /opt/nginx/config
           user = admin
           admin_password = {{ admin_password }}
-    ```
-
-
+```
 
 
 
