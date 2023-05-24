@@ -178,6 +178,10 @@ select * from license;
 
 Восстановить Дамп БД sphone
 pg_restore -h 127.0.0.1 -p 5432 -U sphone -F c -d sphone /opt/distr/sphone.backup.sp445.2021.08.26
+pg_restore -O -h 127.0.0.1 -U sphone -d sphone/tmp/sphone_sphone_6.0.1-20230513_1214.dmp
+
+-U sphone − соединиться как пользователь postgresql "sphone"
+-d sphone − имя целевой БД
 
 Сделать Дамп таблицы license в БД sphone
 pg_dump -h 127.0.0.1 -p 5432 -U sphone --table=license -Fc --file=license.Fc.dump sphone
@@ -196,7 +200,7 @@ W0rk$p@oI
 Создаем дамп
 sudo pg_dump sphone > /tmp/back/sphone.dump
 
-Можно простостреть содержимое дампа
+Можно просто стреть содержимое дампа
 sudo vi /tmp/back/sphone.dump
 
 
