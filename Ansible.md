@@ -741,6 +741,7 @@ ansible-vault encrypt_string # Можно зашифровать текст а �
 echo -n "DDrrGGvvHH" | ansible-vault encrypt_string  # Внести эту зашифрованную строку вместо переменной в виде
 
 ```bash
+---
 - name: Ansible Vault
   hosts: rpm
   become: yes
