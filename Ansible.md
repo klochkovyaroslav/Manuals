@@ -728,6 +728,14 @@ ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
       Some other test text3, {{ mytext }}
 ```
 
+## Ansible Vault
+
+ansible-vault create mysecret.txt  
+ansible-vault view mysecret.txt   
+ansible-vault edit mysecret.txt   
+ansible-vault rekey mysecret.txt   
+
+
 
 ## Если при запуске playbook ошибка: Ansible – “sudo: a password is required”
 
