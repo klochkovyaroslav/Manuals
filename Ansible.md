@@ -730,15 +730,31 @@ ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
 
 ## Ansible Vault
 
-ansible-vault create mysecret.txt  
-ansible-vault view mysecret.txt   
-ansible-vault edit mysecret.txt   
-ansible-vault rekey mysecret.txt  
-ansible-playbook playbook11_vault.yml --ask-vault-pass  
-ansible-playbook playbook11_vault.yml --vault-password-file mypass.txt # Пароль в файле "mypass.txt"  
-ansible-vault encrypt_string # Можно зашифровать текст а не весь файл  
+```bash
+ansible-vault create mysecret.txt
+```
+```bash
+ansible-vault view mysecret.txt
+```
+```bash
+ansible-vault edit mysecret.txt
+```
+```bash
+ansible-vault rekey mysecret.txt
+```
+```bash
+ansible-playbook playbook11_vault.yml --ask-vault-pass
+```
+```bash
+ansible-playbook playbook11_vault.yml --vault-password-file mypass.txt # Пароль в файле "mypass.txt"
+```
+```bash
+ansible-vault encrypt_string # Можно зашифровать текст а не весь файл
+```
 или так  
+```bash
 echo -n "DDrrGGvvHH" | ansible-vault encrypt_string  # Внести эту зашифрованную строку вместо переменной в виде
+```
 
 ```bash
 ---
