@@ -139,3 +139,9 @@ sudo scp file1.tar.gz root@server2:/root/
 ```bash
 sudo cp file1.txt{,.bak}
 ```
+
+### Поиск файла
+```bash
+sudo find /-iname *postgresql.conf*
+sudo find / -iname 'postgresql.????' - искать текст за которыми следуют еще 4 символа
+```
