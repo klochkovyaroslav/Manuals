@@ -153,5 +153,5 @@ sudo find / -iname 'postgresql.????' - искать текст за которы
 а опция "**status**" пригодится для включения отображения хода снятия дампа
 
 ```bash
-dd if=/dev/sdb of=/media/aleksey/986E7A1B6E79F27C/Backup-3PAR02-Node0.img status=progress
+dd if=/dev/sdb of=/media/flash/764G4A1C6L79F18V/Backup-disk.img status=progress
 ```
