@@ -145,3 +145,13 @@ sudo cp file1.txt{,.bak}
 sudo find / -iname *postgresql.conf*
 sudo find / -iname 'postgresql.????' - искать текст за которыми следуют еще 4 символа
 ```
+
+### Склон диска в дамп файл .img
+
+Здесь в опции "**if**" указываем путь к устройству, с которого снимаем дамп,  
+в опции "**of**" указываем путь к файлу, в который сохраняем дамп,  
+а опция "**status**" пригодится для включения отображения хода снятия дампа
+
+```bash
+dd if=/dev/sdb of=/media/aleksey/986E7A1B6E79F27C/Backup-3PAR02-Node0.img status=progress
+```
