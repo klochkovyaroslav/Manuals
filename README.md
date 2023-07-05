@@ -129,6 +129,16 @@ ss -tulpn
 !!
 ```
 
+### Внести содержимое в файл
+
+```bash
+cat << EOF | tee 1.txt
+aaa
+bbb
+ccc
+EOF
+```
+
 ### Скопировать файл по сети на server2 в каталог: root
 
 ```bash
