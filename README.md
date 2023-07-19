@@ -120,6 +120,9 @@ for i in {18..19}; do ping -c3 "192.168.1.$i"; done
 ```bash
 ss -tulpn
 ```
+```bash
+sudo watch ss -tulpn
+```
 
 ### Повторить предыдущую команду (ss -tulpn) в bash:
 
