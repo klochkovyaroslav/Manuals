@@ -115,13 +115,12 @@ ldapsearch -x -b "DC=wp,DC=demo" -H "ldap://192.168.1.100" -W sAMAccountName=p.i
 for i in {18..19}; do ping -c3 "192.168.1.$i"; done
 ```
 
-### Повторить какие порты слушает сервер:
+### Список всех открытых портов сервера:
 
 ```bash
+netstat -tulpn
 ss -tulpn
-```
-```bash
-sudo watch ss -tulpn
+watch ss -tulpn
 ```
 
 ### Повторить предыдущую команду (ss -tulpn) в bash:
