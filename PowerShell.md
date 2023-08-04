@@ -27,6 +27,12 @@ Add-ClusterVirtualMachineRole -VMName testVM01
 Remove-ClusterGroup -VMId (Get-VM -Name testVM01).VMId -RemoveResources
 ```
 
+#### Возобновление кластерных служб на узле
+
+```bash
+Suspend-ClusterNode -Name HV11 -Drain
+```
+
  #### Получить сведения о дисках-свидетелях
 
  ```bash
