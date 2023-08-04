@@ -50,3 +50,25 @@ Move-ClusterVirtualMachineRole testVM01 -Node HV11
 ```bash
 Move-ClusterVirtualMachineRole -MigrationType Quick testVM01 -Node HV11
 ```
+
+#### Старт ВМ
+```bash
+Start-VM -Name testVM01
+```
+
+### Внесение обновлений в свойства ВМ
+
+#### Выделить 8 процессоров
+```bash
+Set-VMProcessor testVM01 -Count 8
+```
+
+#### Выделить динамическую память процессоров
+```bash
+Set-VMMemory testVM01 -DynamicMemoryEnabled $true -MinimumBytes 512MB -StartupBytes 2048MB -MaximumBytes 8GB
+```
+
+#### Добавить DVD-дисковод как SCSI-контроллер
+```bash
+Add-VMDvdDrive -VMName testVM01
+```
