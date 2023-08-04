@@ -14,6 +14,13 @@ Get-ClusterResource | ? {$_.ResourceType -eq “Virtual Machine”}|ft Name, Sta
 New-VM -VMName testVM01 -ComputerName PDC-VHOST01 -MemoryStartupBytes 1024Mb -SwitchName Datacenter -NewVHDPath C:\ClusterStorage\Volume2\TestVM01\testVM01.vhdx -NewVHDSizeBytes 127Gb -Path C:\ClusterStorage\Volume2\TestVM01 -Generation 2 -Verbose
 ```
 
+
+#### Добавить ВМ в кластер запустив локально на исходном узле:
+
+```bash
+Add-ClusterVirtualMachineRole -VMName testVM01
+```
+
  #### Получить сведения о дисках-свидетелях
 
  ```bash
