@@ -21,6 +21,12 @@ New-VM -VMName testVM01 -ComputerName PDC-VHOST01 -MemoryStartupBytes 1024Mb -Sw
 Add-ClusterVirtualMachineRole -VMName testVM01
 ```
 
+#### Удаление кластерной виртуальной машины
+
+```bash
+Remove-ClusterGroup -VMId (Get-VM -Name testVM01).VMId -RemoveResources
+```
+
  #### Получить сведения о дисках-свидетелях
 
  ```bash
