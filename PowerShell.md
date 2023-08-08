@@ -33,7 +33,43 @@ Remove-ClusterGroup -VMId (Get-VM -Name testVM01).VMId -RemoveResources
 Suspend-ClusterNode -Name HV11 -Drain
 ```
 
- #### Получить сведения о дисках-свидетелях
+#### Список томов CSV:
+
+```bash
+Get-ClusterSharedVolume
+```
+
+#### Информация о томе CSV:
+
+```bash
+Get-ClusterSharedVolumeState -Name "Cluster Disk 1"
+```
+
+#### Добавить диск в CSV можно командой:
+
+```bash
+Add-ClusterSharedVolume -Cluster Cluster1 -Name "Cluster Disk 1"
+```
+
+#### Удалить диск CSV можно командой:
+
+```bash
+Remove-ClusterSharedVolume -Cluster Cluster1 -Name "Cluster Disk 1"
+```
+
+#### Перевести CSV диск в режим перенаправления (File System Redirected mode) можно командой:
+
+```bash
+Suspend-ClusterResource -Name "Cluster Disk 1" -RedirectedAccess -Force
+```
+
+#### Выключить режима перенаправления (File System Redirected mode) можно командой:
+
+```bash
+Resume-ClusterResource -Name "Cluster Disk 1"
+```
+
+#### Получить сведения о дисках-свидетелях
 
  ```bash
 Get-ClusterResource -Name "*Cluster Quorum*"
