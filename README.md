@@ -171,13 +171,15 @@ dd if=/dev/sdb of=/media/flash/764G4A1C6L79F18V/Backup-disk.img status=progress
 
 ## Подключить общую сетевую папку Windows по SMB (CIFS)
 
+#### установить утилиту: cifs-utils.
+
 ```bash
 sudo apt-get install cifs-utils
 или
 sudo dnf install cifs-utils
 ```
 
-####- Создать точку монтирования:
+#### Создать точку монтирования:
 ```bash
 $ sudo mkdir /mnt/share
 ```
@@ -185,24 +187,24 @@ $ sudo mkdir /mnt/share
 #### Смонтировать сетевую папку
 
 ```bash
-sudo mount -t cifs -o username=User_test,password=Paswd,uid=1000,iocharset=utf8 //192.168.31.33/backup /mnt/share
+sudo mount -t cifs -o username=User_test,password=Paswd,uid=1000,iocharset=utf8 //192.168.0.200/backup /mnt/share
 ```
 или
 
 ```bash
-sudo mount -t cifs -o credentials=/home/sysops/.windowscredentials,uid=1000,iocharset=utf8 //192.168.31.33/backup /mnt/share
+sudo mount -t cifs -o credentials=/home/sysops/.windowscredentials,uid=1000,iocharset=utf8 //192.168.0.200/backup /mnt/share
 ```
 
-или автоматическое монтирование сетевой папки Windows через /etc/fstab
+или 
+#### Автоматическое монтирование сетевой папки Windows через: /etc/fstab
 
 ```bash
-sudo mcedit /etc/fstab
+sudo nano /etc/fstab
 ```
 
 ```bash
-//192.168.31.33/backup /mnt/share cifs user,rw,credentials=/home/sysops/.windowscredentials,iocharset=utf8,nofail,_netdev,vers=3.0 0 0
+//192.168.0.200/backup /mnt/share cifs user,rw,credentials=/home/sysops/.windowscredentials,iocharset=utf8,nofail,_netdev,vers=3.0 0 0
 ```
-
 
 #### Чтобы не указывать учетные данные в команде монтирования, их можно сохранить в файле
 
@@ -218,7 +220,7 @@ domain = local.ru
 
 
 #### Основные опции:
-*`//192.168.31.33/backup – сетевая папка Windows`*  
+*`//192.168.0.200/backup – сетевая папка Windows`*  
 *`/mnt/share – точка монтирования`*  
 *`-t cifs – указать файловую систему для монтирования`*  
 *`-o опции монтирования (эту опцию можно использовать только с правами root, поэтому в команде используется sudo)`*  
