@@ -167,3 +167,34 @@ sudo find / -iname 'postgresql.????' - искать текст за которы
 ```bash
 dd if=/dev/sdb of=/media/flash/764G4A1C6L79F18V/Backup-disk.img status=progress
 ```
+
+
+### Подключить общую сетевую папку Windows по SMB (CIFS)
+
+```bash
+sudo apt-get install cifs-utils
+или
+sudo dnf install cifs-utils
+```
+
+####- Создать точку монтирования:
+```bash
+$ sudo mkdir /mnt/share
+```
+
+#### Смонтировать сетевую папку
+
+```bash
+sudo mount -t cifs -o username=User_test,password=Paswd,uid=1000,iocharset=utf8 //192.168.31.33/backup /mnt/share
+```
+
+```
+//192.168.31.33/backup – сетевая папка Windows
+/mnt/share – точка монтирования
+-t cifs – указать файловую систему для монтирования
+-o опции монтирования (эту опцию можно использовать только с правами root, поэтому в команде используется sudo)
+username=User03,password=PasswOrd1 – имя и пароль пользователя Windows, у которого есть права доступа к сетевой папке. Можно указать имя пользователя guest, если разрешен анонимный доступ к сетевой папке
+iocharset=utf8 – включить поддержку кодировки UTF8 для отображения имен файлов
+uid=1000 – использовать этого пользователя Linux в качестве владельца файлов в папке
+```
+
