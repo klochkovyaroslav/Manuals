@@ -1,6 +1,6 @@
 # Подключить общую сетевую папку Windows по SMB (CIFS)
 
-#### установить утилиту: cifs-utils.
+#### Установить утилиту: cifs-utils.
 
 ```bash
 sudo apt-get install cifs-utils
