@@ -126,3 +126,24 @@ Set-VM -Name testVM01 -CheckpointType ProductionOnly
 ```bash
 Set-VM -Name testVM01 -CheckpointType Production
 ```
+
+
+#### Сделать стандартный снимок на ВМ:
+```bash
+Checkpoint-VM -Name testVM01 -CheckpointName Standard_Checkpoint
+```
+
+#### Применить стандартный снимок на ВМ:
+```bash
+Restore-VMCheckpoint -VMName testVM01 -Name Standard_Checkpoint -Confirm:$false
+```
+
+#### Сделать стандартный снимок на ВМ:
+```bash
+Checkpoint-VM -Name testVM01 -CheckpointName Production_Checkpoint
+```
+
+#### Применить стандартный снимок на ВМ:
+```bash
+Restore-VMCheckpoint -VMName testVM01 -Name Production_Checkpoint -Confirm:$false
+```
