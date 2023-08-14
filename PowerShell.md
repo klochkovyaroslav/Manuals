@@ -108,3 +108,21 @@ Set-VMMemory testVM01 -DynamicMemoryEnabled $true -MinimumBytes 512MB -StartupBy
 ```bash
 Add-VMDvdDrive -VMName testVM01
 ```
+
+
+## Снимки (Checkpoint): Стандартные и Производственные в Hyper-V
+
+#### Включить стандартные снимки на ВМ:
+```bash
+Set-VM -Name testVM01 -CheckpointType Standard
+```
+
+#### Включить производственные снимки на ВМ:
+```bash
+Set-VM -Name testVM01 -CheckpointType ProductionOnly
+```
+
+#### Включить производственные снимки на ВМ с возможностью создания стандартных:
+```bash
+Set-VM -Name testVM01 -CheckpointType Production
+```
