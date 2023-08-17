@@ -2,14 +2,15 @@
 
 ## Разное
 
-#### По списоу из файла c:\scripts\Computers.txt выведет имя компьютера и версию офиса.
+#### По списку из файла c:\scripts\Computers.txt выведет имя компьютера и версию офиса.
 
+```bash
 Get-Content -Path c:\scripts\Computers.txt |
 ForEach-Object {
     Write $_
     Get-WmiObject Win32_Product -Filter "Name like '%Office%'" -ComputerName $_ | Select Name, Version
 }
-
+```
 
 
 
