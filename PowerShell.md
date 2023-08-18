@@ -11,7 +11,12 @@ ForEach-Object {
     Get-WmiObject Win32_Product -Filter "Name like '%Office%'" -ComputerName $_ | Select Name, Version
 }
 ```
+#### Выведет выведет имя компьютера и версию офиса локального ПК
 
+```bash
+Write $env:COMPUTERNAME
+Get-WmiObject Win32_Product -Filter "Name like '%Office%'" -ComputerName $env:COMPUTERNAME | Select Name, Version
+```
 
 
 ## Hyper-V
