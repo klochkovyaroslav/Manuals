@@ -28,6 +28,8 @@ nmcli general hostname - посмотреть имя хоста
 nmcli connection show - список доступных подключений
 nmcli connection modify ethernet-enp0s8 ipv4.address 192.168.4.26/24 задать IP адрес
 nmcli connection modify ethernet-enp0s8 ipv4.method manual - установить метод (не DHCP)
+nmcli connection down ethernet-enp0s8
+nmcli connection up ethernet-enp0s8
 nmcli connection add con-name "static" ifname enp2s0 autoconnect no type ethernet ip4 192.168.0.210 gw4 192.168.0.1 - Создание соединения с статическим адресом
 nmcli conn modify "static" +ipv4.addresses 192.168.0.240/24 - добавить еще IP адрес 
 nmcli conn modify "static" ipv4.dns 8.8.8.8 - добавить DNS
