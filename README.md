@@ -27,7 +27,7 @@ nmcli device show enp0s8 - Запрос информации об устройс
 nmcli general hostname - посмотреть имя хоста
 nmcli connection show - список доступных подключений
 Настройка подключений:
-nmcli connection modify ethernet-enp0s8 ipv4.address 192.168.4.26/24 задать IP адрес - установить IP-адрес
+nmcli connection modify ethernet-enp0s8 ipv4.address 192.168.4.26/24 - установить IP-адрес
 Сменить динамический (DHCP) на статический IP-адрес
 nmcli connection modify ethernet-enp0s8 ipv4.method manual - установить метод (не DHCP)
 nmcli connection down ethernet-enp0s8
