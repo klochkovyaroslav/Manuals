@@ -22,11 +22,13 @@ root ALL=(ALL:ALL) **ALL** Последнее “ALL” означает, что
 ```bash
 sudo systemctl start NetworkManager
 nmcli general status - состояние интерфейсов
-nmcli device status
-nmcli device show enp0s8
+nmcli device status - Проверка статуса устройств
+nmcli device show enp0s8 - Запрос информации об устройстве
 nmcli general hostname - посмотреть имя хоста
 nmcli connection show - список доступных подключений
+Настройка подключений:
 nmcli connection modify ethernet-enp0s8 ipv4.address 192.168.4.26/24 задать IP адрес
+Сменить динамический (DHCP) на статический IP-адрес
 nmcli connection modify ethernet-enp0s8 ipv4.method manual - установить метод (не DHCP)
 nmcli connection down ethernet-enp0s8
 nmcli connection up ethernet-enp0s8
