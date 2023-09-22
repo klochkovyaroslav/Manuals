@@ -189,3 +189,25 @@ Get-NetTCPConnection -AppliedSetting Internet
 ```bash
 Get-NetTCPConnection -State Established |Select-Object -Property LocalAddress, LocalPort,@{name='RemoteHostName';expression={(Resolve-DnsName $_.RemoteAddress).NameHost}},RemoteAddress, RemotePort, State,@{name='ProcessName';expression={(Get-Process -Id $_.OwningProcess). Path}},OffloadState,CreationTime |ft
 ```
+
+
+#### По имени PID родительского процесса можно вывести список связанных имен служб Windows, которые используют сеть:
+
+```bash
+Get-WmiObject Win32_Service | Where-Object -Property ProcessId -In (Get-NetTCPConnection).OwningProcess | Where-Object -Property State -eq Running | Format-Table ProcessId, Name, Caption, StartMode, State, Status, PathName
+```
+
+
+#### Можно вывести только сетевые подключения, которые инициированы определенным процессом.:
+
+```bash
+$TrackProcessName = “*chrome*”
+$EstablishedConnections = Get-NetTCPConnection -State Established |Select-Object -Property LocalAddress, LocalPort,@{name='RemoteHostName';expression={(Resolve-DnsName $_.RemoteAddress).NameHost}},RemoteAddress, RemotePort, State,@{name='ProcessName';expression={(Get-Process -Id $_.OwningProcess). Path}}, OffloadState,CreationTime
+Foreach ($Connection in $EstablishedConnections)
+{
+If ($Connection.ProcessName -like $TrackProcessName)
+{
+$Connection|ft
+}
+```
+}
