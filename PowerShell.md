@@ -166,3 +166,26 @@ Checkpoint-VM -Name testVM01 -CheckpointName Production_Checkpoint
 ```bash
 Restore-VMCheckpoint -VMName testVM01 -Name Production_Checkpoint -Confirm:$false
 ```
+
+## СЕТЬ
+
+#### Мониторинг открытых TCP/IP подключений
+```bash
+Get-NetTCPConnection -State Listen
+```
+
+#### Порты, которые слушаются (открыты) 
+```bash
+Get-NetTCPConnection -State Listen | Select-Object -Property LocalAddress, LocalPort, RemoteAddress, RemotePort, State | Sort-Object LocalPort |ft
+```
+
+#### Вывести только внешние (Интернет) подключения:
+
+```bash
+Get-NetTCPConnection -AppliedSetting Internet
+```
+
+#### Скрипт выполнил разрешение всех IP адресов хостов в DNS имена, и для каждого соединения указал имя процесса, который его использует:
+```bash
+Get-NetTCPConnection -State Established |Select-Object -Property LocalAddress, LocalPort,@{name='RemoteHostName';expression={(Resolve-DnsName $_.RemoteAddress).NameHost}},RemoteAddress, RemotePort, State,@{name='ProcessName';expression={(Get-Process -Id $_.OwningProcess). Path}},OffloadState,CreationTime |ft
+```
