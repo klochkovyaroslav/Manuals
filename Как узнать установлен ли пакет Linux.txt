@@ -1,8 +1,7 @@
 Так же можно посмотреть файл: "Manuals/Проверить версию пакета Linux перед его установкой.txt"
 
-Выполните следующую команду, чтобы узнать версию ядра и необходимую версию GCC:
-
-$ cat /proc/version
+	Выполните следующую команду, чтобы узнать версию ядра и необходимую версию GCC:
+сat /proc/version
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\Узнать установлен ли пакет в DEB системе\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -21,7 +20,7 @@ dpkg --get-selections | grep gcc
 dpkg -L gcc-5
 
 
-установлена ли соответствующая версия пакетов для создания модулей ядра 
+	Установлена ли соответствующая версия пакетов для создания модулей ядра 
 В Ubuntu выполните следующие команды:  
 
 dpkg --get-selections | grep linux-headers  
@@ -40,23 +39,23 @@ rpm -qi chromium
 rpm -qa  
 rpm -qa | grep gcc  
 
-Установлена ли соответствующая версия пакетов для создания модулей ядра  
+	Установлена ли соответствующая версия пакетов для создания модулей ядра  
 yum list installed | grep kernel-devel  
 
-Чтобы выяснить, установлен ли интерпретатор Perl, выполните следующую команду:  
+	Чтобы выяснить, установлен ли интерпретатор Perl, выполните следующую команду:  
 perl --version  
 
 
-Установлена ли библиотека "elfutils-libelf-devel"  
+	Установлена ли библиотека "elfutils-libelf-devel"  
 yum list installed | grep elfutils-libelf-devel  
 
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Установка пакетов вручную \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-В Red Hat Enterprise Linux, CentOS и Fedora:
+	В Red Hat Enterprise Linux, CentOS и Fedora:
 rpm -ivh PACKAGE_FILE1 PACKAGE_FILE2 PACKAGE_FILE3
 rpm -ivh kernel-devel-2.6.35.6-45.fc14.i686.rpm
 
-В Ubuntu выполните следующую команду:
+	В Ubuntu выполните следующую команду:
 sudo dpkg -i PACKAGE_FILE1 PACKAGE_FILE2 PACKAGE_FILE3
 
