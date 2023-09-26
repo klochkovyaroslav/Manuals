@@ -48,3 +48,14 @@ perl --version
 
 Установлена ли библиотека "elfutils-libelf-devel"  
 yum list installed | grep elfutils-libelf-devel  
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Установка пакетов вручную \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+В Red Hat Enterprise Linux, CentOS и Fedora:
+rpm -ivh PACKAGE_FILE1 PACKAGE_FILE2 PACKAGE_FILE3
+rpm -ivh kernel-devel-2.6.35.6-45.fc14.i686.rpm
+
+В Ubuntu выполните следующую команду:
+sudo dpkg -i PACKAGE_FILE1 PACKAGE_FILE2 PACKAGE_FILE3
+
