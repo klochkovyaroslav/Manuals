@@ -243,4 +243,15 @@ mkfs.ex4 -E stride=512,stripe-width=1536 /dev/md0
 
 Смотрим что получилось:
 blkid /dev/md0
+
+Примонтируем раздел на постоянной основе через /etc/fstab
+vim /etc/fstab
+
+Можно подтянуть UUID устройства при помощи
+:.!blkid | grep md0
+
+UUID=00000001-0000-0000-0000-000000000001  /mnt/raid  xfs  defaults 0 0
+
+mount -a
+df -h
 ```
