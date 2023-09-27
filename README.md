@@ -176,3 +176,51 @@ sudo find / -iname 'postgresql.????' - искать текст за которы
 ```bash
 dd if=/dev/sdb of=/media/flash/764G4A1C6L79F18V/Backup-disk.img status=progress
 ```
+
+
+## Создание разделов при помощи PARTED
+
+```bash
+parted /dev/sdb print
+
+Создаем таблицу разделов
+parted /dev/sdb mklabel gpt
+
+Создаем раздел (начало 1МБ конец раздела 10 Гб)
+parted /dev/sdb mkpart primary 1MB 10GB
+parted /dev/sdb print
+
+Создаем файловую систему ext4
+
+mkfs.ex4 /dev/sdb1
+
+Временно смонтируем новый раздел sdb1 в каталог /mnt/dir1
+
+mkdir /mnt/dir1
+mount /dev/sdb1 /mnt/dir1
+
+Проверяем что получилось
+df -h
+
+
+Увеличить раздел можно на лету(online)
+parted /dev/sdb resizepart
+
+Указать номер раздела
+1
+Система сообщает что раздел используется (примонтирован), говорим:
+Yes
+Указываем конечную точку:
+20GB
+
+parted /dev/sdb print
+lsblk
+
+Меняем размер файловой системы
+resize2fs /dev/sdb1
+df -h
+
+
+
+
+```
