@@ -46,6 +46,13 @@ select @@version
 go
 ```
 
+
+```bash
+select Name
+from sys.databases
+go
+```
+
 ## T_SQL запросы.
 
 #### Создать новую БД 
