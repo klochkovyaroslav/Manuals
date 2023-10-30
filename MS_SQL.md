@@ -74,3 +74,16 @@ create database TestDB;
 ```bash
 use TestDB;
 ```
+
+```bash
+use TestDB
+go
+create table mtable1
+	(
+	name char (1000)
+	)
+go
+insert
+into mtable1 (name)
+values ('testdfghfghdfhgdghdgfhdsgfhdf')
+```
