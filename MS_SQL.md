@@ -37,3 +37,9 @@ sp_dropextendedproc 'xp_StoreOnce';
 ```bash
 create database TestDB;
 ```
+
+#### Использоватиь нужную БД. 
+
+```bash
+use TestDB;
+```
