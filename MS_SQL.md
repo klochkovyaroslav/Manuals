@@ -30,6 +30,18 @@ sp_addextendedproc 'xp_StoreOnce','C:\Program Files\HPE\StoreOnce\isvsupport\sql
 sp_dropextendedproc 'xp_StoreOnce';
 ```
 
+## SQL CMD.
+
+```bash
+sqlcmd
+```
+#### Версия SQL сервера
+#### go - команда на выполнение sql запроса
+```bash
+select @@version
+go
+```
+
 ## T_SQL запросы.
 
 #### Создать новую БД 
