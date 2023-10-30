@@ -53,6 +53,14 @@ from sys.databases
 go
 ```
 
+```bash
+sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt"
+
+sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt" -o "C:\Users\yaroslav.klochkov\Desktop\SQLCMD\rezult.txt"
+
+sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt" -v TableName=sys.databases ColumnName=Name -o "C:\Users\yaroslav.klochkov\Desktop\SQLCMD\rezult.txt"
+```
+
 ## T_SQL запросы.
 
 #### Создать новую БД 
