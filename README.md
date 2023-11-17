@@ -177,7 +177,7 @@ sudo find / -iname 'postgresql.????' - искать текст за которы
 dd if=/dev/sdb of=/media/flash/764G4A1C6L79F18V/Backup-disk.img status=progress
 ```
 
-### GREP
+### GREP -global gegular expression print
 
 ```bash
 grep "Failed" ./log
