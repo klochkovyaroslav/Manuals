@@ -214,8 +214,17 @@ head -f ./log -врежимереального времени смотреть 
 ```bash
 ls -l | tee -a file
 ```
+### Потоки и перенаправления в Linux - STDOUT-1, STDERR-2, STDIN-0
 
+```bash
+ls -l > stdout.xtx - перенаправить стандантный поток в stdout
+ls -l 1> stdout.xtx - перенаправить стандантный поток в stdout
+ls -l fgdhfg 2> stdoerr.xtx - перенаправить поток ошибок в stderr
+ls -l fgdhfg 2> stdoerr.xtx 1> stdout.txt
+ls -l fgdhfg ./ 2> stdoerr.xtx 1> stdout.txt
+```
 
+ 
 ## Создание разделов при помощи PARTED
 
 ```bash
