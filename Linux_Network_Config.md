@@ -54,15 +54,28 @@ iface enp4s0 inet static
         dns-search pve.example.com  
 
 
-#### IPv4 Configuration
-
-```bash
- sudo nano /etc/sysconfig/network/ifcfg-eth0
-```
-
 #### Default Gateway
 
 ```bash
 sudo nano /etc/sysconfig/network/ifroute-eth0
+```
+
+#### DNS
+
+```bash
+sudo nano /etc/resolvconf/resolv.conf.d/head
+sudo systemctl restart resolvconf.service
+```
+
+#### Проверить имя сервиса
+
+```bash
+sudo systemctl list-unit-files | grep -i network
+```
+
+#### Рестарт сетевого сервиса
+
+```bash
+systemctl restart networking.service
 ```
 
