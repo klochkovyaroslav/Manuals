@@ -50,20 +50,13 @@ ip link set enp0s3 up
  sudo nano /etc/network/interfaces
 ```
 
-iface enp4s0 inet static  
-        address 10.xxx.xxx.5$  
-        netmask 255.255.255.0  
-        gateway 10.xxx.xxx.1  
-        dns-nameservers x.x.x.x, x.x.x.x  
-        dns-domain pve.example.com  
-        dns-search pve.example.com  
+*.#iface enp4s0 inet dhcp
+iface enp4s0 inet static
+	address 192.168.88.20
+	netmask 255.255.255.0
+	gateway 192.168.88.1
+	#dns-servers 192.168.88.1.*  
 
-
-#### Default Gateway
-
-```bash
-sudo nano /etc/sysconfig/network/ifroute-eth0
-```
 
 #### DNS
 
