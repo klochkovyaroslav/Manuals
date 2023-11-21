@@ -33,6 +33,11 @@ netconfig update –f
 
 ## Debian 11
 
+
+```bash
+lshw -C network
+```
+
 ```bash
 ip link set enp0s3 down
 ip link set enp0s3 up
@@ -63,6 +68,7 @@ sudo nano /etc/sysconfig/network/ifroute-eth0
 #### DNS
 
 ```bash
+sudo nano /etc/resolv.conf
 sudo nano /etc/resolvconf/resolv.conf.d/head
 sudo systemctl restart resolvconf.service
 ```
