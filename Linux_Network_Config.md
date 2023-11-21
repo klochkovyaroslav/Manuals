@@ -2,6 +2,11 @@
 
 ## SUSE Linux15
 
+#### IPv4 Configuration
+
+```bash
+ sudo cat /etc/sysconfig/network/ifcfg-eth0
+```
 
 #### Default Gateway
 
