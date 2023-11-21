@@ -2,6 +2,14 @@
 
 ## SUSE Linux15
 
+### GUI Configuration
+
+```bash
+ sudo yast2
+```
+
+### CLi Terminal Configuration
+
 #### IPv4 Configuration
 
 ```bash
