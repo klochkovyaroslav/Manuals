@@ -29,3 +29,24 @@ sed -i 's/NETCONFIG_DNS_STATIC_SERVERS=""/NETCONFIG_DNS_STATIC_SERVERS="192.168.
 sed -i 's/NETCONFIG_DNS_STATIC_SEARCHLIST=""/NETCONFIG_DNS_STATIC_SEARCHLIST="test.org"/' /etc/sysconfig/network/config
 netconfig update –f
 ```
+
+
+## Debian 11
+
+```bash
+ip link set enp0s3 down
+ip link set enp0s3 up
+```
+
+#### IPv4 Configuration
+
+```bash
+ sudo cat /etc/sysconfig/network/ifcfg-eth0
+```
+
+#### Default Gateway
+
+```bash
+sudo cat /etc/sysconfig/network/ifroute-eth0
+```
+
