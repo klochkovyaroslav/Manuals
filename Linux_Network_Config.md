@@ -52,10 +52,10 @@ ip link set enp0s3 up
 
 > #iface enp4s0 inet dhcp  
 > iface enp4s0 inet static  
-> address 192.168.88.20  
-> netmask 255.255.255.0  
-> gateway 192.168.88.1  
-> #dns-servers 192.168.88.1  
+>    address 192.168.88.20  
+>    netmask 255.255.255.0  
+>    gateway 192.168.88.1  
+>    #dns-servers 192.168.88.1  
 
 
 
