@@ -222,7 +222,7 @@ ls -l 1> stdout.xtx - перенаправить стандантный пото
 ls -l fgdhfg 2> stdoerr.xtx - перенаправить поток ошибок в stderr
 ls -l fgdhfg 2> stdoerr.xtx 1> stdout.txt
 ls -l fgdhfg ./ 2> stdoerr.xtx 1> stdout.txt
-ls -l dfgdf ./ file 2>&1 - Перенаправить поток ошибок "2", туда же куда направлен поток стандартного вывода "1"
+ls -l dfgdf ./ 1> file 2>&1 - Перенаправить поток ошибок "2", туда же куда направлен поток стандартного вывода "1"
 ```
 
  
