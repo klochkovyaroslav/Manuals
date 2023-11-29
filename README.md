@@ -182,6 +182,9 @@ dd if=/dev/sdb of=/media/flash/764G4A1C6L79F18V/Backup-disk.img status=progress
 ```bash
 grep "Failed" ./log
 grep -i "Failed" ./log  -игнорировать регистр
+sudo grep -v ^# /etc/ssh/sshd_config - Отфильтровать начало строки начинается с #
+sudo grep -v ^# /etc/ssh/sshd_config | grep -v ^$ - Отфильтровать начало строки начинается с # и убрать пустые строки.
+
 ```
 
 ### HEAD
