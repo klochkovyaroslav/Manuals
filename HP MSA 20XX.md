@@ -44,4 +44,5 @@ restart sc both
 
 ```bash
 create certificate unique both
+restart mc both
 ```
