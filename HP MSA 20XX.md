@@ -47,9 +47,37 @@ create certificate unique both
 restart mc both
 ```
 
-## Дисковые группы
+## Удаление дисковой группы в статусе: quarantined
 
+#### Посмореть дисковые группы
 
 ```bash
 show disk-groups
 ```
+
+#### Добавляем нового пользователя:
+
+```bash
+create user diag role diagnostic
+```
+Заходим по ssh под новым пользователем: diag
+
+#### Добавляем настройку
+
+```bash
+set advanced-settings virtual-pool-delete-override on
+```
+
+15 минут для удаление дисковой группы, через 15 минут расширенная настройка отключится.
+
+#### Удаляем дисковую группу
+
+```bash
+remove disk-groups 00c0ff2703c80000b5d8225900000000
+```
+
+```bash
+show users
+```
+
+#### Посмотреть пользователей
