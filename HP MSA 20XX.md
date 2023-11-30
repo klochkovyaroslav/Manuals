@@ -46,3 +46,10 @@ restart sc both
 create certificate unique both
 restart mc both
 ```
+
+## Дисковые группы
+
+
+```bash
+show disk-groups
+```
