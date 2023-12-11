@@ -36,6 +36,7 @@ apt-show-versions vim
 yum search http | grep -i apache
 
 rpm -qip GeoIP-1.5.0-11.el7.x86_64.rpm -узнать информацию о пакете RPM без установки
+rpm -qi GeoIP-1.5.0-11.el7.x86_64.rpm -получить информацию для конкретного пакета
 rpm -ql httpd - вывести список всех файлов для определенного установленного пакета RPM
 rpm -ql httpd | grep bin
 /usr/sbin/httpd -V
@@ -58,6 +59,14 @@ rpm -Uvh GeoIP-1.5.0-11.el7.x86_64.rpm
 
 запросить файл, который принадлежит пакету RPM
 rpm -qf /usr/lib64/libGeoIP.so.1.5.0
+
+
+Как проверить RPM пакет
+rpm -Vp GeoIP-1.5.0-11.el7.x86_64.rpm
+
+Как проверить все пакеты RPM
+rpm -Va
+
 
 
 Поиск пакета по файлу
