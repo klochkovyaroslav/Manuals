@@ -36,12 +36,28 @@ apt-show-versions vim
 yum search http | grep -i apache
 
 rpm -qip GeoIP-1.5.0-11.el7.x86_64.rpm -узнать информацию о пакете RPM без установки
-rpm -ql httpd - Информация о файле содеожащаяся в пакете
+rpm -ql httpd - вывести список всех файлов для определенного установленного пакета RPM
 rpm -ql httpd | grep bin
 /usr/sbin/httpd -V
 
+rpm -qa -- last  -вывести список недавно установленных пакетов RPM
+
 установить RPM пакет
 rpm -ivh GeoIP-1.5.0-11.el7.x86_64.rpm
+
+Как установить RPM пакет без зависимостей
+rpm -ivh --nodeps GeoIP-1.5.0-11.el7.x86_64.rpm
+
+заменить установленный пакет RPM
+rpm -ivh --replacepkgs GeoIP-1.5.0-11.el7.x86_64.rpm
+
+
+обновить установленный пакет RPM
+rpm -Uvh GeoIP-1.5.0-11.el7.x86_64.rpm
+
+
+запросить файл, который принадлежит пакету RPM
+rpm -qf /usr/lib64/libGeoIP.so.1.5.0
 
 
 Поиск пакета по файлу
@@ -63,3 +79,4 @@ rpm - qa | grep httpd
 Удалить пакет
 yum remove httpd
 rpm -e httpd
+rpm -e --nodeps httpd -Удалить пакет без зависимостей
