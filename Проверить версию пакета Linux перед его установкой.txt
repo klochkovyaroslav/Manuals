@@ -32,12 +32,16 @@ sudo apt-get install apt-show-versions
 apt-show-versions vim
 
                                                         RPM- YUM
-
+	Информация о файле содеожащаяся в пакете:
 yum search http | grep -i apache
 
+rpm -qip GeoIP-1.5.0-11.el7.x86_64.rpm -узнать информацию о пакете RPM без установки
 rpm -ql httpd - Информация о файле содеожащаяся в пакете
 rpm -ql httpd | grep bin
 /usr/sbin/httpd -V
+
+установить RPM пакет
+rpm -ivh GeoIP-1.5.0-11.el7.x86_64.rpm
 
 
 Поиск пакета по файлу
