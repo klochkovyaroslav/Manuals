@@ -330,7 +330,7 @@ sc queryex wuauserv
 taskkill /PID 16980 /F
 или
 TASKKILL /F /FI "SERVICES eq wuauserv"
-taskkill /F /FI "status eq not responding"
+taskkill /F /FI "status eq not responding" -Все зависшие службы
 TASKKILL /S test01.local /F /FI "SERVICES eq wuauserv" - На удаленном PC
 ```
 
