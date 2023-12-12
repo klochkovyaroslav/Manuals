@@ -1,5 +1,7 @@
 # Manuals
 
+## LINUX
+
 ### Редактирование файла Sudoers
 
 Команда sudo настраивается с помощью файла, расположенного в каталоге /etc/sudoers  
@@ -316,4 +318,27 @@ UUID=00000001-0000-0000-0000-000000000001  /mnt/raid  xfs  defaults 0 0
 
 mount -a
 df -h
+```
+
+
+## WINDOWS
+
+#### Остановить зависшую службу Windows из командной строки
+
+```bash
+sc queryex wuauserv
+taskkill /PID 16980 /F
+или
+TASKKILL /F /FI "SERVICES eq wuauserv"
+taskkill /F /FI "status eq not responding"
+TASKKILL /S test01.local /F /FI "SERVICES eq wuauserv" - На удаленном PC
+```
+
+#### Остановить зависшую службу Windows из PowerShell
+
+```bash
+PS < 6 версии
+Get-WmiObject -Class win32_service | Where-Object {$_.state -eq 'stop pending'}
+PS >= 6 версии
+Get-CimInstance -Class win32_service | where-Object state -eq 'stop pending'
 ```
