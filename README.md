@@ -353,3 +353,9 @@ Get-WmiObject -Class win32_service | Where-Object {$_.state -eq 'stop pending'}
 PS >= 6 версии
 Get-CimInstance -Class win32_service | where-Object state -eq 'stop pending'
 ```
+
+#### Выполнить скрипт по сети PowerShell
+
+```bash
+Invoke-Command -ComputerName Server1, PC2 -ScriptBlock {Get-NetAdapterAdvancedProperty –Name Ethernet –DisplayName "Jumbo Packet"}
+```
