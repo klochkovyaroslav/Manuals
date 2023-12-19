@@ -374,7 +374,7 @@ $RemoveKey = "HKLM:\SYSTEM\CurrentControlSet\Enum\$InstanceId"
 Get-Item $RemoveKey | Select-Object -ExpandProperty Property | %{ Remove-ItemProperty -Path $RemoveKey -Name $_ -Verbose}
 ```
 
-#### #### Удалить ВСЕ скрытые сетевые адаптеры
+#### Удалить ВСЕ скрытые сетевые адаптеры
 
 ```
 $Devs = Get-PnpDevice -class net | ? Status -eq Unknown | Select FriendlyName,InstanceId
