@@ -360,10 +360,33 @@ Get-CimInstance -Class win32_service | where-Object state -eq 'stop pending'
 Invoke-Command -ComputerName Server1, PC2 -ScriptBlock {Get-NetAdapterAdvancedProperty –Name Ethernet –DisplayName "Jumbo Packet"}
 ```
 
-#### Проверка наличия скрытых адаптеров
+#### Проверка наличия скрытых сетевых адаптеров
 
 ```
 Get-PnpDevice -class net | ? Status -eq Unknown | Select FriendlyName,InstanceId
+```
+
+#### Удалить скрытый сетевой адаптер
+
+```
+$InstanceId = “PCI\VEN_8086&DEV_10D3&SUBSYS_07D015AD&REV_00\000C29FFFF66A80700”
+$RemoveKey = "HKLM:\SYSTEM\CurrentControlSet\Enum\$InstanceId"
+Get-Item $RemoveKey | Select-Object -ExpandProperty Property | %{ Remove-ItemProperty -Path $RemoveKey -Name $_ -Verbose}
+```
+
+#### #### Удалить ВСЕ скрытые сетевые адаптеры
+
+```
+$Devs = Get-PnpDevice -class net | ? Status -eq Unknown | Select FriendlyName,InstanceId
+ForEach ($Dev in $Devs) {
+$RemoveKey = "HKLM:\SYSTEM\CurrentControlSet\Enum\$($Dev.InstanceId)"
+Get-Item $RemoveKey | Select-Object -ExpandProperty Property | %{ Remove-ItemProperty -Path $RemoveKey -Name $_ -Verbose }}
+```
+
+#### Удалить скрытый сетевой адаптер вручную из Реестра
+
+```
+HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces
 ```
 
 #### Посмотреть текущие сессии по сети 
