@@ -324,7 +324,7 @@ df -h
 
 #### Сброс настроек протокола TCP/IP в Windows
 
-```bash
+```
 ipconfig /flushdns
 nbtstat -R
 nbtstat -RR
@@ -336,7 +336,7 @@ netsh winsock reset
 
 #### Остановить зависшую службу Windows из командной строки
 
-```bash
+```
 sc queryex wuauserv
 taskkill /PID 16980 /F
 или
@@ -347,7 +347,7 @@ TASKKILL /S test01.local /F /FI "SERVICES eq wuauserv" - На удаленном
 
 #### Остановить зависшую службу Windows из PowerShell
 
-```bash
+```
 PS < 6 версии
 Get-WmiObject -Class win32_service | Where-Object {$_.state -eq 'stop pending'}
 PS >= 6 версии
@@ -356,23 +356,22 @@ Get-CimInstance -Class win32_service | where-Object state -eq 'stop pending'
 
 #### Выполнить скрипт по сети PowerShell
 
-```bash
+```
 Invoke-Command -ComputerName Server1, PC2 -ScriptBlock {Get-NetAdapterAdvancedProperty –Name Ethernet –DisplayName "Jumbo Packet"}
 ```
 
 #### Проверка наличия скрытых адаптеров
 
-```bash
+```
 Get-PnpDevice -class net | ? Status -eq Unknown | Select FriendlyName,InstanceId
 ```
 
 #### Посмотреть текущие сессии по сети 
 
-```bash
+```
 Invoke-Command -ComputerName src01 -ScriptBlock {query session}
 ```
-
-#### Подключиться у удаленной RDP сессии по по RDP 
+#### Подключиться к удаленной RDP сессии по по RDP 
 
 ```
 Mstsc /v:10.250.2.160 /shadow:2 /control /Prompt /noConsentPrompt
