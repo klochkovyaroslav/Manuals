@@ -323,6 +323,19 @@ df -h
 
 ## WINDOWS
 
+
+#### Сброс настроек протокола TCP/IP в Windows
+
+```bash
+ipconfig /flushdns
+nbtstat -R
+nbtstat -RR
+
+netsh int reset all
+netsh int ip reset
+netsh winsock reset
+```
+
 #### Остановить зависшую службу Windows из командной строки
 
 ```bash
