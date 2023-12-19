@@ -359,3 +359,10 @@ Get-CimInstance -Class win32_service | where-Object state -eq 'stop pending'
 ```bash
 Invoke-Command -ComputerName Server1, PC2 -ScriptBlock {Get-NetAdapterAdvancedProperty –Name Ethernet –DisplayName "Jumbo Packet"}
 ```
+
+#### Проверка наличия скрытых адаптеров
+
+```bash
+Get-PnpDevice -class net | ? Status -eq Unknown | Select FriendlyName,InstanceId
+```
+
