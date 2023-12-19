@@ -369,10 +369,10 @@ Get-PnpDevice -class net | ? Status -eq Unknown | Select FriendlyName,InstanceId
 #### Посмотреть текущие сессии по сети 
 
 ```
-Invoke-Command -ComputerName src01 -ScriptBlock {query session}
+Invoke-Command -ComputerName Server1 -ScriptBlock {query session}
 ```
 #### Подключиться к удаленной RDP сессии по по RDP 
 
 ```
-Mstsc /v:10.250.2.160 /shadow:2 /control /Prompt /noConsentPrompt
+Mstsc /v:10.0.0.100 /shadow:2 /control /Prompt /noConsentPrompt
 ```
