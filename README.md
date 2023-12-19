@@ -366,3 +366,10 @@ Invoke-Command -ComputerName Server1, PC2 -ScriptBlock {Get-NetAdapterAdvancedPr
 Get-PnpDevice -class net | ? Status -eq Unknown | Select FriendlyName,InstanceId
 ```
 
+#### Посмотреть текущие сессии по сети 
+
+```bash
+Invoke-Command -ComputerName src01 -ScriptBlock {query session}
+```
+
+Invoke-Command -ComputerName src01 -ScriptBlock {query session}
