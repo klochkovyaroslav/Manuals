@@ -1,6 +1,4 @@
-# Manuals
-
-## LINUX
+# LINUX
 
 ### Редактирование файла Sudoers
 
