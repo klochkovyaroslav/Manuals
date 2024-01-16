@@ -399,3 +399,11 @@ Invoke-Command -ComputerName Server1 -ScriptBlock {query session}
 ```
 Mstsc /v:10.0.0.100 /shadow:2 /control /Prompt /noConsentPrompt
 ```
+
+## Active directory
+
+Утилита позволяет подключиться к AD на более глубоком уровне  
+
+```bash
+adsiedit.msc
+```
