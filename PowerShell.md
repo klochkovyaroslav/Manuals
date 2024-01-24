@@ -22,6 +22,7 @@ Get-WmiObject Win32_Product -Filter "Name like '%Office%'" -ComputerName $env:CO
 ## Hyper-V
 
 ### Включить поддержку вложенной виртуализации для процессора:
+#### На железном хосте ВМ Hyper-V выполнить в PS для нужных ВМ:
 
 ```bash
 Set-VMProcessor -VMName SQL-TEST2 -ExposeVirtualizationExtensions $true
