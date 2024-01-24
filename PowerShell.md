@@ -25,7 +25,13 @@ Get-WmiObject Win32_Product -Filter "Name like '%Office%'" -ComputerName $env:CO
 #### На железном хосте ВМ Hyper-V выполнить в PS для нужных ВМ:
 
 ```bash
-Set-VMProcessor -VMName SQL-TEST2 -ExposeVirtualizationExtensions $true
+Set-VMProcessor -VMName 'SQL-TEST2' -ExposeVirtualizationExtensions $true
+```
+
+#### Для корректной работы сети, нужно включить MAC spoofing:
+
+```bash
+Get-VMNetworkAdapter -VMName 'SQL-TEST2' | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
 
 #### Получить список виртуальных машин и их статус:
