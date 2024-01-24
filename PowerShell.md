@@ -21,6 +21,12 @@ Get-WmiObject Win32_Product -Filter "Name like '%Office%'" -ComputerName $env:CO
 
 ## Hyper-V
 
+### Включить поддержку вложенной виртуализации для процессора:
+
+```bash
+Set-VMProcessor -VMName SQL-TEST2 -ExposeVirtualizationExtensions $true
+```
+
 #### Получить список виртуальных машин и их статус:
 
 ```bash
