@@ -6,6 +6,13 @@
 
 ```bash
 Get-ClusterLog –TimeSpan 360 –UseLocalTime –Destination "C:\Temp"
+Get-ClusterLog -Node SV07 -TimeSpan 60 -UseLocalTime -Destination "C:\Temp"
+```
+
+#### Логи ноды кластера за последний 1 час.
+
+```bash
+Get-ClusterLog -Node SV07 -TimeSpan 60 -UseLocalTime -Destination "C:\Temp"
 ```
 
 #### По списку из файла c:\scripts\Computers.txt выведет имя компьютера и версию офиса.
