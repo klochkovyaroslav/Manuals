@@ -2,6 +2,12 @@
 
 ## Разное
 
+#### Логи со всех участников кластера за последние 10 часов.
+
+```bash
+Get-ClusterLog –TimeSpan 360 –UseLocalTime –Destination "C:\Temp"
+```
+
 #### По списку из файла c:\scripts\Computers.txt выведет имя компьютера и версию офиса.
 
 ```bash
