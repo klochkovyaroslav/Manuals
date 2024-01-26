@@ -6,7 +6,6 @@
 
 ```bash
 Get-ClusterLog –TimeSpan 360 –UseLocalTime –Destination "C:\Temp"
-Get-ClusterLog -Node SV07 -TimeSpan 60 -UseLocalTime -Destination "C:\Temp"
 ```
 
 #### Логи ноды кластера за последний 1 час.
