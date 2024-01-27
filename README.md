@@ -424,5 +424,5 @@ adsiedit.msc
 #### Отключить/включить Брандмауэр Защитника Windows - Firewall
 
 ```bash
-netsh advfirewall set all state off
+netsh advfirewall set all state off/on
 ```
