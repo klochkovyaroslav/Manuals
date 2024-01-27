@@ -417,3 +417,12 @@ Mstsc /v:10.0.0.100 /shadow:2 /control /Prompt /noConsentPrompt
 ```bash
 adsiedit.msc
 ```
+
+
+## Брандмауэр Защитника Windows - Firewall
+
+#### Отключить/включить Брандмауэр Защитника Windows - Firewall
+
+```bash
+netsh advfirewall set all state off
+```
