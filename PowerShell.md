@@ -187,10 +187,11 @@ Restore-VMCheckpoint -VMName testVM01 -Name Standard_Checkpoint -Confirm:$false
 Checkpoint-VM -Name testVM01 -CheckpointName Production_Checkpoint
 ```
 
-#### Применить стандартный снимок на ВМ:
+#### Слить снимок или список снимков ВМ с Диском :
 ```bash
-Restore-VMCheckpoint -VMName testVM01 -Name Production_Checkpoint -Confirm:$false
+Merge-VHD -Path C:\ClusterStorage\Volume13\TEST-SQL2\TEST_SQL2_C_779FE71D-DC72-46EA-B874-2349FDB4D021.avhdx -DestinationPath C:\ClusterStorage\Volume13\TEST-SQL2\TEST_SQL2_C.vhdx
 ```
+
 
 ## СЕТЬ
 
