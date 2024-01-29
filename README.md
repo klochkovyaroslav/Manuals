@@ -424,7 +424,7 @@ adsiedit.msc
 
 #### Get VM ID
 ```bash
-Get-VM -Name <VMName> | Select-Object id
+Get-VM -Name Test-VM-01 | Select-Object id
 ```
 
 #### Create a new .rdp file
