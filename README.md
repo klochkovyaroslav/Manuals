@@ -419,6 +419,23 @@ adsiedit.msc
 ```
 
 
+
+## Connecting to Hyper-V VM console via RDP
+
+#### Get VM ID
+```bash
+Get-VM -Name <VMName> | Select-Object id
+```
+
+#### Create a new .rdp file
+```bash
+full address:s:10.0.1.20
+pcb:s:ca76a5af-bd93-4be9-82f8-135e29e99172
+server port:i:2179
+negotiate security layer:i:0
+```
+
+
 ## Брандмауэр Защитника Windows - Firewall
 
 #### Отключить/включить Брандмауэр Защитника Windows - Firewall
