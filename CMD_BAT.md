@@ -17,3 +17,10 @@ ForFiles /p "X:\path" /s /c "cmd /c del @file /f /q" /d -0
 ```
 ForFiles /p "X:\path" /s /c "cmd /c echo @path @file" /d -5
 ```
+
+#### Создать файл проивольного размера
+#### Утилита MS "fsutil"
+
+```
+fsutil file createnew d:\1gb-file.txt 10737418240
+```
