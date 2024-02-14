@@ -63,6 +63,41 @@ sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt" -v TableName=sys.databases Colum
 
 ## T_SQL запросы.
 
+#### max/min server memory — это минимальное и максимальное количество оперативной памяти, потребляемое экземпляром Microsoft SQL Server
+#### Посмотреть установленное значение можно следующим SQL запросом:
+
+```bash
+SELECT c.value, c.value_in_use
+FROM sys.configurations c WHERE c.[name] = 'max server memory (MB)'
+GO
+```
+#### Установить значение max/min server memory
+
+```bash
+sp_configure 'show advanced options', 1;
+GO
+RECONFIGURE;
+GO
+sp_configure 'max server memory', 4096;
+GO
+RECONFIGURE;
+GO
+```
+
+#### Установить значение: max degree of parallelism
+
+```bash
+EXEC sp_configure 'show advanced options', 1;
+GO
+RECONFIGURE WITH OVERRIDE;
+GO
+EXEC sp_configure 'max degree of parallelism', 16;
+GO
+RECONFIGURE WITH OVERRIDE;
+GO
+```
+
+
 #### Создать новую БД 
 
 ```bash
