@@ -2,6 +2,15 @@
 
 ## Разное
 
+#### Создать файл произвольного размера(10Gb)
+
+```bash
+$file = New-Object -TypeName System.IO.FileStream -ArgumentList D:\File_random_size.txt,Create,ReadWrite
+$file.SetLength(10240Mb)
+$file.Close()
+```
+
+
 #### Логи со всех участников кластера за последние 10 часов.
 
 ```bash
