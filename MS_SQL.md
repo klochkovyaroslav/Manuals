@@ -129,5 +129,5 @@ values ('testdfghfghdfhgdghdgfhdsgfhdf')
 
 
 ```bash
-RESTORE DATABASE [earnings] WITH RECOVERY
+RESTORE DATABASE [TestDB] WITH RECOVERY
 ```
