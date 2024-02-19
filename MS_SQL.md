@@ -125,7 +125,7 @@ values ('testdfghfghdfhgdghdgfhdsgfhdf')
 
 #### Как сделать базу данных SQL Server доступной в состоянии RESTORING без восстановления резервных копий
 #### Если база данных застряла в состоянии восстановления и у вас нет дополнительных резервных копий для восстановления, вы можете восстановить базу данных с помощью следующей команды:
-Сделать базу данных SQL Server доступной в состоянии RESTORING - [ссылка без title](https://blog.it-kb.ru/2021/10/14/sql-server-database-stuck-in-restoring-state/#more-23442).
+Сделать базу данных SQL Server доступной в состоянии RESTORING - [ссылка](https://blog.it-kb.ru/2021/10/14/sql-server-database-stuck-in-restoring-state/#more-23442).
 
 
 ```bash
