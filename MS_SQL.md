@@ -136,6 +136,9 @@ RESTORE DATABASE [TestDB] WITH RECOVERY
 #### При добавление в Always On Listener - возникает ошибка:
 
 _**Create Failed for Availability Group Listener" SQL Error: 19471**_  
+
+![](//placehold.it/200x100)
+
 Как исправить - [ссылка](https://www.youtube.com/watch?v=5-roDqL9Sms).
 ```
 1. Добавить в DNS A-запись для будущего Listener-a (например "sql-Listener1")
