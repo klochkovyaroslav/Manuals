@@ -142,3 +142,4 @@ _**Create Failed for Availability Group Listener" SQL Error: 19471**_
 2. Создать в AD объект "Компьютер" с именем таким какое имя будет у "Listener"-a (например "sql-Listener1")
 3. В свойствах получившегося объекта "Компьютер" в вкладке "Security" добавить объект "Компьютер" и именем Failover Cluster-a и дать полный доступ
 ```
+[ссылка](https://www.youtube.com/watch?v=5-roDqL9Sms).
