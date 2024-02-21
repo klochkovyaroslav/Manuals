@@ -137,7 +137,7 @@ RESTORE DATABASE [TestDB] WITH RECOVERY
 
 _**Create Failed for Availability Group Listener" SQL Error: 19471**_  
 
-![](//placehold.it/200x100)
+![]([//placehold.it/200x100](https://github.com/klochkovyaroslav/Manuals/blob/main/SQL_Error_19471.jfif))
 
 Как исправить - [ссылка](https://www.youtube.com/watch?v=5-roDqL9Sms).
 ```
