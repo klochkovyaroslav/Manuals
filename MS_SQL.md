@@ -136,10 +136,10 @@ RESTORE DATABASE [TestDB] WITH RECOVERY
 #### При добавление в Always On Listener - возникает ошибка:
 
 _**Create Failed for Availability Group Listener" SQL Error: 19471**_
-
+Как исправить - [ссылка](https://www.youtube.com/watch?v=5-roDqL9Sms).
 ```
 1. Добавить в DNS A-запись для будущего Listener-a (например "sql-Listener1")
 2. Создать в AD объект "Компьютер" с именем таким какое имя будет у "Listener"-a (например "sql-Listener1")
 3. В свойствах получившегося объекта "Компьютер" в вкладке "Security" добавить объект "Компьютер" и именем Failover Cluster-a и дать полный доступ
 ```
-[ссылка](https://www.youtube.com/watch?v=5-roDqL9Sms).
+
