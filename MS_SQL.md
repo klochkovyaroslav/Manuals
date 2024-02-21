@@ -122,6 +122,7 @@ insert
 into mtable1 (name)
 values ('testdfghfghdfhgdghdgfhdsgfhdf')
 ```
+## SQL Always On AG 
 
 ### Как сделать базу данных SQL Server доступной в состоянии RESTORING без восстановления резервных копий
 #### Если база данных застряла в состоянии восстановления и у вас нет дополнительных резервных копий для восстановления, вы можете восстановить базу данных с помощью следующей команды:
@@ -130,4 +131,14 @@ values ('testdfghfghdfhgdghdgfhdsgfhdf')
 
 ```bash
 RESTORE DATABASE [TestDB] WITH RECOVERY
+```
+
+#### При добавление в Always On Listener - возникает ошибка:
+
+_**Create Failed for Availability Group Listener" SQL Error: 19471**_
+
+```
+1. Добавить в DNS A-запись для будущего Listener-a (например "sql-Listener1")
+2. Создать в AD объект "Компьютер" с именем таким какое имя будет у "Listener"-a (например "sql-Listener1")
+3. В свойствах получившегося объекта "Компьютер" в вкладке "Security" добавить объект "Компьютер" и именем Failover Cluster-a и дать полный доступ
 ```
