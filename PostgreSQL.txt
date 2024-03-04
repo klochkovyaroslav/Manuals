@@ -34,6 +34,8 @@ systemctl start postgresql-9.6
 
 \\\\\\\\\\\\\\\\\\ Debian \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+https://commandprompt.com/education/how-to-install-and-setup-postgresql-on-debian-12/
+
  sudo apt-get remove --purge postgresql-1* -y
 
 	Команда для установки репозитория Debian:
