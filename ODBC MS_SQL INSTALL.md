@@ -4,6 +4,7 @@
 #### Создать bash скрипт "odbc_install.sh"
 
 ```bash
+#!/bin/bash
 sudo touch odbc_install.sh
 ```
 ```bash
