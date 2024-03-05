@@ -8,8 +8,8 @@ sudo touch odbc_install.sh
 ```bash
 sudo apt-get install -y curl
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+
 #Download appropriate package for the OS version
-#Debian 12
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/debian/12/prod bookworm main" > /etc/apt/sources.list.d/mssql-release.list'
 
 sudo apt-get update
