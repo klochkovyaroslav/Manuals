@@ -1,5 +1,10 @@
 # Microsoft ODBC 18
+#### Создать bash скрипт "odbc_install.sh"
 
+```bash
+sudo touch odbc_install.sh
+```
+```bash
 sudo apt-get install -y curl
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
 ####  #Download appropriate package for the OS version
@@ -16,3 +21,4 @@ source ~/.bashrc
 sudo apt-get install -y unixodbc-dev
 #### # optional: kerberos library for debian-slim distributions
 sudo apt-get install -y libgssapi-krb5-2
+```
