@@ -1,4 +1,5 @@
-# Установка Microsoft ODBC 18
+# Установка Microsoft ODBC 18 - Debian12
+
 #### Создать bash скрипт "odbc_install.sh"
 
 ```bash
