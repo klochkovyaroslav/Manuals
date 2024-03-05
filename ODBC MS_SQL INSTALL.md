@@ -4,8 +4,9 @@ curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trust
 
 #Download appropriate package for the OS version
 #Debian 12
-curl https://packages.microsoft.com/config/debian/12/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+
 deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/debian/12/prod bookworm main | sudo tee /etc/apt/sources.list.d/mssql-release.list
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/debian/12/prod bookworm main" > sudo tee /etc/apt/sources.list.d/mssql-release.list'
 
 sudo apt-get update
 sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18
