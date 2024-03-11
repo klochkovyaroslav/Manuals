@@ -6,6 +6,7 @@
 apt show vim
 apt policy vim
 apt list vim
+apt search postgresql
 
 	Использование Apt-get
 	Здесь опция -s указывает на симуляцию.
