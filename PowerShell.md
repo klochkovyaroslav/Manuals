@@ -65,7 +65,13 @@ $time_po_total=($time_po_stop-$time_po_start).ToString().Split('.')[0]
 
 '{0:mm} min {0:ss} sec' -f $time_po_total
 ```
+#### Для получения суммарного времени, затраченного на выполнение всех команд в блоке кода PowerShell -командлет "Measure-Command"
 
+```bash
+(Measure-Command {
+#код вашего скрипта PowerShell
+}).TotalMilliseconds
+```
 
 #### Создать файл произвольного размера(10Gb)
 
