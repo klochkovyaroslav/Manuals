@@ -3,6 +3,29 @@
 ## Разное
 
 ### ОС - Windows
+
+#### Для регистрации текущего сеанса PowerShell используется командлет Start-Transcript.
+
+```bash
+Start-Transcript -Append C:\Scripts\PS-Script-Log.txt
+Start-Sleep -Seconds 10
+Stop-Transcript
+```
+
+#### PowerShell. Время запуска и окончания команды содержится в атрибутах StartExecutionTime и EndExecutionTime
+
+```bash
+Get-History | select StartExecutionTime,EndExecutionTime,CommandLine
+```
+
+#### Получить время выполнения последней команды:
+
+```bash
+$lastcommand=Get-History | select -Last 1 -Property *
+$lastcommand.EndExecutionTime - $lastcommand.StartExecutionTime
+```
+
+
 #### Создать файл произвольного размера(10Gb)
 
 ```bash
