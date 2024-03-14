@@ -8,6 +8,7 @@
 
 ```bash
 Start-Transcript -Append C:\Scripts\PS-Script-Log.txt
+    #код вашего скрипта PowerShell
 Start-Sleep -Seconds 10
 Stop-Transcript
 ```
@@ -23,6 +24,40 @@ Get-History | select StartExecutionTime,EndExecutionTime,CommandLine
 ```bash
 $lastcommand=Get-History | select -Last 1 -Property *
 $lastcommand.EndExecutionTime - $lastcommand.StartExecutionTime
+```
+
+### Вычисляем скорость выполнения PowerShell кода
+
+#### Net класс StopWatch работает как секундомер:
+
+```bash
+$watch = [System.Diagnostics.Stopwatch]::StartNew()
+$watch.Start() #Запуск таймера
+    #код вашего скрипта PowerShell
+$watch.Stop() #Остановка таймера
+Write-Host $watch.Elapsed #Время выполнения скрипта
+
+'Время выполнения: '+ (($watch.Elapsed).ToString()).Split('.')[0] | out-file -Filepath $rezult_FO -append
+#Write-Host 'Время выполнения: '(($watch.Elapsed).ToString()).Split('.')[0] | out-file -Filepath $rezult_FO -append
+$watch.IsRunning #запущен ли сейчас секундомер
+```
+
+#### Подсчет разницы в [datetime]:
+
+```bash
+$time_po_start = (Get-Date)
+    Start-Sleep -Seconds 10
+    #код вашего скрипта PowerShell
+$time_po_stop = (Get-Date)
+$time_po_total = $time_po_stop-$time_po_start
+
+$TotalTime
+$TotalTime.ToString()
+
+$time_po_total=($time_po_stop-$time_po_start).ToString().Split('.')[0]
+'Время выполнения: '+ $time_po_total | out-file -Filepath $rezult_FO -append
+
+'{0:mm} min {0:ss} sec' -f $time_po_total
 ```
 
 
