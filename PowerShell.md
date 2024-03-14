@@ -12,6 +12,9 @@ Start-Transcript -Append C:\Scripts\PS-Script-Log.txt
 Start-Sleep -Seconds 10
 Stop-Transcript
 ```
+#### Дата - Время в Powershell
+
+[PowerShell — Дата и Время](https://sawfriendship.wordpress.com/2017/07/17/powershell-date-and-time)
 
 #### PowerShell. Время запуска и окончания команды содержится в атрибутах StartExecutionTime и EndExecutionTime
 
