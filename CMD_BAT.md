@@ -24,3 +24,11 @@ ForFiles /p "X:\path" /s /c "cmd /c echo @path @file" /d -5
 ```
 fsutil file createnew d:\1gb-file.txt 10737418240
 ```
+
+### Чтобы удалить LCU после установки объединенного пакета SSU и LCU:
+
+DISM/Remove-Package "Имя пакета"
+
+#### Имя пакета можно найти с помощью следующей команды:
+
+DISM /online /get-packages
