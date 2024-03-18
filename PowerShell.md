@@ -2,6 +2,8 @@
 
 ## Оптимизация времени выполнения команд PowerShell
 
+#### Запрос списка пользователей из AD с помощью команды Get-ADUser
+
 ```bash
 Get-ADUser -Filter {Enabled -eq "true"} -работает быстрее
 Get-ADUser | Where-Object {$_.enabled -eq $true} -работает медленее
