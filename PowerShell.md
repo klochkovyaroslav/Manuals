@@ -1,5 +1,27 @@
 # PowerShell - Примеры
 
+## Оптимизация времени выполнения команд PowerShell
+
+```bash
+Get-ADUser -Filter {Enabled -eq "true"} -работает быстрее
+Get-ADUser | Where-Object {$_.enabled -eq $true} -работает медленее
+
+Время выполнения первой команды намного меньше, т.к. все выборка выполняется на стороне сервера. Кроме, того ваш компьютер получит меньший объем данных, т.к. сервер вернет только запрошенные объекты.
+Вторая команда возвращает с контроллера домена все объекты и только после этого фильтрует результат.
+
+Аналогичный результат можно увидеть при запросе списка событий из журналов Event Viewer с помощью Get-WinEvent.
+Сформируем список ошибок из Event Viewer за 10 дней с помощью Where-Object и FilterHashtable. Сравним скорость выполнения этих двух команд PowerShell с помощью Measure-Command:
+
+$StartDate = (Get-Date).AddDays(-10)
+
+Проверим скорость выполнения команды при использовании Where-Object:
+(Measure-Command {Get-WinEvent System | Where-Object {($_.LevelDisplayName -eq "Error") -and ($_.TimeCreated -ge $StartDate )}}).TotalMilliseconds
+
+Теперь воспользуемся возможность фильтрации на стороне службы Event Viewer с помощью параметра FilterHashtable:
+(Measure-Command {Get-WinEvent -FilterHashtable @{LogName = 'System'; Level =3; StartTime=$StartDate }}).TotalMilliseconds
+
+```
+
 ## Разное
 
 ### ОС - Windows
