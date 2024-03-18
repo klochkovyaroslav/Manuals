@@ -1,13 +1,13 @@
-\\\\\\\\\\\\\\\\\\\\\ sudo command not found» Debian, Ubuntu è CentOS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\ sudo command not found» Debian, Ubuntu и CentOS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 su -
 usermod -aG root user
-	Ïåðåëîãèíåòñÿ: (Ctrl+d)
+	Перелогинется: (Ctrl+d)
 apt install sudo -y
 usermod -aG sudo user
-	Ïåðåëîãèíåòñÿ: (Ctrl+d)
-	Ïðîâåðèòü ãðóïïû ïîëüçîâàòåëÿ user:
+	Перелогинется: (Ctrl+d)
+	Проверить группы пользователя user:
 id
  
-	Ïðîñìîòð ïîëíîìî÷èé:
+	Просмотр полномочий:
 sudo -l
