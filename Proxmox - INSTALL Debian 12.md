@@ -67,3 +67,8 @@ apt install proxmox-ve postfix open-iscsi chrony
 apt remove linux-image-amd64 'linux-image-6.1*'
 ```
 
+#### Проверить что Proxmox слушает на 8006 порту 
+
+```bash
+sudo ss -tunelp | grep 8006
+```
