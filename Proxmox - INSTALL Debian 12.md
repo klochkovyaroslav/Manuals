@@ -50,7 +50,20 @@ apt update && apt full-upgrade
 apt install proxmox-default-kernel
 ```
 
-#### Перезагружаемся
+### Перезагружаемся
 ```bash
 systemctl reboot
 ```
+
+#### Устанавливаем пакеты:
+
+```bash
+apt install proxmox-ve postfix open-iscsi chrony
+```
+
+#### Нужно удалить родное debian ядро:
+
+```bash
+apt remove linux-image-amd64 'linux-image-6.1*'
+```
+
