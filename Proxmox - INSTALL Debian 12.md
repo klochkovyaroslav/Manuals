@@ -19,11 +19,24 @@ su -
 echo "deb [arch=amd64] http://download.proxmox.com/debian/pve bookworm pve-no-subscription" > /etc/apt/sources.list.d/pve-install-repo.list
 ```
 
+#### Можно проверить что репозиторий добавлен:
+
+```bash
+nano /etc/apt/sources.list.d/pve-install-repo.list
+```
+
 #### Добавляем ключ
 
 ```bash
 wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg 
 ```
+
+#### Проверить что добавлен ключ:
+
+```bash
+ls -l /etc/apt/trusted.gpg.d/ | grep -i proxmox
+```
+
 #### Обновляем свой репозиторий в системе
 
 ```bash
