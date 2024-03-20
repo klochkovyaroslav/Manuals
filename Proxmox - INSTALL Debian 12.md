@@ -24,3 +24,14 @@ sudo wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg -O 
 ```bash
 sudo apt update && apt full-upgrade
 ```
+
+#### Устанавливаем ядро Proxmox VE
+
+```bash
+apt install proxmox-default-kernel
+```
+
+#### Перезагружаемся
+```bash
+systemctl reboot
+```
