@@ -14,7 +14,7 @@ _#127.0.0.1  localhost_
 su -
 ```
 
-#### Добавляем Proxmox VE репозиторий:
+### Добавляем Proxmox VE репозиторий:
 
 ```bash
 echo "deb [arch=amd64] http://download.proxmox.com/debian/pve bookworm pve-no-subscription" > /etc/apt/sources.list.d/pve-install-repo.list
@@ -26,7 +26,7 @@ echo "deb [arch=amd64] http://download.proxmox.com/debian/pve bookworm pve-no-su
 cat /etc/apt/sources.list.d/pve-install-repo.list
 ```
 
-#### Добавляем ключ
+### Добавляем ключ
 
 ```bash
 wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg 
@@ -44,13 +44,13 @@ ls -l /etc/apt/trusted.gpg.d/ | grep -i proxmox
 apt update && apt full-upgrade
 ```
 
-#### Устанавливаем ядро Proxmox VE
+### Устанавливаем ядро Proxmox VE
 
 ```bash
 apt install proxmox-default-kernel
 ```
 
-### Перезагружаемся
+## Перезагружаемся
 ```bash
 systemctl reboot
 ```
@@ -61,7 +61,7 @@ systemctl reboot
 apt install proxmox-ve postfix open-iscsi chrony
 ```
 
-#### Нужно удалить родное debian ядро:
+### Нужно удалить родное debian ядро:
 
 ```bash
 apt remove linux-image-amd64 'linux-image-6.1*'
