@@ -23,7 +23,7 @@ echo "deb [arch=amd64] http://download.proxmox.com/debian/pve bookworm pve-no-su
 #### Можно проверить что репозиторий добавлен:
 
 ```bash
-nano /etc/apt/sources.list.d/pve-install-repo.list
+cat /etc/apt/sources.list.d/pve-install-repo.list
 ```
 
 #### Добавляем ключ
