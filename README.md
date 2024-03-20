@@ -118,6 +118,9 @@ ldapsearch -x -b "DC=wp,DC=demo" -H "ldap://192.168.1.100" -W sAMAccountName=p.i
 
 ## Команды - разное:
 
+### Задать имя хоста
+sudo hostnamectl set-hostname proxmox
+
 ### PING сразу нескольких машин по очереди.
 
 ```bash
