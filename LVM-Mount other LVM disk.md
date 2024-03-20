@@ -1,5 +1,6 @@
 # Подключение диска lvm к другому компьютеру
 [Источник](https://itproffi.ru/podklyuchenie-diska-lvm-k-drugomu-kompyuteru)
+[Настройка и управление LVM разделами](https://winitpro.ru/index.php/2019/10/28/nastrojka-lvm-razdelov-v-linux/)
 ### Установка утилиты lvm2
 
 ```bash
