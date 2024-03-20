@@ -44,13 +44,13 @@ ls -l /etc/apt/trusted.gpg.d/ | grep -i proxmox
 apt update && apt full-upgrade
 ```
 
-### Устанавливаем ядро Proxmox VE
+## Устанавливаем ядро Proxmox VE
 
 ```bash
 apt install proxmox-default-kernel
 ```
 
-## Перезагружаемся
+### Перезагружаемся
 ```bash
 systemctl reboot
 ```
