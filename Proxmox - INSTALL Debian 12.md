@@ -8,12 +8,13 @@ sudo nano /etc/hosts
 _#127.0.0.1  localhost_  
 Меняем вторую строку с: _127.0.1.1  proxmox.home.local  proxmox_  на _192.168.88.28  proxmox.home.local  proxmox_  
 
-#### Добавляем Proxmox VE репозиторий:
 #### Логинемся под root
 
 ```bash
 su -
 ```
+
+#### Добавляем Proxmox VE репозиторий:
 
 ```bash
 echo "deb [arch=amd64] http://download.proxmox.com/debian/pve bookworm pve-no-subscription" > /etc/apt/sources.list.d/pve-install-repo.list
