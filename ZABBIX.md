@@ -6,6 +6,7 @@
 Key - perf_counter[\Processor Information(_Total)\% Processor Utility]
 Type of information - Numeric (float)
 Units - %
+
 **Tags:**
 Name - component
 Value - cpu
