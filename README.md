@@ -116,15 +116,16 @@ ldapsearch -x -b "DC=wp,DC=demo" -H "ldap://192.168.1.100" -W sAMAccountName=p.i
 ```
 
 
+
+
 ## Ядро
 
 #### Узнать какое ядро загружено
 
 ```bash
 cat /proc/cmdline
+grep -Eo 'BOOT_IMAGE=[^ ]*' /proc/cmdline
 ```
-
-
 
 
 
