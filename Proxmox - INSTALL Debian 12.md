@@ -96,3 +96,10 @@ sudo ss -tunelp | grep 8006
 
 В WEB интерфейсе в разделе network создать bridge с именем "vmbr0"  
 
+
+#### ProxMox отключить проверку к подписке сервера к платной ТП:
+
+```bash
+su -
+curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/rickycodes/pve-no-subscription/main/no-subscription-warning.sh | sh
+```
