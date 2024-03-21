@@ -91,3 +91,8 @@ systemctl reboot
 ```bash
 sudo ss -tunelp | grep 8006
 ```
+
+### Создать network bridge
+
+В WEB интерфейсе в разделе network создать bridge с именем "vmbr0"  
+
