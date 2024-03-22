@@ -1,5 +1,35 @@
 # LINUX
 
+
+### Включение TRIM на SSD
+
+```bash
+systemctl status fstrim.service
+systemctl status fstrim.timer
+```
+
+#### Узнайте версию прошивки:
+
+```bash
+sudo hdparm -i /dev/ваш_диск | grep -i Fw
+sudo hdparm -I /dev/sda | grep "TRIM"
+```
+#### Проверка TRIM
+
+```bash
+lsblk --discard
+```
+Если вы видите нулевые значения в колонках DISC-GRAN (discard granularity) и DISC-MAX (discard max bytes), значит TRIM НЕ работает.  
+Здесь DISC-GRAN равен 512B потому что размер сектора на SSD равен 512 bytes.  
+
+#### Проверить еще можно командой ручного вызова TRIM:
+
+```bash
+sudo fstrim -v /
+sudo fstrim -av
+```
+
+
 ### Редактирование файла Sudoers
 
 Команда sudo настраивается с помощью файла, расположенного в каталоге /etc/sudoers  
