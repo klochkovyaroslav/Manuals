@@ -26,6 +26,13 @@ sudo systemctl set-default multi-user.target
 ```bash
 sudo systemctl set-default graphical.target
 ```
+### Как узнать, какой менеджер отображения используется на Linux
+
+```bash
+ systemctl status display-manager.service
+```
+
+[Как установить новый Display Manager в Debian, Ubuntu, Linux Mint, Kali Linux и их производных](https://zalinux.ru/?p=8982#1)
 
 
 ## Включение TRIM на SSD
