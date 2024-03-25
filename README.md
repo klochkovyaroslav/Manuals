@@ -27,7 +27,8 @@ sudo systemctl set-default multi-user.target
 sudo systemctl set-default graphical.target
 ```
 
-### Включение TRIM на SSD
+
+## Включение TRIM на SSD
 
 ```bash
 systemctl status fstrim.service
