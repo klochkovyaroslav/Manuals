@@ -208,6 +208,32 @@ grep -Eo 'BOOT_IMAGE=[^ ]*' /proc/cmdline
 
 ## Команды - разное:
 
+
+## SIGNAL
+
+### Команда: pkill
+
+
+#### 1 (HUP): перезагрузить процесс.
+
+```bash
+pkill -1 firefox
+pkill -HUP nginx
+```
+
+#### 15 (TERM): аккуратно завершить процесс.
+
+```bash
+pkill -15 firefox
+```
+
+#### 9 (KILL): убить процесс.
+
+```bash
+pkill -9 firefox
+```
+
+
 ### Задать имя хоста
 sudo hostnamectl set-hostname proxmox
 
