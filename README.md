@@ -32,6 +32,18 @@ sudo systemctl set-default graphical.target
  systemctl status display-manager.service
 ```
 
+#### Как переключиться между менеджерами отображения
+
+```bash
+sudo systemctl disable gdm.service
+sudo systemctl enable sddm.service
+```
+#### Как поменять Display Manager с помощью dpkg-reconfigure
+
+```bash
+sudo dpkg-reconfigure gdm3
+```
+
 [Как установить новый Display Manager в Debian, Ubuntu, Linux Mint, Kali Linux и их производных](https://zalinux.ru/?p=8982#1)
 
 
