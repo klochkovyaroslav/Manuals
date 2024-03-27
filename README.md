@@ -249,7 +249,7 @@ dd if=tempfile of=/dev/null bs=1M count=1024
 
 #### Скорость записи 1Gb данных:
 ```bash
-time $(dd if=/dev/zero of=test.raw bs=1M count=1 && sync)
+time $(dd if=/dev/zero of=test.raw bs=1M count=1024 && sync)
 sync; dd if=/dev/zero of=tempfile bs=1M count=1024; sync
 ```
 
