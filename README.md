@@ -238,6 +238,16 @@ pkill -9 firefox
 pkill '^ssh$'
 ```
 
+## Отключить устройство програмно DEBIAN 12
+
+#### Отключаем модуль WIFI:
+
+```bash
+sudo lspci -knn | grep -iA2 'wire'
+sudo nano /etc/modprobe.d/intel-microcode-blacklist.conf
+добавить:
+blacklist rt2800pci
+```
 
 ## Проверить скорость чтение/запись диска
 
