@@ -91,7 +91,7 @@ git push origin
 Ввести логин + пароль
 ```
 
-## Аунтификация в Github.org по SSH ключу
+## Аунтификация в Github.org по SSH ключу - LINUX
 #### Сгенерировать SSH ключ локально на своем ПК
 
 ```
@@ -104,6 +104,14 @@ ssh-keygen
 ```
 cat ~/.ssh/id_rsa.pub
 ```
+
+
+## Аунтификация в Github.org по SSH ключу - WINDOWS
+
+
+
+
+
 Идем в Github.org в профиль -> Settings -> SSH and GPG Keys  
 Кнопка "New SSH key"  
 Задаем имя ключа  
