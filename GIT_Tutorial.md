@@ -74,3 +74,10 @@ git restore file1.txt
 ```
 git diff --staged
 ```
+
+## Git Clone
+### Добавить с Github.org репозиторий на свой ПК
+
+```
+git clone https://github.com/klochkovyaroslav/Any_project.git
+```
