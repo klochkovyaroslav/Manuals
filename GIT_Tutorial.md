@@ -81,3 +81,21 @@ git diff --staged
 ```
 git clone https://github.com/klochkovyaroslav/Any_project.git
 ```
+
+
+## Git Push
+#### Загрузить в репозиторий на Github.org файлы/папки со своего КП
+
+```
+git push origin (первый push)
+Ввести логин + пароль
+```
+
+## Аунтификация в Github.org по SSH ключу
+#### Сгенерировать SSH ключ локально на своем ПК
+
+```
+ls -la ~/.ssh
+ssh-keygen
+Пароль при создании ключей можно не указывать(просто жмем Enter)
+```
