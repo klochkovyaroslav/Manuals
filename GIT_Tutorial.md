@@ -37,3 +37,15 @@ git init .
 ```
 git status
 ```
+
+## Команды
+
+```
+git status
+
+git add *
+или
+git add .
+
+git commit -m "Информация о коммите"
+```
