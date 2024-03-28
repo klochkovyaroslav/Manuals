@@ -21,4 +21,5 @@ cat .gitconfig
 
 Windows:
 C:\Users\yaroslav.klochkov\.gitconfig
+type C:\Users\yaroslav.klochkov\.gitconfig
 ```
