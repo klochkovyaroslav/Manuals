@@ -9,8 +9,8 @@ sudo yum install git
 ## Первоначальная настройка
 
 ```
-git config --global user.name "Klochkov Yaroslav"
-git config --global user.email "klochkovyaroslav@gmail.com"
+git config --global user.name "user_github"
+git config --global user.email "user_github@gmail.com"
 ```
 ####  Конфирурационный файл git config лежит:
 
@@ -20,8 +20,8 @@ git config -l
 cat .gitconfig
 
 Windows:
-C:\Users\yaroslav.klochkov\.gitconfig
-type C:\Users\yaroslav.klochkov\.gitconfig
+C:\Users\"user_windows"\.gitconfig
+type C:\Users\"user_windows"\.gitconfig
 ```
 
 ## Начало наботы с Git:
@@ -79,7 +79,7 @@ git diff --staged
 ### Добавить с Github.org репозиторий на свой ПК
 
 ```
-git clone https://github.com/klochkovyaroslav/Any_project.git
+git clone https://github.com/user_github/Any_project.git
 ```
 
 
@@ -120,6 +120,7 @@ git remote -v
 #### Изменить адрес ссылки текущего удаленного репозртория
 
 ```
-git remote set-url origin git@github.com/klochkovyaroslav/Any_project.git
+git remote set-url origin git@github.com:user_github/Any_project.git
+                          
 ```
 
