@@ -87,7 +87,7 @@ git clone https://github.com/user_github/Any_project.git
 #### Загрузить в репозиторий на Github.org файлы/папки со своего КП
 
 ```
-git push origin (первый push)
+git push origin
 Ввести логин + пароль
 ```
 
@@ -122,5 +122,14 @@ git remote -v
 ```
 git remote set-url origin git@github.com:user_github/Any_project.git
                           
+```
+
+Теперь можно добавлять удалять изменять содержиржимое репозитория без логина+пароль.  
+
+## Git Push
+#### Загрузить в репозиторий на Github.org файлы/папки со своего КП
+
+```
+git push origin
 ```
 
