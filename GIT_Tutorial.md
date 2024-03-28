@@ -15,6 +15,10 @@ git config --global user.email "klochkovyaroslav@gmail.com"
 ####  Конфирурационный файл git config лежит:
 
 ```
+Linux:
 git config -l
 cat .gitconfig
+
+Windows:
+C:\Users\yaroslav.klochkov
 ```
