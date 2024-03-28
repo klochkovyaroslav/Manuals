@@ -105,12 +105,24 @@ ssh-keygen
 cat ~/.ssh/id_rsa.pub
 ```
 
-
 ## Аунтификация в Github.org по SSH ключу - WINDOWS
+#### Сгенерировать SSH ключ локально на своем ПК
 
+#### Запустить Git Bash
 
+```
+"C:\Program Files\Git\git-bash.exe" --cd-to-home
+```
 
+```
+ssh-keygen
+Пароль при создании ключей можно не указывать(просто жмем Enter)
+```
 
+#### Копируем содержимое публичного ключа:
+```
+C:\Users\yaroslav.klochkov\.ssh\id_ed25519.pub
+```
 
 Идем в Github.org в профиль -> Settings -> SSH and GPG Keys  
 Кнопка "New SSH key"  
