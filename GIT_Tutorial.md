@@ -31,3 +31,9 @@ type C:\Users\yaroslav.klochkov\.gitconfig
 ```
 git init .
 ```
+
+#### Проверка
+
+```
+git status
+```
