@@ -23,3 +23,11 @@ Windows:
 C:\Users\yaroslav.klochkov\.gitconfig
 type C:\Users\yaroslav.klochkov\.gitconfig
 ```
+
+## Начало наботы с Git:
+
+#### Создать папку и перейти в нее
+
+```
+git init .
+```
