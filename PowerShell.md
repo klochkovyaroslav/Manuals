@@ -1,5 +1,13 @@
 # PowerShell - Примеры
 
+
+## PSScriptAnalyzer — это статическая проверка кода для модулей и скриптов PowerShell
+
+```bash
+Install-Module -Name PSScriptAnalyzer
+Invoke-ScriptAnalyzer C:\ps_scripts\sql_restore_check_db\Auto_Restore_DB_Check_DB.ps1
+```
+
 ## Оптимизация времени выполнения команд PowerShell
 
 #### Запрос списка пользователей из AD с помощью команды Get-ADUser
