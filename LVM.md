@@ -98,7 +98,7 @@ lvextend /dev/vg-01/home -l +100%FREE
 resize2fs /dev/vg-01/home
 ```
 
-Если используется файловая система XFS, как правило на CentOS 7 она идет по умолчанию, то вместо resize2fs используйте команду xfs_growfs:
+Если используется файловая система XFS, на CentOS 7 по умолчанию, то вместо resize2fs команда xfs_growfs:
 ```bash
 xfs_growfs /dev/vg-01/home
 ```
