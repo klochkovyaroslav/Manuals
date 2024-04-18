@@ -311,22 +311,23 @@ EOF
 
 ```bash
 scp user@192.168.1.28:/var/lib/vz/template/iso/installation-1.7.5.16-06.02.24_14.21.iso /home/admin/Documents
-Файл installation-1.7.5.16-06.02.24_14.21.iso будет загружен с сервера 192.168.1.28 на локальный компьютер в папку "/home/admin/Documents"
 ```
+Файл installation-1.7.5.16-06.02.24_14.21.iso будет загружен с сервера 192.168.1.28 на локальный компьютер в папку "/home/admin/Documents"  
 
 #### Копировать файл по SSH с локальной машины на удалённый сервер
 
 ```bash
 sudo scp file1.tar.gz root@server2:/root/
-Файл file1.tar.gz будет скопирован на хост server2 в директорию "/root"
 ```
+Файл file1.tar.gz будет скопирован на хост server2 в директорию "/root"  
 
 #### Копировать файл по SSH с одного удалённого сервера на другой
 
 ```bash
 Подключитесь по SSH к серверу, на котором расположен файл. Затем выполните команду:
 scp /home/file1.tar.gz root@192.168.1.28:/home/admin/Documents
-Файл file1.tar.gz будет скопирован на хост 192.168.1.28 в директорию "/home/admin/Documents"
+```
+Файл file1.tar.gz будет скопирован на хост 192.168.1.28 в директорию "/home/admin/Documents"  
 
 
 ### Переименовать файл
