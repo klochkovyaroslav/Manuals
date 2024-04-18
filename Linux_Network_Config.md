@@ -81,3 +81,26 @@ sudo systemctl list-unit-files | grep -i network
 systemctl restart networking.service
 ```
 
+
+## Astra Linux 1.7
+
+###  NMTUI - Утилита с псевдографикой
+
+```bash
+sudo nmtui
+```
+
+### NMCLI - Утилита
+
+```bash
+sudo nmcli
+sudo nmcli device status
+sudo nmcli device show
+```
+Применить конфигурацию:  
+
+```bash
+sudo systemctl restart NetworkManager
+sudo nmcli connection up Wired\ connection\ 1
+```
+
