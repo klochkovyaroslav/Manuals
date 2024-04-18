@@ -49,3 +49,27 @@ mkdir /mnt/disk_lvm_new
 mount /dev/centos_old/lvm-root_new_name /mnt/disk_lvm_new
 df -h
 ```
+
+# Увеличение LVM диска в виртуальной машине
+На гостевой ВМ  
+
+```bash
+df -h
+parted /dev/vda
+print
+resizepart 2
+Указываем конечный размер раздела
+10000GB
+q
+```
+
+```bash
+pvresize /dev/vda2
+lvscan
+lvextend /dev/vg-01/home -l +100%FREE
+resize2fs /dev/vg-01/home
+df -h
+```
+
+
+
