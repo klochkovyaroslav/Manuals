@@ -56,10 +56,24 @@ df -h
 ```bash
 df -h
 parted /dev/vda
+```
+
+получим размер диска:
+
+```bash
 print
+```
+
+увеличим logical partition
+
+```bash
 resizepart 2
+```
+
 Указываем конечный размер раздела
 10000GB
+
+```bash
 q
 ```
 
