@@ -82,6 +82,8 @@ pvresize /dev/vda2
 Узнаем название logical volume:
 ```bash
 lvdisplay
+```
+```bash
 lvscan
 ```
 
