@@ -58,13 +58,13 @@ df -h
 parted /dev/vda
 ```
 
-получим размер диска:
+Посмотрим размер физического диска и всех логических разделов:
 
 ```bash
 print
 ```
 
-увеличим logical partition
+увеличим partition
 
 ```bash
 resizepart 2
@@ -77,21 +77,31 @@ resizepart 2
 q
 ```
 
+
+нужно увеличить размер физического диска в lvm  
+необходимо "сообщить" LVM, что размер physical volume был изменен:  
+
 ```bash
-необходимо "сообщить" LVM, что размер physical volume был изменен:
 pvresize /dev/vda2
+```
 
 Узнаем название logical volume:
+
+```bash
 lvdisplay
 lvscan
+```
 
+увеличиваем размер логического диска в lvm
 Расширяем logical volume до размера physical volume:
+
+```bash
 lvextend /dev/vg-01/home -l +100%FREE
+```
 
 расширим файловую систему:
+
+```bash
 resize2fs /dev/vg-01/home
 df -h
 ```
-
-
-
