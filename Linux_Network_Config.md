@@ -97,10 +97,20 @@ sudo nmcli
 sudo nmcli device status
 sudo nmcli device show
 ```
-Применить конфигурацию:  
+
+#### Сделать настройку сети
+
+```bash
+sudo nmcli connection modify Wired\ connection\ 1 ipv4.metod 'manual' ipv4.addresses '192.168.1.40' ipv4.gateway '192.168.1.1'  ipv4.dns '192.168.1.1'
+```
+#### Добавить DNS адрес
+```bash
+sudo nmcli connection modify Wired\ connection\ 1 +ipv4.dns '192.168.1.1'
+```
+
+#### Применить конфигурацию:  
 
 ```bash
 sudo systemctl restart NetworkManager
 sudo nmcli connection up Wired\ connection\ 1
 ```
-
