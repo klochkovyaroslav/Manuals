@@ -91,8 +91,15 @@ lvscan
 lvextend /dev/vg-01/home -l +100%FREE
 ```
 
-расширим файловую систему:
+Расширим файловую систему:
 ```bash
 resize2fs /dev/vg-01/home
+```
+
+Если используется файловая система XFS, как правило на CentOS 7 она идет по умолчанию, то вместо resize2fs используйте команду xfs_growfs:
+```bash
+xfs_growfs /dev/vg-01/home
+```
+```bash
 df -h
 ```
