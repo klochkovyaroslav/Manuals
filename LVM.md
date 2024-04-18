@@ -52,41 +52,34 @@ df -h
 
 # Увеличение LVM диска в виртуальной машине
 На гостевой ВМ  
-
 ```bash
 df -h
 parted /dev/vda
 ```
 
 Посмотрим размер физического диска и всех логических разделов:
-
 ```bash
 print
 ```
 
-увеличим partition
-
+Увеличим partition
 ```bash
 resizepart 2
 ```
 
 Указываем конечный размер раздела
 10000GB
-
 ```bash
 q
 ```
 
-
-нужно увеличить размер физического диска в lvm  
+Нужно увеличить размер физического диска в lvm  
 необходимо "сообщить" LVM, что размер physical volume был изменен:  
-
 ```bash
 pvresize /dev/vda2
 ```
 
 Узнаем название logical volume:
-
 ```bash
 lvdisplay
 lvscan
@@ -94,13 +87,11 @@ lvscan
 
 увеличиваем размер логического диска в lvm
 Расширяем logical volume до размера physical volume:
-
 ```bash
 lvextend /dev/vg-01/home -l +100%FREE
 ```
 
 расширим файловую систему:
-
 ```bash
 resize2fs /dev/vg-01/home
 df -h
