@@ -64,9 +64,17 @@ q
 ```
 
 ```bash
+необходимо "сообщить" LVM, что размер physical volume был изменен:
 pvresize /dev/vda2
+
+Узнаем название logical volume:
+lvdisplay
 lvscan
+
+Расширяем logical volume до размера physical volume:
 lvextend /dev/vg-01/home -l +100%FREE
+
+расширим файловую систему:
 resize2fs /dev/vg-01/home
 df -h
 ```
