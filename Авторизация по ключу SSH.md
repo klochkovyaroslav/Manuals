@@ -15,6 +15,8 @@ ssh-keygen
 ```
  
  Секретный ключ будет называться **id_rsa**, а публичный **id_rsa.pub**.  
+ Можно создать ключи с произвольным именем, для этого нужно ввести путь и имя ключа  
+ В строку "Enter file in which to save the file(/home/user/.ssh/id_rsa):" /home/user/.ssh/my_own_key  
  
  #### Загрузка ключа на удаленный сервер
  Скопировать ключ с локального на удаленный сервер - это использовать утилиту ssh-copy-id  в файл **~/.ssh/authorized_keys**
@@ -60,7 +62,11 @@ chmod 0644 ~/.ssh/authorized_keys
 #### Можно подключаться к удаленному серверу
 
 ``` bash
+ssh -i my_own_key username@remote_host
 ssh username@remote_host
+Выполнить команду удаленно
+ssh -i my_own_key username@remote_host "ip a"
+
 ```
 
 #### Отключение проверки пароля
