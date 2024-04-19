@@ -66,8 +66,21 @@ ssh -i my_own_key username@remote_host
 ssh username@remote_host
 Выполнить команду удаленно
 ssh -i my_own_key username@remote_host "ip a"
-
 ```
+
+#### Можно подключаться к удаленному серверу с ключем без запроса парольной фразы
+Нужно использовать ssh агента  
+
+``` bash
+eval `ssh-agent -s`
+```
+Добавить приватный ключ  
+
+```bash
+ssh-add my_own_key
+```
+Ввести парольную фразу к ключу  
+
 
 #### Отключение проверки пароля
 
