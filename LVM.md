@@ -64,12 +64,20 @@ print
 
 1. Увеличим extended partition
 ```bash
+resizepart 2 100%
+```
+или указать требуемый размер
+```bash
 resizepart 2
 ```
 Указываем конечный размер раздела(Доступный размер посмотреть в строке "Disk /dev/sda: 10000GB")
 10000GB
 
 2. Увеличим logical partition
+```bash
+resizepart 2 100%
+```
+или указать требуемый размер
 ```bash
 resizepart 5
 ```
