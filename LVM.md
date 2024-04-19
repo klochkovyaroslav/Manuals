@@ -109,13 +109,13 @@ lvdisplay
 lvscan
 ```
 
-5. Увеличиваем размер логического диска в lvm
-5.1 Расширяем logical volume до размера physical volume:
+5. Увеличиваем размер логического диска в lvm  
+5.1 Расширяем logical volume до размера physical volume:  
 ```bash
 lvextend /dev/vg-01/home -l +100%FREE
 ```
-или
-5.2 Расширяем logical volume до требуемого размера от physical volume:
+или  
+5.2 Расширяем logical volume до требуемого размера от physical volume:  
 ```bash
 lvextend /dev/vg-01/home -l +50%FREE
 и оставшееся свободное простанство 
