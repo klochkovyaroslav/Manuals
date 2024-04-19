@@ -496,7 +496,14 @@ df -h
 
 ```bash
 cd /etc/ssh
-ssh-keygen -l -E sha256 -f ssh_host_ecdsa_key.pub
+sudo ssh-keygen -l -E sha256 -f ssh_host_ecdsa_key.pub
+```
+#### Сгенирировать новую пару файлов ключа SSH ECDSA
+
+```bash
+cd /etc/ssh
+sudo ssh-keygen -t ecdsa
+указать путь к файлу: /etc/ssh/ssh_host_ecdsa_key
 ```
 
 ##############################################################################################
