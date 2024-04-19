@@ -92,6 +92,9 @@ lvscan
 ```bash
 lvextend /dev/vg-01/home -l +100%FREE
 ```
+```bash
+lvs
+```
 
 Расширим файловую систему:
 ```bash
