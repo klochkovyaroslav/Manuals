@@ -505,6 +505,11 @@ cd /etc/ssh
 sudo ssh-keygen -t ecdsa
 указать путь к файлу: /etc/ssh/ssh_host_ecdsa_key
 ```
+#### Удалить хеш файла ключа SSH ECDSA из ./known_hosts
+
+```bash
+sudo ssh-keygen -f "/home/root/./ssh/known_hosts" -R 192.168.1.20
+```
 
 ##############################################################################################
 
