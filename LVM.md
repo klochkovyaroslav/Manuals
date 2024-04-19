@@ -62,32 +62,37 @@ parted /dev/vda
 print
 ```
 
-Увеличим partition
+1. Увеличим extended partition
 ```bash
 resizepart 2
 ```
-
-Указываем конечный размер раздела
+Указываем конечный размер раздела(Доступный размер посмотреть в строке "Disk /dev/sda: 10000GB")
 10000GB
+
+2. Увеличим logical partition
+```bash
+resizepart 5
+```
 ```bash
 q
 ```
 
-Нужно увеличить размер физического диска в lvm  
+3. Нужно увеличить размер физического диска в lvm  
 необходимо "сообщить" LVM, что размер physical volume был изменен:  
 ```bash
-pvresize /dev/vda2
+pvresize /dev/vda5
 ```
 
-Узнаем название logical volume:
+4. Узнаем название logical volume:
 ```bash
 lvdisplay
 ```
+или
 ```bash
 lvscan
 ```
 
-увеличиваем размер логического диска в lvm
+5. Увеличиваем размер логического диска в lvm
 Расширяем logical volume до размера physical volume:
 ```bash
 lvextend /dev/vg-01/home -l +100%FREE
@@ -96,7 +101,7 @@ lvextend /dev/vg-01/home -l +100%FREE
 lvs
 ```
 
-Расширим файловую систему:
+6. Расширим файловую систему:
 ```bash
 resize2fs /dev/vg-01/home
 ```
