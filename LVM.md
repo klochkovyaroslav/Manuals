@@ -99,7 +99,7 @@ xfs_growfs /dev/vg-01/home
 ```bash
 df -h
 ```
-
+----
 
 # Подключение диска lvm к другому компьютеру
 [Источник](https://itproffi.ru/podklyuchenie-diska-lvm-k-drugomu-kompyuteru)  
