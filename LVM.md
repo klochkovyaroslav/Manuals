@@ -93,6 +93,7 @@ pvs
 ```
 смотрим "PFree"
 ```bash
+partprobe
 pvresize /dev/vda5
 ```
 ```bash
