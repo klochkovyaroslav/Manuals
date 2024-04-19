@@ -118,7 +118,8 @@ lvextend /dev/vg-01/home -l +100%FREE
 5.2 Расширяем logical volume до требуемого размера от physical volume:
 ```bash
 lvextend /dev/vg-01/home -l +50%FREE
-lvextend /dev/vg-01/var -l +50%FREE
+и оставшееся свободное простанство 
+lvextend /dev/vg-01/var -l +100%FREE
 ```
 ```bash
 lvs
