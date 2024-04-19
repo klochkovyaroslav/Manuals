@@ -81,6 +81,7 @@ resizepart 2 100%
 ```bash
 resizepart 5
 ```
+10000GB
 ```bash
 q
 ```
@@ -109,9 +110,15 @@ lvscan
 ```
 
 5. Увеличиваем размер логического диска в lvm
-Расширяем logical volume до размера physical volume:
+5.1 Расширяем logical volume до размера physical volume:
 ```bash
 lvextend /dev/vg-01/home -l +100%FREE
+```
+или
+5.2 Расширяем logical volume до требуемого размера от physical volume:
+```bash
+lvextend /dev/vg-01/home -l +50%FREE
+lvextend /dev/vg-01/var -l +50%FREE
 ```
 ```bash
 lvs
