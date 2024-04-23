@@ -25,6 +25,17 @@ apt install reprepro
 reprepro --ask-passphrase -b /srv/ftp/my_as_repo export
 reprepro -b /srv/ftp/my_as_repo/ includedeb 1.7_x86-64 /tmp/zoom_amd64.deb
 
+gpg --armor --output repo_pgp.key --export as_173
+
+apt-key add repo_pgp.key
+
+apt edit-sources
+содержание:
+deb ftp://localhost/my_as_repo 1.7_x86-64 main contrib non-free
+
+apt update 
+apt install zoom
+
 
 
 
