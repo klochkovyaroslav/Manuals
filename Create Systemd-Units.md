@@ -1,6 +1,6 @@
 # Create Systemd-Units
 
-## Mount
+## Create Mount
 ### Собственные модули типа mount следует располагать в каталоге /etc/systemd/system
 #### Если в пути к точке монтирования есть служебные символы, то для генерации имени модуля существует специальная команда: 
 
@@ -12,9 +12,9 @@ systemd-escape -p "/home/user/*disk-sata"
 ```bash
 nano /etc/systemd/system/home-user-disk1.mount
 или
-systemctl --force --full edit opt-data-log
+systemctl --force --full edit opt-data-log.mount
 ```
-содержимое:
+содержимое:  
 ```bash
 [Unit]
 Description=mount /opt/data/log
@@ -33,4 +33,29 @@ WantedBy=multi-user.target
 
 ```bash
 systemctl cat opt-data-log.mount
+```
+
+## Create Service
+
+```bash
+systemctl --force --full edit nginx.service
+или
+touch /etc/systemd/system/nginx.service
+nano /etc/systemd/system/nginx.service
+```
+содержимое:  
+
+[Unit]
+Description=NGINX WEB SERVER
+
+[Service]
+Type=forking
+ExecStart=/usr/local/nginx/sbin/nginx
+ExecStop=/usr/local/nginx/sbin/nginx -s stop
+ExecStop=/usr/local/nginx/sbin/nginx -s reload
+ExecStop=/usr/local/nginx/sbin/nginx -s reopen
+ExecStop=/usr/local/nginx/sbin/nginx -s quit
+
+[Install]
+WantedBy=multi-user.target
 ```
