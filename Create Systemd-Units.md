@@ -63,3 +63,10 @@ WantedBy=multi-user.target
 ```bash
 systemctl daemon-reload
 ```
+```
+systemctl start nginx.service
+systemctl status nginx.service
+systemctl restart nginx.service
+systemctl stop nginx.service
+```
+
