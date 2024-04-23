@@ -43,8 +43,9 @@ systemctl --force --full edit nginx.service
 touch /etc/systemd/system/nginx.service
 nano /etc/systemd/system/nginx.service
 ```
-содержимое:  
+содержимое:
 
+```
 [Unit]
 Description=NGINX WEB SERVER
 
@@ -58,4 +59,7 @@ ExecStop=/usr/local/nginx/sbin/nginx -s quit
 
 [Install]
 WantedBy=multi-user.target
+```
+```bash
+systemctl daemon-reload
 ```
