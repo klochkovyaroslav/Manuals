@@ -284,6 +284,7 @@ for i in {18..19}; do ping -c3 "192.168.1.$i"; done
 ```bash
 netstat -tulpn
 ss -tulpn
+ss -tanp | grep 6514
 watch ss -tulpn
 ```
 
