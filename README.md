@@ -511,6 +511,15 @@ sudo ssh-keygen -t ecdsa
 sudo ssh-keygen -f "/home/root/./ssh/known_hosts" -R 192.168.1.20
 ```
 
+## Journalctl
+
+```bash
+journalctl -S "2024-04-24 10:00:00" -U "2024-04-24 19:00:00"
+journalctl -n 10 -u NetworkManager.service
+journalctl -F _UID
+journalctl _UID=1000
+```
+
 ##############################################################################################
 
 # WINDOWS
