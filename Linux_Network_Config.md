@@ -58,7 +58,12 @@ ip link set enp0s3 up
 > gateway 192.168.88.1* 
 > *#dns-servers 192.168.88.1*
 
+```bash
+ sudo systemctl restart networking.service
+ ifdown eth0
+ ifup eth0
 
+```
 
 
 #### DNS
