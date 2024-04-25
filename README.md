@@ -208,8 +208,9 @@ grep -Eo 'BOOT_IMAGE=[^ ]*' /proc/cmdline
 ## Команды - разное:
 
 ```bash
-faillog -u root
-faillog -r
+faillog
+faillog -u root (reset count)
+faillog -r (reset count)
 ```
 
 ## SIGNAL
