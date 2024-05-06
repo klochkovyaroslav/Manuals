@@ -243,7 +243,7 @@ pkill -9 firefox
 pkill '^ssh$'
 ```
 
-## Отключить устройство програмно DEBIAN 12
+## Отключить устройство программно DEBIAN 12
 
 #### Отключаем модуль WIFI:
 
@@ -253,6 +253,19 @@ sudo nano /etc/modprobe.d/intel-microcode-blacklist.conf
 добавить:
 blacklist rt2800pci
 ```
+
+#### Создать файл и записать произвольными данными:
+
+```bash
+dd if=/dev/random of=test_test3.raw bs=1G count=1024
+```
+
+#### Создать файл и записать нулями:
+
+```bash
+dd if=/dev/zero of=test_test3.raw bs=1G count=1024
+```
+
 
 ## Проверить скорость чтение/запись диска
 
