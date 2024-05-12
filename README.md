@@ -203,9 +203,15 @@ cat /proc/cmdline
 grep -Eo 'BOOT_IMAGE=[^ ]*' /proc/cmdline
 ```
 
-
-
 ## Команды - разное:
+
+
+#### Найти файлы, которые занимают больше 1Gb
+
+```bash
+find . -mount -type f -size +1G 2>/dev/null
+2>/dev/null используется, чтобы не показывать ошибки (например, если нет доступа к файлу)
+```
 
 ```bash
 faillog
