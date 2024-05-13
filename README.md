@@ -205,7 +205,7 @@ grep -Eo 'BOOT_IMAGE=[^ ]*' /proc/cmdline
 
 ## Команды - разное:
 
-## Чем занято место на диске Linux
+## Чем занято место на диске
 
 ```bash
  ls -A | xargs -d"\n" du -msc | sort -n
