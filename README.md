@@ -205,12 +205,22 @@ grep -Eo 'BOOT_IMAGE=[^ ]*' /proc/cmdline
 
 ## Команды - разное:
 
+## Чем занято место на диске Linux
+
+```bash
+ ls -A | xargs -d"\n" du -msc | sort -n
+```
 
 #### Найти файлы, которые занимают больше 1Gb
 
 ```bash
 find . -mount -type f -size +1G 2>/dev/null
 2>/dev/null используется, чтобы не показывать ошибки (например, если нет доступа к файлу)
+```
+####  Утилита ncdu - анализ занятого места
+
+```bash
+apt install ncdu
 ```
 
 ```bash
