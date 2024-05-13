@@ -208,6 +208,7 @@ grep -Eo 'BOOT_IMAGE=[^ ]*' /proc/cmdline
 ## Чем занято место на диске
 
 ```bash
+ du -smh * | sort -h
  ls -A | xargs -d"\n" du -msc | sort -n
 ```
 
