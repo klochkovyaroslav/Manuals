@@ -223,6 +223,10 @@ find . -mount -type f -size +1G 2>/dev/null
 ```bash
 apt install ncdu
 ```
+#### Содержимое всего диска
+```bash
+ncdu /
+```
 
 ```bash
 faillog
