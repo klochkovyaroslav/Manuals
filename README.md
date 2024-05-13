@@ -192,8 +192,6 @@ ldapsearch -x -b "DC=wp,DC=demo" -H "ldap://192.168.1.100" -W sAMAccountName=p.i
 ```
 
 
-
-
 ## Ядро
 
 #### Узнать какое ядро загружено
@@ -228,6 +226,8 @@ apt install ncdu
 ```bash
 ncdu /
 ```
+
+#### файл протокола неудачных попыток входа в систему
 
 ```bash
 faillog
@@ -301,6 +301,23 @@ sync; dd if=/dev/zero of=tempfile bs=1M count=1024; sync
 
 ```bash
 dd if=tempfile of=/dev/null bs=1M count=1024
+```
+
+
+## NC (NETCAT)
+
+#### Копировать файлы по сети с помошью: nc
+
+На "сервере":  
+
+```bash
+nc -lp 9898 -q 1 < test.zip
+```
+
+На "клиенте":  
+
+```bash
+nc 192.168.1.100 9898 > test_new.zip
 ```
 
 
