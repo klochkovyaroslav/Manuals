@@ -201,7 +201,16 @@ cat /proc/cmdline
 grep -Eo 'BOOT_IMAGE=[^ ]*' /proc/cmdline
 ```
 
-## Команды - разное:
+# Команды - разное:
+
+## Узнать версию пакета в системе DEB
+#### Узнать версию уже установленного пакета
+
+```bash
+apt list --all-versions tmux
+dpkg -s tmux | grep version (-s детальная информация о пакете)
+apt-cache show tmux | grep Filename
+```
 
 ## Чем занято место на диске
 
