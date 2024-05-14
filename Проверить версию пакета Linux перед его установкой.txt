@@ -6,6 +6,7 @@
 apt show vim
 apt policy vim
 apt list vim
+apt list --all-versions tmux  - Узнать версию установленного пакета
 apt search postgresql
 
 	Использование Apt-get
@@ -27,10 +28,15 @@ aptitude search vim -F "%c %p %d %V"
 
 	Использование Apt-кеша:
 apt-cache policy vim
+apt-cache show tmux  - Узнать версию установленного пакета
+
 
 	Использование apt-show-version:
 sudo apt-get install apt-show-versions
 apt-show-versions vim
+
+	Использование DPKG
+dpkg -s tmux | grep vervion - Узнать версию установленного пакета
 
                                                         RPM- YUM
 	Информация о файле содеожащаяся в пакете:
