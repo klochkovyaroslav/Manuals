@@ -616,6 +616,22 @@ watch -n 5 "ps -x | grep 'test[2-3][09]'"
 ```bash
 watch -n 5 "ls -sh /mnt | grep 'test[2-3][09]' | sed '1d'"
 ```
+
+
+### Настроить русскую локаль:
+
+#### Запустить команду
+В псевдографике, снять с выделение en_US.UTF-8 UTF-8 выбрать ru_RU.UTF-8 UTF-8 +OK и еще раз выбираем ru_RU.UTF-8 UTF-8
+
+```bash
+sudo localedef ru_RU.UTF-8 -i ru_RU -fUTF-8 ; \
+export LANGUAGE=ru_RU.UTF-8 ; \
+export LANG=ru_RU.UTF-8 ; \
+export LC_ALL=ru_RU.UTF-8 ; \
+sudo locale-gen ru_RU.UTF-8 ; \
+sudo dpkg-reconfigure locales
+```
+
 ---
 ##############################################################################################
 
