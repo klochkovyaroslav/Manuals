@@ -20,6 +20,7 @@ find ./ -name "nginx.*"
 find some_files? - искать символ в конце
 find some_files?? - искать 2 символа в конце
 find some_files?.*
+find . -type f -name "*.log" -o -type f -name "*.conf"
 ```
 
 #### Найти файлы типу
@@ -41,6 +42,28 @@ find . -type d -name "*test*" -prune -o -type d -name "*test2*" -prune -o -name 
 -prune : исключить  
 
 
+### Найти файлы по метаданным
+### Найти файлы которые читались за последние сутки
+```bash
+find . -type f atime 0  
+```
+
+### Найти файлы которые изменялись за последние сутки
+```bash
+find . -type f mtime 0  
+```
+
+### Найти файлы к которым получали доступ позднее чем к какому-то указанному файлу
+```bash
+find . -type f -anewer test1.raw  
+```
+
+### Найти файлы к которые были изменены позднее чем к какому-то указанному файлу
+```bash
+find . -type f -cnewer test1.raw  
+```
+-anewer :access  
+-cnewer :change  
 
 #### Найти файлы с глубиной вложенности 1:
 ```bash
