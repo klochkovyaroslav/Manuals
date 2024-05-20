@@ -33,6 +33,7 @@ find . -type f -exec ls -l {} \; -exec cat {} \; -exec echo "----" \;
 
 #### Найти файлы и удалить их:
 ```bash
+find . -type f -name "*txt" -print
 find . -type f -name "*txt" -delete
 ```
 
