@@ -10,15 +10,37 @@ find . -mount -type f -size +1G 2>/dev/null
 #### Найти файлы по имени:
 
 ```bash
+find
 find some_file
 find some_file*
 find -iname SOME_fiLe*
+find . -name "*json"
 find ./ -name "nginx.conf"
 find ./ -name "nginx.*"
 find some_files? - искать символ в конце
 find some_files?? - искать 2 символа в конце
 find some_files?.*
 ```
+
+#### Найти файлы типу
+
+```bash
+find ~ -type f -name "*test*"
+find ~ -type d -name "*test*"
+```
+
+
+#### Найти файлы исключая какую нибудь дерикторию
+
+```bash
+find . -type d -path ./test -prune -o -name "*.conf" -print
+find . -type d -path ./test -prune -o -name "*.conf" -path ./test2 -prune -o -name "*.conf" -print
+find . -type d -name "*test*" -prune -o -type d -name "*test2*" -prune -o -name "*.conf" -print
+```
+-o :или  
+-prune : исключить  
+
+
 
 #### Найти файлы с глубиной вложенности 1:
 ```bash
