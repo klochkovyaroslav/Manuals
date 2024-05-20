@@ -149,6 +149,9 @@ find ~ -type f -name "*.txt" -exec cat {} + > one_big.file
 
 ```bash
 grep -rin --include="*.conf" "servers" ./
+grep "mail" /etc/passwd
+grep "^mail" /etc/passwd
+grep "mail$" /etc/passwd
 ```
 
 ----
