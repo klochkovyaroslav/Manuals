@@ -36,9 +36,6 @@ find . -type f -exec ls -l {} \; -exec cat {} \; -exec echo "----" \;
 find . -type f -name "*txt" -print
 find . -type f -name "*txt" -delete
 ```
-
-
-
 2>/dev/null используется, чтобы не показывать ошибки (например, если нет доступа к файлу)  
 
 #### Найти файлы по имени:
@@ -62,6 +59,8 @@ find . -type f -name "*.log" -o -type f -name "*.conf"
 ```bash
 find ~ -type f -name "*test*"
 find ~ -type d -name "*test*"
+find /etc -type l -name "*conf"
+
 ```
 
 
