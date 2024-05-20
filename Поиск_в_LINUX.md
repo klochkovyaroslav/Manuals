@@ -15,6 +15,7 @@ find . -mount -type f -size -2G 2>/dev/null
 ```bash
 find . -mount -type f -size -2G -a -type f -size -1G 2>/dev/null
 ```
+2>/dev/null используется, чтобы не показывать ошибки (например, если нет доступа к файлу)  
 
 #### Найти файлы и посчитать их размер:
 ```bash
@@ -36,7 +37,6 @@ find . -type f -exec ls -l {} \; -exec cat {} \; -exec echo "----" \;
 find . -type f -name "*txt" -print
 find . -type f -name "*txt" -delete
 ```
-2>/dev/null используется, чтобы не показывать ошибки (например, если нет доступа к файлу)  
 
 #### Найти файлы по имени:
 
@@ -98,11 +98,50 @@ find . -type f -cnewer test1.raw
 -anewer :access  
 -cnewer :change  
 
+
+#### Найти файлы новее чем к какой-то указанный файл:
+```bash
+find . -type f -newer test1.raw  
+```
+
+#### Найти файлы НЕ новее чем к какой-то указанный файл:
+```bash
+find . -type f !-newer test1.raw  
+```
+
 #### Найти файлы с глубиной вложенности 1:
 ```bash
 find ~ -maxdepth 1
 ```
 
+#### Найти файлы по владельцу:
+```bash
+find . -type f -user admin 
+```
+
+#### Найти файлы по группе владения:
+```bash
+find /usr/bin -group root
+```
+
+#### Найти файлы по атрибутам:
+```bash
+find /boot -perm 600
+```
+
+#### Найти файлы по расширению по пользователю и назначить им права записи на файл для всех
+
+```bash
+find /home/user1 -type f -name "*.txt" -user user1 -exec chmod a+w {} \;
+```
+{} \; :означает что имя каждого найденного файла подставляется в виполняемую команду на место " {} ", а  " \; " :показывает что по ОДНОМУ найденному имени нужно передовать команде в качестве аргумента перед ее выполнением.  
+
+```bash
+find ~ -type f -name "*.txt" -exec cat {} + > one_big.file
+```
+{} +  :означает что все найденные файлы будут переданы команде одной кучей аргументов.  
+
+----
 
 # GREP
 
@@ -112,6 +151,7 @@ find ~ -maxdepth 1
 grep -rin --include="*.conf" "servers" ./
 ```
 
+----
 
 # PIRGREP
 
