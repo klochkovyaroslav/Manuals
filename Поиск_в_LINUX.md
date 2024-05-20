@@ -5,6 +5,39 @@
 ```bash
 find . -mount -type f -size +1G 2>/dev/null
 ```
+
+#### Найти файлы, которые занимают меньше 2Gb:
+```bash
+find . -mount -type f -size -2G 2>/dev/null
+```
+
+#### Найти файлы, которые занимают от 1Gb до 2Gb:
+```bash
+find . -mount -type f -size -2G -a -type f -size -1G 2>/dev/null
+```
+
+#### Найти файлы и посчитать их размер:
+```bash
+find . -type f -exec du -sh {} \;
+find . -type f -exec du -sh {} \; | sort -h
+find . -type f -exec du -sh {} \; | sort -h | head -3
+find . -type f -exec du -sh {} \; | sort -h | tail -3
+```
+
+#### Найти файлы и вывести их содержимое:
+```bash
+find . -type f -exec cat {} \;
+find . -type f -exec ls -l {} \; -exec cat {} \;
+find . -type f -exec ls -l {} \; -exec cat {} \; -exec echo "----" \; 
+```
+
+#### Найти файлы и удалить их:
+```bash
+find . -type f -name "*txt" -delete
+```
+
+
+
 2>/dev/null используется, чтобы не показывать ошибки (например, если нет доступа к файлу)  
 
 #### Найти файлы по имени:
