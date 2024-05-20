@@ -10,8 +10,19 @@ find . -mount -type f -size +1G 2>/dev/null
 #### Найти файлы по имени:
 
 ```bash
+find some_file
+find some_file*
+find -iname SOME_fiLe*
 find ./ -name "nginx.conf"
 find ./ -name "nginx.*"
+find some_files? - искать символ в конце
+find some_files?? - искать 2 символа в конце
+find some_files?.*
+```
+
+#### Найти файлы с глубиной вложенности 1:
+```bash
+find ~ -maxdepth 1
 ```
 
 
