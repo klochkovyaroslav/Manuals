@@ -129,6 +129,11 @@ find /usr/bin -group root
 find /boot -perm 600
 ```
 
+#### Найти файлы с установлеными SUID и SGIG битами:
+```bash
+sudo find / -nount -type f -perm /u+s,g+s -ls
+```
+
 #### Найти файлы по расширению по пользователю и назначить им права записи на файл для всех
 
 ```bash
