@@ -617,6 +617,11 @@ watch -n 5 "ps -x | grep 'test[2-3][09]'"
 watch -n 5 "ls -sh /mnt | grep 'test[2-3][09]' | sed '1d'"
 ```
 
+#### файлы с именем: test9 и test10
+```bash
+watch -n 5 "ls -sh /mnt | grep 'test[9]|1[0]'"
+```
+
 
 ## Перенастройка системных региональных настроек (locales):
 
