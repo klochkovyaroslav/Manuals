@@ -1,6 +1,6 @@
-Как узнать версию LINUX
+ГЉГ ГЄ ГіГ§Г­Г ГІГј ГўГҐГ°Г±ГЁГѕ LINUX
 	Debian:
-sudo lsb_release -a или -d
+sudo lsb_release -a ГЁГ«ГЁ -d
 sudo cat /etc/*-release
 sudo cat /etc/os-release
 sudo hostnamectl
@@ -8,9 +8,9 @@ sudo cat /etc/issue
 sudo cat /etc/debian_version
 dpkg -l openssl
 
-uname -a (версия ядра)
+uname -a (ГўГҐГ°Г±ГЁГї ГїГ¤Г°Г )
 
-	Чтобы понять какой репозиторий используется в вашей системе 
+	Г—ГІГ®ГЎГ» ГЇГ®Г­ГїГІГј ГЄГ ГЄГ®Г© Г°ГҐГЇГ®Г§ГЁГІГ®Г°ГЁГ© ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГІГ±Гї Гў ГўГ ГёГҐГ© Г±ГЁГ±ГІГҐГ¬ГҐ 
 sudo cat /etc/apt/sources.list 
 
 
@@ -19,11 +19,14 @@ cat /etc/centos-release
 cat /etc/*-release
 hostnamectl
 cat /proc/version
+
 cat /proc/cmdline
 cat /proc/sys/kernel/{ostype,osrelease,version}
 rpm -qa | grep openssl
 
-	Как узнать архитектуру компьютера:
+	ГЉГ ГЄ ГіГ§Г­Г ГІГј Г Г°ГµГЁГІГҐГЄГІГіГ°Гі ГЄГ®Г¬ГЇГјГѕГІГҐГ°Г :
 
 arch
 uname -m
+cat /proc/version | awk '{print $9,$10,$11} - RedHat version
+cat /proc/version | awk '{print $6,$7} - Debian version
