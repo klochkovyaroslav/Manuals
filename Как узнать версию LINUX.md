@@ -8,10 +8,8 @@ sudo cat /etc/os-release
 sudo hostnamectl
 sudo cat /etc/issue
 sudo cat /etc/debian_version
-cat /proc/version | awk '{print $6,$7} - Debian version
+cat /proc/version | awk '{print $6,$7}
 ```
-
-dpkg -l openssl
 
 uname -a (версия ядра)
 
