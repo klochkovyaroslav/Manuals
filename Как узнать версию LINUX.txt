@@ -1,4 +1,4 @@
-Êàê óçíàòü âåðñèþ LINUX
+Как узнать версию LINUX
 	Debian:
 sudo lsb_release -a èëè -d
 sudo cat /etc/*-release
@@ -8,9 +8,9 @@ sudo cat /etc/issue
 sudo cat /etc/debian_version
 dpkg -l openssl
 
-uname -a (âåðñèÿ ÿäðà)
+uname -a (версия ядра)
 
-	×òîáû ïîíÿòü êàêîé ðåïîçèòîðèé èñïîëüçóåòñÿ â âàøåé ñèñòåìå 
+	Чтобы понять какой репозиторий используется в вашей системе  
 sudo cat /etc/apt/sources.list 
 
 
@@ -24,9 +24,11 @@ cat /proc/cmdline
 cat /proc/sys/kernel/{ostype,osrelease,version}
 rpm -qa | grep openssl
 
-	Êàê óçíàòü àðõèòåêòóðó êîìïüþòåðà:
-
+	Как узнать архитектуру компьютера:
 arch
+
+
+lsb_release -a
 uname -m
 cat /proc/version | awk '{print $9,$10,$11} - RedHat version
 cat /proc/version | awk '{print $6,$7} - Debian version
