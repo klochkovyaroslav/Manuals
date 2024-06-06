@@ -36,8 +36,9 @@ rpm -q chromium
 rpm -qi chromium
 
 	Все установленные пакеты можно с помощью опции -a:
+
+rpm -qa | grep openssl
 rpm -qa  
-rpm -qa | grep gcc  
 
 	Установлена ли соответствующая версия пакетов для создания модулей ядра  
 yum list installed | grep kernel-devel  
