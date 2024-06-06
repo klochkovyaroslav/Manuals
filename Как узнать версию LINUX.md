@@ -23,7 +23,7 @@ uname -a
 cat /etc/centos-release
 cat /etc/*-release
 hostnamectl
-cat /proc/version
+cat /proc/version -узнать версию ядра и необходимую версию GCC:
 cat /proc/version | awk '{print $9,$10,$11} - RedHat version
 
 cat /proc/cmdline
