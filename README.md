@@ -211,6 +211,11 @@ apt list --all-versions tmux
 dpkg -s tmux | grep version (-s детальная информация о пакете)
 apt-cache show tmux | grep Filename
 ```
+#### Полностью обновить систему Debian
+
+```bash
+apt update && apt upgrade && apt dist-upgrade && apt --purge autoremove
+```
 
 ## Чем занято место на диске
 
