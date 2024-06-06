@@ -12,26 +12,32 @@ sudo cat /etc/issue
 sudo cat /etc/debian_version
 cat /proc/version | awk '{print $6,$7}
 ```
-#### Версия ядра:
+#### Версия ядра и версию GCC::
 
 ```bash
 uname -a
+cat /proc/version
 ```
 
 
-	RPM:
+## RedHat
+
+```bash
 cat /etc/centos-release
 cat /etc/*-release
 hostnamectl
-cat /proc/version -узнать версию ядра и необходимую версию GCC:
-cat /proc/version | awk '{print $9,$10,$11} - RedHat version
-
+cat /proc/version | awk '{print $9,$10,$11}
 cat /proc/cmdline
 cat /proc/sys/kernel/{ostype,osrelease,version}
+```
+
 rpm -qa | grep openssl
 
-	Как узнать архитектуру компьютера:
+### Как узнать архитектуру компьютера:
+
+```bash
 arch
 uname -m
+```
 
 
