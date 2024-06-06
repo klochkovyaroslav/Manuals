@@ -1,6 +1,8 @@
 # Как узнать версию LINUX
 
 ## Debian
+
+#### Версия ОС:
 ```bash
 sudo lsb_release -a или -d
 sudo cat /etc/*-release
@@ -10,11 +12,11 @@ sudo cat /etc/issue
 sudo cat /etc/debian_version
 cat /proc/version | awk '{print $6,$7}
 ```
+#### Версия ядра:
 
-uname -a (версия ядра)
-
-	Чтобы понять какой репозиторий используется в вашей системе  
-sudo cat /etc/apt/sources.list 
+```bash
+uname -a
+```
 
 
 	RPM:
