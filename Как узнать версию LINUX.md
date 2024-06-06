@@ -12,13 +12,6 @@ sudo cat /etc/issue
 sudo cat /etc/debian_version
 cat /proc/version | awk '{print $6,$7}
 ```
-#### Версия ядра и версию GCC::
-
-```bash
-uname -a
-cat /proc/version
-```
-
 
 ## RedHat
 
@@ -31,7 +24,12 @@ cat /proc/cmdline
 cat /proc/sys/kernel/{ostype,osrelease,version}
 ```
 
-rpm -qa | grep openssl
+#### Версия ядра и версию GCC::
+
+```bash
+uname -a
+cat /proc/version
+```
 
 ### Как узнать архитектуру компьютера:
 
