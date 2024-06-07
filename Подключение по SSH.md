@@ -117,7 +117,7 @@ sudo service ssh restart
 sudo systemctl restart sshd
  ```
 
-# Автоматическое подключение по SSH по паролю: 
+# Автоматическое подключение по SSH с паролем: 
 
 ``` bash
 sudo apt install sshpass
