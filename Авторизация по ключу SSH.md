@@ -1,4 +1,5 @@
 # Как работают ключи SSH  
+## Авторизация по ключу SSH
 
 Каждая пара ключей состоит из открытого и закрытого ключа. **Секретный ключ** сохраняется на стороне **клиента** и не должен быть доступен кому-либо еще. 
 Утечка ключа позволит злоумышленнику войти на сервер, если не была настроена дополнительная аутентификация по паролю.  
@@ -116,6 +117,16 @@ sudo service ssh restart
 sudo systemctl restart sshd
  ```
 
+# Автоматическое подключение по SSH по паролю: 
+
+``` bash
+sudo apt install sshpass
+export SSHPASS='5BdbWO0oufYXrHCazp4Awn'
+sshpass -e ssh sshro@192.168.1.77
+sshpass -e ssh sshro@192.168.1.77 'show ip ospf neigh' | grep FULL | awk ' {print $7}' | wc -l
+RESULT=$(sshpass -e ssh sshro@192.168.1.77 'show ip ospf neigh' | grep FULL | awk ' {print $7}' | wc -l)
+echo $RESULT
+ ```
 
 
  
