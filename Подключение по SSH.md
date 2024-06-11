@@ -129,6 +129,6 @@ echo $RESULT
 sshpass -f ~/.ssh/.sshf ssh sshro@192.168.1.77 'show ip ospf neigh'
  ```
 
-
+https://ru.linux-console.net/?p=1697
  
  
