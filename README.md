@@ -411,6 +411,7 @@ sudo cp file1.txt{,.bak}
 ```bash
 sudo find / -iname *postgresql.conf*
 sudo find / -iname 'postgresql.????' - искать текст за которыми следуют еще 4 символа
+find / -name zabbix.conf.php
 ```
 
 ### Склон диска в дамп файл .img
