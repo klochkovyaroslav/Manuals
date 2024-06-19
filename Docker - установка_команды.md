@@ -206,4 +206,4 @@ sudo docker-compose exec netbox /opt/netbox/netbox/manage.py createsuperuser
 #### Удалить все контейнеры и образы.
 
 *`docker rm -f $(docker ps -aq)`*  
-*`docker rmi -f $(docker images -q)`*  
+```bash docker rmi -f $(docker images -q)```  
