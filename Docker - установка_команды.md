@@ -144,7 +144,10 @@ https://docs.docker.com/engine/install/debian/
 *`docker ps -a`*  
 
 #### Команда для запуска в контейнере  
-*`docker exec -t -i nginx bash`*  
+
+```bash
+docker exec -t -i nginx bash
+```
 -i: в интерактивном режиме  
 -t: терминал  
 -d, --detach: Запуститиь контейнер в бекграунде
