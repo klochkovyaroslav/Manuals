@@ -149,6 +149,10 @@ https://docs.docker.com/engine/install/debian/
 -t: терминал  
 -d, --detach: Запуститиь контейнер в бекграунде
 
+```bash
+sudo docker-compose exec netbox /opt/netbox/netbox/manage.py createsuperuser
+```
+
 #### Получать новые логи по мере появления  
 
 *`docker logs -f --tail 10 nginx`*  
