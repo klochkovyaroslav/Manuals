@@ -103,8 +103,9 @@ whereis sftp-server | awk ' {print $2}'
 sudo visudo
 ```
 В конец файла вставить:  
-
-_user ALL=NOPASSWD:/usr/lib/sftp-server_  
+```bash
+user ALL=NOPASSWD:/usr/lib/sftp-server
+```
 
 #### В настройках приложения WinSCP
 
