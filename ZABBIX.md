@@ -46,8 +46,8 @@ sudo nano /etc/zabbix/zabbix_server.conf
 #### Расскомментировать (# SSHKeyLocation=) +- 602 строка
 Или для поиска строки нажать CTRL+W ввести "# SSHKeyLocation="  
 
-```
-_SSHKeyLocation=/home/zabbix/.ssh_
-```
+_```
+SSHKeyLocation=/home/zabbix/.ssh
+```_
 
 
