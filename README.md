@@ -104,8 +104,10 @@ sudo visudo
 ```
 В конец файла вставить:  
 
-_user ALL=NOPASSWD:/usr/lib/sftp-server_
+_user ALL=NOPASSWD:/usr/lib/sftp-server_  
 
+В настройках WinSCP в пункте: **Среда -> SFTP**  
+**Сервер SFTP:** sudo /usr/lib/sftp-server  
 
 ### NetworkManager service.
 
