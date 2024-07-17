@@ -11,3 +11,43 @@ Units - %
 Name - component
 Value - cpu
 ```
+
+## Настройка аутентификации на базе ключа а zabbix
+
+### Перенос парофили пользователя в "стандарное место" /home/zabbix из CentOS папка /var/lib/zabbix, для Debian она /var/run/zabbix.
+#### Для изменения этой настройки у аккаунта zabbix пользователя все работающие процессы, которые его используют должны быть остановлены:
+
+```bash
+sudo systemctl stop zabbix-server.service
+sudo systemctl stop zabbix-agent.service
+```
+
+#### Изменения размещения домашней папки
+
+```bash
+test -d /home/zabbix || mkdir /home/zabbix
+cat /etc/passwd | grep zabbix
+sudo usermod -m -d /home/zabbix zabbix
+cat /etc/passwd | grep zabbix
+```
+
+#### Установка разрешений к домашней папке:
+
+```bash
+sudo chown zabbix:zabbix /home/zabbix
+sudo chmod 700 /home/zabbix
+```
+
+#### Изменения в конфигурации сервера для поддержки ssh ключей
+
+```bash
+sudo nano /etc/zabbix/zabbix_server.conf
+```
+#### Расскомментировать (# SSHKeyLocation=) +- 602 строка
+Или для поиска строки нажать CTRL+W ввести "# SSHKeyLocation="  
+
+```
+_SSHKeyLocation=/home/zabbix/.ssh_
+```
+
+
