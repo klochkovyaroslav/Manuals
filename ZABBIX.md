@@ -94,3 +94,11 @@ exit
 ```bash
 show user-account
 ```
+
+####  Проверка подключения по SSH по ключу:
+Что бы проверить подключение к CISCO NEXUX 9XXX по ssh с zabbix-сервера под пользователем _zabbix_:  
+
+```bash
+sudo -u zabbix ssh -i /home/zabbix/.ssh/id_rsa my_user@192.168.10.100
+```
+
