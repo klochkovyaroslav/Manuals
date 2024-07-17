@@ -67,14 +67,14 @@ sudo systemctl status zabbix-agent.service
 sudo -u zabbix ssh-keygen -t rsa -N ""
 ```
 
-#### Скопировать публичный ключ на тот сервер к кототому будет подключаться zabbix
-для Linux  
+#### Скопировать публичный ключ (id_rsa.pub) на тот сервер к кототому будет подключаться zabbix
+для Linux:  
 
 ```bash
 sudo -u zabbix ssh-copy-id root@192.168.1.100
 ```
 
-для CISCO NEXUX 9XXX  
+для CISCO NEXUX 9XXX:  
 Подключиться к CISCO NEXUX 9XXX по ssh
 
 ```bash
