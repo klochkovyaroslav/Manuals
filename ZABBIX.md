@@ -12,7 +12,7 @@ Name - component
 Value - cpu
 ```
 
-## Настройка аутентификации на базе ключа а zabbix
+## Настройка аутентификации на базе ключа в zabbix
 
 ### Перенос парофили пользователя в "стандарное место" /home/zabbix из CentOS папка /var/lib/zabbix, для Debian она /var/run/zabbix.
 #### Для изменения этой настройки у аккаунта zabbix пользователя все работающие процессы, которые его используют должны быть остановлены:
@@ -25,7 +25,7 @@ sudo systemctl stop zabbix-agent.service
 #### Изменения размещения домашней папки
 
 ```bash
-test -d /home/zabbix || mkdir /home/zabbix
+sudo test -d /home/zabbix || sudo mkdir /home/zabbix
 cat /etc/passwd | grep zabbix
 sudo usermod -m -d /home/zabbix zabbix
 cat /etc/passwd | grep zabbix
