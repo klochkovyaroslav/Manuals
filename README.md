@@ -76,7 +76,7 @@ sudo fstrim -av
 ```
 
 
-### Редактирование файла Sudoers
+## Редактирование файла Sudoers
 
 Команда sudo настраивается с помощью файла, расположенного в каталоге /etc/sudoers  
 
@@ -95,8 +95,9 @@ root ALL=(ALL:ALL) **ALL** Последнее “ALL” означает, что
 ### Пример
 #### WinSCP с правами root:
 
+Найти файл sftp-server:  
 ```bash
-whereis sftp-server
+whereis sftp-server | awk ' {print $2}'
 ```
 ```bash
 sudo visudo
