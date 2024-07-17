@@ -102,8 +102,8 @@ whereis sftp-server | awk ' {print $2}'
 ```bash
 sudo visudo
 ```
-В конец файла вставить:
-_user ALL=NOPASSWD:/usr/lib/sftp-server_  
+В конец файла вставить:  
+_user ALL=NOPASSWD:/usr/lib/sftp-server_
 
 
 ### NetworkManager service.
