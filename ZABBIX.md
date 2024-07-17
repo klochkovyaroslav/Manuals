@@ -61,10 +61,36 @@ sudo systemctl status zabbix-agent.service
 ```
 
 ### Генерирования публичных и приватных ключей в /home/zabbix/.ssh
+-N "" - не запрашивать passphrase  
 
 ```bash
 sudo -u zabbix ssh-keygen -t rsa -N ""
 ```
 
+#### Скопировать публичный ключ на тот сервер к кототому будет подключаться zabbix
+для Linux  
 
+```bash
+sudo -u zabbix ssh-copy-id root@192.168.1.100
+```
 
+для CISCO NEXUX 9XXX  
+Подключиться к CISCO NEXUX 9XXX по ssh
+
+```bash
+configure terminal
+```
+в одну строку:  
+```bash
+username my_user sshkey
+ssh-rsa AAAAC3dzaC3yc2EAAeABIwADAIEAy19oF6QaZl9G+3f1XswK3OiW4H7YycyuA50rv7gsEPj
+jqBYmsi6PAVKui1nIf/DQhum+fJNqJP/eLowb7ubO+lVKRXFY/G+lJNIQW3g9igG30c6k6+
+VGn+NjnI1B7ihvpVh7dLddMOXwOnXHYshXmSiH3UD/vKyziEh5S4Tplx8=
+```
+
+```bash
+exit
+```
+```bash
+show user-account
+```
