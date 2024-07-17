@@ -50,4 +50,21 @@ sudo nano /etc/zabbix/zabbix_server.conf
 SSHKeyLocation=/home/zabbix/.ssh
 ```
 
+#### Запустить ранее остановленные процессы:
+
+```bash
+sudo systemctl start zabbix-server.service
+sudo systemctl start zabbix-agent.service
+
+sudo systemctl status zabbix-server.service
+sudo systemctl status zabbix-agent.service
+```
+
+### Генерирования публичных и приватных ключей в /home/zabbix/.ssh
+
+```bash
+sudo -u zabbix ssh-keygen -t rsa -N ""
+```
+
+
 
