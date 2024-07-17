@@ -175,7 +175,11 @@ else
 echo '0'
 fi
 ```
+#### Запуск скрипта от пользователя zabbix:
 
+```bash
+sudo /lib/zabbix/externalscripts/mon_ospf_core1
+```
 
 https://ru.linux-console.net/?p=1697  
 https://linux-notes.org/zapustit-komandy-cherez-ssh-v-unix-linux/  
