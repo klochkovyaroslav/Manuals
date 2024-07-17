@@ -139,48 +139,6 @@ echo $RESULT
 sshpass -f ~/.ssh/.sshf ssh sshro@192.168.1.77 'show ip ospf neigh'
  ```
 
-### Пример bash скрипта по мониторингу ospf на cisco nexus 9000 для zabbix
-#### Авторизация по логину + пароль
-
-```bash
-#!/bin/bash
-account="sshro"
-ip="192.168.1.77"
-command="show ip ospf neighbor"
-vlan="Vlan100"
-
-#mts=$( sshpass -f /usr/lib/zabbix/externalscripts/.sshf ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet sshro@10.250.1.77 'show ip ospf neigh' | grep FULL | awk '{print $7}' | grep 'Vlan100')
-#mts=$( sshpass -f /usr/lib/zabbix/externalscripts/.sshf ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet ${account}@${ip} 'show ip ospf neigh' | grep FULL | awk '{print $7}' | grep 'Vlan100')
-beeline=$( sshpass -f /usr/lib/zabbix/externalscripts/.sshf ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet ${account}@${ip} ${command} | grep FULL | awk '{print $7}' | grep ${vlan})
-if [[ $beeline = ${vlan} ]]
-then echo '1'
-else
-echo '0'
-fi
-```
-
-#### Авторизация по ssh ключу
-
-```bash
-#!/bin/bash
-account="sshro"
-ip="192.168.1.77"
-command="show ip ospf neighbor"
-vlan="Vlan743"
-
-beeline=$(ssh -i /home/zabbix/.ssh/id_rsa -o LogLevel=quiet ${account}@${ip} ${command} | grep FULL | awk '{print $7}' | grep ${vlan})
-if [[ $beeline = ${vlan} ]]
-then echo '1'
-else
-echo '0'
-fi
-```
-#### Запуск скрипта от пользователя zabbix:
-
-```bash
-sudo /lib/zabbix/externalscripts/mon_ospf_core1
-```
-
 https://ru.linux-console.net/?p=1697  
 https://linux-notes.org/zapustit-komandy-cherez-ssh-v-unix-linux/  
  
