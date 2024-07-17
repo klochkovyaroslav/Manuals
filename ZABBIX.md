@@ -94,6 +94,9 @@ exit
 ```bash
 show user-account
 ```
+```bash
+copy running-config startup-config
+```
 
 ####  Проверка подключения по SSH по ключу:
 Что бы проверить подключение к CISCO NEXUX 9XXX по ssh с zabbix-сервера под пользователем _zabbix_:  
