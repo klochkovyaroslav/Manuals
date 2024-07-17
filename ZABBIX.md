@@ -43,11 +43,11 @@ sudo chmod 700 /home/zabbix
 ```bash
 sudo nano /etc/zabbix/zabbix_server.conf
 ```
-#### Расскомментировать (# SSHKeyLocation=) +- 602 строка
-Или для поиска строки нажать CTRL+W ввести "# SSHKeyLocation="  
+#### Расскомментировать (# SSHKeyLocation=)
+Это +- 602 строка, или для поиска строки в NANO нажать CTRL+W ввести _# SSHKeyLocation=_  
 
-_```
+```
 SSHKeyLocation=/home/zabbix/.ssh
-```_
+```
 
 
