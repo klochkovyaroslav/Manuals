@@ -103,6 +103,7 @@ whereis sftp-server | awk ' {print $2}'
 sudo visudo
 ```
 В конец файла вставить:  
+
 _user ALL=NOPASSWD:/usr/lib/sftp-server_
 
 
