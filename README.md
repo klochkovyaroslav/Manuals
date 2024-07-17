@@ -223,6 +223,29 @@ grep -Eo 'BOOT_IMAGE=[^ ]*' /proc/cmdline
 
 # Команды - разное:
 
+## Alias
+#### Создать алиас
+
+```bash
+alias ospf_stat_core1='ssh -i ~/.ssh/zabbix/id_rsa sshro@192.168.10.76 show ip ospf neighbor'
+```
+#### Удалить алиас
+
+```bash
+unalias ospf_stat_core1
+```
+#### Добавить alias на "постоянку"
+
+```bash
+nano ~/.bashrc
+```
+Добавить в конец файла  
+```bash
+alias ospf_stat_core1='ssh -i ~/.ssh/zabbix/id_rsa sshro@192.168.10.76 show ip ospf neighbor'
+```
+
+
+
 ## Узнать версию пакета в системе DEB
 #### Узнать версию уже установленного пакета
 
