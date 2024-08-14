@@ -52,6 +52,8 @@ find some_files? - искать символ в конце
 find some_files?? - искать 2 символа в конце
 find some_files?.*
 find . -type f -name "*.log" -o -type f -name "*.conf"
+sudo find / -name acrocmd
+
 ```
 
 #### Найти файлы типу:
@@ -60,7 +62,7 @@ find . -type f -name "*.log" -o -type f -name "*.conf"
 find ~ -type f -name "*test*"
 find ~ -type d -name "*test*"
 find /etc -type l -name "*conf"
-
+sudo find / -type d -name "CommandLineTool"
 ```
 
 
