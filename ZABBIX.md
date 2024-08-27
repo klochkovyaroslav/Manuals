@@ -196,3 +196,50 @@ sudo apt-get install --only-upgrade zabbix-server-mysql zabbix-frontend-php zabb
 или
 sudo apt upgrade zabbix-server-mysql zabbix-frontend-php zabbix-agent
 ```
+
+## Запустить сервер и агент.
+
+```bash
+sudo systemctl start zabbix-server zabbix-agent
+sudo systemctl status zabbix-server zabbix-agent
+```
+
+## Если в браузере ошибка:
+### "The Zabbix database version does not match current requirements. Your database version: 6040000. Required version: 7000000. Please contact your system administrator"
+
+### Настроить файл
+
+
+#### Вывести все незакомментированниые и не пустые строки
+
+```bash
+sudo grep -Pv "^(#|$)" /etc/zabbix/zabbix_server.conf
+```
+
+LogFile=/var/log/zabbix/zabbix_server.log  
+LogFileSize=0  
+PidFile=/run/zabbix/zabbix_server.pid  
+SocketDir=/run/zabbix  
+DBName=zabbix  
+DBUser=zabbix  
+**DBPassword=P@ssw0rd  
+StartPollers=50**  
+**StartIPMIPollers=5**  
+**StartPollersUnreachable=10**  
+**StartPingers=10**  
+SNMPTrapperFile=/var/log/snmptrap/snmptrap.log  
+**CacheSize=2048M**  
+**HistoryCacheSize=128M**  
+**ValueCacheSize=1G**  
+Timeout=4  
+FpingLocation=/usr/bin/fping  
+Fping6Location=/usr/bin/fping6  
+**SSHKeyLocation=/home/zabbix/.ssh**  
+LogSlowQueries=3000  
+StatsAllowedIP=127.0.0.1  
+EnableGlobalScripts=0  
+
+
+```bash
+sudo nano /etc/zabbix/zabbix_server.conf
+```
