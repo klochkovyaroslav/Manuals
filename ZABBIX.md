@@ -302,8 +302,14 @@ ALTER USER zabbix WITH ENCRYPTED PASSWORD 'P@ssw0rd;
 #### Прописать новый пароль в настройках zabbix
 ```bash
 sudo nano /etc/zabbix/zabbix_server.conf
+```
+_DBPassword=P@ssWd_  
+
+```bash
 sudo nano /usr/share/zabbix/conf/zabbix.conf.php
 ```
+_$DB['PASSWORD']                 = 'W0rk$_Z@bbIx';  _
+
 
 #### Перезапустить Zabbix сервер
 ```bash
