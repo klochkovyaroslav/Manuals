@@ -177,7 +177,7 @@ sudo cp -R /usr/share/zabbix/ /opt/zabbix-backup
 sudo cp -R /usr/share/zabbix-* /opt/zabbix-backup
 ```
 
-## Установка обновления Zabbix 6.4 до 7.
+### Обновление пакетов Zabbix с 6.4 до 7.
 
 #### Подключить репозитории 7 версии Zabbix.
 
@@ -187,8 +187,6 @@ sudo wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/z
 sudo dpkg -i zabbix-release_7.0-1+debian12_all.deb
 sudo apt update
 ```
-
-
 
 ```bash
 sudo apt list --installed | grep zabbix
