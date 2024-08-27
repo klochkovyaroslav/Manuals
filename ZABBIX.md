@@ -167,6 +167,10 @@ sudo -u postgres pg_dump -U postgres zabbix | /usr/bin/gzip > ~/zabbix.sql.gz
 
 #### Сохраним php скрипты админки и все файлы конфигурации.
 
+#### Создать файл для бэкапа файлов zabbix-server
+```bash
+nano zabbix_conf_files_backup.sh
+```
 ```bash
 sudo mkdir /opt/zabbix-backup/
 sudo cp /etc/zabbix/zabbix_server.conf /opt/zabbix-backup/
@@ -175,9 +179,19 @@ sudo cp -R /usr/share/zabbix/ /opt/zabbix-backup
 sudo cp -R /usr/share/zabbix-* /opt/zabbix-backup
 ```
 
+```bash
+sudo sh zabbix_conf_files_backup.sh
+```
+
 ## Обновление пакетов Zabbix до 7 версии.
 
 #### Подключить репозитории 7 версии Zabbix.
+
+#### Создать файл для репозитории 7 версии
+```bash
+nano zabbix_repo7.sh
+```
+
 ```bash
 sudo rm -Rf /etc/apt/sources.list.d/zabbix.list
 sudo wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_7.0-1+debian12_all.deb
