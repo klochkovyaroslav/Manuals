@@ -195,7 +195,7 @@ nano zabbix_repo7.sh
 ```bash
 sudo rm -Rf /etc/apt/sources.list.d/zabbix.list
 sudo wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_7.0-1+debian12_all.deb
-sudo dpkg -i zabbix-release_7.0-1+debian12_all.deb -y
+sudo dpkg -i zabbix-release_7.0-1+debian12_all.deb
 sudo apt update -y
 ```
 #### Посмотреть уже установленные пакеты
