@@ -148,3 +148,51 @@ fi
 sudo /lib/zabbix/externalscripts/mon_ospf_core1
 ```
 
+---
+
+# Обновить версию Zabbix с 6.4 до 7 в Debian 12.
+
+## Подготовка к обновлению.
+
+#### Остановить сервер и агент.
+
+```bash
+sudo systemctl stop zabbix-server zabbix-agent
+```
+
+
+#### Сделать бэкап базы данных PostgreSQL.
+
+```bash
+sudo -u postgres pg_dump -U postgres zabbix | /usr/bin/gzip > ~/zabbix.sql.gz
+```
+
+#### Сохраним php скрипты админки и все файлы конфигурации.
+
+```bash
+sudo mkdir /opt/zabbix-backup/
+sudo cp /etc/zabbix/zabbix_server.conf /opt/zabbix-backup/
+sudo cp /etc/nginx/conf.d/zabbix.conf /opt/zabbix-backup
+sudo cp -R /usr/share/zabbix/ /opt/zabbix-backup
+sudo cp -R /usr/share/zabbix-* /opt/zabbix-backup
+```
+
+## Установка обновления Zabbix 6.4 до 7.
+
+#### Подключить репозитории 7 версии Zabbix.
+
+```bash
+sudo rm -Rf /etc/apt/sources.list.d/zabbix.list
+sudo wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_7.0-1+debian12_all.deb
+sudo dpkg -i zabbix-release_7.0-1+debian12_all.deb
+sudo apt update
+```
+
+
+
+```bash
+sudo apt list --installed | grep zabbix
+sudo apt-get install --only-upgrade zabbix-server-mysql zabbix-frontend-php zabbix-agent
+или
+sudo apt upgrade zabbix-server-mysql zabbix-frontend-php zabbix-agent
+```
