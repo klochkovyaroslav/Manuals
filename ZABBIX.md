@@ -214,6 +214,8 @@ sudo systemctl status zabbix-server zabbix-agent
 
 ```bash
 sudo grep -Pv "^(#|$)" /etc/zabbix/zabbix_server.conf
+или
+sudo grep ^[[:alnum:]] /etc/zabbix/zabbix_server.conf
 ```
 
 LogFile=/var/log/zabbix/zabbix_server.log  
