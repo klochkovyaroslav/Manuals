@@ -150,12 +150,10 @@ sudo /lib/zabbix/externalscripts/mon_ospf_core1
 
 ---
 
-# Обновить версию Zabbix с 6.4 до 7 в Debian 12.
-
+# Обновить версию Zabbix с 6.х до 7 в Debian 12.
 ## Подготовка к обновлению.
 
 #### Остановить сервер и агент.
-
 ```bash
 sudo systemctl stop zabbix-server zabbix-agent
 ```
@@ -177,19 +175,30 @@ sudo cp -R /usr/share/zabbix/ /opt/zabbix-backup
 sudo cp -R /usr/share/zabbix-* /opt/zabbix-backup
 ```
 
-### Обновление пакетов Zabbix с 6.4 до 7.
+## Обновление пакетов Zabbix до 7 версии.
 
 #### Подключить репозитории 7 версии Zabbix.
-
 ```bash
 sudo rm -Rf /etc/apt/sources.list.d/zabbix.list
 sudo wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_7.0-1+debian12_all.deb
 sudo dpkg -i zabbix-release_7.0-1+debian12_all.deb
 sudo apt update
 ```
+#### Посмотреть уже установленные пакеты
 
 ```bash
 sudo apt list --installed | grep zabbix
+```
+
+#### Для PostgreSQL
+
+```bash
+sudo apt-get install --only-upgrade zabbix-server-pgsql zabbix-frontend-php zabbix-agent
+```
+
+#### Для MySQL
+
+```bash
 sudo apt-get install --only-upgrade zabbix-server-mysql zabbix-frontend-php zabbix-agent
 или
 sudo apt upgrade zabbix-server-mysql zabbix-frontend-php zabbix-agent
@@ -206,8 +215,6 @@ sudo systemctl status zabbix-server zabbix-agent
 ### "The Zabbix database version does not match current requirements. Your database version: 6040000. Required version: 7000000. Please contact your system administrator"
 
 ### Настроить файл
-
-
 #### Вывести все незакомментированниые и не пустые строки
 
 ```bash
@@ -239,7 +246,6 @@ LogSlowQueries=3000
 StatsAllowedIP=127.0.0.1  
 EnableGlobalScripts=0  
 
-
 ```bash
 sudo nano /etc/zabbix/zabbix_server.conf
 ```
@@ -261,4 +267,8 @@ sed -i -e 's|# StartPingers=1|StartPingers=10|g' ${v_path}//zabbix_server.conf
 sed -i -e 's|# HistoryCacheSize=16M|HistoryCacheSize=128M|g' ${v_path}//zabbix_server.conf
 sed -i -e 's|# ValueCacheSize=8M|ValueCacheSize=1G|g' ${v_path}//zabbix_server.conf
 sed -i -e 's|# DBPassword=|DBPassword=P@ssWd|g' ${v_path}//zabbix_server.conf
+```
+
+```bash
+sudo systemctl restart zabbix-server zabbix-agent
 ```
