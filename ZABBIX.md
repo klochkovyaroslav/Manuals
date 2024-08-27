@@ -246,9 +246,11 @@ EnableGlobalScripts=0
 sudo nano /etc/zabbix/zabbix_server.conf
 ```
 
+```bash
+nano zabbix_conf_configuration.sh
+```
 
 ```bash
-
 #!/bin/bash
 v_path=/etc/zabbix
 #sed -i 's/SSHKeyLocation=/SSHKeyLocation=\/home\/zabbix\/\.ssh/' /etc/zabbix/zabbix_server.conf
