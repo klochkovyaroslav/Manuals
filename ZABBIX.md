@@ -245,3 +245,19 @@ EnableGlobalScripts=0
 ```bash
 sudo nano /etc/zabbix/zabbix_server.conf
 ```
+
+
+```bash
+
+#!/bin/bash
+v_path=/etc/zabbix
+#sed -i 's/SSHKeyLocation=/SSHKeyLocation=\/home\/zabbix\/\.ssh/' /etc/zabbix/zabbix_server.conf
+sed -i 's|# SSHKeyLocation=/home/zabbix/.ssh/|SSHKeyLocation=/home/zabbix/.ssh/|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# StartPollers=5|StartPollers=50|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|CacheSize=16M|CacheSize=2048M|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# StartIPMIPollers=0|StartIPMIPollers=5|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# StartPollersUnreachable=1|StartPollersUnreachable=10|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# StartPingers=1|StartPingers=10|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# HistoryCacheSize=16M|HistoryCacheSize=128M|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# ValueCacheSize=128M|ValueCacheSize=1G|g' ${v_path}//zabbix_server.conf
+```
