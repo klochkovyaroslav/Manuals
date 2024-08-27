@@ -179,6 +179,7 @@ sudo cp -R /usr/share/zabbix/ /opt/zabbix-backup
 sudo cp -R /usr/share/zabbix-* /opt/zabbix-backup
 ```
 
+#### Запустить скрипт
 ```bash
 sudo sh zabbix_conf_files_backup.sh
 ```
@@ -186,11 +187,6 @@ sudo sh zabbix_conf_files_backup.sh
 ## Обновление пакетов Zabbix до 7 версии.
 
 #### Подключить репозитории 7 версии Zabbix.
-
-#### Создать файл для репозитории 7 версии
-```bash
-nano zabbix_repo7.sh
-```
 
 ```bash
 sudo rm -Rf /etc/apt/sources.list.d/zabbix.list
@@ -205,13 +201,10 @@ sudo apt list --installed | grep zabbix
 ```
 
 #### Для PostgreSQL
-
 ```bash
 sudo apt-get install --only-upgrade zabbix-server-pgsql zabbix-frontend-php zabbix-agent -y
 ```
-
 #### Для MySQL
-
 ```bash
 sudo apt-get install --only-upgrade zabbix-server-mysql zabbix-frontend-php zabbix-agent
 или
@@ -283,6 +276,7 @@ sed -i -e 's|# ValueCacheSize=8M|ValueCacheSize=1G|g' ${v_path}//zabbix_server.c
 sed -i -e 's|# DBPassword=|DBPassword=P@ssWd|g' ${v_path}//zabbix_server.conf
 ```
 
+#### Запустить скрипт
 ```bash
 sudo sh zabbix_conf_configuration.sh
 ```
