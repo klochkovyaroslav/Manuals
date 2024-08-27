@@ -282,6 +282,11 @@ sed -i -e 's|# HistoryCacheSize=16M|HistoryCacheSize=128M|g' ${v_path}//zabbix_s
 sed -i -e 's|# ValueCacheSize=8M|ValueCacheSize=1G|g' ${v_path}//zabbix_server.conf
 sed -i -e 's|# DBPassword=|DBPassword=P@ssWd|g' ${v_path}//zabbix_server.conf
 ```
+
+```bash
+sudo sh zabbix_conf_configuration.sh
+```
+
 #### Перезапустить Zabbix сервер
 ```bash
 sudo systemctl restart zabbix-server zabbix-agent
