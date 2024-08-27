@@ -181,8 +181,8 @@ sudo cp -R /usr/share/zabbix-* /opt/zabbix-backup
 ```bash
 sudo rm -Rf /etc/apt/sources.list.d/zabbix.list
 sudo wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_7.0-1+debian12_all.deb
-sudo dpkg -i zabbix-release_7.0-1+debian12_all.deb
-sudo apt update
+sudo dpkg -i zabbix-release_7.0-1+debian12_all.deb -y
+sudo apt update -y
 ```
 #### Посмотреть уже установленные пакеты
 
@@ -193,7 +193,7 @@ sudo apt list --installed | grep zabbix
 #### Для PostgreSQL
 
 ```bash
-sudo apt-get install --only-upgrade zabbix-server-pgsql zabbix-frontend-php zabbix-agent
+sudo apt-get install --only-upgrade zabbix-server-pgsql zabbix-frontend-php zabbix-agent -y
 ```
 
 #### Для MySQL
