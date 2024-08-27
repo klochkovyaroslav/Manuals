@@ -249,11 +249,11 @@ EnableGlobalScripts=0
 ```bash
 sudo nano /etc/zabbix/zabbix_server.conf
 ```
-
+#### Создать файл для автоконфигурирования zabbix-server
 ```bash
 nano zabbix_conf_configuration.sh
 ```
-
+### Предварительно указать свой пароль подключения к базе в скрипте (DBPassword=P@ssWd)
 ```bash
 #!/bin/bash
 v_path=/etc/zabbix
@@ -268,7 +268,7 @@ sed -i -e 's|# HistoryCacheSize=16M|HistoryCacheSize=128M|g' ${v_path}//zabbix_s
 sed -i -e 's|# ValueCacheSize=8M|ValueCacheSize=1G|g' ${v_path}//zabbix_server.conf
 sed -i -e 's|# DBPassword=|DBPassword=P@ssWd|g' ${v_path}//zabbix_server.conf
 ```
-
+#### Перезапустить Zabbix сервер
 ```bash
 sudo systemctl restart zabbix-server zabbix-agent
 ```
