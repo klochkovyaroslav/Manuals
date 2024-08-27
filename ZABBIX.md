@@ -285,3 +285,27 @@ sudo sh zabbix_conf_configuration.sh
 ```bash
 sudo systemctl restart zabbix-server zabbix-agent
 ```
+
+
+----
+# Сменить пароль к БД PostgresSQL для пользователя zabbix
+
+#### Подключаемся к PostgreSQL
+```bash
+sudo -u postgres psql
+```
+#### Сменить пароль к БД 
+```bash
+ALTER USER zabbix WITH ENCRYPTED PASSWORD 'P@ssw0rd;
+\q
+```
+#### Прописать новый пароль в настройках zabbix
+```bash
+sudo nano /etc/zabbix/zabbix_server.conf
+sudo nano /usr/share/zabbix/conf/zabbix.conf.php
+```
+
+#### Перезапустить Zabbix сервер
+```bash
+sudo systemctl restart zabbix-server zabbix-agent
+```
