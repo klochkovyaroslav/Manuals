@@ -308,7 +308,7 @@ _DBPassword=P@ssWd_
 ```bash
 sudo nano /usr/share/zabbix/conf/zabbix.conf.php
 ```
-_$DB['PASSWORD']                 = 'P@ssw0rd';  _
+_$DB['PASSWORD']                 = 'P@ssWd';  _
 
 
 #### Перезапустить Zabbix сервер
