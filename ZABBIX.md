@@ -296,7 +296,7 @@ sudo -u postgres psql
 ```
 #### Сменить пароль к БД 
 ```bash
-ALTER USER zabbix WITH ENCRYPTED PASSWORD 'P@ssw0rd;
+ALTER USER zabbix WITH ENCRYPTED PASSWORD 'P@ssw0rd';
 \q
 ```
 #### Прописать новый пароль в настройках zabbix
