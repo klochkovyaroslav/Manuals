@@ -694,6 +694,48 @@ sudo locale-gen ru_RU.UTF-8 ; \
 sudo dpkg-reconfigure locales
 ```
 
+## Восстановление загрузки ПК с Debian12 после установки обовлений.
+#### Проблема что слетает драйвер NVidia. Помогает переустановка драйвера.
+
+#### Изменяем загрузку GRUB.
+
+Выбираем строку, которая начинается со слова linux или kernel.  
+Удаляем из нее слова quiet и splash, если они есть, и дописываем в конец single **init=/bin/bash**:  
+
+```
+params 'Debian GNU/Linux'
+
+load_video
+insmod gzio
+if [ x$grub_platform = xen ]; then insmod xzio; insmod lzopio; fi
+insmod part_msdos
+insmod ext2
+set root='hd1,msdos1'
+if [ x$feature_platform_search_hint = xy ]; then
+  search --no-floppy --fs-uuid --set=root --hint-bios=hd1,msdos1 --hint-efi=hd1,msdos1 --hint-baremetal=ahci1,msdos1 86cd8758-3b3e-4191-918f-77b3d08f1749
+else
+  search --no-floppy --fs-uuid --set=root 86cd8758-3b3e-4191-918f-77b3d08f1749
+fi
+echo 'Loading Linux 6.1.0-25-amd64 ...'
+linux /boot/vmlinuz-6.1.0-25-amd64 root=UUID=86cd8758-3b3e-4191-918f-77b3d08f1749 rw init=/bin/bash
+echo 'Loading initial ramdisk ...'
+initrd /boot/initrd.img-6.1.0-25-amd64
+```
+
+```bash
+systemctl set-default --force multi-user.target
+```
+```bash
+su -
+```
+```bash
+/home/user/Downloads/NVIDIA-Linux-x86_64-550.76.run
+```
+```bash
+systemctl set-default --force graphical.target
+```
+
+
 ---
 ##############################################################################################
 
