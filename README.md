@@ -253,6 +253,7 @@ ps axu
 ```
 ```bash
 ps axu | grep bash
+ps aux | grep docker | tail -n 2
 pidof bash
 ```
 ```
