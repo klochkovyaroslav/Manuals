@@ -244,6 +244,18 @@ nano ~/.bashrc
 alias ospf_stat_core1='ssh -i ~/.ssh/zabbix/id_rsa sshro@192.168.10.76 show ip ospf neighbor'
 ```
 
+## Процессы
+
+#### Список всех активных процессов:
+
+```bash
+ps axu
+```
+```bash
+ps axu | grep bash
+pidof bash
+```
+
 
 
 ## Узнать версию пакета в системе DEB
