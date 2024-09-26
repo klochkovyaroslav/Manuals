@@ -254,6 +254,13 @@ fold -s -w 60 some_file.txt
 paste file1.txt file2.txt
 ```
 
+#### В команде LS вывести вместо имени и группы владельца числовые значения 
+```bash
+ls -ln text.txt
+ls --numeric-uid-gid text.txt
+```
+
+
 
 ### Разделяемые библиотеки
 #### Посмотреть разделяемые библиотеки например для /bin/bash
