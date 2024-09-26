@@ -36,6 +36,14 @@ deb ftp://localhost/my_as_repo 1.7_x86-64 main contrib non-free
 apt update 
 apt install zoom
 
+---
+
+### Добавить диск CD/DVD в список репозитариев
+
+```bash
+sudo apt-cdrom add
+``` 
+
 
 
 
