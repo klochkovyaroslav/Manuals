@@ -268,9 +268,22 @@ ls --numeric-uid-gid text.txt
 sudo ldd /bin/bash
 ```
 #### Файл с указанием размещения разделяемых библиотек
-
 ```bash
 nano /etc/ld.so.conf
+```
+#### после изменения файлов выполнить команду:
+```bash
+ldconfig
+```
+
+
+#### Указать системе в какой папке искать разделяемые библиотеки. ВРЕМЕННО
+```bash
+export LD_LIBRARY_PATH=/path/to/your/library:$LD_LIBRARY_PATH
+```
+#### Указать системе в какой папке искать разделяемые библиотеки. ПОСТОЯННО
+```bash
+echo 'export LD_LIBRARY_PATH=/path/to/your/library:$LD_LIBRARY_PATH' >> ~/.bashrc
 ```
 
 ## Процессы
