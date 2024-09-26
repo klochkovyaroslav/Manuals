@@ -249,6 +249,12 @@ alias ospf_stat_core1='ssh -i ~/.ssh/zabbix/id_rsa sshro@192.168.10.76 show ip o
 fold -s -w 60 some_file.txt
 ```
 
+#### Linux команда PASTE для построчного объединения текстовых файлов
+```bash
+paste file1.txt file2.txt
+```
+
+
 ### Разделяемые библиотеки
 #### Посмотреть разделяемые библиотеки например для /bin/bash
 ```bash
