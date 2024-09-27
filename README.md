@@ -720,15 +720,14 @@ journalctl _UID=1000
 nano /etc/logrotate.d/mylog.conf
 ```
 содержимое:
-```
-/var/log/my.log {
-        rotate 7
-        daily
-        maxsize 10K
-        compress
-        missingok
+> /var/log/my.log {  
+        rotate 7  
+        daily  
+        maxsize 10K  
+        compress  
+        missingok  
         notifempty }
-```
+> 
 проверить как работает:  
 ```bash
 logrotate /etc/logrotate.conf
