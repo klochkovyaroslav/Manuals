@@ -766,28 +766,26 @@ sed '/etc/d' some_file.txt
 ddd etc fff  
 bbb fffetc  
 nnn  
-etc  
+etc
 >
 ответ:  
-> nnn 
-
-
+> nnn
 #### При помощи редактора SED и вывести на экран содержимое файла some_file.txt и предварительно удалить только кусок самой строки содержащей: "etc", в самом файле строка не удалится, только на экране
 ```bash
-sed '/etc/d' some_file.txt
+sed 's/etc//g' some_file1.txt
 ```
 Содержимое файла some_file.txt  
 > ggg etc  
 ddd etc fff  
 bbb fffetc  
 nnn  
-etc  
+etc
 >
 ответ:  
 > ggg  
 ddd  fff  
 bbb fff  
-nnn  
+nnn
 >
 #### При помощи редактора SED и вывести на экран содержимое файла some_file.txt и предварительно вставив строку содержащую подстороку: "etc" в начало каждой строки, в самом файле строка не добавляется, только на экране
 ```bash
