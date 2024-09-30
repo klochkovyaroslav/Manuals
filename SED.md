@@ -76,3 +76,16 @@ sed -i '65s/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/ssh
 sed -i 's/#Port 22/Port 6982/' /etc/ssh/sshd_config
 sed -i 's/#LoginGraceTime 2m/LoginGraceTime 10s/' /etc/ssh/sshd_config
 ```
+
+#### Переименовать систему в Linux
+
+```bash
+#! /bin/bash
+echo Enter new name of host
+echo Example: newname.head.energotransbank.com
+read hostnm
+
+sed -i 's/'$HOSTNAME'/'$hostnm'/' /etc/sysconfig/network
+sed -i 's/'$HOSTNAME'/'$hostnm'/' /etc/sysctl.conf
+sed -i 's/'$HOSTNAME'/'$hostnm'/' /etc/hosts
+```
