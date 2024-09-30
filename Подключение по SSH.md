@@ -127,6 +127,12 @@ sudo service ssh restart
 sudo systemctl restart sshd
  ```
 
+#### SSH config (port, time)
+```bash
+sed -i 's/#Port 22/Port 6982/' /etc/ssh/sshd_config
+sed -i 's/#LoginGraceTime 2m/LoginGraceTime 10s/' /etc/ssh/sshd_config
+```
+
 # Автоматическое подключение по SSH с паролем: 
 
 ``` bash
