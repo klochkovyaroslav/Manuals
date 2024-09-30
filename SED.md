@@ -71,3 +71,8 @@ netconfig update –f
 sed -i '65s/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
 ```
 
+#### SSH config (port, time)
+```bash
+sed -i 's/#Port 22/Port 6982/' /etc/ssh/sshd_config
+sed -i 's/#LoginGraceTime 2m/LoginGraceTime 10s/' /etc/ssh/sshd_config
+```
