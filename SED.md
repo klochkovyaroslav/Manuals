@@ -40,3 +40,34 @@ nnn
 ```bash
 sed 's/^/etc /' some_file.txt
 ```
+
+#### Настройка конфигурации zabbix server
+```bash
+#!/bin/bash
+v_path=/etc/zabbix
+#sed -i 's/SSHKeyLocation=/SSHKeyLocation=\/home\/zabbix\/\.ssh/' /etc/zabbix/zabbix_server.conf
+sed -i -e 's|# SSHKeyLocation=|SSHKeyLocation=/home/zabbix/.ssh/|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# StartPollers=5|StartPollers=50|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# CacheSize=32M|CacheSize=2048M|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# StartIPMIPollers=0|StartIPMIPollers=5|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# StartPollersUnreachable=1|StartPollersUnreachable=10|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# StartPingers=1|StartPingers=10|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# HistoryCacheSize=16M|HistoryCacheSize=128M|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# ValueCacheSize=8M|ValueCacheSize=1G|g' ${v_path}//zabbix_server.conf
+sed -i -e 's|# DBPassword=|DBPassword=P@ssWd|g' ${v_path}//zabbix_server.conf
+```
+
+#### DNS Configuration
+
+```bash
+sed -i 's/NETCONFIG_DNS_STATIC_SERVERS=""/NETCONFIG_DNS_STATIC_SERVERS="192.168.0.167 10.0.0.10"/' /etc/sysconfig/network/config
+sed -i 's/NETCONFIG_DNS_STATIC_SEARCHLIST=""/NETCONFIG_DNS_STATIC_SEARCHLIST="test.org"/' /etc/sysconfig/network/config
+netconfig update –f
+```
+
+#### PasswordAuthentication 'yes' заменить на 'no'
+
+```bash
+sed -i '65s/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+```
+
