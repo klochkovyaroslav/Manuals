@@ -62,7 +62,7 @@ Please contact your system administrator.
 #### Очистить от старых записей на локальном ПК
 
 ``` bash
-ssh-keygen -f "~/.ssh/known_hosts" -R "192.168.56.150"
+ssh-keygen -R 192.168.56.150
 ```
 #### Выполнить на удаленном сервере
 
