@@ -44,7 +44,9 @@ cat ~/.ssh/id_rsa.pub | ssh username@remote_host "mkdir -p ~/.ssh && cat >> ~/.s
 или
 
 ``` bash 
-cat ~/.ssh/id_rsa.pub | ssh root@ip-адрес-сервера 'cat >> ~/.ssh/authorized_keys'  
+cat ~/.ssh/id_rsa.pub | ssh root@ip-адрес-сервера 'cat >> ~/.ssh/authorized_keys'
+
+sudo cat /home/zabbix/for_brocade_ssh_key.pub | ssh user@192.168.2.24 'cat >> ~/.ssh/authorized_keys' 
 ```
 Если возникла ошибка:  
 
@@ -77,6 +79,8 @@ ssh -i my_own_key username@remote_host
 ssh username@remote_host
 Выполнить команду удаленно
 ssh -i my_own_key username@remote_host "ip a"
+ssh -i ~/.ssh/temp_ssh/for_brocade_ssh_key user@192.168.2.24
+ssh user@192.168.2.24 -i /home/user/.ssh/temp_ssh/for_brocade_ssh_key
 ```
 
 #### Можно подключаться к удаленному серверу с ключем без запроса парольной фразы
