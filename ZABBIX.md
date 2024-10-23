@@ -339,7 +339,7 @@ snmpwalk -v2c -c PRTGRO 10.250.1.58 1.3.6.1.2.1.2.2.1.8.1073741824
 > 1. Находим Template **Brocade FC by SNMP**
 > 2. Переходим в раздел _**Discovery rules**_
 > 3. Клонируем _Network interfaces discovery_ с новым именем и уникальным новым параметром Key: _Network interfaces discovery_own_ 
-> 4. Создаем новые "Прототип элемента данных(Items Prototypes)" параметры можно взять из существующих элементов данных в оригинальном "Network interfaces discovery"  
+> 4. Создаем новые элементы для: "_**Прототип элемента данных(Items Prototypes**)_" параметры можно взять из существующих элементов данных в оригинальном _Network interfaces discovery_  
 > Удаляем из имени _Interface {#IFNAME}({#IFALIAS}): Bits received_ строку _(**{#IFALIAS}**)_ из за нее не работает правило обнаружения, должно получиться: _Interface {#IFNAME}: Bits received_own_.  
 И так во всех новых _Прототип элемента данных(Items Prototypes)_. 
 > "Key" так же создаем уникальный например, было: _net.if.in[ifHCInOctets.{#SNMPINDEX}]_, новый элемент: _net.if.in.fc[ifHCInOctets.{#SNMPINDEX}]_  
