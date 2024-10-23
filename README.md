@@ -826,9 +826,8 @@ systemctl set-default --force graphical.target
 ```bash
 fsutil behavior query disabledeletenotify
 ```
-> TRIM Вкючен = **0**
+> TRIM Вкючен = **0**  
 > TRIM Откючен = **1**
-
 
 #### Включить опцию TRIM
 ```bash
