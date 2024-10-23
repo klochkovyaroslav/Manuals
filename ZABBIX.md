@@ -315,3 +315,32 @@ $DB['PASSWORD']                 = 'P@ssWd';
 ```bash
 sudo systemctl restart zabbix-server zabbix-agent
 ```
+
+
+## snmpwalk
+
+#### Установить snmpwalk
+```bash
+sudo apt install snmp
+```
+
+#### Запрос Состояния портов на SAN коммутаторе Brocade G620
+
+#### Группа портов
+```bash
+snmpwalk -v2c -c PRTGRO 10.250.1.58 1.3.6.1.2.1.2.2.1.8
+```
+#### Конкретно заданный порт
+```bash
+snmpwalk -v2c -c PRTGRO 10.250.1.58 1.3.6.1.2.1.2.2.1.8.1073741824
+```
+-----
+## Как настроить мониторинг по SNMP SAN коммутатора Brocade G620 (zabbix 6.4 и 7)
+
+> 1. Находим Template "Brocade FC by SNMP"  
+> 2. Переходим в раздел "Discovery rules"  
+> 3. Клонируем "Network interfaces discovery" с новым именем и уникальноым новым параметром: Key  
+> 4. Создаем новые "Прототип элемента данных(Items Prototypes)" параметры брать из существующих элементов данных в оригинальном "Network interfaces discovery" удаляем из имени "Interface {#IFNAME}({#IFALIAS}): Bits received" строку "({#IFALIAS})", должно получиться: "Interface {#IFNAME}: Bits received_own", из за нее не работает правило обнаружения. И так во всех новых "Прототип элемента данных(Items Prototypes)". 
+> "Key" так же создаем уникальный например, было:"net.if.in[ifHCInOctets.{#SNMPINDEX}]" новый элемент: "net.if.in.fc[ifHCInOctets.{#SNMPINDEX}]"  
+> 4.1 Так же нужно заполнить и вкладки "Tags" и "Preprocessing"
+> 5. Прототипы Тригеров (Trigger prototypes) создаем новые элменты по аналогии с п.4.  
