@@ -336,11 +336,12 @@ snmpwalk -v2c -c PRTGRO 10.250.1.58 1.3.6.1.2.1.2.2.1.8.1073741824
 ```
 -----
 ## Как настроить мониторинг по SNMP SAN коммутатора Brocade G620 (zabbix 6.4 и 7)
-
-> 1. Находим Template "Brocade FC by SNMP"  
-> 2. Переходим в раздел "Discovery rules"  
-> 3. Клонируем "Network interfaces discovery" с новым именем и уникальноым новым параметром: Key  
-> 4. Создаем новые "Прототип элемента данных(Items Prototypes)" параметры брать из существующих элементов данных в оригинальном "Network interfaces discovery" удаляем из имени "Interface {#IFNAME}({#IFALIAS}): Bits received" строку "({#IFALIAS})", должно получиться: "Interface {#IFNAME}: Bits received_own", из за нее не работает правило обнаружения. И так во всех новых "Прототип элемента данных(Items Prototypes)". 
-> "Key" так же создаем уникальный например, было:"net.if.in[ifHCInOctets.{#SNMPINDEX}]" новый элемент: "net.if.in.fc[ifHCInOctets.{#SNMPINDEX}]"  
-> 4.1 Так же нужно заполнить и вкладки "Tags" и "Preprocessing"
-> 5. Прототипы Тригеров (Trigger prototypes) создаем новые элменты по аналогии с п.4.  
+> 1. Находим Template **Brocade FC by SNMP**
+> 2. Переходим в раздел _**Discovery rules**_
+> 3. Клонируем _Network interfaces discovery_ с новым именем и уникальным новым параметром Key: _Network interfaces discovery_own_ 
+> 4. Создаем новые "Прототип элемента данных(Items Prototypes)" параметры можно взять из существующих элементов данных в оригинальном "Network interfaces discovery"  
+> Удаляем из имени _Interface {#IFNAME}({#IFALIAS}): Bits received_ строку _(**{#IFALIAS}**)_ из за нее не работает правило обнаружения, должно получиться: _Interface {#IFNAME}: Bits received_own_.  
+И так во всех новых _Прототип элемента данных(Items Prototypes)_. 
+> "Key" так же создаем уникальный например, было: _net.if.in[ifHCInOctets.{#SNMPINDEX}]_, новый элемент: _net.if.in.fc[ifHCInOctets.{#SNMPINDEX}]_  
+> 4.1 Так же нужно заполнить и вкладки _**Tags**_ и _**Preprocessing**_
+> 5. Прототипы Тригеров (Trigger prototypes) создаем новые элементы по аналогии с п.4.
