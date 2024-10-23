@@ -819,6 +819,22 @@ systemctl set-default --force graphical.target
 
 ## Команды
 
+### TRIM для SSD в Windows
+
+
+#### Как проверить опцию TRIM
+```bash
+fsutil behavior query disabledeletenotify
+```
+> TRIM Вкючен = **0**
+> TRIM Откючен = **1**
+
+
+#### Включить опцию TRIM
+```bash
+fsutil behavior set disabledeletenotify NTFS 0
+```
+
 ### Информация о диске
 
 #### Запрос сведений о томе NTFS
