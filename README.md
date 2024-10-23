@@ -818,6 +818,23 @@ systemctl set-default --force graphical.target
 # WINDOWS
 
 ## Команды
+
+### Информация о диске
+
+#### Запрос сведений о томе NTFS
+```bash
+fsutil fsinfo ntfsinfo z:
+```
+#### Отобразить сведения о секторах для диска
+```bash
+fsutil fsinfo sectorinfo g:
+```
+
+#### Для получения статистических данных отдельного тома
+```bash
+fsutil fsinfo statistics z:
+```
+
 #### Свойство компьютера
 
 ```
