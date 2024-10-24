@@ -1,6 +1,6 @@
 # Управление загрузкой сервисов через систему инициализации systemd
 
-#### Список юнитов, которые добавлены в systemd
+#### Список юнитов, которые добавлены в systemd:
 ```bash
 systemctl list-units
 ```
@@ -8,25 +8,25 @@ systemctl list-units
 ```bash
 systemctl list-units --type service --all
 ```
-#### Проверить включен ли сервис
+#### Проверить включен ли сервис:
 ```bash
 systemctl is-enabled zabbix-web-service.service
 ```
-#### Добавить в автозапуск
+#### Добавить в автозапуск:
 ```bash
 systemctl enable nginx.service
 ```
-#### Удалить из автозапуска
+#### Удалить из автозапуска:
 ```bash
 systemctl disable nginx.service
 ```
 
 
-#### Замаскировать сервис
+#### Замаскировать сервис:
 ```bash
 systemctl mask nginx.service
 ```
-#### Снять маску можно командой:
+#### Снять маску:
 ```bash
 systemctl unmask nginx.service
 ```
