@@ -391,3 +391,8 @@ sudo nano /etc/zabbix/zabbix_web_service.conf
 Указать адреса  
 > AllowedIP=127.0.0.1,10.250.2.23,::1  
 
+#### Перезапустить сервис
+
+```bash
+sudo systemctl restart zabbix-web-service.service
+```
