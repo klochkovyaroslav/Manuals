@@ -378,6 +378,16 @@ sudo apt install -y google-chrome-stable
 ```bash
 sudo nano /etc/zabbix/zabbix_server.conf
 ```
+Добавить строки  
 > StartReportWriters=1  
 > WebServiceURL=http://localhost:10053/report
+
+
+#### Zabbix server configuration
+
+```bash
+sudo nano /etc/zabbix/zabbix_web_service.conf
+```
+Указать адреса  
+> AllowedIP=127.0.0.1,10.250.2.23,::1  
 
