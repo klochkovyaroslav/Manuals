@@ -1,5 +1,15 @@
 # FTP Repository
 
+#### Посмотреть текущий список репозиториев в Debian
+```bash
+sudo ls -l /etc/apt/sources.list.d/
+```
+
+#### Посмотреть текущий список репозиториев в Centos
+```bash
+sudo ls -l /etc/yum.repos.d/
+```
+
 ```bash
 apt update
 apt install vsftpd 
