@@ -14,9 +14,19 @@ systemctl is-enabled zabbix-web-service.service
 ```
 #### Добавить в автозапуск
 ```bash
-systemctl enable имя_сервиса
+systemctl enable nginx.service
 ```
 #### Удалить из автозапуска
 ```bash
-systemctl disable имя_сервиса
+systemctl disable nginx.service
+```
+
+
+#### Замаскировать сервис
+```bash
+systemctl mask nginx.service
+```
+#### Снять маску можно командой:
+```bash
+systemctl unmask nginx.service
 ```
