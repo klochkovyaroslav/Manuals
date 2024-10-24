@@ -345,3 +345,39 @@ snmpwalk -v2c -c PRTGRO 10.250.1.58 1.3.6.1.2.1.2.2.1.8.1073741824
 > "Key" так же создаем уникальный например, было: _net.if.in[ifHCInOctets.{#SNMPINDEX}]_, новый элемент: _net.if.in.fc[ifHCInOctets.{#SNMPINDEX}]_  
 > 4.1 Так же нужно заполнить и вкладки _**Tags**_ и _**Preprocessing**_
 > 5. Прототипы Тригеров (Trigger prototypes) создаем новые элементы по аналогии с п.4.
+
+
+## Настройка Report manager в Zabbix
+
+#### Installation and configuration
+
+```bash
+sudo apt install zabbix-web-service
+```
+
+#### Add GPG key for Google Chrome
+
+```bash
+curl -fSsL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor | sudo tee /usr/share/keyrings/google-chrome.gpg >> /dev/null
+```
+
+#### Add the repository for install Google Chrome
+
+```bash
+sudo apt install zabbix-web-serviceecho deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main | sudo tee /etc/apt/sources.list.d/google-chrome.list```
+```
+
+
+#### Install Google Chrome
+```bash
+sudo apt install -y google-chrome-stable
+```
+
+#### Zabbix server configuration
+
+```bash
+sudo nano /etc/zabbix/zabbix_server.conf
+```
+> StartReportWriters=1
+> WebServiceURL=http://localhost:10053/report
+
