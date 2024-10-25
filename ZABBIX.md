@@ -338,7 +338,7 @@ snmpwalk -v2c -c PRTGRO 10.250.1.58 1.3.6.1.2.1.2.2.1.8.1073741824
 ## Как настроить мониторинг по SNMP SAN коммутатора Brocade G620 (zabbix 6.4 и 7)
 > 1. Находим Template **Brocade FC by SNMP**
 > 2. Переходим в раздел _**Discovery rules**_
-> 3. Клонируем _Network interfaces discovery_ с новым именем и уникальным новым параметром Key: _Network interfaces discovery_own_ 
+> 3. Клонируем _**Network interfaces discovery**_ с новым именем и уникальным новым параметром Key: _**Network interfaces discovery_own**_ 
 > 4. Создаем новые элементы для: "_**Прототип элемента данных(Items Prototypes**)_" параметры можно взять из существующих элементов данных в оригинальном _Network interfaces discovery_  
 > Удаляем из имени _Interface {#IFNAME}({#IFALIAS}): Bits received_ строку _(**{#IFALIAS}**)_ из за нее не работает правило обнаружения, должно получиться: _Interface {#IFNAME}: Bits received_own_.  
 И так во всех новых _Прототип элемента данных(Items Prototypes)_. 
