@@ -170,3 +170,12 @@ grep "mail$" /etc/passwd
 ```bash
 rg -i "servers" ./
 ```
+
+# Silver Searcher (лучше чем GREP-ы)
+
+#### Найти файлы по содержимому:
+
+```bash
+sudo apt install silversearcher-ag
+```
+> sudo ag "192.168.56.0/21" /  
