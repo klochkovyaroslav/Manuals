@@ -32,7 +32,7 @@ dig TXT github.com
 nslookup github.com
 ```
 
-## Установка сервера DNS
+## Установка сервера DNS BIND
 
 ```bash
 apt install bind9 bind9utils dnsutils
