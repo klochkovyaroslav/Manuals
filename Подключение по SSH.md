@@ -62,6 +62,12 @@ The fingerprint for the ECDSA key sent by the remote host is
 SHA256:nIr5Cr+I+hWAggSRBd3CFHQZMweQN4XM+ul4rLLkog0.
 Please contact your system administrator.  
 ```
+
+#### Копирование ключа на сервер Windows
+``` bash 
+type $env:USERPROFILE\.ssh\id_rsa.pub | ssh user@server "cat >> .ssh/authorized_keys"
+```
+
 #### Очистить от старых записей на локальном ПК
 
 ``` bash
