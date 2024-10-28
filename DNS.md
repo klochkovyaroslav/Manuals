@@ -31,3 +31,17 @@ dig TXT github.com
 ```bash
 nslookup github.com
 ```
+
+## Установка сервера DNS
+
+```bash
+apt install bind9 bind9utils dnsutils
+```
+##### Конфиг файл
+> /etc/bind/named.conf
+
+```bash
+yum install bind bind-utils
+```
+##### Конфиг файл
+> /etc/named.conf
