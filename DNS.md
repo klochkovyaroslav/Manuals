@@ -45,3 +45,10 @@ yum install bind bind-utils
 ```
 ##### Конфиг файл
 > /etc/named.conf
+
+### Утилиты
+
+```bash
+named-checkconf /etc/named.conf
+named-checkzone /etc/named.conf
+```
