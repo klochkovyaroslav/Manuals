@@ -50,5 +50,5 @@ yum install bind bind-utils
 
 ```bash
 named-checkconf /etc/named.conf
-named-checkzone /etc/named.conf
+named-checkzone /vagrant/zone_example.txt
 ```
