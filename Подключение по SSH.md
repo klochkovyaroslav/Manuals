@@ -30,7 +30,8 @@ ssh-keygen -b 4096 -t rsa -C "My_ssh_key-name" -N "" -f /users/admin/my_ssh_key
  В строку "Enter file in which to save the file(/home/user/.ssh/id_rsa):" /home/user/.ssh/my_own_key  
  
  #### Загрузка ключа на удаленный сервер
- Скопировать ключ с локального на удаленный сервер - это использовать утилиту ssh-copy-id  в файл **~/.ssh/authorized_keys**
+ Скопировать ключ с локального на удаленный сервер - это использовать утилиту ssh-copy-id  в файл **~/.ssh/authorized_keys**  
+ В результате содержимое файла с публичным ключом id_rsa.pub будет скопировано в файл **~/.ssh/authorized_keys**  
  
 ``` bash  
 ssh-copy-id username@remote_host
