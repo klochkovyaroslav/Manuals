@@ -66,7 +66,7 @@ sudo firewall-cmd --reload
 ```bash
 chronyc sources
 ```
-#### Синхронизирован ли chrony
+#### Состояние синхронизации
 ```bash
 chronyc tracking
 ```
