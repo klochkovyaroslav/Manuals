@@ -7,7 +7,22 @@ sudo yum install -y chrony
 sudo vi /etc/chrony.conf
 ```
 
+> server ntp1.vniiftri.ru iburst  
+> server ntp2.vniiftri.ru iburst  
+> server 127.127.1.0  
+> driftfile /var/lib/chrony/drift  
+> makestep 1.0 3  
+> rtcsync  
+> allow 192.168.56.0/21  
+> keyfile /etc/chrony.keys  
+> ntsdumpdir /var/lib/chrony  
+> leapsectz right/UTC  
+> logdir /var/log/chrony
 
+#### Вывести только незакоментированные строки
+```bash
+sudo grep ^[[:alnum:]] /etc/chrony.conf
+```
 
 
 #### Добавить сервис chronyd.service в автозагрузку
