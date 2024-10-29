@@ -39,11 +39,12 @@ sudo timedatectl set-timezone Europe/Moscow
 sudo firewall-cmd --add-service=ntp --permanent
 sudo firewall-cmd --reload
 ```
+----
+## Управление Chronyd
 #### Информация об источниках chrony
 ```bash
 chronyc sources
 ```
-## Управление Chronyd
 #### Синхронизирован ли chrony
 ```bash
 chronyc tracking
