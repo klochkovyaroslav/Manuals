@@ -30,13 +30,13 @@ sudo systemctl enable --now chronyd.service
 ```bash
 sudo systemctl is-active chronyd.service
 ```
+##### Изменить часовой пояс
 ```bash
 sudo timedatectl set-timezone Europe/Moscow
 ```
+#### Добавить правиво в файрволл
 ```bash
 sudo firewall-cmd --add-service=ntp --permanent
-```
-```bash
 sudo firewall-cmd --reload
 ```
 #### Информация об источниках chrony
