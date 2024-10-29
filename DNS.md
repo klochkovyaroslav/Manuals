@@ -125,7 +125,8 @@ sudo firewall-cmd --add-service=dns --permanent
 ```bash
 sudo less /var/named/data/named.run
 ```
-
+----
+### Конфигурирование доменных зон
 #### Создаем новый файл зоны прямого просмотра копированием файла: /var/named/named.localhost в новый файл: /var/named/klochkov.int.zone
 ```bash
 sudo cp /var/named/named.localhost /var/named/klochkov.int.zone
