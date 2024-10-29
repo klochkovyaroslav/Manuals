@@ -23,8 +23,6 @@ sudo vi /etc/chrony.conf
 ```bash
 sudo grep ^[[:alnum:]] /etc/chrony.conf
 ```
-
-
 #### Добавить сервис chronyd.service в автозагрузку
 ```bash
 sudo systemctl enable --now chronyd.service
@@ -41,12 +39,16 @@ sudo firewall-cmd --add-service=ntp --permanent
 ```bash
 sudo firewall-cmd --reload
 ```
-### Управление Chronyd утилита: tracking
-
+#### Информация об источниках chrony
+```bash
+chronyc sources
+```
+## Управление Chronyd
+#### Синхронизирован ли chrony
 ```bash
 chronyc tracking
 ```
-#### Перечисленные пункты содержат следующую информацию:
+##### Перечисленные пункты содержат следующую информацию:
 
 - **Reference ID** — идентификатор и имя сервера, с которым компьютер в настоящее время синхронизирован;
 - **Stratum** — количество переходов к серверу с установленными эталонными часами;
