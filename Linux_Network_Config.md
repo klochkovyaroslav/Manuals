@@ -85,10 +85,9 @@ sudo systemctl list-unit-files | grep -i network
 ```bash
 systemctl restart networking.service
 ```
-
-
+----
+## NetworkManager
 ## Astra Linux 1.7
-
 ###  NMTUI - Утилита с псевдографикой
 
 ```bash
@@ -101,6 +100,7 @@ sudo nmtui
 sudo nmcli
 sudo nmcli device status
 sudo nmcli device show
+sudo nmcli connection show System\ eth1
 ```
 
 #### Сделать настройку сети
