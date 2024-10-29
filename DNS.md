@@ -31,20 +31,56 @@ dig TXT github.com
 ```bash
 nslookup github.com
 ```
-
+----
 ## Установка сервера DNS BIND
 
+#### Установить bind в Debian/Ubuntu
 ```bash
-apt install bind9 bind9utils dnsutils
+sudo apt install bind9 dnsutils
 ```
-##### Конфиг файл
-> /etc/bind/named.conf
+
+#### Установить bind в Centos/RHEL
+```bash
+sudo yum install bind bind-utils -y
+```
+```bash
+sudo systemctl enable --now named.service
+```
+#### Основной конфигурационный файл
+```bash
+sudo vi /etc/named.conf
+```
+
+> acl my_local_net { 192.168.56.0/21; };  
+> options {  
+> logging {  
+> zone "." IN {  
+> include "/etc/named.rfc1912.zones";  
+> include "/etc/named.root.key";
+
 
 ```bash
-yum install bind bind-utils
+sudo grep ^[[:alnum:]] /etc/named.conf
 ```
-##### Конфиг файл
-> /etc/named.conf
+#### Проверка корректности синтаксиса конфигурации
+```bash
+sudo named-checkconf
+```
+#### Проверка на наличие ошибок
+```bash
+echo $?
+```
+#### Проверка правил файервола
+sudo firewall-cmd --list-all
+```
+#### Добавление правила файервола для dns BIND
+```bash
+sudo firewall-cmd --add-service=dns --permanent
+```
+#### Посмотреть какие запросы были на разрешение имен
+```bash
+sudo less /var/named/data/named.run
+```
 
 ### Утилиты
 
