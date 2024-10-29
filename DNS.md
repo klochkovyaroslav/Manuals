@@ -72,6 +72,7 @@ sudo named-checkconf
 echo $?
 ```
 #### Проверка правил файервола
+```bash
 sudo firewall-cmd --list-all
 ```
 #### Добавление правила файервола для dns BIND
