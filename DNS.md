@@ -43,6 +43,7 @@ sudo apt install bind9 dnsutils
 ```bash
 sudo yum install bind bind-utils -y
 ```
+#### Добвить в автозагрузку
 ```bash
 sudo systemctl enable --now named.service
 ```
@@ -75,6 +76,7 @@ sudo firewall-cmd --list-all
 ```
 #### Добавление правила файервола для dns BIND
 ```bash
+sudo firewall-cmd --add-service=dns
 sudo firewall-cmd --add-service=dns --permanent
 ```
 #### Посмотреть какие запросы были на разрешение имен
