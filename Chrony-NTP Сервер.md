@@ -1,7 +1,13 @@
 # Установка и настройка NTP сервера Chrony
+#### CentOS/RHEL
 ```bash
 sudo yum install -y chrony
 ```
+#### Debian/Ubuntu
+```bash
+sudo apt install -y chrony
+```
+
 #### Серверы с которых NTP будет получать эталонное время и другие параметры
 ```bash
 sudo vi /etc/chrony.conf
