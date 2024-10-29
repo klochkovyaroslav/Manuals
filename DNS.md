@@ -130,6 +130,12 @@ sudo less /var/named/data/named.run
 ```bash
 sudo cp /var/named/named.localhost /var/named/klochkov.int.zone
 ```
+
+#### Нужно сменить владельца группы для нового файла
+```bash
+sudo chgrp named /var/named/klochkov.int.zone
+```
+
 #### Конфигурация файла зоны прямого просмотра
 ```bash
 sudo vi /var/named/klochkov.int.zone
@@ -158,6 +164,11 @@ sudo named-checkzone klochkov.int /var/named/klochkov.int.zone
 #### Конфигурация файла зоны обратного просмотра
 ```bash
 sudo vi /var/named/klochkov.int.rev.zone
+```
+
+#### Нужно сменить владельца группы для нового файла
+```bash
+sudo chgrp named /var/named/klochkov.int.rev.zone
 ```
 ```
 $TTL 86400
