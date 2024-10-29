@@ -190,9 +190,9 @@ $TTL 86400
 ```bash
 sudo named-checkzone 0.168.192.in-addr.arpa /var/named/klochkov.int.rev.zone
 ```
-#### Перечитываем конфигурацию
+#### Перечитываем конфигурацию зон в BIND 9
 ```bash
-rndc reload
+sudo rndc reload
 kill -HUP `ps aux | grep named | grep -v grep | awk '{print $2}'`
 sudo systemctl reload named.service
 sudo systemctl status named.service
