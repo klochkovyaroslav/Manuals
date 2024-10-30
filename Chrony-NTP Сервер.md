@@ -123,6 +123,7 @@ sudo timedatectl set-timezone Europe/Moscow
 ```bash
 systemctl list-units --type service --all | grep ntp
 ```
+Если служба ntpd запущена, необходимо ее остановить и отключить автозапуск
 ```bash
 sudo systemctl enable --now chronyd.service
 ```
