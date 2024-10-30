@@ -102,3 +102,38 @@ chronyc online
 ```bash
 chronyc activity
 ```
+----
+
+## Настройка chrony на клиенте
+
+```bash
+sudo yum install chrony -y
+```
+```bash
+sudo vi /etc/chrony.conf
+```
+или
+```bash
+sudo sed -i 's/pool 2.centos.pool.ntp.org iburst/server 192.168.56.10 iburst/' /etc/chrony.conf
+sudo sed -i 's/sourcedir \/run\/chrony-dhcp/#sourcedir \/run\/chrony-dhcp/' /etc/chrony.conf
+```
+```bash
+sudo timedatectl set-timezone Europe/Moscow
+```
+```bash
+systemctl list-units --type service --all | grep ntp
+```
+```bash
+sudo systemctl enable --now chronyd.service
+```
+```bash
+sudo systemctl restart chronyd.service
+```
+```bash
+timedatectl status
+```
+```bash
+chronyc sources
+```
+
+
