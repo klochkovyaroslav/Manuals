@@ -77,6 +77,13 @@ sed -i 's/#Port 22/Port 6982/' /etc/ssh/sshd_config
 sed -i 's/#LoginGraceTime 2m/LoginGraceTime 10s/' /etc/ssh/sshd_config
 ```
 
+#### Chrony config
+```bash
+sudo sed -i 's/pool 2.centos.pool.ntp.org iburst/server 192.168.56.10 iburst/' /etc/chrony.conf
+sudo sed -i 's/sourcedir \/run\/chrony-dhcp/#sourcedir \/run\/chrony-dhcp/' /etc/chrony.conf
+```
+
+
 #### Переименовать систему в Linux
 
 ```bash
