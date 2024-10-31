@@ -1,6 +1,13 @@
 # SED: Примеры.
 
 
+#### Отключить SELINUX навсегда
+```bash
+sudo -s;  
+setenforce 0;  
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config;
+```
+
 #### файлы с именем: test+первая цифра: 2-цать или 3-цать, вторая цифра от 0 до 9 и убрать первую строку из вывода команды
 ```bash
 watch -n 5 "ls -sh /mnt | grep 'test[2-3][09]' | sed '1d'"
