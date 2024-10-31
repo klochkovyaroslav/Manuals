@@ -17,7 +17,12 @@ setenforce 0
 ```bash
 setenforce 1
 ```
-
+#### Отключить SELINUX навсегда
+```bash
+sudo -s;  
+setenforce 0;  
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config;
+```
 ----
 
 ## Настройка SELinux
