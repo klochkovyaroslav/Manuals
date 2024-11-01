@@ -3,7 +3,7 @@
 ## Хранимые процедуры
 
 #### Справочные сведения обо всех расширенных хранимых процедурах
-```bash
+```sql
 USE master;  
 GO  
 EXEC sp_helpextendedproc;  
@@ -11,7 +11,7 @@ GO
 ```
 
 #### Справочные сведения об одной расширенной хранимой процедуре: xp_cmdshell
-```bash
+```sql
 USE master;  
 GO  
 EXEC sp_helpextendedproc xp_cmdshell;  
@@ -20,13 +20,13 @@ GO
 
 #### Добавление на SQL Server расширенной хранимой процедуры: xp_StoreOnce
 
-```bash
+```sql
 sp_addextendedproc 'xp_StoreOnce','C:\Program Files\HPE\StoreOnce\isvsupport\sql\bin\XP_HPStoreOnceForMSSQL.dll'
 ```
 
 #### Удаление с SQL Server расширенной хранимой процедуры: 'xp_StoreOnce
 
-```bash
+```sql
 sp_dropextendedproc 'xp_StoreOnce';
 ```
 
@@ -34,26 +34,26 @@ sp_dropextendedproc 'xp_StoreOnce';
 #### В командной строке CMD от администратора
 #### Должны получить ответ: 1>
 
-```bash
+```sql
 sqlcmd
 ```
 
 
 #### Версия SQL сервера
 #### go - команда на выполнение sql запроса
-```bash
+```sql
 select @@version
 go
 ```
 
 
-```bash
+```sql
 select Name
 from sys.databases
 go
 ```
 
-```bash
+```sql
 sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt"
 
 sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt" -o "C:\Users\yaroslav.klochkov\Desktop\SQLCMD\rezult.txt"
@@ -63,17 +63,27 @@ sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt" -v TableName=sys.databases Colum
 
 ## T_SQL запросы.
 
+#### Определить статус ноды в SQL-AlwaysOn
+
+```sql
+SELECT a.role_desc
+FROM sys.dm_hadr_availability_replica_states AS a
+JOIN sys.availability_replicas AS b
+ON b.replica_id = a.replica_id
+WHERE b.replica_server_name = @@ServerName
+```
+
 #### max/min server memory — это минимальное и максимальное количество оперативной памяти, потребляемое экземпляром Microsoft SQL Server
 #### Посмотреть установленное значение можно следующим SQL запросом:
 
-```bash
+```sql
 SELECT c.value, c.value_in_use
 FROM sys.configurations c WHERE c.[name] = 'max server memory (MB)'
 GO
 ```
 #### Установить значение max/min server memory
 
-```bash
+```sql
 sp_configure 'show advanced options', 1;
 GO
 RECONFIGURE;
@@ -86,7 +96,7 @@ GO
 
 #### Установить значение: max degree of parallelism
 
-```bash
+```sql
 EXEC sp_configure 'show advanced options', 1;
 GO
 RECONFIGURE WITH OVERRIDE;
@@ -100,17 +110,17 @@ GO
 
 #### Создать новую БД 
 
-```bash
+```sql
 create database TestDB;
 ```
 
 #### Использоватиь нужную БД. 
 
-```bash
+```sql
 use TestDB;
 ```
 
-```bash
+```sql
 use TestDB
 go
 create table mtable1
@@ -129,7 +139,7 @@ values ('testdfghfghdfhgdghdgfhdsgfhdf')
 Сделать базу данных SQL Server доступной в состоянии RESTORING - [ссылка](https://blog.it-kb.ru/2021/10/14/sql-server-database-stuck-in-restoring-state/#more-23442).
 
 
-```bash
+```sql
 RESTORE DATABASE [TestDB] WITH RECOVERY
 ```
 
