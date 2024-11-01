@@ -102,7 +102,7 @@ setsebool -P <имя политики> <on или off>
 ```
 #### Например:
 ```bash
-setsebool -P http_port_t on
+setsebool -P httpd_enable_cgi on
 ```
 ----
 
