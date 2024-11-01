@@ -1,5 +1,8 @@
 #### Посмотреть где находяться бинарные файлы программы
 whereis	nginx
+whereis -b nginx
+whereis -m httpd
+
 
 Чтобы понять какой репозиторий используется в вашей системе  
 sudo cat /etc/apt/sources.list 
