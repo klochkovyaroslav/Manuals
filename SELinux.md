@@ -130,3 +130,6 @@ tail -f /var/log/audit/audit.log
 ```bash
 apt-get install selinux
 ```
+
+Настройка SELinux в CentOS - [ссылка](https://www.dmosk.ru/miniinstruktions.php?mini=selinux-setting).
+Примеры - [ссылка](https://www.dmosk.ru/miniinstruktions.php?mini=selinux-example).
