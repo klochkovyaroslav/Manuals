@@ -133,20 +133,20 @@ sudo systemctl reload httpd.service; sudo systemctl status httpd.service
 ```bash
 audit2why < /var/log/audit/audit.log
 ```
-Выясняем что файл _/webserver/index.html_ в дефолтном контекстке: "default_t" Selinux
+Выясняем что файл _/webserver/index.html_ в дефолтном контекстке: "default_t" в Selinux
 #### Смотрим контекст безопасности SELinux, связанный с файлами и каталогами
 ```bash
 sudo ls -Z /webserver/index.html
 ```
 > unconfined_u:object_r:default_t:s0 /webserver/index.html
 
-#### Смотрим контекст безопасности SELinux, связанный с файлами и каталогами по умолчанию apache
+#### Смотрим контекст безопасности SELinux, связанный с файлами и каталогами по умолчанию в apache
 ```bash
 sudo ls -Z /var/www/my_test_site/html/index.html
 ```
 > unconfined_u:object_r:httpd_sys_content_t:s0 /var/www/my_test_site/html/index.html
 
-Выясняем что файл _/var/www/my_test_site/html/index.html_ в контекстке: "httpd_sys_content_t" Selinux  
+Выясняем что файл _/var/www/my_test_site/html/index.html_ в контекстке: "httpd_sys_content_t" в Selinux  
 
 Есть несколько вариантов решения проблемы
 #### 1. Вариант менее предпочтительный, для быстрой проверки - Меняем тип в контексте каталога
@@ -158,14 +158,14 @@ sudo chcon -v -R -t httpd_sys_content_t /webserver/index.html
 sudo ls -Z /webserver/index.html
 ```
 > unconfined_u:object_r:httpd_sys_content_t:s0 /webserver/index.html  
-После изменений файл _/webserver/index.html_ в контекстке: "httpd_sys_content_t" Selinux
+После изменений файл _/webserver/index.html_ в контекстке: "httpd_sys_content_t" в Selinux
 
 #### Восстанавливаем контекст каталога
 ```bash
 sudo restorecon -vR /webserver/index.html
 ```
 > unconfined_u:object_r:default_t:s0 /webserver/index.html  
-файл _/webserver/index.html_ снова в дефолтном контекстке: "default_t" Selinux
+файл _/webserver/index.html_ снова в дефолтном контекстке: "default_t" в Selinux
 
 #### 2. Вариант более предпочтительный - Назначаем контекст безопасности "httpd_sys_content_t" для всех файлов и каталогов в каталоге "/webserver"
 ```bash	
