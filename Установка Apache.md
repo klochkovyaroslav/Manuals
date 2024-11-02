@@ -178,6 +178,12 @@ sudo semanage fcontext -a -t httpd_sys_content_t "/webserver(/.*)?"
 ```bash
 sudo semanage port -l | grep http_port_t
 ```
+#### Восстанавливаем контекст каталога по умолчанию
+```bash
+sudo restorecon -vR /webserver/index.html
+```
+> unconfined_u:object_r:httpd_sys_content_t:s0 /webserver/index.html
+
 
 #### 3. Вариант - Создать свой модуль для разрешения работы Apache на нестандартном порту
 ##### Ставим утилиту для работы с политиками SELinux
