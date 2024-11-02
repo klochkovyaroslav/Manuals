@@ -144,8 +144,9 @@ sudo ls -Z /webserver/index.html
 ```bash
 sudo ls -Z /var/www/my_test_site/html/index.html
 ```
-> unconfined_u:object_r:httpd_sys_content_t:s0 /var/www/my_test_site/html/index.htm  
-Выясняем что файл _/var/www/my_test_site/html/index.html_ в контекстке: "httpd_sys_content_t" Selinux
+> unconfined_u:object_r:httpd_sys_content_t:s0 /var/www/my_test_site/html/index.html
+
+Выясняем что файл _/var/www/my_test_site/html/index.html_ в контекстке: "httpd_sys_content_t" Selinux  
 
 Есть несколько вариантов решения проблемы
 #### 1. Вариант менее предпочтительный, для быстрой проверки - Меняем тип в контексте каталога
