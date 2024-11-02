@@ -72,6 +72,10 @@ sudo firewall-cmd --add-service=http
 sudo firewall-cmd --add-service=http --permanent
 ```
 ```bash
+sudo firewall-cmd --add-service=https
+sudo firewall-cmd --add-service=https --permanent
+```
+```bash
 sudo firewall-cmd --add-port=8028/tcp
 sudo firewall-cmd --add-port=8028/tcp  --permanent
 ```
