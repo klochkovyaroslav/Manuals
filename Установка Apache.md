@@ -37,7 +37,7 @@ sudo tail -f /var/log/audit/audit.log
 ```bash
 sudo yum install policycoreutils-python-utils
 ```
-#### Запускаем утилиту: audit2why
+#### Запускаем утилиту: audit2why - из: policycoreutils-python-utils
 ```bash
 audit2why < /var/log/audit/audit.log
 ```
@@ -48,7 +48,7 @@ sudo yum install setroubleshoot-server
 ```
 Перезагрузите или перезапустите auditd после установки.
 
-#### Запускаем утилиту: sealert
+#### Запускаем утилиту: sealert - из: setroubleshoot-server
 ```bash
 sudo sealert -a /var/log/audit/audit.log
 ```
