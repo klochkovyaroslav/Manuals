@@ -257,8 +257,8 @@ sudo vi /etc/httpd/conf.d/webserver.conf
 >    _ServerAlias webserver_  
 >    _DocumentRoot /webserver_  
 >    _SSLEngine on_
->        _SSLCertificateFile /etc/pki/tls/certs/my_site.crt_
->        _SSLCertificateKeyFile /etc/pki/tls/private/my_site.key_
+>        _SSLCertificateFile /etc/pki/tls/certs/my_site.crt_  
+>        _SSLCertificateKeyFile /etc/pki/tls/private/my_site.key_  
 >
 >    _<Directory /webserver>_  
 >        _AllowOverride All_  
