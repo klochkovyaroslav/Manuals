@@ -1,27 +1,23 @@
-# Установка Apache
+# Установка и настройка WEB сервера Apache
 
+#### Установить Apache
 ```bash
 sudo yum search httpd
-```
-```bash
 sudo yum install httpd -y
 ```
+#### Добавить сервис httpd в автозагрузку
 ```bash
-sudo systemctl status httpd.service
+sudo systemctl enable --now httpd.service; sudo systemctl status httpd.service
 ```
-```bash
-sudo systemctl enable --now httpd.service
-```
-```bash
-sudo systemctl status httpd.service
-```
-#### Добавляем в конфиг для использования нестандартных портов
+
+#### Добавить в конфиг для использования нестандартных портов
 ```bash
 sudo vi /etc/httpd/conf/httpd.conf
 ```
 > Lister 8028  
 > Lister 4043
 
+#### Перезагружаем службу httpd
 ```bash
 sudo systemctl restart httpd.service; sudo systemctl status httpd.service
 ```
@@ -29,7 +25,7 @@ sudo systemctl restart httpd.service; sudo systemctl status httpd.service
 > Job for httpd.service failed because the control process exited with error code.  
 > See "systemctl status httpd.service" and "journalctl -xeu httpd.service" for details.
 
-
+----
 ## Траблшутинг Selinux
 
 #### Смотрим log 
@@ -58,7 +54,8 @@ sudo sealert -a /var/log/audit/audit.log
 ```
 Любым из перечисленных выше способов выясняем, что в контексте безопасности: **http_port_t** НЕ разрешены нестандарные порты
 
-#### Открытие сетевых портов для разрешения использовать http-запросы в SELinux:
+----
+## Открытие сетевых портов для разрешения использовать http-запросы в SELinux:
 ```bash
 sudo semanage port -a -t http_port_t -p tcp 8028; sudo semanage port -a -t http_port_t -p tcp 4043
 ```
@@ -66,7 +63,7 @@ sudo semanage port -a -t http_port_t -p tcp 8028; sudo semanage port -a -t http_
 ```bash
 sudo semanage port -l | grep http_port_t
 ```
-
+----
 ## Настроить firewall, добавляем правила для открытия портов
 ```bash
 sudo firewall-cmd --list-all
@@ -80,7 +77,7 @@ sudo firewall-cmd --permanent --add-port=8028/tcp
 ```bash
 sudo firewall-cmd --permanent --add-port=4043/tcp
 ```
-
+----
 ## Создать файл конфигурации виртуального хоста для сайта.
 #### Создать новую директорию
 ```bash
@@ -196,7 +193,7 @@ sudo semodule -l | grep less
 ```
 
 ## Настроить работы Apache c SSL сертификатами
-#### Устанавить модуль для работы c SSL сертификатами
+#### Установить модуль для работы c SSL сертификатами
 ```bash
 sudo yum install mod_ssl -y
 ```
