@@ -25,6 +25,7 @@ sudo systemctl restart httpd.service; sudo systemctl status httpd.service
 > Job for httpd.service failed because the control process exited with error code.  
 > See "systemctl status httpd.service" and "journalctl -xeu httpd.service" for details.
 
+
 ----
 ## Траблшутинг Selinux
 
