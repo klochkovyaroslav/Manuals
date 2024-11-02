@@ -30,7 +30,7 @@ sudo systemctl restart httpd.service; sudo systemctl status httpd.service
 > See "systemctl status httpd.service" and "journalctl -xeu httpd.service" for details.
 
 
-### Траблшутинг Selinux
+## Траблшутинг Selinux
 
 #### Смотрим log 
 ```bash
@@ -67,47 +67,7 @@ sudo semanage port -a -t http_port_t -p tcp 8028; sudo semanage port -a -t http_
 sudo semanage port -l | grep http_port_t
 ```
 
-```bash
-sudo ls -Z /webserver/index.html
-```
-> unconfined_u:object_r:default_t:s0 /webserver/index.html
-```bash
-sudo ls -Z /var/www/my_test_site/html/index.html
-```
-> unconfined_u:object_r:httpd_sys_content_t:s0 /var/www/my_test_site/html/index.htm
-
-#### Меняем тип в контексте каталога
-```bash
-sudo chcon -v -R -t httpd_sys_content_t /webserver/index.html
-```
-
-#### Проверяем контекст каталога
-```bash
-sudo ls -Z /webserver/index.html
-```
-> unconfined_u:object_r:httpd_sys_content_t:s0 /webserver/index.html
-
-
-#### Восстанавливаем контекст каталога
-```bash
-sudo restorecon -vR /webserver/index.html
-```
-> unconfined_u:object_r:default_t:s0 /webserver/index.html
-```bash	
-sudo semanage fcontext -a -t httpd_sys_content_t "/webserver(/.*)?"
-```
-```bash
-sudo semanage port -l | grep http_port_t
-```
-```bash
-sudo yum install setools-console
-```
-
-
-
-
-
-#### Настроить firewall, добавляем правила для открытия портов
+## Настроить firewall, добавляем правила для открытия портов
 ```bash
 sudo firewall-cmd --list-all
 ```
@@ -121,7 +81,7 @@ sudo firewall-cmd --permanent --add-port=8028/tcp
 sudo firewall-cmd --permanent --add-port=4043/tcp
 ```
 
-### Создать файл конфигурации виртуального хоста для сайта.
+## Создать файл конфигурации виртуального хоста для сайта.
 #### Создать новую директорию
 ```bash
 sudo mkdir -p /webserver
@@ -169,9 +129,62 @@ sudo vi /etc/httpd/conf.d/webserver.conf
 ```bash
 sudo systemctl reload httpd.service; sudo systemctl status httpd.service
 ```
+Проверяем, наш сайт НЕ открывается на портах 8028 и 4043
 
+## Еще раз траблшутим Selinux
+
+#### Запускаем утилиту: audit2why
+```bash
+audit2why < /var/log/audit/audit.log
+```
+Выясняем что файл _/webserver/index.html_ в дефолтном контекстке: "default_t" Selinux
+#### Смотрим контекст безопасности SELinux, связанный с файлами и каталогами
+```bash
+sudo ls -Z /webserver/index.html
+```
+> unconfined_u:object_r:default_t:s0 /webserver/index.html
+
+#### Смотрим контекст безопасности SELinux, связанный с файлами и каталогами по умолчанию apache
+```bash
+sudo ls -Z /var/www/my_test_site/html/index.html
+```
+> unconfined_u:object_r:httpd_sys_content_t:s0 /var/www/my_test_site/html/index.htm  
+Выясняем что файл _/var/www/my_test_site/html/index.html_ в контекстке: "httpd_sys_content_t" Selinux
+
+Есть несколько вариантов решения проблемы
+#### 1. Вариант менее предпочтительный, для быстрой проверки - Меняем тип в контексте каталога
+```bash
+sudo chcon -v -R -t httpd_sys_content_t /webserver/index.html
+```
+#### Проверяем еще раз контекст безопасности для каталога
+```bash
+sudo ls -Z /webserver/index.html
+```
+> unconfined_u:object_r:httpd_sys_content_t:s0 /webserver/index.html  
+После изменений файл _/webserver/index.html_ в контекстке: "httpd_sys_content_t" Selinux
+
+#### Восстанавливаем контекст каталога
+```bash
+sudo restorecon -vR /webserver/index.html
+```
+> unconfined_u:object_r:default_t:s0 /webserver/index.html  
+файл _/webserver/index.html_ снова в дефолтном контекстке: "default_t" Selinux
+
+#### 2. Вариант более предпочтительный - Назначаем контекст безопасности "httpd_sys_content_t" для всех файлов и каталогов в каталоге "/webserver"
+```bash	
+sudo semanage fcontext -a -t httpd_sys_content_t "/webserver(/.*)?"
+```
+```bash
+sudo semanage port -l | grep http_port_t
+```
+
+#### 3. Вариант - Создать свой модуль для разрешения работы Apache на нестандартном порту
+##### Ставим утилиту для работы с политиками SELinux
+```bash
+sudo yum install setools-console
+```
 #### создание нового модуля для разрешения nginx на нестандартном порту
-> В лабе не делать это для инфы
+> В лабе не делать это для информации
 ```bash
 sudo ausearch -c 'nginx' --raw | audit2allow -M my_module_for_nginx
 Установка нового модуля selinux: my_module_for_nginx в ядро
@@ -182,9 +195,8 @@ sudo semodule -l | grep my_module_for_nginx
 sudo semodule -l | grep less
 ```
 
-
-
-
-
-
+## Настроить работы Apache c SSL сертификатами
+#### Устанавить модуль для работы c SSL сертификатами
+```bash
 sudo yum install mod_ssl -y
+```
