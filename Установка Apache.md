@@ -214,3 +214,67 @@ sudo semodule -l | grep less
 ```bash
 sudo yum install mod_ssl -y
 ```
+
+#### Генерируем закрытый ключ(private key)
+```bash
+sudo openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out my_site.key
+```
+
+#### На основе закрытого ключа генерируем запрос на выдачу сертификата
+```bash
+sudo openssl req -new -key my_site.key -out my_site.csr
+```
+#### Выдать самоподписанный (ключом my_site.key)сертификат
+```bash
+sudo openssl x509 -req -days 365 -in my_site.csr -signkey my_site.key -out my_site.crt
+```
+#### Скопировать сертификат и закрытый ключ в соответствующие директории
+```bash
+sudo cp my_site.crt /etc/pki/tls/certs
+sudo cp my_site.key /etc/pki/tls/private/
+```
+#### Изменить конфиг файл, для порта: 4043
+```bash
+sudo vi /etc/httpd/conf.d/webserver.conf
+```
+
+> _<VirtualHost *:8028>_
+>    _ServerName webserver_  
+>    _ServerAlias webserver_  
+>    _DocumentRoot /webserver_  
+>
+>    _<Directory /webserver>_  
+>        _AllowOverride All_  
+>        _Require all granted_  
+>    _</Directory>_  
+>
+>    _ErrorLog /var/log/httpd/webserver_8028-error.log_  
+>    _CustomLog /var/log/httpd/webserver_8028-access.log combined_  
+> _</VirtualHost>_  
+>
+> _<VirtualHost *:4043>_  
+>  _ServerName webserver_  
+>    _ServerAlias webserver_  
+>    _DocumentRoot /webserver_  
+>    _SSLEngine on_
+>        _SSLCertificateFile /etc/pki/tls/certs/my_site.crt_
+>        _SSLCertificateKeyFile /etc/pki/tls/private/my_site.key_
+>
+>    _<Directory /webserver>_  
+>        _AllowOverride All_  
+>        _Require all granted_  
+>    _</Directory>_  
+>
+>    _ErrorLog /var/log/httpd/webserver_4043-error.log_  
+>    _CustomLog /var/log/httpd/webserver_4043-access.log combined_  
+> _</VirtualHost>_
+
+
+#### Проверка конфигурации
+```bash
+sudo apachectl configtest
+```
+#### Перечитать конфигурацию apache
+```bash
+sudo systemctl reload httpd.service; sudo systemctl status httpd.service
+```
