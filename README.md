@@ -47,6 +47,30 @@ sudo dpkg-reconfigure gdm3
 [Как установить новый Display Manager в Debian, Ubuntu, Linux Mint, Kali Linux и их производных](https://zalinux.ru/?p=8982#1)
 
 
+## Имя в системе (Hostname)
+
+```bash
+hostname
+hostnamectl
+```
+## Сменить Имя в системе (Hostname)
+#### Способ 1. Используем команду hostnamectl
+```bash
+hostnamectl set-hostname server1.local
+```
+
+#### Способ 2. Редактируем файлы /etc/hostname и /etc/hosts
+```bash
+#! /bin/bash
+echo Enter new name of host
+echo Example: newname.mydomain.local.com
+read hostnm
+
+sed -i 's/'$HOSTNAME'/'$hostnm'/' /etc/sysconfig/network
+sed -i 's/'$HOSTNAME'/'$hostnm'/' /etc/sysctl.conf
+sed -i 's/'$HOSTNAME'/'$hostnm'/' /etc/hosts
+```
+
 ## Включение TRIM на SSD
 
 ```bash
