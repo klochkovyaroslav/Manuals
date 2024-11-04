@@ -812,7 +812,22 @@ su -
 systemctl set-default --force graphical.target
 ```
 
-
+## Virtualbox
+#### Список всех виртуалок:
+```bash
+vboxmanage list vms
+vboxmanage list vms --long | egrep '^(Name|State)'
+```
+#### Запустить виртуалку:
+# В оконном режиме
+```bash
+vboxmanage startvm ubuntu1604
+```
+# В режиме headless
+```bash
+vboxmanage startvm --type headless server1
+```
+[Управление VirtualBox из консоли с помощью vboxmanage](https://eax.me/vboxmanage/)
 ---
 ##############################################################################################
 
