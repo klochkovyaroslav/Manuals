@@ -818,17 +818,29 @@ systemctl set-default --force graphical.target
 vboxmanage list vms
 vboxmanage list vms --long | egrep '^(Name|State)'
 ```
-#### Запустить виртуалку:
-# В оконном режиме
+### Запустить виртуалку:
+#### В оконном режиме
 ```bash
 vboxmanage startvm ubuntu1604
 ```
-# В режиме headless
+#### В режиме headless
 ```bash
 vboxmanage startvm --type headless server1
 ```
+#### Создать полный клон ВМ:
+```bash
+vboxmanage clonevm ubuntu1 --name server3 --register
+```
+
+#### Pause, Resume, Poweroff:
+```bash
+vboxmanage controlvm server3 pause
+vboxmanage controlvm server3 resume
+vboxmanage controlvm server3 poweroff
+```
 
 [Управление VirtualBox из консоли с помощью vboxmanage](https://eax.me/vboxmanage)
+
 
 
 ---
