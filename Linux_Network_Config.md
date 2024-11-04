@@ -106,7 +106,7 @@ sudo nmcli connection show System\ eth1
 #### Сделать настройку сети
 
 ```bash
-sudo nmcli connection modify Wired\ connection\ 1 ipv4.method 'manual' ipv4.addresses '192.168.1.40' ipv4.gateway '192.168.1.1'  ipv4.dns '192.168.1.1'
+sudo nmcli connection modify Wired\ connection\ 1 ipv4.method 'manual' ipv4.addresses '192.168.1.40/24' ipv4.gateway '192.168.1.1'  ipv4.dns '192.168.1.1'
 ```
 #### Добавить DNS адрес
 ```bash
