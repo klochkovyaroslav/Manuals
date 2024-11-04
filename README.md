@@ -827,7 +827,10 @@ vboxmanage startvm ubuntu1604
 ```bash
 vboxmanage startvm --type headless server1
 ```
-[Управление VirtualBox из консоли с помощью vboxmanage](https://eax.me/vboxmanage/)
+
+[Управление VirtualBox из консоли с помощью vboxmanage](https://eax.me/vboxmanage)
+
+
 ---
 ##############################################################################################
 
