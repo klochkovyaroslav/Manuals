@@ -220,6 +220,15 @@ sudo openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out my_site.k
 ```bash
 sudo openssl req -new -key my_site.key -out my_site.csr
 ```
+
+> Country Name (2 letter code) [XX]:RU  
+> State or Province Name (full name) []:Moscow Region  
+> Locality Name (eg, city) [Default City]:Moscow  
+> Organization Name (eg, company) [Default Company Ltd]:company LTD
+> Organizational Unit Name (eg, section) []:IT
+> Common Name (eg, your name or your server's hostname) []:server4.local.int
+> Email Address []:user@gmail.com
+
 #### Выдать самоподписанный (ключом my_site.key)сертификат
 ```bash
 sudo openssl x509 -req -days 365 -in my_site.csr -signkey my_site.key -out my_site.crt
