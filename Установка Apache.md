@@ -142,7 +142,7 @@ sudo systemctl reload httpd.service; sudo systemctl status httpd.service
 
 #### Запускаем утилиту: audit2why
 ```bash
-audit2why < /var/log/audit/audit.log
+sudo grep http /var/log/audit/audit.log | audit2why
 ```
 Выясняем что файл _/webserver/index.html_ в дефолтном контекстке: "default_t" в Selinux
 #### Смотрим контекст безопасности SELinux, связанный с файлами и каталогами
