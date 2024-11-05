@@ -14,8 +14,8 @@ sudo systemctl enable --now httpd.service; sudo systemctl status httpd.service
 ```bash
 sudo vi /etc/httpd/conf/httpd.conf
 ```
-> Lister 8028  
-> Lister 4043
+> Listen 8028  
+> Listen 4043
 
 #### Перезагружаем службу httpd
 ```bash
