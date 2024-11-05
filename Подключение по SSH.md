@@ -126,7 +126,7 @@ _**PasswordAuthentication**_ **yes**  заменить на **no**
 или   
 
 ``` bash
-sudo sed -i '65s/#PasswordAuthentication no/PasswordAuthentication no/g' /etc/ssh/sshd_config
+sudo sed -i '65s/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
 ```
 
 Теперь сохраните файл и перезапустите службу ssh:  
