@@ -3,7 +3,7 @@
 #### Установить Apache
 ```bash
 sudo yum search httpd
-sudo yum install httpd -y
+sudo yum install httpd mod_ssl policycoreutils-python-utils -y
 ```
 #### Добавить сервис httpd в автозагрузку
 ```bash
@@ -38,7 +38,7 @@ sudo yum install policycoreutils-python-utils
 ```
 #### Запускаем утилиту: audit2why - из: policycoreutils-python-utils
 ```bash
-audit2why < /var/log/audit/audit.log
+sudo grep http /var/log/audit/audit.log | audit2why
 ```
 или еще утилита для траблшутинга Selinux
 #### Инструменты SELinux для разработки модулей политики:
