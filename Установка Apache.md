@@ -68,20 +68,16 @@ sudo semanage port -l | grep http_port_t
 sudo firewall-cmd --list-all
 ```
 ```bash
-sudo firewall-cmd --add-service=http
-sudo firewall-cmd --add-service=http --permanent
+sudo firewall-cmd --add-service=http; sudo firewall-cmd --add-service=http --permanent
 ```
 ```bash
-sudo firewall-cmd --add-service=https
-sudo firewall-cmd --add-service=https --permanent
+sudo firewall-cmd --add-service=https; sudo firewall-cmd --add-service=https --permanent
 ```
 ```bash
-sudo firewall-cmd --add-port=8028/tcp
-sudo firewall-cmd --add-port=8028/tcp  --permanent
+sudo firewall-cmd --add-port=8028/tcp; sudo firewall-cmd --add-port=8028/tcp  --permanent
 ```
 ```bash
-sudo firewall-cmd --add-port=4043/tcp
-sudo firewall-cmd --add-port=4043/tcp  --permanent
+sudo firewall-cmd --add-port=4043/tcp; sudo firewall-cmd --add-port=4043/tcp  --permanent
 ```
 ----
 ## Создать файл конфигурации виртуального хоста для сайта.
