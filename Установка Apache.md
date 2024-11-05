@@ -238,7 +238,7 @@ sudo cp my_site.key /etc/pki/tls/private/
 sudo vi /etc/httpd/conf.d/webserver.conf
 ```
 
-> _<VirtualHost *:8028>_
+> _<VirtualHost *:8028>_  
 >    _ServerName webserver_  
 >    _ServerAlias webserver_  
 >    _DocumentRoot /webserver_  
