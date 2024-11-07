@@ -494,8 +494,9 @@ TrustServerCertificate = yes
 ```bash
 nc -zv 192.168.2.162 1433
 ```
-ОК - Если подключение успешное:  
-![image](https://github.com/user-attachments/assets/c9d11aaa-7102-46c7-b4ac-68b3519553ad)
+**OPEN** - Если подключение успешное:  
+![image](https://github.com/user-attachments/assets/99e3c6d6-3923-4ce9-80dd-03b25c1eba24)
+
 
 #### Проверить подключение с помощью ODBC драйвера к SQL серверу
 ```bash
