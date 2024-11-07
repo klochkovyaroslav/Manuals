@@ -423,20 +423,39 @@ GRANT VIEW ANY DEFINITION to zbx_monitor;
 #### 2. Далее нужно установить Microsoft ODBC драйвер. 
 [Ссылка на ODBC драйвер DEB](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16&tabs=debian18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline)
 
-#### Добавить ключи для проверки репозитория
+#### 3. Добавить ключи для проверки репозитория
 ```bash
 curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
 ```
-#### Добавить репозиторий MSSQL
+#### 4. Добавить репозиторий MSSQL
 ```bash
 curl https://packages.microsoft.com/config/debian/12/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
 ```
-##### Создать bash скрипт
+#### 5. Обновить список репозиториев
+```bash
+sudo apt update
+```
+##### 5_1. Если не прошла проверка публичного ключа, ошибка:
+
+```
+W: GPG error: https://packages.microsoft.com/debian/12/prod bookworm InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY EB3E94ADBE1229CF
+E: The repository 'https://packages.microsoft.com/debian/12/prod bookworm InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+```
+то
+
+#### 5_2. Исправить в файле /etc/apt/sources.list.d/mssql-release.list на:
+```bash
+deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/debian/12/prod bookworm main
+```
+
+#### 6. Создать bash скрипт
 
 ```bash
 sudo nano mssql_odbc_install.sh
 ```
-Вставить в файл:
+##### Вставить в файл mssql_odbc_install.sh:
 ```
 sudo apt-get update
 sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18
@@ -449,4 +468,32 @@ sudo apt-get install -y unixodbc-dev
 # optional: kerberos library for debian-slim distributions
 sudo apt-get install -y libgssapi-krb5-2
 ```
+
+#### 7. Настроить ODBC подключение на сервере zabbix.
+```bash
+nano /etc/odbc.ini
+```
+##### Вставить в файл odbc.ini:
+```
+[SQL-TST-DB1]
+Driver = ODBC Driver 18 for SQL Server
+Server =  192.168.2.162
+Port = 1433
+TrustServerCertificate = yes
+```
+
+#### 8. Добавить хост в zabbix
+
+![image](https://github.com/user-attachments/assets/93e4315e-d6c4-41a3-9392-9a17501ffb15)
+![image](https://github.com/user-attachments/assets/78fac3e8-145f-4786-9411-22682fbb4aa9)
+
+#### 9. Проверка
+##### Доступность порта SQL сервера со стороны Zabbix сервера.
+
+```bash
+nc -zv 192.168.2.162 1433
+```
+Если все хорошо:
+![image](https://github.com/user-attachments/assets/c9d11aaa-7102-46c7-b4ac-68b3519553ad)
+
 
