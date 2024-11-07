@@ -402,7 +402,8 @@ sudo systemctl restart zabbix-web-service.service
 ## Настройка мониторинга Microsoft SQL в Zabbix
 
 #### 1. Создать отдельного SQL пользователя, от имени которого Zabbix будет подключаться к SQL серверу.  
-![image](https://github.com/user-attachments/assets/2e9d0791-7a79-4b21-bf37-92b81866d05d)
+![image](https://github.com/user-attachments/assets/c90e9e42-846f-4b80-8210-f26d3d780849)
+
 
 #### 2. Дать разрешения для пользователя.  
 ```sql
