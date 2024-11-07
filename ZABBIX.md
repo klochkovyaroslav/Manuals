@@ -493,7 +493,13 @@ TrustServerCertificate = yes
 ```bash
 nc -zv 192.168.2.162 1433
 ```
-Если все хорошо:
+ОК - Если подключение успешное:  
 ![image](https://github.com/user-attachments/assets/c9d11aaa-7102-46c7-b4ac-68b3519553ad)
+
+#### Проверить подключение с помощью ODBC драйвера к SQL серверу
+```bash
+isql -v SQL-TST-DB1 zbx_monitor 'P@ssword'
+```
+![image](https://github.com/user-attachments/assets/9320036f-a3a0-46cc-8bad-ac5d17773563)
 
 
