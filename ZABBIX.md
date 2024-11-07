@@ -408,7 +408,7 @@ sudo systemctl restart zabbix-web-service.service
 #### 2. Дать разрешения для пользователя.  
 ```sql
 USE msdb;
-CREATE USER zabbix FOR LOGIN zbx_monitor;
+CREATE USER zbx_monitor FOR LOGIN zbx_monitor;
 GRANT SELECT ON OBJECT::msdb.dbo.sysjobs TO zbx_monitor;
 GRANT SELECT ON OBJECT::msdb.dbo.sysjobservers TO zbx_monitor;
 GRANT SELECT ON OBJECT::msdb.dbo.sysjobactivity TO zbx_monitor;
