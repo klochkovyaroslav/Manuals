@@ -396,3 +396,57 @@ sudo nano /etc/zabbix/zabbix_web_service.conf
 ```bash
 sudo systemctl restart zabbix-web-service.service
 ```
+
+----
+
+## Настройка мониторинга Microsoft SQL в Zabbix
+
+### Настройка мониторинга Microsoft SQL в Zabbix
+#### 1. Создать отдельного SQL пользователя, от имени которого Zabbix будет подключаться к SQL серверу.  
+![image](https://github.com/user-attachments/assets/2e9d0791-7a79-4b21-bf37-92b81866d05d)
+
+#### 2. Дать разрешения для пользователя.  
+```sql
+USE msdb;
+CREATE USER zabbix FOR LOGIN zbx_monitor;
+GRANT SELECT ON OBJECT::msdb.dbo.sysjobs TO zbx_monitor;
+GRANT SELECT ON OBJECT::msdb.dbo.sysjobservers TO zbx_monitor;
+GRANT SELECT ON OBJECT::msdb.dbo.sysjobactivity TO zbx_monitor;
+GRANT EXECUTE ON OBJECT::msdb.dbo.agent_datetime TO zbx_monitor;
+```
+```sql
+USE master;
+GRANT VIEW SERVER STATE TO zbx_monitor;
+GRANT VIEW ANY DEFINITION to zbx_monitor;
+```
+
+#### 2. Далее нужно установить Microsoft ODBC драйвер. 
+[Ссылка на ODBC драйвер DEB](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16&tabs=debian18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline)
+
+#### Добавить ключи для проверки репозитория
+```bash
+curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
+```
+#### Добавить репозиторий MSSQL
+```bash
+curl https://packages.microsoft.com/config/debian/12/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+```
+##### Создать bash скрипт
+
+```bash
+sudo nano mssql_odbc_install.sh
+```
+Вставить в файл:
+```
+sudo apt-get update
+sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18
+# optional: for bcp and sqlcmd
+sudo ACCEPT_EULA=Y apt-get install -y mssql-tools18
+echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
+source ~/.bashrc
+# optional: for unixODBC development headers
+sudo apt-get install -y unixodbc-dev
+# optional: kerberos library for debian-slim distributions
+sudo apt-get install -y libgssapi-krb5-2
+```
+
