@@ -443,7 +443,8 @@ sudo apt update
 > N: Updating from such a repository can't be done securely, and is therefore disabled by default.  
 > N: See apt-secure(8) manpage for repository creation and user configuration details.  
 
-то
+то нужно поправить файл:  
+![image](https://github.com/user-attachments/assets/900dc575-eef9-4f0d-a5cd-3976d0552c52)
 
 #### 5_2. Исправить в файле /etc/apt/sources.list.d/mssql-release.list на:
 ```bash
