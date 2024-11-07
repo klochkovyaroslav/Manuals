@@ -488,7 +488,7 @@ TrustServerCertificate = yes
 ![image](https://github.com/user-attachments/assets/93e4315e-d6c4-41a3-9392-9a17501ffb15)
 ![image](https://github.com/user-attachments/assets/78fac3e8-145f-4786-9411-22682fbb4aa9)
 
-### 9. Проверка
+## 9. Проверка подключения:
 #### Доступность порта SQL сервера со стороны Zabbix сервера.
 
 ```bash
@@ -496,7 +496,6 @@ nc -zv 192.168.2.162 1433
 ```
 **OPEN** - Если подключение успешное:  
 ![image](https://github.com/user-attachments/assets/99e3c6d6-3923-4ce9-80dd-03b25c1eba24)
-
 
 #### Проверить подключение с помощью ODBC драйвера к SQL серверу
 ```bash
