@@ -488,8 +488,8 @@ TrustServerCertificate = yes
 ![image](https://github.com/user-attachments/assets/93e4315e-d6c4-41a3-9392-9a17501ffb15)
 ![image](https://github.com/user-attachments/assets/78fac3e8-145f-4786-9411-22682fbb4aa9)
 
-#### 9. Проверка
-##### Доступность порта SQL сервера со стороны Zabbix сервера.
+### 9. Проверка
+#### Доступность порта SQL сервера со стороны Zabbix сервера.
 
 ```bash
 nc -zv 192.168.2.162 1433
