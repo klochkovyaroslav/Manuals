@@ -1001,7 +1001,7 @@ negotiate security layer:i:0
 ```
 gpedit.msc
 ```
-> Computer Configuration -> Administrative Templates -> Windows components -> Remote Desktop Services -> Remote Session Host -> Connections
+> Computer Configuration -> Administrative Templates -> Windows components -> Remote Desktop Services -> Remote Session Host -> Connections  
 > Конфигурация Компьютера -> Административные шаблоны –> Компоненты Windows –> Службы удаленных рабочих столов – Узел сеансов удаленных рабочих столов –> Подключения
 
 ![image](https://github.com/user-attachments/assets/c63f70f5-a247-4d3e-ae39-f36ce2a93e3b)
