@@ -969,6 +969,19 @@ Invoke-Command -ComputerName Server1 -ScriptBlock {query session}
 Mstsc /v:10.0.0.100 /shadow:2 /control /Prompt /noConsentPrompt
 ```
 
+Если ошибка:  
+
+![image](https://github.com/user-attachments/assets/402e62e6-8558-4c82-9ba2-d1cbf32627f3)
+
+```
+gpedit.msc
+```
+> Computer Configuration -> Administrative Templates -> Windows components -> Remote Desktop Services -> Remote Session Host -> Connections  
+> Конфигурация Компьютера -> Административные шаблоны –> Компоненты Windows –> Службы удаленных рабочих столов – Узел сеансов удаленных рабочих столов –> Подключения
+
+![image](https://github.com/user-attachments/assets/c63f70f5-a247-4d3e-ae39-f36ce2a93e3b)
+
+
 ## Active directory
 
 Утилита позволяет подключиться к AD на более глубоком уровне  
@@ -993,19 +1006,6 @@ pcb:s:ca76a5af-bd93-4be9-82f8-135e29e99172
 server port:i:2179
 negotiate security layer:i:0
 ```
-
-Если ошибка:  
-
-![image](https://github.com/user-attachments/assets/402e62e6-8558-4c82-9ba2-d1cbf32627f3)
-
-```
-gpedit.msc
-```
-> Computer Configuration -> Administrative Templates -> Windows components -> Remote Desktop Services -> Remote Session Host -> Connections  
-> Конфигурация Компьютера -> Административные шаблоны –> Компоненты Windows –> Службы удаленных рабочих столов – Узел сеансов удаленных рабочих столов –> Подключения
-
-![image](https://github.com/user-attachments/assets/c63f70f5-a247-4d3e-ae39-f36ce2a93e3b)
-
 
 
 ## Брандмауэр Защитника Windows - Firewall
