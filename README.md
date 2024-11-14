@@ -958,14 +958,17 @@ Get-Item $RemoveKey | Select-Object -ExpandProperty Property | %{ Remove-ItemPro
 HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces
 ```
 
-#### Посмотреть текущие сессии по сети 
+#### Посмотреть текущие активные RDP сессии по сети 
 
 ```
+query session /server:Server1
+или
 Invoke-Command -ComputerName Server1 -ScriptBlock {query session}
 ```
 #### Подключиться к удаленной RDP сессии по по RDP 
 
 ```
+Mstsc /v:10.0.0.100 /shadow:2 /control /Prompt
 Mstsc /v:10.0.0.100 /shadow:2 /control /Prompt /noConsentPrompt
 ```
 
