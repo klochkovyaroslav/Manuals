@@ -130,6 +130,9 @@ sudo visudo
 ```bash
 user ALL=NOPASSWD:/usr/lib/sftp-server
 ```
+```bash
+zabbix ALL = NOPASSWD: /usr/sbin/asterisk
+```
 
 #### В настройках приложения WinSCP
 
