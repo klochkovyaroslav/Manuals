@@ -161,7 +161,8 @@ _**Create Failed for Availability Group Listener" SQL Error: 19471**_
 Основной файл ERRORLOG нельзя так просто удалить т.к. его использует SQL Server, но его можно "отключить" от системы с помощью следующей команды.  
 
 ```sql
-sp_cycle_errorlog
+EXEC sp_cycle_errorlog;
+GO
 ```
 После этого логи циклически сдвинутся и файлы errorlog.N можно будет удалить.  
 
