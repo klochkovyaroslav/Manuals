@@ -52,11 +52,14 @@ sudo cat /home/zabbix/for_brocade_ssh_key.pub | ssh user@192.168.2.24 'cat >> ~/
 cat >> .ssh/authorized_keys
 ```
 Нажать Enter  
-> Вставить ssh public key в виде текста  
+> Вставить ssh public key в виде текста
+
 Нажать:  
 ```bash
 CTRL+d
 ```
+
+
 Если возникла ошибка:  
 
 ```
