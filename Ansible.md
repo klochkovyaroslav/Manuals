@@ -74,13 +74,24 @@ Linux_test2 ansible_host=192.168.56.155 ansible_user=vagrant  ansible_private_ke
 Будет выглядеть так:  
 
 ```
-[servers]  
+[servers]
 Linux_test2 ansible_host=192.168.56.150
 Linux_test2 ansible_host=192.168.56.155
 
-[servers:vars]  
+[servers:vars]
 ansible_user=vagrant  
-ansible_private_key_file=/home/vagrant/.ssh/authorized_keys  
+ansible_private_key_file=/home/vagrant/.ssh/authorized_keys
+
+[windows_servers]
+win_test2 ansible_host=192.168.56.200
+win_test2 ansible_host=192.168.56.201
+
+[windows_servers:vars]
+ansible_user=Admin
+ansible_password=P@ssw0rd
+ansible_port=5986
+ansible_connection=winrm
+ansible_winrm_servers_cert_validation_ignore
 ```
 #### Посмотреть список всех хостов в inventory:  
 
