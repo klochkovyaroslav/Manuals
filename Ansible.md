@@ -234,7 +234,7 @@ ansible windows_servers -m win_ping --ask-pass
       state=latest
      
   - name: Copy nginx.conf file    
-    copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
+    copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode=0555
     notify: Restart nginx     #Вызвать handlers "Restarted nginx" для того что бы рестартануть уже запущенный сервис nginx
      
   - name: Start and Enable service
@@ -311,7 +311,7 @@ ansible windows_servers -m win_ping --ask-pass
         state: latest
       
       - name: Copy nginx.conf file    
-        copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
+        copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode=0555
         notify: Restart nginx Centos
         
       - name: Start and Enable service
@@ -333,7 +333,7 @@ ansible windows_servers -m win_ping --ask-pass
         state: latest
       
       - name: Copy nginx.conf file    
-        copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode 0555
+        copy: src={{  sourse_file: /tmp/nginx.conf }} dst={{ dest_file: /etc/nginx/ }} mode=0555
         
         notify: Restart nginx Debian
         
@@ -496,7 +496,7 @@ Loop и With_Items - одна и так же команда для разных 
         
         
     # Второй способ через: with_fileglob  
-      copy: src={{ item }} dst={{ dest_folder}} mode 0555
+      copy: src={{ item }} dst={{ dest_folder}} mode=0555
       with_fileglob: 
         "{{ sourse_folder }}/*.*"
       notify:
@@ -589,7 +589,7 @@ _My Server Hostname : {{ ansible_hostname }}_
       
  
     - name: Copy folder: tmp/test/  
-      copy: src={{ item }} dst={{ dest_folder}} mode 0555
+      copy: src={{ item }} dst={{ dest_folder}} mode=0555
       with_fileglob: 
         "{{ sourse_folder }}/*.*"
       notify:
@@ -597,7 +597,7 @@ _My Server Hostname : {{ ansible_hostname }}_
         - Restart nginx Debian 
         
     - name: Genetate NGINX.CONF file
-      template: sec={{ source_folder }}/nginx.j2 dst={{ dest_folder}}/nginx.conf mode 0555
+      template: sec={{ source_folder }}/nginx.j2 dst={{ dest_folder}}/nginx.conf mode=0555
       notify:
         - Restart nginx Centos
         - Restart nginx Debian            
