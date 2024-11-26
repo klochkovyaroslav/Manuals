@@ -1,14 +1,5 @@
 # Ansible
  
-## Install
-### For connection from Linux to Windows
-#### Установить "winrm"
-```bash
-sudo pip install pywinrm 
-```
-```bash
-sudo apt install python3-winrm 
-```
 ----
  
 ## ansible.cfg
@@ -186,6 +177,10 @@ ansible all -m shell -a "ls /var" -v # Выполнить команду чер�
 ```bash
 sudo pip install "pywinrm>=0.2.2"
 ```
+```bash
+sudo apt install python3-winrm 
+```
+
 
 файл ./hosts: 
 
