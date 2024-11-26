@@ -1,7 +1,4 @@
- # Ansible
- 
- ---
-
+# Ansible
  
 ## Install
 ### For connection from Linux to Windows
