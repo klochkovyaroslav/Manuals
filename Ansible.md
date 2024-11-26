@@ -1,5 +1,19 @@
  # Ansible
+ 
  ---
+
+ 
+## Install
+### For connection from Linux to Windows
+#### Установить "winrm"
+```bash
+sudo pip install pywinrm 
+```
+```bash
+sudo apt install python3-winrm 
+```
+----
+ 
 ## ansible.cfg
 
 ```bash
