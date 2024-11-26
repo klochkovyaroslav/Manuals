@@ -333,7 +333,7 @@ ansible windows_servers -m win_ping --ask-pass
         state: latest
       
       - name: Copy nginx.conf file    
-        copy: src={{  sourse_file: /tmp/nginx.conf }} dest={{ dest_file: /etc/nginx/ }} mode=0555
+        copy: src={{  sourse_file }} dest={{ dest_file }} mode=0555
         
         notify: Restart nginx Debian
         
