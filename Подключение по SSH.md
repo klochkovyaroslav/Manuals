@@ -43,11 +43,19 @@ cat ~/.ssh/id_rsa.pub | ssh username@remote_host "mkdir -p ~/.ssh && cat >> ~/.s
 ```
 
 или
-
 ``` bash 
 cat ~/.ssh/id_rsa.pub | ssh root@ip-адрес-сервера 'cat >> ~/.ssh/authorized_keys'
-
 sudo cat /home/zabbix/for_brocade_ssh_key.pub | ssh user@192.168.2.24 'cat >> ~/.ssh/authorized_keys' 
+```
+или
+```bash
+cat >> .ssh/authorized_keys
+```
+Нажать Enter  
+> Вставить ssh public key в виде текста  
+Нажать:  
+```bash
+CTRL+d
 ```
 Если возникла ошибка:  
 
