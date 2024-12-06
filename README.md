@@ -799,7 +799,7 @@ else
   search --no-floppy --fs-uuid --set=root 86cd8758-3b3e-4191-918f-77b3d08f1749
 fi
 echo 'Loading Linux 6.1.0-25-amd64 ...'
-**linux /boot/vmlinuz-6.1.0-25-amd64 root=UUID=86cd8758-3b3e-4191-918f-77b3d08f1749 rw init=/bin/bash**
+linux /boot/vmlinuz-6.1.0-25-amd64 root=UUID=86cd8758-3b3e-4191-918f-77b3d08f1749 rw init=/bin/bash
 echo 'Loading initial ramdisk ...'
 initrd /boot/initrd.img-6.1.0-25-amd64
 ```
