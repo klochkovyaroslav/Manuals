@@ -780,7 +780,9 @@ sudo dpkg-reconfigure locales
 #### Изменяем загрузку GRUB.
 
 Выбираем строку, которая начинается со слова linux или kernel.  
-Удаляем из нее слова quiet и splash, если они есть, и дописываем в конец single **init=/bin/bash**:  
+Удаляем из нее слова quiet и splash, если они есть, и дописываем в конец **init=/bin/bash**:  
+
+![image](https://github.com/user-attachments/assets/de0e1cb1-223b-4021-981b-cfe864a7f5be)
 
 ```
 params 'Debian GNU/Linux'
