@@ -188,6 +188,12 @@ sudo tcpdump portrange 8000-9000
 sudo tcpdump -vv src mars and not dst port 22
 ```
 
+### NMAP
+#### Просканировать на открытые порты
+```bash
+nmap --open -T5 -Pn 192.168.88.1
+```
+
 ## AppArmor в Ubuntu и Debian
 
 ```bash
