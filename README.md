@@ -193,9 +193,9 @@ sudo tcpdump -vv src mars and not dst port 22
 ```bash
 nmap --open -T5 -Pn 192.168.88.1
 ```
-> -T5 скорость сканирования
-> -Pn не пинговать
-> --open только открытые порты
+> -T5 скорость сканирования  
+> -Pn не пинговать  
+> --open только открытые порты  
 
 ## AppArmor в Ubuntu и Debian
 
