@@ -31,6 +31,9 @@ sudo systemctl set-default graphical.target
 ```bash
  systemctl status display-manager.service
 ```
+```bash
+dpkg -l | grep -i 'Display Manager\|Login Manager' | awk '$2 !~ /^lib/'
+```
 
 #### Как переключиться между менеджерами отображения
 
