@@ -48,13 +48,16 @@ dmidecode --type baseboard
 
 ```bash
 #cpu информация  
-cat /proc/cpuinfo  
+cat /proc/cpuinfo
+
+#cpu информация - поддержка виртуализации?
+grep flags /proc/cpuinfo | head -n1 | grep -Eo '(vmx|svm|nx)'
 
 #информация о памяти  
-cat /proc/meminfo  
+cat /proc/meminfo
 
 #SCSI/Sata устройства:  
-cat /proc/scsi/scsi  
+cat /proc/scsi/scsi
 
 #Партиции диска
 cat /proc/partitions
