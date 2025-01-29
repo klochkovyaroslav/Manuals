@@ -86,7 +86,7 @@ sudo systemctl list-unit-files | grep -i network
 systemctl restart networking.service
 ```
 ----
-## NetworkManager
+# NetworkManager
 ###  NMTUI - Утилита с псевдографикой
 
 ```bash
