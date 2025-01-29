@@ -87,7 +87,6 @@ systemctl restart networking.service
 ```
 ----
 ## NetworkManager
-## Astra Linux 1.7
 ###  NMTUI - Утилита с псевдографикой
 
 ```bash
