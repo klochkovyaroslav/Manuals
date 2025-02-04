@@ -119,6 +119,7 @@ sudo nmcli connection modify vlan100 +ipv4.dns 8.8.8.8 +ipv4.addresses 192.168.1
 ```
 #### Настройка VLAN поверх объединения сетевых карт(bond)
 ```bash
+> Создание bond-интерфейса
 sudo nmcli connection add type bond con-name bond0 ifname bond0 bond.options "mode=active-backup,miimon=100" ipv4.method disabled ipv6.method ignore
 sudo nmcli connection add type ethernet con-name eth0 ifname eth0 master bond0 slave-type bond
 sudo nmcli connection add type ethernet con-name eth1 ifname eth1 master bond0 slave-type bond
