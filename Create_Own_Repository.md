@@ -1,3 +1,82 @@
+# Создание локального репозитория на основе ISO-образа в Red Hat-подобной операционной системе
+
+### 1. Монтирование ISO-образа
+```bash
+mkdir /mnt/repo
+mount -o loop ./repos_zvirt_42_202412290019.iso /mnt/repo
+```
+
+### 2. Создание директории для локального репозитория
+```bash
+mkdir -p /var/zvirt-repo
+ln -s /mnt/repo /var/zvirt-repo
+```
+
+### 3. Копирование содержимого ISO в локальный репозиторий
+```bash
+cp -r /mnt/repo/* /var/zvirt-repo/
+```
+
+### 4. Настройка локального репозитория
+#### Создайте файл описания offline-репозитория /etc/yum.repos.d/offline_zvirt.repo со следующим содержимым
+```bash
+nano /etc/yum.repos.d/offline_zvirt.repo
+```
+```
+[offline_zvirt_main]
+name=zvirt 4.2 main
+baseurl=file:///var/zvirt-repo/repo/zvirt-4/4.2/
+gpgcheck=0
+enabled=1
+
+[offline_zvirt_extras]
+name=zvirt 4.2 extras
+baseurl=file:///var/zvirt-repo/repo/zvirt-4/extras-4.2/
+gpgcheck=0
+enabled=1
+```
+
+### 5. Обновление кэша YUM/DNF
+
+```bash
+yum clean all
+yum makecache
+
+dnf clean all
+dnf makecache
+```
+
+### 6. Проверка локального репозитория
+
+```bash
+yum repolist
+
+dnf repolist
+```
+
+### 7. Очистите кэш
+```bash
+dnf clean all
+```
+### 8. Очистите блокировку версий
+```bash
+dnf versionlock clear
+```
+### 9.  Обновите пакеты
+```bash
+dnf update -y
+```
+
+
+### 10. Добавление дополнительных репозиториев (опционально)
+#### Если у вас есть дополнительные репозитории (например, EPEL), вы можете скачать их и добавить в локальный репозиторий:
+
+```bash
+sudo mkdir -p /var/repo/local/epel
+sudo rsync -avz rsync://mirror.example.com/epel/7/x86_64/ /var/repo/local/epel/
+```
+
+-------
 # FTP Repository
 
 #### Посмотреть текущий список репозиториев в Debian
