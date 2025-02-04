@@ -137,7 +137,7 @@ nmcli connection add type ethernet slave-type bond con-name bond21-port2 ifname 
 ```
 #### Создания и настройки интерфейса VLAN:
 ```bash
-nmcli connection add type vlan con-name vlan21 ifname bond21.21 vlan.parent bond21 vlan.id 21
+nmcli connection add type vlan con-name vlan21 ifname vlan21. vlan.parent bond21 vlan.id 21
 nmcli connection modify vlan21 ipv4.addresses 10.250.21.231/24
 nmcli connection modify vlan21 ipv4.gateway 10.250.21.250
 nmcli connection modify vlan21 ipv4.method manual
