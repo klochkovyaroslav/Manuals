@@ -13,6 +13,8 @@ lscpu
 
 lspci
 
+lspci | grep -i 'net'
+
 lsscsi
 
 lsusb
