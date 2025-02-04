@@ -119,7 +119,6 @@ sudo nmcli connection modify vlan100 +ipv4.dns 8.8.8.8 +ipv4.addresses 192.168.1
 ```
 #### Настройка VLAN поверх объединения сетевых карт(bond)
 ```bash
-> Создание bond-интерфейса
 sudo nmcli connection add type bond con-name bond0 ifname bond0 bond.options "mode=active-backup,miimon=100" ipv4.method disabled ipv6.method ignore
 sudo nmcli connection add type ethernet con-name eth0 ifname eth0 master bond0 slave-type bond
 sudo nmcli connection add type ethernet con-name eth1 ifname eth1 master bond0 slave-type bond
@@ -127,27 +126,40 @@ sudo nmcli connection add type vlan con-name vlan100 ifname bond0.100 dev bond0 
 sudo nmcli connection modify vlan100 +ipv4.dns 8.8.8.8 +ipv4.addresses 192.168.1.10/24 +ivp4.gateway 192.168.1.1
 ```
 
-#### Создания и настройки интерфейса bond
+### Создания и настройки интерфейса bond
+#### 1. Создание bond-интерфейса
 ```bash
 sudo nmcli connection add type bond con-name bond21 ifname bond21 bond.options "mode=802.3ad"
+```
+#### 2. Включение автоматического подключения slave-интерфейсов(физ. интерфейсов)
+```bash
 sudo nmcli connection modify bond21 connection.autoconnect-slaves yes
+```
+#### 3. Отключает использование IPv4/IPv6 для bond интерфейса
+```bash
 sudo nmcli connection modify bond21 ipv4.method disabled
 sudo nmcli connection modify bond21 ipv6.method disabled
+```
+#### 4. Добавляет физический интерфейс eno49 и eno50 в bond-интерфейс bond21 с именами подключения bond21-port1 и bond21-port1 соответсвенно
+```bash
 nmcli connection add type ethernet slave-type bond con-name bond21-port1 ifname eno49 master bond21
 nmcli connection add type ethernet slave-type bond con-name bond21-port2 ifname eno50 master bond21
 ```
-#### Создания и настройки интерфейса VLAN:
+### Создания и настройки интерфейса VLAN поверх Bond:
+#### 1. Создание VLAN-интерфейса
 ```bash
-nmcli connection add type vlan con-name vlan21 ifname vlan21. vlan.parent bond21 vlan.id 21
-nmcli connection modify vlan21 ipv4.addresses 10.250.21.231/24
-nmcli connection modify vlan21 ipv4.gateway 10.250.21.250
-nmcli connection modify vlan21 ipv4.method manual
-nmcli connection modify vlan21 autoconnect yes
+nmcli connection add type vlan con-name vlan21 ifname vlan21 vlan.parent bond21 vlan.id 21
+```
+#### 2. Настройка IP-адреса и шлюза для VLAN-интерфейса и включает автоматическое подключение интерфейса при загрузке системы
+```bash
+nmcli connection modify vlan21 ipv4.addresses 10.250.21.231/24 ipv4.gateway 10.250.21.250 ipv4.method manual autoconnect yes
+```
+#### 3. Активация VLAN-интерфейса
+```bash
 nmcli connection up vlan21
 ```
 
 #### Применить конфигурацию:  
-
 ```bash
 sudo systemctl restart NetworkManager
 sudo nmcli connection up Wired\ connection\ 1
