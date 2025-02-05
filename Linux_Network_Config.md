@@ -117,19 +117,11 @@ sudo nmcli connection modify Wired\ connection\ 1 +ipv4.dns '192.168.1.1'
 sudo nmcli connection add type vlan con-name vlan100 ifname eth0.100 dev eth0 id 100
 sudo nmcli connection modify vlan100 +ipv4.dns 8.8.8.8 +ipv4.addresses 192.168.1.10/24 +ivp4.gateway 192.168.1.1
 ```
-#### Настройка VLAN поверх объединения сетевых карт(bond)
-```bash
-sudo nmcli connection add type bond con-name bond0 ifname bond0 bond.options "mode=active-backup,miimon=100" ipv4.method disabled ipv6.method ignore
-sudo nmcli connection add type ethernet con-name eth0 ifname eth0 master bond0 slave-type bond
-sudo nmcli connection add type ethernet con-name eth1 ifname eth1 master bond0 slave-type bond
-sudo nmcli connection add type vlan con-name vlan100 ifname bond0.100 dev bond0 id 100
-sudo nmcli connection modify vlan100 +ipv4.dns 8.8.8.8 +ipv4.addresses 192.168.1.10/24 +ivp4.gateway 192.168.1.1
-```
 
-### Создания и настройки интерфейса bond
+### Создания и настройки интерфейса BOND
 #### 1. Создание bond-интерфейса
 ```bash
-sudo nmcli connection add type bond con-name bond0 ifname bond0 bond.options "mode=802.3ad"
+sudo nmcli connection add type bond con-name bond0 ifname bond0 bond.options "mode=802.3ad,miimon=100"
 ```
 #### 2. Включение автоматического подключения slave-интерфейсов(физ. интерфейсов)
 ```bash
