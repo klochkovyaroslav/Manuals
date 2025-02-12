@@ -830,7 +830,8 @@ systemctl set-default --force graphical.target
 ```
 #### Проверть, что драйвер добавлен в initramfs:
 ```bash
-lsinitrd /boot/initramfs-4.18.0-448.el8.x86_64.img | grep hpsa
+apt install dracut-core
+lsinitrd /boot/initrd.img-6.1.0-28-amd64 | grep nvidia
 ```
 
 ## Virtualbox
