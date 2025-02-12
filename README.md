@@ -828,6 +828,10 @@ su -
 ```bash
 systemctl set-default --force graphical.target
 ```
+#### Проверть, что драйвер добавлен в initramfs:
+```bash
+lsinitrd /boot/initramfs-4.18.0-448.el8.x86_64.img | grep hpsa
+```
 
 ## Virtualbox
 #### Список всех виртуалок:
