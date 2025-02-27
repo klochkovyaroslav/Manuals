@@ -103,3 +103,21 @@ sudo ss -tunelp | grep 8006
 su -
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/rickycodes/pve-no-subscription/main/no-subscription-warning.sh | sh
 ```
+
+## Конвертация Hyper-V vhdx в KVM qcow2
+
+### Чтобы мигририровать ВМ из Hyper-V на KVM необходимо выполнить конвертацию виртуального диска формата Hyper-V в виртуальный диск формата KVM.
+
+#### Установим qemu-img, с помощью которого можно выполнять различные манипуляции с виртуальными дисками
+```bash
+yum install -y qemu-img
+```
+#### Проверка диска vhdx
+```bash
+qemu-img check -r all VM_test_C.vhdx
+```
+
+#### запускаем конвертацию
+```bash
+qemu-img convert -O qcow2 VM_test_C.vhdx VM_test_sys.qcow2
+```
