@@ -117,7 +117,7 @@ yum install -y qemu-img
 qemu-img check -r all VM_test_C.vhdx
 ```
 
-#### запускаем конвертацию
+#### Запустить конвертацию
 ```bash
 qemu-img convert -O qcow2 VM_test_C.vhdx VM_test_sys.qcow2
 ```
