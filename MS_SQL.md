@@ -62,6 +62,96 @@ sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt" -v TableName=sys.databases Colum
 ```
 
 ## T_SQL запросы.
+#### Проверить группу доступности AO
+```sql
+SELECT name
+FROM sys.availability_groups;
+```
+
+#### Проверить является ли сервер частью группы доступности AO
+```sql
+SELECT replica_server_name
+FROM sys.availability_replicas;
+```
+#### Информация о настройках реплики
+```sql
+SELECT replica_id, replica_server_name, availability_mode_desc
+FROM sys.availability_replicas;
+```
+
+#### Информация о текущем состоянии реплики
+```sql
+SELECT replica_id, role_desc, connected_state_desc
+FROM sys.dm_hadr_availability_replica_states;
+```
+
+#### Информация о состоянии баз данных в репликах
+```sql
+SELECT replica_id, database_id, synchronization_state_desc
+FROM sys.dm_hadr_database_replica_states;
+```
+
+#### Чтобы получить полную информацию о репликах и их состоянии
+```sql
+SELECT 
+    ar.replica_server_name,
+    ars.role_desc,
+    ars.connected_state_desc,
+    ars.synchronization_health_desc
+FROM 
+    sys.dm_hadr_availability_replica_states AS ars
+JOIN 
+    sys.availability_replicas AS ar
+ON 
+    ars.replica_id = ar.replica_id;
+```
+
+#### Найти replica_id текущего сервера
+```sql
+SELECT replica_id, replica_server_name
+FROM sys.availability_replicas
+WHERE replica_server_name = UPPER(@@SERVERNAME);
+```
+
+#### Получить информацию о роли и состоянии синхронизации AO
+```sql
+SELECT 
+    ag.name AS availability_group_name,
+    ar.replica_server_name,
+    ars.role_desc,
+    ars.synchronization_health_desc
+FROM 
+    sys.dm_hadr_availability_replica_states AS ars
+JOIN 
+    sys.availability_replicas AS ar
+ON 
+    ars.replica_id = ar.replica_id
+JOIN 
+    sys.availability_groups AS ag
+ON 
+    ars.group_id = ag.group_id;
+```
+
+### Переименовать SQL сервер
+#### Текущее имя сервера
+```sql
+SELECT @@SERVERNAME AS CurrentServerName;
+```
+
+#### Удалите текущее имя сервера
+```sql
+EXEC sp_dropserver 'TESTSQL1';
+или
+EXEC sp_dropserver 'TESTSQL1\InstanceName';
+```
+
+#### Добавьте новое имя сервера
+```sql
+EXEC sp_addserver 'SQL-TST-DB1', 'local';
+или
+EXEC sp_addserver 'SQL-TST-DB1\InstanceName', 'local';
+```
+
 
 #### Определить статус ноды в SQL-AlwaysOn
 
