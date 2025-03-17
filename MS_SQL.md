@@ -256,4 +256,37 @@ GO
 ```
 После этого логи циклически сдвинутся и файлы errorlog.N можно будет удалить.  
 
-> При каждом запуске SQL Server текущий журнал ошибок переименовывается errorlog.1 в ; errorlog.1 становится, errorlog.2 становится errorlog.2 errorlog.3 и т. д. sp_cycle_errorlog позволяет циклировать файлы журнала ошибок без остановки и запуска сервера.  
+> При каждом запуске SQL Server текущий журнал ошибок переименовывается errorlog.1 в ; errorlog.1 становится, errorlog.2 становится errorlog.2 errorlog.3 и т. д. sp_cycle_errorlog позволяет циклировать файлы журнала ошибок без остановки и запуска сервера.
+
+
+
+## Ошибка в PowerShell
+```
+Invoke-Sqlcmd : A parameter cannot be found that matches parameter name 'TrustServerCertificate'.
+At line:5 char:118
++ ... Query -SuppressProviderContextWarning -TrustServerCertificate -Verbos ...
++                                           ~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Invoke-Sqlcmd], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.SqlServer.Management.PowerShell.GetScriptCommand
+```
+#### Проверка версии модуля
+```powershell
+Get-Module -ListAvailable SqlServer, SQLPS
+```
+> Если используется модуль SQLPS, рекомендуется перейти на SqlServer, так как SQLPS устарел.
+
+#### Установить модуль SqlServer в PS
+```powershell
+Install-Module -Name SqlServer -Force -AllowClobber
+```
+
+#### Проверить текущую версию модуля SqlServer
+```powershell
+Get-Module -ListAvailable SqlServer
+```
+
+#### Обновить модуль SqlServer
+```powershell
+Update-Module -Name SqlServer -Force
+```
+
