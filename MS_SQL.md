@@ -271,6 +271,7 @@ At line:5 char:118
 ```
 #### Проверка версии модуля
 ```powershell
+Get-Module -ListAvailable
 Get-Module -ListAvailable SqlServer, SQLPS
 ```
 > Если используется модуль SQLPS, рекомендуется перейти на SqlServer, так как SQLPS устарел.
