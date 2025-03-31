@@ -8,6 +8,7 @@ Get-ClusterLog -UseLocalTime
 
 ##### Получает информацию о состоянии общих томов кластера
 ```powershell
+Get-ClusterSharedVolume
 Get-ClusterSharedVolumeState | Format-Table -AutoSize
 ```
 ## Полезные команды для диагностики:
