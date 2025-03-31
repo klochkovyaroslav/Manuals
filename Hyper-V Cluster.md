@@ -4,6 +4,14 @@
 ```powershell
 Get-ClusterLog -UseLocalTime
 ```
+##### Собрать журналы кластера за последние 10 мин
+```powershell
+Get-ClusterLog -TimeSpan 10 -UseLocalTime
+```
+##### Собрать журналы кластера за последние 10 мин и Показывает 10 строк контекста до и после
+```powershell
+Get-ClusterLog -TimeSpan 10 -UseLocalTime | Select-String "Heartbeat state 'Unknown'" -Context 10
+```
 > Отчеты лежат на каждом хосте кластера в "C:\Windows\Cluster\Reports"
 
 ##### Получает информацию о состоянии общих томов кластера
