@@ -19,3 +19,8 @@ Get-ClusterSharedVolume
 ```powershell
 Get-ClusterNode
 ```
+
+#### Определить имя узла кластера по его номеру. Список всех узлов кластера с их ID
+```powershell
+Get-ClusterNode | Select-Object Name, Id
+```
