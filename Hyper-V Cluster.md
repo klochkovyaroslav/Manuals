@@ -28,7 +28,7 @@ Get-ClusterLog -TimeSpan 10 -UseLocalTime | Select-String "Heartbeat state 'Unkn
 ##### Получает информацию о состоянии общих томов кластера
 ```powershell
 Get-ClusterSharedVolume
-Get-ClusterSharedVolumeState | Format-Table -AutoSize
+Get-ClusterSharedVolumeState | Format-Table -AutoSize # Статус CSV
 ```
 ## Полезные команды для диагностики:
 #### Проверить все CSV:
