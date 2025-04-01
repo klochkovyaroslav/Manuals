@@ -11,7 +11,6 @@ Get-ClusterLog -TimeSpan 10 -UseLocalTime
 ##### Парсинг логов
 ```powershell
 Select-String -Path .\Cluster.log -Pattern "Cluster has lost the UDP connection"
-Get-ChildItem -Recurse | ?{$_.FullName -match ".*log$"} | %{Select-String -Path $_.Fullname -Pattern "Cluster has lost the UDP connection"}
 Get-ChildItem -Recurse | ?{$_.FullName -match ".*log$"} | %{Select-String -Path $_.Fullname -Pattern "2025/03/28.*Cluster has lost the UDP connection"}
 Get-ChildItem -Recurse | ? FullName -match '\.log$' | % { sls -Path $_ -Pattern '2025/03/28.*Cluster has lost the UDP connection'; "`n`n" }
 ls -r *.log | %{sls "2025/03/28.*Cluster has lost the UDP connection" $_; "`n`n"}
