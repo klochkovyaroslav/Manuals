@@ -52,3 +52,10 @@ Get-WinEvent -LogName "Microsoft-Windows-FailoverClustering/Operational" -MaxEve
 ```powershell
 Get-WinEvent -LogName "Microsoft-Windows-Hyper-V-VMMS-Admin" -MaxEvents 50 | Format-Table -AutoSize
 ```
+
+# Журнал Миграции - событий Hyper-V
+```powershell
+Get-WinEvent -LogName "Microsoft-Windows-Hyper-V-VMMS-Admin" | 
+    Where-Object { $_.Message -like "*live migration*" } | 
+    Select-Object TimeCreated, Message -First 50
+```
