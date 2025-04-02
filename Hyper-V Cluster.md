@@ -51,6 +51,7 @@ Get-ClusterNetworkInterface -Node (Get-ClusterNode).Name | Format-Table -AutoSiz
 
 ----
 
+# Проверка событий (Event Logs)
 ## События кластера
 ```powershell
 Get-WinEvent -LogName "Microsoft-Windows-FailoverClustering/Operational" -MaxEvents 50 | Format-Table -AutoSize
