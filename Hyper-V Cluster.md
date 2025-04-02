@@ -42,6 +42,13 @@ Get-ClusterNode
 ```powershell
 Get-ClusterNode | Select-Object Name, Id
 ```
+
+#### Состояние сетевых интерфейсов в Кластере
+```powershell
+Get-ClusterNetwork | Format-Table -AutoSize  # Сети кластера
+Get-ClusterNetworkInterface -Node (Get-ClusterNode).Name | Format-Table -AutoSize  # Интерфейсы узлов
+```
+
 ----
 
 ## События кластера
