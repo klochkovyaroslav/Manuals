@@ -40,6 +40,11 @@ Get-ClusterNode
 
 ## Полезные команды для диагностики:
 
+#### Информация о SVC томах
+```powershell
+Get-ClusterSharedVolume  | Select-Object * | ft -AutoSize
+```
+
 #### Проверка владельца CSV для конкретного узла кластера
 ```powershell
 $NodeName = "TCC-GVC-01"
@@ -52,6 +57,45 @@ Get-ClusterSharedVolume | ForEach-Object {
 } | Where-Object { $_.'Owner Node' -eq $NodeName } | Format-Table -AutoSize
 ```
 
+#### Запретить узлу кластера быть владельцем определенного svc тома
+```powershell
+$CSV = Get-ClusterSharedVolume #-Name "data6"
+$CurrentOwnerNodes = $CSV | Get-ClusterOwnerNode
+$CurrentOwnerNodes | Format-Table
+# Удалить нежелательный узел (например, "HV-Node2")
+$NewOwnerNodes = $CurrentOwnerNodes | Where-Object { $_ -ne "HV-Node2" }
+# Применить изменения
+$CSV | Set-ClusterOwnerNode -Owners $NewOwnerNodes
+```
+
+#### Просмотр все CSV и их владельцев
+```powershell
+Get-ClusterSharedVolume | ForEach-Object {
+    [PSCustomObject]@{
+        "CSV Name" = $_.Name
+        "Owner Node" = $_.OwnerNode.Name
+        "State" = $_.State
+    }
+} | Format-Table -AutoSize
+```
+
+#### Посмотреть по Узлу кластера какими SVC он владеет
+```powershell
+$a=1
+while($a -ne 200)
+{
+	Start-Sleep -Seconds 10
+    $a++
+    $NodeName = "Nerpa-GVC-01"
+    Get-ClusterSharedVolume | ForEach-Object {
+        [PSCustomObject]@{
+            "CSV Name" = $_.Name
+            "Owner Node" = $_.OwnerNode.Name
+            "State" = $_.State
+        }
+    } | Where-Object { $_.'Owner Node' -eq $NodeName } | Format-Table -AutoSize
+}
+```
 
 #### Определить имя узла кластера по его номеру. Список всех узлов кластера с их ID
 ```powershell
