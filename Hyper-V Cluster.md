@@ -39,6 +39,20 @@ Get-ClusterNode
 ```
 
 ## Полезные команды для диагностики:
+
+#### Проверка владельца CSV для конкретного узла кластера
+```powershell
+$NodeName = "TCC-GVC-01"
+Get-ClusterSharedVolume | ForEach-Object {
+    [PSCustomObject]@{
+        "CSV Name" = $_.Name
+        "Owner Node" = $_.OwnerNode.Name
+        "State" = $_.State
+    }
+} | Where-Object { $_.'Owner Node' -eq $NodeName } | Format-Table -AutoSize
+```
+
+
 #### Определить имя узла кластера по его номеру. Список всех узлов кластера с их ID
 ```powershell
 Get-ClusterNode | Select-Object Name, Id
