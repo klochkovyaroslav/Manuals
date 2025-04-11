@@ -9,6 +9,8 @@ dnf config-manager --disable "*"
 #### 1. Монтирование ISO-образа
 ```bash
 mkdir /mnt/repo
+```
+```bash
 mount -o loop ./repos_zvirt_42_202412290019.iso /mnt/repo
 ```
 > -o loop – опция, которая указывает, что нужно использовать loop-устройство (виртуальный блочный девайс) для монтирования файла как блочного носителя.
@@ -16,6 +18,8 @@ mount -o loop ./repos_zvirt_42_202412290019.iso /mnt/repo
 #### 2. Создание директории для локального репозитория
 ```bash
 mkdir -p /var/zvirt-repo
+```
+```bash
 ln -s /mnt/repo /var/zvirt-repo
 ```
 
