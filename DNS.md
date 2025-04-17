@@ -1,6 +1,6 @@
 # DNS
 
-### Посмотреть DNS
+### Как посмотреть DNS
 ```bash
 sudo cat /etc/resolv.conf
 sudo cat /etc/systemd/resolved.conf
