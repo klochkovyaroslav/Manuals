@@ -1,4 +1,13 @@
 # DNS
+
+### Посмотреть DNS
+```bash
+sudo cat /etc/resolv.conf
+sudo cat /etc/systemd/resolved.conf
+sudo nmcli device show | grep DNS
+sudo systemd-resolve --status
+```
+
 ## Утилиты
 
 ```bash
@@ -6,13 +15,13 @@ apt install bind9utils
 yum install bind-utils
 ```
 
-#### host
+#### Утилитa host
 ```bash
 host github.com
 host -v github.com
 ```
 
-#### dig
+#### Утилитa dig
 ```bash
 dig github.com
 ```
@@ -23,11 +32,11 @@ dig SOA github.com
 dig TXT github.com
 ```
 
-#### delv
+#### Утилитa delv
 
-#### dril
+#### Утилитa dril
 
-#### nslookup
+#### Утилитa nslookup
 ```bash
 nslookup github.com
 ```
