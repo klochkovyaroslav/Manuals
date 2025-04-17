@@ -6,6 +6,7 @@ sudo cat /etc/resolv.conf
 sudo cat /etc/systemd/resolved.conf
 sudo nmcli device show | grep DNS
 sudo systemd-resolve --status
+sudo resolvectl status
 ```
 
 ## Утилиты
