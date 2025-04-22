@@ -57,6 +57,12 @@ Get-ClusterSharedVolume | ForEach-Object {
 } | Where-Object { $_.'Owner Node' -eq $NodeName } | Format-Table -AutoSize
 ```
 
+
+#### Посмотреть Quorum в кластере Hyper-v
+```powershell
+Get-ClusterResource | ?{($_.ResourceType -eq "File Share Witness") -or ($_.ResourceType -eq "Physical Disk") }
+```
+
 #### Запретить узлу кластера быть владельцем определенного svc тома
 ```powershell
 $CSV = Get-ClusterSharedVolume #-Name "data6"
