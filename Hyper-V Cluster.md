@@ -32,6 +32,49 @@ ls -r *.log | %{if($r=sls "2025/03/28.*Cluster has lost the UDP connection" $_){
 Get-ClusterSharedVolume
 Get-ClusterSharedVolumeState | Format-Table -AutoSize
 ```
+##### Состояние Cluster Shared Volumes (CSV) у которых состояние не Direct
+```powershell
+Get-ClusterSharedVolumeState | ?{$_.StateInfo -ne "direct"} | sort node | ft -AutoSize
+```
+
+##### Состояние Cluster Shared Volumes (CSV) по конкреной ноде
+```powershell
+Get-ClusterSharedVolumeState | ?{$_.Node -eq "TCC-NTC-02"} | sort node | ft -AutoSize
+```
+
+##### Состояние Cluster Shared Volumes (CSV) по ноде у которых состояние CSV не Direct
+```powershell
+#Получаем узлы с состоянием не "direct"
+$clusternodes_not_direct = Get-ClusterSharedVolumeState | 
+    Where-Object {$_.StateInfo -ne "direct"} | 
+    Select-Object -ExpandProperty Node -Unique
+
+# Для каждого такого узла выводим информацию
+$clusternodes_not_direct | ForEach-Object {
+    $node = $_
+    Get-ClusterSharedVolumeState | 
+        Where-Object {$_.Node -eq $node} |
+        Format-Table -AutoSize
+}
+```
+##### Состояние Cluster Shared Volumes (CSV) по каждой ноде у которых состояние CSV Direct
+```powershell
+#Получаем узлы с состоянием "direct"
+$clusternodes_not_direct = Get-ClusterSharedVolumeState | 
+    Where-Object {$_.StateInfo -eq "direct"} | 
+    Select-Object -ExpandProperty Node -Unique
+
+# Для каждого такого узла выводим информацию
+$clusternodes_not_direct | ForEach-Object {
+    $node = $_
+    Get-ClusterSharedVolumeState | 
+        Where-Object {$_.Node -eq $node} |
+        Format-Table -AutoSize
+}
+```
+
+
+
 
 ## 3. Состояние узлов кластера
 ```powershell
