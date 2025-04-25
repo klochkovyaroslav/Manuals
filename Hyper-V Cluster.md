@@ -175,3 +175,30 @@ Get-WinEvent -LogName "Microsoft-Windows-Hyper-V-VMMS-Admin" |
     Where-Object { $_.Message -like "*live migration*" } | 
     Select-Object TimeCreated, Message -First 50
 ```
+
+
+----
+# Набор инструментов TroubleShootingScript (TSS)
+Скачать здесь в виде ZIP-файла (TSS.zip)  - [Download](https://aka.ms/getTSS)
+
+## Собрать подробный лог с хостов кластера Hyper-V
+
+#### Краткая инструкция:
+* Скопировать "TSS.zip" на любой хост кластера
+* Распаковать в C:\tss и перейти в каталог
+* Открыть Powershell из под админа
+* Set-ExecutionPolicy -scope Process -ExecutionPolicy RemoteSigned -Force (Политика выполнения скрипта должна быть RemoteSigned)
+или
+* Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+  
+#### Запуск скрипта:
+```powershell
+.\TSS.ps1 -SDP HyperV
+```
+
+> нажать: "А, Yes to All"  
+> Отчет будет лежать в "C:\MS_DATA"
+
+
+
+
