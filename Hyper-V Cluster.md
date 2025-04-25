@@ -178,8 +178,9 @@ Get-WinEvent -LogName "Microsoft-Windows-Hyper-V-VMMS-Admin" |
 
 
 ----
-# Набор инструментов TroubleShootingScript (TSS)
-Скачать здесь в виде ZIP-файла (TSS.zip)  - [Download](https://aka.ms/getTSS)
+# Набор инструментов TroubleShootingScript (TSS) 
+[Общие сведения о наборе инструментов TSS](https://learn.microsoft.com/ru-ru/troubleshoot/windows-client/windows-tss/introduction-to-troubleshootingscript-toolset-tss#how-to-start-the-tss-toolset).  
+Скачать здесь в виде ZIP-файла (TSS.zip)  - [Download](https://aka.ms/getTSS)  
 
 ## Собрать подробный лог с хостов кластера Hyper-V
 
@@ -198,6 +199,9 @@ Get-WinEvent -LogName "Microsoft-Windows-Hyper-V-VMMS-Admin" |
 
 > нажать: "А, Yes to All"  
 > Отчет будет лежать в "C:\MS_DATA"
+
+
+
 
 
 
