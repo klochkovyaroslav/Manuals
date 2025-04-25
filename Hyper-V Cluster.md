@@ -186,8 +186,9 @@ Get-WinEvent -LogName "Microsoft-Windows-Hyper-V-VMMS-Admin" |
 
 #### Краткая инструкция:
 * Скопировать "TSS.zip" на любой хост кластера
-* Распаковать в C:\tss и перейти в каталог
-* Открыть Powershell с правами администратора
+* Распаковать в: "C:\TSS"
+* Перейти в каталог: "cd C:\TSS"
+* Открыть Powershell с правами администратора и выполнить:
 * Set-ExecutionPolicy -scope Process -ExecutionPolicy RemoteSigned -Force _(Политика выполнения скрипта должна быть RemoteSigned) - Рекомендуется_  
 или
 * Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
