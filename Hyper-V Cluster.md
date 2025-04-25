@@ -187,22 +187,19 @@ Get-WinEvent -LogName "Microsoft-Windows-Hyper-V-VMMS-Admin" |
 #### Краткая инструкция:
 * Скопировать "TSS.zip" на любой хост кластера
 * Распаковать в C:\tss и перейти в каталог
-* Открыть Powershell из под админа
-* Set-ExecutionPolicy -scope Process -ExecutionPolicy RemoteSigned -Force (Политика выполнения скрипта должна быть RemoteSigned)
+* Открыть Powershell с правами администратора
+* Set-ExecutionPolicy -scope Process -ExecutionPolicy RemoteSigned -Force _(Политика выполнения скрипта должна быть RemoteSigned) - Рекомендуется_  
 или
 * Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-  
-#### Запуск скрипта:
+
+#### Запуск скрипта со стандартными параметрами сбором данных:
+```powershell
+.\TSS.ps1 -Scenario HyperV
+```
+
+#### Запуск скрипта с более глубоким сбором данных: (-SDP ,Support Diagnostics Platform) - Рекомендуется
 ```powershell
 .\TSS.ps1 -SDP HyperV
 ```
-
 > нажать: "А, Yes to All"  
 > Отчет будет лежать в "C:\MS_DATA"
-
-
-
-
-
-
-
