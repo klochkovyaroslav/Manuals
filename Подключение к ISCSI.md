@@ -54,3 +54,35 @@ iscsicli ListTargets 192.168.1.200
 ```powershell
 Restart-Service MSiSCSI
 ```
+
+### Журнал событий
+
+#### Поиск событий связанных с источником iScsiPrt
+```powershell
+Get-WinEvent -LogName "System" | 
+    Where-Object { $_.ProviderName -in ("iScsiPrt") } | 
+    Select-Object TimeCreated, Message -First 55 | Sort-Object TimeCreated -Descending
+```
+
+#### Поиск событий связанных с источником iScsiPrt за указанный период времени
+```powershell
+$startDate = [datetime]"2025-04-26"
+$endDate = [datetime]"2025-04-27"
+
+Get-WinEvent -FilterHashtable @{
+    LogName = "System"
+    ProviderName = "iScsiPrt"
+    StartTime = $startDate
+    EndTime = $endDate
+} -ErrorAction SilentlyContinue | 
+    Select-Object TimeCreated, Message | 
+    Sort-Object TimeCreated -Descending | 
+    Select-Object -First 55
+```
+
+#### Поиск событий связанных с источником iScsiPrt за указанный период времени
+```powershell
+Get-EventLog -LogName "System" -Source "iScsiPrt" -After "2025-04-26" -Before "2025-04-27" | 
+    Select-Object TimeGenerated, Message | 
+    Sort-Object TimeGenerated -Descending
+```
