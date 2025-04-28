@@ -78,7 +78,7 @@ $clusternodes_not_direct | ForEach-Object {
 Get-Disk | Where-Object { $_.OperationalStatus -ne "Online" } | Format-Table -AutoSize
 ```
 
-##### Посмотреть iSCSI сессии:
+##### Посмотреть iSCSI сессии в состоянии "false":
 ```powershell
 Get-IscsiSession | Where-Object { $_.IsConnected -eq $false }
 ```
