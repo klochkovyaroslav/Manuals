@@ -73,8 +73,15 @@ $clusternodes_not_direct | ForEach-Object {
 }
 ```
 
+##### Посмотреть состояние дисков в состоянии НЕ Online:
+```powershell
+Get-Disk | Where-Object { $_.OperationalStatus -ne "Online" } | Format-Table -AutoSize
+```
 
-
+##### Посмотреть iSCSI сессии:
+```powershell
+Get-IscsiSession | Where-Object { $_.IsConnected -eq $false }
+```
 
 ## 3. Состояние узлов кластера
 ```powershell
