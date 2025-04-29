@@ -171,6 +171,47 @@ Get-ClusterNetworkInterface -Node (Get-ClusterNode).Name | Format-Table -AutoSiz
 ```powershell
 Get-WinEvent -LogName "Microsoft-Windows-FailoverClustering/Operational" -MaxEvents 50 | Format-Table -AutoSize
 ```
+
+#### Поиск по ключевому слову в сообщении
+```powershell
+Get-WinEvent -LogName "Microsoft-Windows-FailoverClustering-CsvFs/Operational" | Where-Object { $_.Message -like "*transitioning from Active to Draining*" }
+```
+
+#### Поиск по EventID + ключевому слову
+```powershell
+Get-WinEvent -LogName "Microsoft-Windows-FailoverClustering-CsvFs/Operational" | Where-Object { $_.Id -eq 8960 -and $_.Message -like "*transitioning from*" }
+```
+
+#### Фильтрация по времени + ключевому слову
+```powershell
+$startDate = [datetime]"2025-04-26"
+$endDate = [datetime]"2025-04-27"
+
+$filter = @{
+    LogName = "Microsoft-Windows-FailoverClustering-CsvFs/Operational"
+    ProviderName = "Microsoft-Windows-FailoverClustering-CsvFs-Diagnostic"
+    StartTime = $startDate
+    EndTime = $endDate
+}
+Get-WinEvent -FilterHashtable $filter | Where-Object { $_.Id -eq 8960 -and $_.Message -like "*transitioning from*" }
+```
+
+#### Фильтрация по времени
+$startDate = [datetime]"2025-04-26"
+$endDate = [datetime]"2025-04-27"
+
+Get-WinEvent -FilterHashtable @{
+    LogName = "Microsoft-Windows-FailoverClustering-CsvFs/Operational"
+    ProviderName = "Microsoft-Windows-FailoverClustering-CsvFs-Diagnostic"
+    StartTime = $startDate
+    EndTime = $endDate
+} -ErrorAction SilentlyContinue | 
+    Select-Object TimeCreated, Message | 
+    Sort-Object TimeCreated -Descending | 
+    Select-Object -First 55
+
+
+
 ## События Hyper-V
 ```powershell
 Get-WinEvent -LogName "Microsoft-Windows-Hyper-V-VMMS-Admin" -MaxEvents 50 | Format-Table -AutoSize
@@ -182,7 +223,6 @@ Get-WinEvent -LogName "Microsoft-Windows-Hyper-V-VMMS-Admin" |
     Where-Object { $_.Message -like "*live migration*" } | 
     Select-Object TimeCreated, Message -First 50
 ```
-
 
 ----
 # Набор инструментов TroubleShootingScript (TSS) 
