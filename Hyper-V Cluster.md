@@ -197,6 +197,7 @@ Get-WinEvent -FilterHashtable $filter | Where-Object { $_.Id -eq 8960 -and $_.Me
 ```
 
 #### Фильтрация по времени
+```powershell
 $startDate = [datetime]"2025-04-26"
 $endDate = [datetime]"2025-04-27"
 
@@ -209,8 +210,7 @@ Get-WinEvent -FilterHashtable @{
     Select-Object TimeCreated, Message | 
     Sort-Object TimeCreated -Descending | 
     Select-Object -First 55
-
-
+```
 
 ## События Hyper-V
 ```powershell
