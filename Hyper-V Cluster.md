@@ -73,6 +73,13 @@ $clusternodes_not_direct | ForEach-Object {
 }
 ```
 
+#### Эта команда находит группу ресурсов кластера, связанную с каждым CSV
+```powershell
+Get-ClusterSharedVolume | Get-ClusterGroup | ft Name, Id, OwnerNode -AutoSize
+Get-ClusterSharedVolume | Get-ClusterGroup | Where-Object { $_.Name -like "*0945826b-86b8-4dfb-972c-c6165258697e*" } | ft Name, Id, OwnerNode -AutoSize
+Get-ClusterSharedVolume | Get-ClusterGroup | Export-Csv -Path "C:\cluster_groups.csv" -NoTypeInformation
+```
+
 ##### Посмотреть состояние дисков в состоянии НЕ Online:
 ```powershell
 Get-Disk | Where-Object { $_.OperationalStatus -ne "Online" } | Format-Table -AutoSize
