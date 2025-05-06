@@ -160,7 +160,7 @@ SELECT a.role_desc
 FROM sys.dm_hadr_availability_replica_states AS a
 JOIN sys.availability_replicas AS b
 ON b.replica_id = a.replica_id
-WHERE b.replica_server_name = @@ServerName
+WHERE UPPER(b.replica_server_name) = UPPER(@@SERVERNAME)
 ```
 
 #### max/min server memory — это минимальное и максимальное количество оперативной памяти, потребляемое экземпляром Microsoft SQL Server
