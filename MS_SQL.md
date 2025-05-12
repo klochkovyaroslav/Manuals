@@ -62,6 +62,12 @@ sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt" -v TableName=sys.databases Colum
 ```
 
 ## T_SQL запросы.
+
+#### Выборка в определенном диапазоне дат
+```sql
+SELECT * FROM orders WHERE customer_id = 321 AND order_date BETWEEN '2025-01-01' AND '20245-12-31';
+```
+
 #### Проверить группу доступности AO
 ```sql
 SELECT name
