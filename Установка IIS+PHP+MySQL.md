@@ -30,10 +30,17 @@ open_basedir = C:\inetpub\wwwroot
 ```ini
 cgi.force_redirect = 0
 ```
-
-- Найти строку "cgi.force_redirect = 1" и заменить на "0"
+- Найти строку _cgi.force_redirect = 1_ и заменить на _0_
 ```ini
 cgi.force_redirect = 0
+```
+- Найти строку _;extension=mysqli_ и убрать комментарий
+```ini
+extension=mysqli
+```
+- Найти строку _;extension=pdo_mysql_ и убрать комментарий
+```ini
+extension=pdo_mysql
 ```
 
 #### Проверяем работает ли PHP
