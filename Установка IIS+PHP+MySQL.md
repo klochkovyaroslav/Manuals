@@ -32,5 +32,6 @@ open_basedir = C:\inetpub\wwwroot
 ![image](https://github.com/user-attachments/assets/d4f6e656-69c1-436d-bf04-f36bbfcf9f6d)
 
 #### Скачиваем и устанавливаем [Visual Studio](https://learn.microsoft.com/ru-ru/cpp/windows/latest-supported-vc-redist?view=msvc-170)
+
 ![image](https://github.com/user-attachments/assets/0cb0fbae-459d-4b4c-b139-37ea7dffa605)
 
