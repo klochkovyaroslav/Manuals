@@ -16,7 +16,7 @@
 
 ![image](https://github.com/user-attachments/assets/8dea0af5-e096-490d-a354-663e807d764f)
 
-#### Установка PHP и настройка конфигурационного файла "PHP.INI".
+#### Настройка конфигурационного файла "PHP.INI".
 
 - Распаковать в "C:\Program Files\php"
 - Найти файл _php.ini-production_ и переименовать в _php.ini_
