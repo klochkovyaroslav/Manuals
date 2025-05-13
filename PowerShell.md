@@ -11,13 +11,18 @@ Install-Module -Name PSScriptAnalyzer
 Invoke-ScriptAnalyzer C:\ps_scripts\sql_restore_check_db\Auto_Restore_DB_Check_DB.ps1
 ```
 
-# Посмотреть содержимое модуля
+#### Установить модуль ThreadJob (для PowerShell 5.1 и новее)
+```powershell
+Install-Module -Name ThreadJob -Force -AllowClobber
+```
+
+#### Посмотреть содержимое модуля
 (Get-Module SendTelegramSAP).Invoke( { ${function:Send-Telegram} } )
 
-# Выгружаем модуль
+#### Выгружаем модуль
 Remove-Module -Name SendTelegramSAP -Force
 
-# Загружаем заново
+#### Загружаем заново
 Import-Module -Name SendTelegramSAP -Force
 
 
