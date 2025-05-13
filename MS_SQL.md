@@ -67,12 +67,12 @@ sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt" -v TableName=sys.databases Colum
 ```sql
 SELECT name, recovery_model_desc 
 FROM sys.databases 
-WHERE name = 'Имя_Вашей_Базы_Данных';
+WHERE name = 'TEST_BD';
 ```
 
 #### Для возможности резервного копирования журнала нужно переключить на полную модель:
 ```sql
-ALTER DATABASE [Имя_Вашей_Базы_Данных] 
+ALTER DATABASE [TEST_BD] 
 SET RECOVERY FULL;
 ```
 
