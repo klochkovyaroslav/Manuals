@@ -63,6 +63,19 @@ sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt" -v TableName=sys.databases Colum
 
 ## T_SQL запросы.
 
+#### Проверьте модель восстановления:
+```sql
+SELECT name, recovery_model_desc 
+FROM sys.databases 
+WHERE name = 'Имя_Вашей_Базы_Данных';
+```
+
+#### Для возможности резервного копирования журнала нужно переключить на полную модель:
+```sql
+ALTER DATABASE [Имя_Вашей_Базы_Данных] 
+SET RECOVERY FULL;
+```
+
 #### Выборка в определенном диапазоне дат
 ```sql
 SELECT * FROM orders WHERE customer_id = 321 AND order_date BETWEEN '2025-01-01' AND '20245-12-31';
