@@ -19,13 +19,13 @@
 #### Установка PHP и настройка конфигурационного файла "PHP.INI".
 
 - Распаковать в "C:\Program Files\php"
-- Найти файл "_php.ini-production_" и переименовать в "_php.ini_"
-- Найти в файле "_php.ini_" строку "_;open_basedir =_" (Директория где будут разрешены PHP скрипты) 
+- Найти файл _php.ini-production_ и переименовать в _php.ini_
+- Найти в файле _php.ini_ строку _;open_basedir =_ (Директория где будут разрешены PHP скрипты) 
 ```ini
 open_basedir = C:\inetpub\wwwroot
 ```
 ##### Будут ли скрипты обрабатываться при прямом запросе или только при запросе от web сервера
-- Найти строку ";extension_dir = "./"" и заменить на "_extension_dir = "C:\Program Files\php\ext"_"
+- Найти строку _;extension_dir = "./"_ и заменить на _extension_dir = "C:\Program Files\php\ext"_
 ```ini
 cgi.force_redirect = 0
 ```
