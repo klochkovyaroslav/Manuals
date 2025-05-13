@@ -1,13 +1,13 @@
 # IIS+PHP+MySQL
 ## 1. Установка и настройка веб-сервера IIS на Windows Server 2019
 
-![image](https://github.com/user-attachments/assets/d1c0193f-840b-4757-9633-6eafee7a85c3)
+![image](https://github.com/user-attachments/assets/02e20d28-cd73-4db0-b601-f5d9006dd569)
 
-![image](https://github.com/user-attachments/assets/612b9ba7-fe22-417a-b56a-36b45009bb8b)
+![image](https://github.com/user-attachments/assets/d02fbf86-6c08-47c1-8bda-d2ece7f5978f)
+
 
 #### Добавить сайт
-![image](https://github.com/user-attachments/assets/d47ed4e6-d7b2-4c24-b87b-7aa86b38d11b)
-
+![image](https://github.com/user-attachments/assets/8f2bfcff-0b0f-4507-bf0a-85a80a2eb710)
 
 
 ## 2. Установка PHP
@@ -16,12 +16,11 @@
 
 ![image](https://github.com/user-attachments/assets/8dea0af5-e096-490d-a354-663e807d764f)
 
-#### Настройка конфигурационного файла.
+#### Установка PHP и настройка конфигурационного файла "PHP.INI".
 
 - Распаковать в "C:\Program Files\php"
-- Найти файл "php.ini"-production и переименовать в "php.ini"
-- Найти в файле "php.ini" строку ";open_basedir =" и дописать:
-##### Директория где будут разрешены PHP скрипты
+- Найти файл "_php.ini-production_" и переименовать в "_php.ini_"
+- Найти в файле "_php.ini_" строку "_;open_basedir =_" (Директория где будут разрешены PHP скрипты) 
 ```
 open_basedir = C:\inetpub\wwwroot
 ```
@@ -32,7 +31,8 @@ open_basedir = C:\inetpub\wwwroot
   ```
 
 #### Проверяем работает ли PHP
-![image](https://github.com/user-attachments/assets/d4f6e656-69c1-436d-bf04-f36bbfcf9f6d)
+![image](https://github.com/user-attachments/assets/c71dc735-da65-49aa-9d17-33d926af077c)
+##### Если видим такой ответ, то:
 
 #### Скачиваем и устанавливаем [Visual Studio](https://learn.microsoft.com/ru-ru/cpp/windows/latest-supported-vc-redist?view=msvc-170)
 
