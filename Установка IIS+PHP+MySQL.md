@@ -20,7 +20,8 @@
 
 - Распаковать в "C:\Program Files\php"
 - Найти файл _php.ini-production_ и переименовать в _php.ini_
-- Найти в файле _php.ini_ строку _;open_basedir =_ (Директория где будут разрешены PHP скрипты) 
+- Найти в файле _php.ini_ строку _;open_basedir =_
+Это директория где будут разрешены PHP скрипты  
 ```ini
 open_basedir = C:\inetpub\wwwroot
 ```
