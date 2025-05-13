@@ -3,18 +3,30 @@
 > Tab  
 > CTRL-Пробел - выведет список  
 
-## PSScriptAnalyzer — это статическая проверка кода для модулей и скриптов PowerShell
 
-```bash
+## Модули - Modules
+### PSScriptAnalyzer — это статическая проверка кода для модулей и скриптов PowerShell
+```powershell
 Install-Module -Name PSScriptAnalyzer
 Invoke-ScriptAnalyzer C:\ps_scripts\sql_restore_check_db\Auto_Restore_DB_Check_DB.ps1
 ```
+
+# Посмотреть содержимое модуля
+(Get-Module SendTelegramSAP).Invoke( { ${function:Send-Telegram} } )
+
+# Выгружаем модуль
+Remove-Module -Name SendTelegramSAP -Force
+
+# Загружаем заново
+Import-Module -Name SendTelegramSAP -Force
+
+
 
 ## Оптимизация времени выполнения команд PowerShell
 
 #### Запрос списка пользователей из AD с помощью команды Get-ADUser
 
-```bash
+```powershell
 Get-ADUser -Filter {Enabled -eq "true"} -работает быстрее
 Get-ADUser | Where-Object {$_.enabled -eq $true} -работает медленее
 
@@ -39,7 +51,7 @@ $StartDate = (Get-Date).AddDays(-10)
 Простая проверка if  
 Проверку на несоответствие значению $null обычно выполняют с помощью простой инструкции if() без сравнения.  
 
-```bash
+```powershell
 if ( $value )
 {
     Do-Something
@@ -52,7 +64,7 @@ if ( $value )
 Если $value не имеет значение $null, 0 или $false либо не равен пустой строке или пустому массиву.  
 Ниже приведен более полный пример этой инструкции.  
 
-```bash
+```powershell
 if ( $null -ne $value -and
         $value -ne 0 -and
         $value -ne '' -and
@@ -69,7 +81,7 @@ if ( $null -ne $value -and
 
 #### Для регистрации текущего сеанса PowerShell используется командлет Start-Transcript.
 
-```bash
+```powershell
 Start-Transcript -Append C:\Scripts\PS-Script-Log.txt
     #код вашего скрипта PowerShell
 Start-Sleep -Seconds 10
@@ -84,13 +96,13 @@ Stop-Transcript
 
 #### PowerShell. Время запуска и окончания команды содержится в атрибутах StartExecutionTime и EndExecutionTime
 
-```bash
+```powershell
 Get-History | select StartExecutionTime,EndExecutionTime,CommandLine
 ```
 
 #### Получить время выполнения последней команды:
 
-```bash
+```powershell
 $lastcommand=Get-History | select -Last 1 -Property *
 $lastcommand.EndExecutionTime - $lastcommand.StartExecutionTime
 ```
@@ -99,7 +111,7 @@ $lastcommand.EndExecutionTime - $lastcommand.StartExecutionTime
 
 #### Net класс StopWatch работает как секундомер:
 
-```bash
+```powershell
 $watch = [System.Diagnostics.Stopwatch]::StartNew()
 $watch.Start() #Запуск таймера
     #код вашего скрипта PowerShell
@@ -113,7 +125,7 @@ $watch.IsRunning #запущен ли сейчас секундомер
 
 #### Подсчет разницы в [datetime]:
 
-```bash
+```powershell
 $time_po_start = (Get-Date)
     Start-Sleep -Seconds 10
     #код вашего скрипта PowerShell
@@ -131,7 +143,7 @@ $time_po_total=($time_po_stop-$time_po_start).ToString().Split('.')[0]
 #### Для получения суммарного времени, затраченного на выполнение всех команд в блоке кода PowerShell:
 #### Командлет "Measure-Command"
 
-```bash
+```powershell
 (Measure-Command {
 #код вашего скрипта PowerShell
 }).TotalMilliseconds
@@ -139,7 +151,7 @@ $time_po_total=($time_po_stop-$time_po_start).ToString().Split('.')[0]
 
 #### Создать файл произвольного размера(10Gb)
 
-```bash
+```powershell
 $file = New-Object -TypeName System.IO.FileStream -ArgumentList D:\File_random_size.txt,Create,ReadWrite
 $file.SetLength(10240Mb)
 $file.Close()
@@ -148,19 +160,19 @@ $file.Close()
 
 #### Логи со всех участников кластера за последние 10 часов.
 
-```bash
+```powershell
 Get-ClusterLog –TimeSpan 360 –UseLocalTime –Destination "C:\Temp"
 ```
 
 #### Логи ноды кластера за последний 1 час.
 
-```bash
+```powershell
 Get-ClusterLog -Node SV07 -TimeSpan 60 -UseLocalTime -Destination "C:\Temp"
 ```
 
 #### По списку из файла c:\scripts\Computers.txt выведет имя компьютера и версию офиса.
 
-```bash
+```powershell
 Get-Content -Path c:\scripts\Computers.txt |
 ForEach-Object {
     Write $_
@@ -169,7 +181,7 @@ ForEach-Object {
 ```
 #### Выведет выведет имя компьютера и версию офиса локального ПК
 
-```bash
+```powershell
 Write $env:COMPUTERNAME
 Get-WmiObject Win32_Product -Filter "Name like '%Office%'" -ComputerName $env:COMPUTERNAME | Select Name, Version
 ```
@@ -180,120 +192,120 @@ Get-WmiObject Win32_Product -Filter "Name like '%Office%'" -ComputerName $env:CO
 ### Включить поддержку вложенной виртуализации для процессора:
 #### На железном хосте ВМ Hyper-V выполнить в PS для нужных ВМ:
 
-```bash
+```powershell
 Set-VMProcessor -VMName 'SQL-TEST2' -ExposeVirtualizationExtensions $true
 ```
 
 #### Для корректной работы сети, нужно включить MAC spoofing:
 
-```bash
+```powershell
 Get-VMNetworkAdapter -VMName 'SQL-TEST2' | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
 
 #### Получить список виртуальных машин и их статус:
 
-```bash
+```powershell
 Get-ClusterResource | ? {$_.ResourceType -eq “Virtual Machine”}|ft Name, State -AutoSize
 ```
 
 #### Создать новую виртуальных машину:
 
-```bash
+```powershell
 New-VM -VMName testVM01 -ComputerName PDC-VHOST01 -MemoryStartupBytes 1024Mb -SwitchName Datacenter -NewVHDPath C:\ClusterStorage\Volume2\TestVM01\testVM01.vhdx -NewVHDSizeBytes 127Gb -Path C:\ClusterStorage\Volume2\TestVM01 -Generation 2 -Verbose
 ```
 
 
 #### Добавить ВМ в кластер запустив локально на исходном узле:
 
-```bash
+```powershell
 Add-ClusterVirtualMachineRole -VMName testVM01
 ```
 
 #### Удаление кластерной виртуальной машины
 
-```bash
+```powershell
 Remove-ClusterGroup -VMId (Get-VM -Name testVM01).VMId -RemoveResources
 ```
 
 #### Возобновление кластерных служб на узле
 
-```bash
+```powershell
 Suspend-ClusterNode -Name HV11 -Drain
 ```
 
 #### Список томов CSV:
 
-```bash
+```powershell
 Get-ClusterSharedVolume
 ```
 
 #### Информация о томе CSV:
 
-```bash
+```powershell
 Get-ClusterSharedVolumeState -Name "Cluster Disk 1"
 ```
 
 #### Добавить диск в CSV можно командой:
 
-```bash
+```powershell
 Add-ClusterSharedVolume -Cluster Cluster1 -Name "Cluster Disk 1"
 ```
 
 #### Удалить диск CSV можно командой:
 
-```bash
+```powershell
 Remove-ClusterSharedVolume -Cluster Cluster1 -Name "Cluster Disk 1"
 ```
 
 #### Перевести CSV диск в режим перенаправления (File System Redirected mode) можно командой:
 
-```bash
+```powershell
 Suspend-ClusterResource -Name "Cluster Disk 1" -RedirectedAccess -Force
 ```
 
 #### Выключить режима перенаправления (File System Redirected mode) можно командой:
 
-```bash
+```powershell
 Resume-ClusterResource -Name "Cluster Disk 1"
 ```
 
 #### Получить сведения о дисках-свидетелях
 
- ```bash
+ ```powershell
 Get-ClusterResource -Name "*Cluster Quorum*"
 ```
 
 #### Live миграция в рамках PowerShell:
 
-```bash
+```powershell
 Move-ClusterVirtualMachineRole testVM01 -Node HV11
 ```
 
 #### Быстрая миграция в рамках PowerShell:
 
-```bash
+```powershell
 Move-ClusterVirtualMachineRole -MigrationType Quick testVM01 -Node HV11
 ```
 
 #### Старт ВМ
-```bash
+```powershell
 Start-VM -Name testVM01
 ```
 
 ### Внесение обновлений в свойства ВМ
 
 #### Выделить 8 процессоров
-```bash
+```powershell
 Set-VMProcessor testVM01 -Count 8
 ```
 
 #### Выделить динамическую память процессоров
-```bash
+```powershell
 Set-VMMemory testVM01 -DynamicMemoryEnabled $true -MinimumBytes 512MB -StartupBytes 2048MB -MaximumBytes 8GB
 ```
 
 #### Добавить DVD-дисковод как SCSI-контроллер
-```bash
+```powershell
 Add-VMDvdDrive -VMName testVM01
 ```
 
@@ -301,38 +313,38 @@ Add-VMDvdDrive -VMName testVM01
 ## Снимки (Checkpoint): Стандартные и Производственные в Hyper-V
 
 #### Включить стандартные снимки на ВМ:
-```bash
+```powershell
 Set-VM -Name testVM01 -CheckpointType Standard
 ```
 
 #### Включить производственные снимки на ВМ:
-```bash
+```powershell
 Set-VM -Name testVM01 -CheckpointType ProductionOnly
 ```
 
 #### Включить производственные снимки на ВМ с возможностью создания стандартных:
-```bash
+```powershell
 Set-VM -Name testVM01 -CheckpointType Production
 ```
 
 
 #### Сделать стандартный снимок на ВМ:
-```bash
+```powershell
 Checkpoint-VM -Name testVM01 -CheckpointName Standard_Checkpoint
 ```
 
 #### Применить стандартный снимок на ВМ:
-```bash
+```powershell
 Restore-VMCheckpoint -VMName testVM01 -Name Standard_Checkpoint -Confirm:$false
 ```
 
 #### Сделать стандартный снимок на ВМ:
-```bash
+```powershell
 Checkpoint-VM -Name testVM01 -CheckpointName Production_Checkpoint
 ```
 
 #### Слить снимок или список снимков ВМ с Диском :
-```bash
+```powershell
 Merge-VHD -Path C:\ClusterStorage\Volume13\TEST-SQL2\TEST_SQL2_C_779FE71D-DC72-46EA-B874-2349FDB4D021.avhdx -DestinationPath C:\ClusterStorage\Volume13\TEST-SQL2\TEST_SQL2_C.vhdx
 ```
 
@@ -340,37 +352,37 @@ Merge-VHD -Path C:\ClusterStorage\Volume13\TEST-SQL2\TEST_SQL2_C_779FE71D-DC72-4
 ## СЕТЬ
 
 #### Мониторинг открытых TCP/IP подключений
-```bash
+```powershell
 Get-NetTCPConnection -State Listen
 ```
 
 #### Порты, которые слушаются (открыты) 
-```bash
+```powershell
 Get-NetTCPConnection -State Listen | Select-Object -Property LocalAddress, LocalPort, RemoteAddress, RemotePort, State | Sort-Object LocalPort |ft
 ```
 
 #### Вывести только внешние (Интернет) подключения:
 
-```bash
+```powershell
 Get-NetTCPConnection -AppliedSetting Internet
 ```
 
 #### Скрипт выполнил разрешение всех IP адресов хостов в DNS имена, и для каждого соединения указал имя процесса, который его использует:
-```bash
+```powershell
 Get-NetTCPConnection -State Established |Select-Object -Property LocalAddress, LocalPort,@{name='RemoteHostName';expression={(Resolve-DnsName $_.RemoteAddress).NameHost}},RemoteAddress, RemotePort, State,@{name='ProcessName';expression={(Get-Process -Id $_.OwningProcess). Path}},OffloadState,CreationTime |ft
 ```
 
 
 #### По имени PID родительского процесса можно вывести список связанных имен служб Windows, которые используют сеть:
 
-```bash
+```powershell
 Get-WmiObject Win32_Service | Where-Object -Property ProcessId -In (Get-NetTCPConnection).OwningProcess | Where-Object -Property State -eq Running | Format-Table ProcessId, Name, Caption, StartMode, State, Status, PathName
 ```
 
 
 #### Можно вывести только сетевые подключения, которые инициированы определенным процессом.:
 
-```bash
+```powershell
 $TrackProcessName = “*chrome*”
 $EstablishedConnections = Get-NetTCPConnection -State Established |Select-Object -Property LocalAddress, LocalPort,@{name='RemoteHostName';expression={(Resolve-DnsName $_.RemoteAddress).NameHost}},RemoteAddress, RemotePort, State,@{name='ProcessName';expression={(Get-Process -Id $_.OwningProcess). Path}}, OffloadState,CreationTime
 Foreach ($Connection in $EstablishedConnections)
