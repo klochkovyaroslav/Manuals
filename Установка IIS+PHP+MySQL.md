@@ -1,4 +1,4 @@
-# Установка IIS+PHP+MySQL
+# IIS+PHP+MySQL
 ## 1. Установка и настройка веб-сервера IIS на Windows Server 2019
 
 ![image](https://github.com/user-attachments/assets/d1c0193f-840b-4757-9633-6eafee7a85c3)
