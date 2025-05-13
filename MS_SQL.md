@@ -61,9 +61,9 @@ sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt" -o "C:\Users\yaroslav.klochkov\D
 sqlcmd -S localhost -E -i "C:\SQLCMD\Query.txt" -v TableName=sys.databases ColumnName=Name -o "C:\Users\yaroslav.klochkov\Desktop\SQLCMD\rezult.txt"
 ```
 
-## T_SQL запросы.
+# T_SQL запросы.
 
-#### Проверьте модель восстановления:
+#### Проверить модель восстановления:
 ```sql
 SELECT name, recovery_model_desc 
 FROM sys.databases 
