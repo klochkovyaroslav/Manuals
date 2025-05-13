@@ -21,14 +21,19 @@
 - Распаковать в "C:\Program Files\php"
 - Найти файл "_php.ini-production_" и переименовать в "_php.ini_"
 - Найти в файле "_php.ini_" строку "_;open_basedir =_" (Директория где будут разрешены PHP скрипты) 
-```
+```ini
 open_basedir = C:\inetpub\wwwroot
 ```
 ##### Будут ли скрипты обрабатываться при прямом запросе или только при запросе от web сервера
+- Найти строку ";extension_dir = "./"" и заменить на "_extension_dir = "C:\Program Files\php\ext"_"
+```ini
+cgi.force_redirect = 0
+```
+
 - Найти строку "cgi.force_redirect = 1" и заменить на "0"
-  ```
-  cgi.force_redirect = 0
-  ```
+```ini
+cgi.force_redirect = 0
+```
 
 #### Проверяем работает ли PHP
 ![image](https://github.com/user-attachments/assets/c71dc735-da65-49aa-9d17-33d926af077c)
