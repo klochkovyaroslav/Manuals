@@ -1,5 +1,5 @@
 # Установка IIS+PHP+MySQL
-## Установка и настройка веб-сервера IIS на Windows Server 2019
+## 1. Установка и настройка веб-сервера IIS на Windows Server 2019
 
 ![image](https://github.com/user-attachments/assets/d1c0193f-840b-4757-9633-6eafee7a85c3)
 
@@ -10,7 +10,7 @@
 
 
 
-## Установка PHP
+## 2. Установка PHP
 #### Скачать с офф сайта архив
 ![image](https://github.com/user-attachments/assets/77a17d0c-d8ee-49ab-83d4-deeeb2b9b8b1)
 
@@ -39,7 +39,7 @@ open_basedir = C:\inetpub\wwwroot
 ![image](https://github.com/user-attachments/assets/0cb0fbae-459d-4b4c-b139-37ea7dffa605)
 
 
-## Настрока Web сервера IIS
+## 3. Настрока Web сервера IIS
 
 #### Настроить сопоставление модуля php-cgi 
 ![image](https://github.com/user-attachments/assets/ecb5ad89-a8b5-4a3d-8c51-81216c354a0b)
@@ -49,13 +49,13 @@ open_basedir = C:\inetpub\wwwroot
 ![image](https://github.com/user-attachments/assets/4edb90dd-f226-4ecf-863e-7f92505231b3)
 
 
-## Установить PHP Manager
+## 4. Установить PHP Manager
 
 ![image](https://github.com/user-attachments/assets/5a897e4d-a857-4c9c-91c9-4b0b4b362c92)
 ![image](https://github.com/user-attachments/assets/a6217da4-3c0a-4aed-90df-ff0227960969)
 
 
-## Установить MySQL
+## 5. Установить MySQL
 
 ![image](https://github.com/user-attachments/assets/43be60b2-dd3f-47e7-86b5-6dc32b3233d9)
 ![image](https://github.com/user-attachments/assets/d8940685-8431-4c8e-88b7-cc4265accb9f)
