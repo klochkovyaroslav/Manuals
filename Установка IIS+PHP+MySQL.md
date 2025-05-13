@@ -5,6 +5,9 @@
 
 ![image](https://github.com/user-attachments/assets/612b9ba7-fe22-417a-b56a-36b45009bb8b)
 
+#### Добавить сайт
+![image](https://github.com/user-attachments/assets/d47ed4e6-d7b2-4c24-b87b-7aa86b38d11b)
+
 
 
 ## Установка PHP
