@@ -151,7 +151,28 @@ ON
     ars.group_id = ag.group_id;
 ```
 
-### Переименовать SQL сервер
+### WHERE примеры:
+```sql
+SELECT --id,
+       uuid,
+       --checksum,
+       --tenant_id,
+       --euc_id
+	datetime(completion_time_ns / 1000000000, 'unixepoch') AS completion_time_ttttt,
+FROM activities
+WHERE uuid= '5c80ae71-29ff-4ea0-8c0b-fccc139c3114' OR parent_activity_id = '1582826317865287680';
+
+FROM tasks
+WHERE uuid IN ('5c80ae71-29ff-4ea0-8c0b-fccc139c3114', '5bd6a623-ad39-4af0-9625-a6fa24ce335f');
+
+FROM activities
+WHERE (creation_time_str BETWEEN '2025-04-01 00:00:00' AND '2025-04-07 23:59:59') AND state <> 4 ;
+```
+
+
+
+
+## Переименовать SQL сервер
 #### Текущее имя сервера
 ```sql
 SELECT @@SERVERNAME AS CurrentServerName;
