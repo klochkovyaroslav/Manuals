@@ -165,6 +165,9 @@ WHERE uuid= '5c80ae71-29ff-4ea0-8c0b-fccc139c3114' OR parent_activity_id = '1582
 FROM tasks
 WHERE uuid IN ('5c80ae71-29ff-4ea0-8c0b-fccc139c3114', '5bd6a623-ad39-4af0-9625-a6fa24ce335f');
 
+FROM tasks
+WHERE (start_time_str BETWEEN '2025-05-14 14:00:00' AND '2025-05-14 23:59:59') AND policy_name='PSE-PRD_SQL_(Script_PS)+';
+
 FROM activities
 WHERE (creation_time_str BETWEEN '2025-04-01 00:00:00' AND '2025-04-07 23:59:59') AND state <> 4 ;
 ```
