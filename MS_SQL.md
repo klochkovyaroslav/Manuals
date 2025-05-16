@@ -170,6 +170,9 @@ WHERE (start_time_str BETWEEN '2025-05-14 14:00:00' AND '2025-05-14 23:59:59') A
 
 FROM activities
 WHERE (creation_time_str BETWEEN '2025-04-01 00:00:00' AND '2025-04-07 23:59:59') AND state <> 4 ;
+
+FROM tasks
+WHERE completion_time_ns = 1747292400000000000 AND (enqueue_time_str BETWEEN '2025-04-01 00:00:00' AND '2025-05-14 23:59:59') AND state <> 2;
 ```
 
 
