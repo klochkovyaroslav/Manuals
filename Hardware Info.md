@@ -98,6 +98,11 @@ sudo apt install mesa-utils
 sudo glxinfo | grep OpenGL | grep renderer
 ```
 
+#### используемый видеодрайвер:
+```bash
+sudo lshw -c video | grep driver
+```
+
 #### посмотреть количество памяти, доступное видеокарте:
 ```bash
 glxinfo | egrep -i 'device|memory'
