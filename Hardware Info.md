@@ -74,3 +74,31 @@ hdparm -I /dev/sdb
 
 smartctl -d ata -a -i /dev/sdb
 ```
+
+## Информация о Видеоадаптере
+
+```bash
+sudo lspci | grep -E "VGA|3D"
+sudo lshw -c video
+```
+
+#### Проверка нормального функционирования установленных драйверов осуществляется командой
+```bash
+sudo lspci -vnn | grep -i VGA -A 18
+```
+> найти «kernel driver in use: NVIDIA»
+
+
+#### Проверка Поддержки аппаратного ускорения проверяется через утилиту glxinfo
+##### Установить glxinfo
+```bash
+sudo apt install mesa-utils
+```
+```bash
+sudo glxinfo | grep OpenGL | grep renderer
+```
+
+#### посмотреть количество памяти, доступное видеокарте:
+```bash
+glxinfo | egrep -i 'device|memory'
+```
