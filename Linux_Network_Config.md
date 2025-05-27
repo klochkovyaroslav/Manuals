@@ -99,6 +99,7 @@ sudo nmtui
 sudo nmcli
 sudo nmcli device status
 sudo nmcli device show
+sudo nmcli connection show --active (список активных профилей)
 sudo nmcli connection show System\ eth1
 ```
 
