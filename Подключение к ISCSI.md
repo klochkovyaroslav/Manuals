@@ -1,5 +1,11 @@
 # LINUX
 
+
+## Чтобы настройки iscsi не пропадали после рестарта:
+```bash
+target: systemctl enable --now target
+```
+
 ```bash
 targetcli
 ```
