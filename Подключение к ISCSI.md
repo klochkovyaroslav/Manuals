@@ -1,5 +1,29 @@
 # LINUX
 
+```bash
+targetcli
+```
+```bash
+ls
+```
+
+#### Обнаружить iSCSI-target.
+```bash
+iscsiadm -m discovery -t st -p san.zvirt.test
+```
+
+### Восстановить конфигурацию
+#### 1. Перезагрузите службу
+```bash
+sudo systemctl restart targetctl
+```
+
+#### 2.Восстановить конфигурацию
+```bash
+targetctl restore
+```
+
+
 #### Установить пакет
 ```bash
 sudo apt install open-iscsi
