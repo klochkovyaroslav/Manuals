@@ -12,5 +12,5 @@ mkdir kuu_d
 ```
 
 ```bash
-sudo mount -t cifs -o username=user,password=12345,uid=1000,iocharset=utf8 //192.168.88.20/d
+sudo mount -t cifs -o username=user,password=12345,uid=1000,iocharset=utf8 //192.168.88.28/d kuu_d/
 ```
