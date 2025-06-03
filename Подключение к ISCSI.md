@@ -1,10 +1,19 @@
 # LINUX
 
+## Создание таргета iSCSI
 
-## Чтобы настройки iscsi не пропадали после рестарта:
+#### Установить пакет targetcli:
+
 ```bash
-target: systemctl enable --now target
+dnf install targetcli
 ```
+
+#### Добавить службу target в автозагрузку и запустить:
+
+```bash
+systemctl enable target --now
+```
+
 
 ```bash
 targetcli
