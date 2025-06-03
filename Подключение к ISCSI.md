@@ -27,19 +27,25 @@ targetcli
 ```bash
 ls
 ```
+![image](https://github.com/user-attachments/assets/1a394873-432a-4eae-a442-3a6715d6b721)
+
 
 #### Перейдите в раздел block:
 
 ```bash
 cd backstores/block
 ```
+![image](https://github.com/user-attachments/assets/09933fba-ca70-4bb0-aadf-a859be599cf7)
+
 
 #### Создайте фоновое хранилище:
 
 ```bash
-create name=lun0 dev=/dev/sdc
+create name=lun0 dev=/dev/vg0-iscsi/lv-iscsi
 ls
 ```
+![image](https://github.com/user-attachments/assets/e55326d5-ec67-4f88-ad90-5d124719efb4)
+
 
 #### Создать ISCSI цель(target)
 
@@ -49,6 +55,8 @@ cd /iscsi
 create
 ls
 ```
+![image](https://github.com/user-attachments/assets/c295dd86-2a9a-4629-87b7-27b6de29de38)
+
 
 #### Перейти в созданную портальную группу(tpg1)
 ```bash
@@ -69,6 +77,8 @@ cd acls
 create iqn.2005-09.com.redhat:566eb276ae12
 ls
 ```
+![image](https://github.com/user-attachments/assets/dff2e610-31ef-4ca7-aef1-aa90f413387f)
+
 
 #### Сохранить конфигурацию
 
