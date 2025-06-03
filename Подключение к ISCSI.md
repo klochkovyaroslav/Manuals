@@ -2,11 +2,16 @@
 
 ## Создание таргета iSCSI
 
-#### Установить пакет targetcli:
+#### Установить пакет targetcli RPM
 
 ```bash
 dnf install targetcli
 ```
+#### DEB
+```bash
+sudo apt install targetcli-fb
+```
+
 
 #### Добавить службу target в автозагрузку и запустить:
 
