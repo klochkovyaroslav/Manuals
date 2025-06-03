@@ -52,7 +52,7 @@ ls
 
 #### Перейти в созданную портальную группу(tpg1)
 ```bash
-cd iscsi/iqn.2003-01.org.linux-iscsi.cli.x8664:sn.8edccee7651d/tpg1/
+iqn.2003-01.org.linux-iscsi.iscsi-nfs.x8664:sn.0374d190fbd4/tpg1/
 ```
 
 #### Добавить созданное ранее фотовое хранилище в портальную группу
