@@ -14,6 +14,7 @@ dnf install targetcli
 systemctl enable target --now
 ```
 
+#### Откройте targetcli:
 
 ```bash
 targetcli
@@ -21,6 +22,31 @@ targetcli
 ```bash
 ls
 ```
+
+
+#### Перейдите в раздел block:
+
+```bash
+cd backstores/block
+```
+
+#### Создайте фоновое хранилище:
+
+```bash
+create name=lun0 dev=/dev/sdc
+ls
+```
+
+#### Создать ISCSI цель(target)
+
+```bash
+> iscsi/ create
+```
+
+
+
+
+----
 
 #### Обнаружить iSCSI-target.
 ```bash
