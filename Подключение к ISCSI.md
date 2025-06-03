@@ -44,6 +44,7 @@ ls
 #### Создать ISCSI цель(target)
 
 ```bash
+cd //
 cd /iscsi
 create
 ls
