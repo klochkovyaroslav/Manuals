@@ -70,16 +70,17 @@ iqn.2003-01.org.linux-iscsi.iscsi-nfs.x8664:sn.0954d190fbd9/tpg1/
 cd luns
 create /backstores/block/lun0
 ```
+![image](https://github.com/user-attachments/assets/dff2e610-31ef-4ca7-aef1-aa90f413387f)
 
 #### Настроить ACL портальной группы(tpg1), добавив iqn инициатора(клиента)
 ```bash
 cd acls
 create iqn.2016-04.com.open-iscsi:5be46ba6892e
-create iqn.2016-04.com.open-iscsi:d76d43d9ca0
+```
+![image](https://github.com/user-attachments/assets/0fe5f5c6-a7a4-4641-9ccf-3cf3dd04632d)
+```bash
 ls
 ```
-![image](https://github.com/user-attachments/assets/dff2e610-31ef-4ca7-aef1-aa90f413387f)
-
 
 #### Сохранить конфигурацию
 ```bash
