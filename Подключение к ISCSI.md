@@ -81,6 +81,8 @@ create iqn.2016-04.com.open-iscsi:5be46ba6892e
 ```bash
 ls
 ```
+![image](https://github.com/user-attachments/assets/2a14d41b-4b56-4e0e-bad6-f3f5776809d6)
+
 
 #### Сохранить конфигурацию
 ```bash
