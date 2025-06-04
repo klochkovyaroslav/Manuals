@@ -98,6 +98,8 @@ saveconfig
 ```bash
 exit 
 ```
+![image](https://github.com/user-attachments/assets/58b2b9a9-d5c6-4ef4-9ce3-60861386eaf5)
+
 
 > iqn — имя таргета.  
 > tpg1 (Target Portal Group) – список IP-адресов и TCP портов, которые будет слушать этот таргет.  
