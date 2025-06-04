@@ -2,11 +2,11 @@
 
 ## Создание таргета iSCSI
 
-#### Установить пакет targetcli RPM
+#### Установить пакет targetcli: RPM
 ```bash
 dnf install targetcli
 ```
-#### DEB
+#### DEB:
 ```bash
 sudo apt install targetcli-fb
 ```
