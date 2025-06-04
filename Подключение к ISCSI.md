@@ -86,8 +86,13 @@ ls
 
 #### Сохранить конфигурацию
 ```bash
+cd  //
+```
+```bash
 saveconfig 
 ```
+![image](https://github.com/user-attachments/assets/22f8f1ca-09e6-4eaf-9bc4-d47ab8cd8ebe)
+
 
 #### Выйти
 ```bash
