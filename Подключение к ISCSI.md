@@ -3,7 +3,6 @@
 ## Создание таргета iSCSI
 
 #### Установить пакет targetcli RPM
-
 ```bash
 dnf install targetcli
 ```
@@ -12,18 +11,17 @@ dnf install targetcli
 sudo apt install targetcli-fb
 ```
 
-
 #### Добавить службу target в автозагрузку и запустить:
-
 ```bash
 systemctl enable target --now
 ```
 
 #### Откройте targetcli:
-
 ```bash
 targetcli
 ```
+
+##### Отобразить текущую конфигурацию командой ls: 
 ```bash
 ls
 ```
@@ -31,15 +29,13 @@ ls
 
 
 #### Перейдите в раздел block:
-
 ```bash
 cd backstores/block
 ```
 ![image](https://github.com/user-attachments/assets/09933fba-ca70-4bb0-aadf-a859be599cf7)
 
 
-#### Создайте фоновое хранилище:
-
+#### Создать блочное устройство в backstores (фоновое хранилище):
 ```bash
 create name=lun0 dev=/dev/vg0-iscsi/lv-iscsi
 ls
@@ -47,12 +43,18 @@ ls
 ![image](https://github.com/user-attachments/assets/e55326d5-ec67-4f88-ad90-5d124719efb4)
 
 
-#### Создать ISCSI цель(target)
-
+#### Создание ISCSI цели(target)
 ```bash
 cd //
+```
+```bash
 cd /iscsi
+```
+##### Создать target командой:
+```bash
 create
+```
+```bash
 ls
 ```
 ![image](https://github.com/user-attachments/assets/c295dd86-2a9a-4629-87b7-27b6de29de38)
@@ -64,14 +66,12 @@ iqn.2003-01.org.linux-iscsi.iscsi-nfs.x8664:sn.0954d190fbd9/tpg1/
 ```
 
 #### Добавить созданное ранее фоновое хранилище в портальную группу
-
 ```bash
 cd luns
 create /backstores/block/lun0
 ```
 
 #### Настроить ACL портальной группы(tpg1), добавив iqn инициатора(клиента)
-
 ```bash
 cd acls
 create iqn.2005-09.com.redhat:566eb276ae12
@@ -81,13 +81,11 @@ ls
 
 
 #### Сохранить конфигурацию
-
 ```bash
 saveconfig 
 ```
 
 #### Выйти
-
 ```bash
 exit 
 ```
