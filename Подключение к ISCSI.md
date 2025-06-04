@@ -74,7 +74,8 @@ create /backstores/block/lun0
 #### Настроить ACL портальной группы(tpg1), добавив iqn инициатора(клиента)
 ```bash
 cd acls
-create iqn.2005-09.com.redhat:566eb276ae12
+create iqn.2016-04.com.open-iscsi:5be46ba6892e
+create iqn.2016-04.com.open-iscsi:d76d43d9ca0
 ls
 ```
 ![image](https://github.com/user-attachments/assets/dff2e610-31ef-4ca7-aef1-aa90f413387f)
