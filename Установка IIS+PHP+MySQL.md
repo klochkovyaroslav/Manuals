@@ -69,7 +69,8 @@ extension=pdo_mysql
 
 
 ## 5. Установить MySQL
-[Скачать - MySQL Community Server](https://dev.mysql.com/downloads/mysql)
+#### Скачиваем и устанавливаем [MySQL Community Server](https://dev.mysql.com/downloads/mysql)
+
 
 
 ![image](https://github.com/user-attachments/assets/43be60b2-dd3f-47e7-86b5-6dc32b3233d9)
