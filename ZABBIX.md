@@ -504,3 +504,24 @@ isql -v SQL-TST-DB1 zbx_monitor 'P@ssword'
 ![image](https://github.com/user-attachments/assets/9320036f-a3a0-46cc-8bad-ac5d17773563)
 
 
+## Как исключить службу Windows из мониторинга Zabbix?
+
+### Добавление исключений
+#### Чтобы внести службу в список исключений, откройте шаблоны агента Zabbix по пути, указанному на скриншоте ниже:
+![image](https://github.com/user-attachments/assets/37428712-c6ae-49c9-8bc3-cfdc4ef855dd)
+
+Добавьте без использования пробелов вертикальную черту и имя службы в скобки.  
+
+> Добавим в исключение службу GoogleUpdaterService122.0.6253.8 таким образом, чтобы после её обновления на другую версию, она также оставалась в исключениях:
+> Добавлять в исключение нужно именно отображаемое имя!
+![image](https://github.com/user-attachments/assets/26d6d6f0-e52b-4bb0-b448-8cd6528f6274)
+
+^(?:RemoteRegistry|MMCSS|gupdate|SysmonLog|GoogleUpdater.+)$
+
+#### Чтобы изменения вступили в силу, отвяжите темплейт "Windows by Zabbix agent" от хоста, как это показано на скриншоте ниже:
+![image](https://github.com/user-attachments/assets/45fe6ade-c03f-4ddc-8be8-c91cd2985ef7)
+#### Дождитесь, пока текущие события пропадут из дашбордов, затем подключите заново темплейт "Windows by Zabbix agent".
+##### Взято с (https://dzen.ru/a/ZbymRfpksCzeWtst)
+
+
+
