@@ -519,7 +519,8 @@ isql -v SQL-TST-DB1 zbx_monitor 'P@ssword'
 ^(?:RemoteRegistry|MMCSS|gupdate|SysmonLog|GoogleUpdater.+)$
 
 #### Чтобы изменения вступили в силу, отвяжите темплейт "Windows by Zabbix agent" от хоста, как это показано на скриншоте ниже:
-![image](https://github.com/user-attachments/assets/45fe6ade-c03f-4ddc-8be8-c91cd2985ef7)
+![image](https://github.com/user-attachments/assets/7fb3a0e3-2784-4aa2-b4cd-5e53a91a3f2a)
+
 #### Дождитесь, пока текущие события пропадут из дашбордов, затем подключите заново темплейт "Windows by Zabbix agent".
 ##### Взято с (https://dzen.ru/a/ZbymRfpksCzeWtst)
 
