@@ -776,12 +776,12 @@ params 'Debian GNU/Linux'
 
 load_video
 insmod gzio
-if [ x$grub_platform = xen ]; then insmod xzio; insmod lzopio; fi
+if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
 insmod part_msdos
 insmod ext2
-set root='hd1,msdos1'
+set root='hd2,msdos1'
 if [ x$feature_platform_search_hint = xy ]; then
-  search --no-floppy --fs-uuid --set=root --hint-bios=hd1,msdos1 --hint-efi=hd1,msdos1 --hint-baremetal=ahci1,msdos1 86cd8758-3b3e-4191-918f-77b3d08f1749
+  search --no-floppy --fs-uuid --set=root --hint-bios=hd2,msdos1 --hint-efi=hd2,msdos1 --hint-baremetal=ahci2,msdos1 86cd8758-3b3e-4191-918f-77b3d08f1749
 else
   search --no-floppy --fs-uuid --set=root 86cd8758-3b3e-4191-918f-77b3d08f1749
 fi
