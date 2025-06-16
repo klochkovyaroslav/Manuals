@@ -790,6 +790,8 @@ linux /boot/vmlinuz-6.1.0-25-amd64 root=UUID=86cd8758-3b3e-4191-918f-77b3d08f174
 echo 'Loading initial ramdisk ...'
 initrd /boot/initrd.img-6.1.0-25-amd64
 ```
+![image](https://github.com/user-attachments/assets/58633f95-9ef4-4395-a818-158abcba8771)
+
 
 ```bash
 systemctl set-default --force multi-user.target
