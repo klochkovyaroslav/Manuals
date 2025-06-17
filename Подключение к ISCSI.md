@@ -110,11 +110,6 @@ exit
 
 ----
 
-#### Обнаружить iSCSI-target.
-```bash
-iscsiadm -m discovery -t st -p san.zvirt.test
-```
-
 ### Восстановить конфигурацию
 #### 1. Перезагрузите службу
 ```bash
@@ -126,10 +121,15 @@ sudo systemctl restart targetctl
 targetctl restore
 ```
 
-
+## Настройка iSCSI-initiator
 #### Установить пакет
 ```bash
 sudo apt install open-iscsi
+```
+
+#### Обнаружить iSCSI-target.
+```bash
+iscsiadm -m discovery -t st -p san.zvirt.test
 ```
 
 #### Все найденные target'ы хранятся в /etc/iscsi/
@@ -140,6 +140,34 @@ sudo apt install open-iscsi
 #### IQN инициатора
 ```bash
 cat /etc/iscsi/initiatorname.iscsi
+```
+
+#### Подключится к таргету:
+```bash
+iscsiadm -m node -T iqn.2003-01.org.linux-iscsi.iscsi-nfs.x8664:sn.0954d190fbd9 -p san.zvirt.test -l 
+```
+
+#### Проверить подключение диска:
+```bash
+fdisk -l
+```
+
+#### Далее нужно создать файловую систему на диске
+```bash
+mkfs.ext4 /dev/sdс
+```
+
+#### Настротить автоматическое монтирование в fstab
+```bash
+blkid /dev/sdc
+````
+```bash
+sudo nano /etc/fstab
+````
+> UUID=6bedf331-b789-2bae-baaf-k65e8cda0a5f /mnt ext4 _netdev 0 0
+
+```bash
+df -hT
 ```
 
 
