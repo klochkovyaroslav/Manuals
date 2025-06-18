@@ -104,23 +104,36 @@ su -
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/rickycodes/pve-no-subscription/main/no-subscription-warning.sh | sh
 ```
 
-## Конвертация Hyper-V vhdx в KVM qcow2
+----
 
-### Чтобы мигририровать ВМ из Hyper-V на KVM необходимо выполнить конвертацию виртуального диска формата Hyper-V в виртуальный диск формата KVM.
+# Конвертация виртуального диска Hyper-V (VHDX) в KVM (QCOW2)  
+## LINUX
 
-#### Установим qemu-img, с помощью которого можно выполнять различные манипуляции с виртуальными дисками
+![image](https://github.com/user-attachments/assets/f9c10c05-4439-4bc3-94a6-0249c9a2b204)
+
+#### Необходимо установить пакет "qemu-img", с его помощью которого можно выполнять манипуляции с виртуальными дисками
 ```bash
 yum install -y qemu-img
 ```
-#### Проверка диска vhdx
+#### Перед запуском процесса конвертации можно запустить проверку диска "vhdx"
 ```bash
 qemu-img check -r all VM_test_C.vhdx
 ```
 
-#### Запустить конвертацию
+#### Запустить процесс конвертации диска "vhdx" в "qcow2"
 ```bash
 qemu-img convert -O qcow2 VM_test_C.vhdx VM_test_sys.qcow2
 ```
+
+## WINDOWS  
+### Конвертируем диски с помощью этих утилит:
+
+- _disk2vhd_ [Скачать disk2vhd можно здесь](https://download.sysinternals.com/files/Disk2vhd.zip)
+- _qemu-img_ [Скачать qemu-img можно здесь](https://cloudbase.it/downloads/qemu-img-win-x64-2_3_0.zip)
+
+#### Disk2vhd
+
+
 ----
 # Windows VirtIO Drivers
 
