@@ -131,7 +131,21 @@ qemu-img convert -O qcow2 VM_test_C.vhdx VM_test_sys.qcow2
 - _disk2vhd_ [Скачать disk2vhd можно здесь](https://download.sysinternals.com/files/Disk2vhd.zip)
 - _qemu-img_ [Скачать qemu-img можно здесь](https://cloudbase.it/downloads/qemu-img-win-x64-2_3_0.zip)
 
-#### Disk2vhd
+#### Disk2vhd - Конвертирует диски "железный" диск в виртуальный диск "vhdx"
+##### Нужно запустить на сервере диски которого хотим конвертировать
+
+![image](https://github.com/user-attachments/assets/ea0e1077-9ca9-41cd-b094-2c031cfa4638)
+
+#### Qemu-img - Конвертируем виртуальный диск vhdx в qcow2
+
+##### Нужно запустить командную строку (CMD.EXE) с правами администратора
+```cmd
+qemu-img.exe convert -O qcow2 f:\WIN-RBMS3TLOILH.VHDX F:\test-S3_C.qcow2
+```
+
+
+![image](https://github.com/user-attachments/assets/09cd0a7d-7edd-454c-be20-5c2e6487abcc)
+
 
 
 ----
