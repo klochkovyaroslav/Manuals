@@ -1,4 +1,4 @@
-# VSS (Volume Shadow Copy Service)
+# VSS (Volume Shadow Copy Service) - Hyper-V
 
 # LINUX
 ## fsfreeze в Linux: Заморозка файловой системы для консистентных снапшотов
