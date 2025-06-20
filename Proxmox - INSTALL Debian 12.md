@@ -114,6 +114,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/rickycode
 #### Необходимо установить пакет "qemu-img", с его помощью которого можно выполнять манипуляции с виртуальными дисками
 ```bash
 yum install -y qemu-img
+sudo apt install qemu-utils
 ```
 #### Перед запуском процесса конвертации можно запустить проверку диска "vhdx"
 ```bash
