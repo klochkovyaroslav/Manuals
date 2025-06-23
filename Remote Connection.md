@@ -120,13 +120,11 @@ sudo apt install tightvncserver
 ```bash
 sudo apt install dbus-x11
 ```
-#### Запустить vncserver
+
+#### Сделать копию файла
 ```bash
-vncserver
+mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
 ```
-
-> Настроить пароль при подключении к VNC-серверу  
-
 
 #### конфигурационный файл
 ```bash
@@ -144,6 +142,13 @@ startxfce4 &
 ```bash
 sudo chmod +x ~/.vnc/xstartup
 ```
+
+#### Запустить vncserver
+```bash
+vncserver
+```
+
+> Настроить пароль при подключении к VNC-серверу  
 
 ## Чтобы сменить пароль на VNC (TightVNC) в Linux, достаточно ввести команду:
 ```bash
