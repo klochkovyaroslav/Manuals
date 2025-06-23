@@ -49,6 +49,10 @@ _AutomaticLogin = $USERNAME_
 ```bash
 su -
 ```
+#### Обновить систему
+```bash
+apt update && sudo apt upgrade -y
+```
 
 #### Установка the Desktop Environment
 ```bash
