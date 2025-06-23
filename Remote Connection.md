@@ -92,7 +92,8 @@ systemctl restart xrdp.service
 ## Подключится по RDP из Windows
 ![image](https://github.com/user-attachments/assets/0ede98aa-eec1-4f03-82ac-ecbed7a8375b)
 
-##### Ввести логин + пароль от локальной УЗ
+> Ввести логин + пароль от локальной  
+
 ![image](https://github.com/user-attachments/assets/a6484f27-2bda-44bc-9fd6-6c36d715d5f3)
 
 
