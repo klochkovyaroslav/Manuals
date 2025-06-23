@@ -111,7 +111,7 @@ export $(dbus-launch)
 ```bash
 sudo apt install xfce4 xfce4-goodies
 ```
-#### Установка сервера TightVNS
+#### Установка VNC сервера TightVNC
 ```bash
 sudo apt install tightvncserver
 ```
@@ -121,12 +121,26 @@ sudo apt install tightvncserver
 sudo apt install dbus-x11
 ```
 
-#### Сделать копию файла
+#### Запустить для создания первоначальной конфигурации
+```bash
+vncserver
+```
+> Будет предложено ввести пароль с его подтверждением, который далее будет использоваться для взаимодействия с удаленной системой  
+> После ввода обоих паролей утилита самостоятельно сгенерирует файл конфигурации "~/.vnc/xstartup"  
+
+### Настройка сервера VNC
+
+#### Перед началом настройки нужно установить сервер VNC
+```bash
+vncserver -kill :1
+```
+
+#### Сделать копию файла "xstartup"
 ```bash
 mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
 ```
 
-#### конфигурационный файл
+#### Конфигурационный файл
 ```bash
 nano ~/.vnc/xstartup
 ```
@@ -153,15 +167,11 @@ vncserver -geometry 1280x1080
 vncserver -localhost -geometry 1280x1080
 ```
 
-> Настроить пароль при подключении к VNC-серверу  
-
-
-
-
-#### Запуск VNC как системной службы
+### Запуск VNC как системной службы
 ```bash
 sudo nano /etc/systemd/system/vncserver@.service
 ```
+> Содержимое файла "vncserver@.service"
 
 ```
 [Unit]
@@ -170,9 +180,9 @@ After=syslog.target network.target
  
 [Service]
 Type=forking
-User=username
-Group=username
-WorkingDirectory=/home/username
+User=my_vnc_user
+Group=my_vnc_user
+WorkingDirectory=/home/my_vnc_user
  
 PIDFile=/home/username/.vnc/%H:%i.pid
 ExecStartPre=-/usr/bin/vncserver -kill :%i > /dev/null 2>&1
@@ -181,6 +191,21 @@ ExecStop=/usr/bin/vncserver -kill :%i
  
 [Install]
 WantedBy=multi-user.target
+```
+
+```bash
+sudo systemctl daemon-reload
+```
+```bash
+sudo systemctl enable vncserver@1.service
+```
+
+> Цифра 1, указаная после @, означает номер дисплея, на котором требуется активация службы  
+
+
+Проверка работоспособности сервера VNC:
+```bash
+sudo systemctl status vncserver@1
 ```
 
 ## Чтобы сменить пароль на VNC (TightVNC) в Linux, достаточно ввести команду:
