@@ -155,6 +155,34 @@ vncserver -localhost -geometry 1280x1080
 
 > Настроить пароль при подключении к VNC-серверу  
 
+
+
+
+#### Запуск VNC как системной службы
+```bash
+sudo nano /etc/systemd/system/vncserver@.service
+```
+
+```
+[Unit]
+Description=Start TightVNC server at startup
+After=syslog.target network.target
+ 
+[Service]
+Type=forking
+User=username
+Group=username
+WorkingDirectory=/home/username
+ 
+PIDFile=/home/username/.vnc/%H:%i.pid
+ExecStartPre=-/usr/bin/vncserver -kill :%i > /dev/null 2>&1
+ExecStart=/usr/bin/vncserver -depth 24 -geometry 1280x800 :%i
+ExecStop=/usr/bin/vncserver -kill :%i
+ 
+[Install]
+WantedBy=multi-user.target
+```
+
 ## Чтобы сменить пароль на VNC (TightVNC) в Linux, достаточно ввести команду:
 ```bash
 vncpasswd
