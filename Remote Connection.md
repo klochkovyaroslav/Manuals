@@ -145,6 +145,11 @@ sudo chmod +x ~/.vnc/xstartup
 
 #### Запустить vncserver
 ```bash
+vncserver -geometry 1280x1080
+```
+или в режиме SSH-туннелирования для безопасного подключения
+
+```bash
 vncserver -localhost -geometry 1280x1080
 ```
 
