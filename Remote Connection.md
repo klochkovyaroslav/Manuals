@@ -45,7 +45,7 @@ _AutomaticLogin = $USERNAME_
 
 # Установка xrdp-сервера
 
-
+#### Перейти в другой аккаунт (root)
 ```bash
 su -
 ```
@@ -74,11 +74,22 @@ adduser xrdp ssl-cert
 ```
 
 #### Перезапустить сервис xrdp
+```bash
 systemctl restart xrdp.service
 ```
 
-## Настроить подключение к xrdp-серверу при активной локальной сессии пользователя
+### Настроить подключение к xrdp-серверу при активной локальной сессии пользователя
 #### Для устранения данной ошибки в скрипте /usr/libexec/xrdp/startwm.sh в функции wm_start добавьте строку:
-> export $(dbus-launch)
-
+> export $(dbus-launch)  
 ![image](https://github.com/user-attachments/assets/9608bddf-281c-4038-b27b-c1a988c96c5b)
+
+## Подключится по RDP из Windows
+![image](https://github.com/user-attachments/assets/0ede98aa-eec1-4f03-82ac-ecbed7a8375b)
+
+##### Ввести логин + пароль от локальной УЗ
+![image](https://github.com/user-attachments/assets/a6484f27-2bda-44bc-9fd6-6c36d715d5f3)
+
+
+
+
+
