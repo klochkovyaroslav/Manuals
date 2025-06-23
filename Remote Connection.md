@@ -145,7 +145,7 @@ sudo chmod +x ~/.vnc/xstartup
 
 #### Запустить vncserver
 ```bash
-vncserver
+vncserver -localhost -geometry 1280x1080
 ```
 
 > Настроить пароль при подключении к VNC-серверу  
