@@ -102,6 +102,14 @@ export $(dbus-launch)
 ![image](https://github.com/user-attachments/assets/a6484f27-2bda-44bc-9fd6-6c36d715d5f3)
 
 
+---
+
+# Чтобы сменить пароль на VNC (TightVNC) в Linux, достаточно ввести команду:
+```bash
+vncpasswd
+```
+
+
 
 
 
