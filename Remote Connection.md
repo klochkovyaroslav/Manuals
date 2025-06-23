@@ -198,7 +198,7 @@ sudo systemctl daemon-reload
 ```
 #### Включить файл модуля
 ```bash
-sudo systemctl enable vncserver@1.service
+sudo systemctl start vncserver@1
 ```
 
 > Цифра 1, указаная после @, означает номер дисплея, на котором требуется активация службы  
