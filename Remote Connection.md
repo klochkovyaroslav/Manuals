@@ -71,6 +71,10 @@ systemctl status xrdp.service
 #### Cоздать отдельного пользователя для xRDP и выдать доступ к генерации TLS-сертификатов
 ```bash
 adduser xrdp ssl-cert
+или
+adduser xrdp
+usermod -aG ssl-cert xrdp
+usermod -a -G sudo xrdp
 ```
 
 #### Перезапустить сервис xrdp
