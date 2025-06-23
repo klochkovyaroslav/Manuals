@@ -283,7 +283,8 @@ RESTORE DATABASE [TestDB] WITH RECOVERY
 
 _**Create Failed for Availability Group Listener" SQL Error: 19471**_  
 
-![](https://github.com/klochkovyaroslav/Manuals/blob/main/availabilitygroups_createlistenererror.png?raw=true)
+![image](https://github.com/user-attachments/assets/1a898b0f-f03e-4f01-af92-179783c4ccc9)
+
 
 Как исправить - [ссылка](https://www.youtube.com/watch?v=5-roDqL9Sms).
 ```
