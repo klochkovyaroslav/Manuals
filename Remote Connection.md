@@ -68,7 +68,7 @@ systemctl enable xrdp.service --now
 systemctl status xrdp.service
 ```
 
-#### Добавить XRDP в ssl-cert
+#### Cоздать отдельного пользователя для xRDP и выдать доступ к генерации TLS-сертификатов
 ```bash
 adduser xrdp ssl-cert
 ```
