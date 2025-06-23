@@ -196,6 +196,7 @@ WantedBy=multi-user.target
 ```bash
 sudo systemctl daemon-reload
 ```
+#### Включить файл модуля
 ```bash
 sudo systemctl enable vncserver@1.service
 ```
