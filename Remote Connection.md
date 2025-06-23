@@ -83,7 +83,7 @@ systemctl restart xrdp.service
 ```
 
 ### Настроить подключение к xrdp-серверу при активной локальной сессии пользователя
-#### Для устранения данной ошибки в скрипте /usr/libexec/xrdp/startwm.sh в функции wm_start добавьте строку:  
+#### Для устранения данной ошибки в скрипте /usr/libexec/xrdp/startwm.sh в функции wm_start добавьте строку:
 
 > export $(dbus-launch)
 
