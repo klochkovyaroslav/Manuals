@@ -113,7 +113,7 @@ sudo nano /usr/share/polkit-1/actions/org.freedesktop.color.policy
 ```
 
 > Для поиска по файлу нажать CTRL+W ввести:  
-> Authentication is required to create a color managed device
+> _Authentication is required to create a color managed device_
 
 Modify <allow_any> settings
 ```
