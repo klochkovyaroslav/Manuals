@@ -24,8 +24,13 @@ sudo parted /dev/sdb
 
 #### Установка типа раздела
 ```bash
-set 1 lvm on  # Если раздел 1 - LVM, установите флаг
+set 1 lvm on  # Если раздел 1 - LVM
 ```
+
+```bash
+        quit
+```
+
 
 
 
