@@ -115,6 +115,13 @@ sudo nano /usr/share/polkit-1/actions/org.freedesktop.color.policy
 > Authentication is required to create a color managed device
 
 Modify <allow_any> settings
+```
+  <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+```
 ![image](https://github.com/user-attachments/assets/3f02e57d-eaee-4e83-aed4-016a5df0cabf)
 
 
@@ -206,26 +213,6 @@ ExecStartPre=-/usr/bin/vncserver -kill :%i > /dev/null 2>&1
 ExecStart=/usr/bin/vncserver -depth 24 -geometry 1280x800 :%i
 ExecStop=/usr/bin/vncserver -kill :%i
  
-[Install]
-WantedBy=multi-user.target
-
-
-
-
-
-[Unit]
-Description=Remote desktop service (VNC)
-After=syslog.target network.target
-
-[Service]
-Type=forking
-User=<user_name>
-
-# Clean any existing files in /tmp/.X11-unix environment
-ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
-ExecStart=/usr/bin/vncserver -geometry 1800x1000 -depth 16 -dpi 120 -alwaysshared -localhost %i
-ExecStop=/usr/bin/vncserver -kill %i
-
 [Install]
 WantedBy=multi-user.target
 ```
