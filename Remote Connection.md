@@ -102,6 +102,23 @@ export $(dbus-launch)
 ![image](https://github.com/user-attachments/assets/a6484f27-2bda-44bc-9fd6-6c36d715d5f3)
 
 
+#### Если запрашивается авторизация для выполнения политик при удаленном входе
+![image](https://github.com/user-attachments/assets/cf6cdc53-91bb-4a9f-a085-397b3ecf9061)
+
+#### Можно настроить управление запросами аутентификации, появляющимися при удаленном подключении к системе.
+
+```bash
+sudo nano /usr/share/polkit-1/actions/org.freedesktop.color.policy
+```
+
+> Для поиска по файлу нажать CTRL+W ввести:  
+> Authentication is required to create a color managed device
+
+Modify <allow_any> settings
+![image](https://github.com/user-attachments/assets/3f02e57d-eaee-4e83-aed4-016a5df0cabf)
+
+
+
 ---
 
 
