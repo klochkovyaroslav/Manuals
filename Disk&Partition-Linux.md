@@ -21,16 +21,18 @@ sudo parted /dev/sdb
     mkpart primary 0% 10GB # Создание раздела на 10Гб
 ```
 
-
-#### Установка типа раздела
+#### Установка типа раздела Если раздел 1 - LVM
 ```bash
-set 1 lvm on  # Если раздел 1 - LVM
+set 1 lvm on  
 ```
 
 ```bash
         quit
 ```
 
+#### Если не для LVM далее создаем файловую систему
 
-
+```bash
+sudo mkfs.ext4 /dev/sdb1
+```
 
