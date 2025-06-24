@@ -27,12 +27,26 @@ sudo mkdir mnt/data
 sudo mount /dev/vg0_data/data /mnt/data
 ```
 
+##### Проверяем настройку fstab, смонтировав раздел:
+```bash
+mount -a
+```
+
+#### UUID нужного устройства и тип файловой системы
+```bash
+sudo blkid /dev/vg0_data/data
+```
 
 #### Добавить запись в /etc/fstab для автоматического монтирования при загрузке:
 ```bash
 echo "/dev/vg0_data/lv0_data /mnt/data ext4 defaults 0 0" | sudo tee -a /etc/fstab
 или
 echo "UUID=97d1df92-e1c5-46d7-96be-ce00d57dd026 /mnt/data ext4 defaults 0 0" >> /etc/fstab
+```
+
+#### Проверяем, что диск примонтирован:
+```bash
+df -hT
 ```
 
 
