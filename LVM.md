@@ -1,3 +1,41 @@
+# Создание тома LVM
+#### Создание физического тома LVM:
+```bash
+sudo pvcreate /dev/sdb1
+```
+
+#### Создание группы томов LVM (VG):
+```bash
+sudo vgcreate vg0_data /dev/sdb1
+```
+
+#### Создание логических томов (LV) внутри VG:
+```bash
+sudo lvcreate -l 100%FREE -n lv0_data vg0_data
+или
+sudo lvcreate -L 5G -n lv0_data vg0_data 
+```
+
+#### Форматирование логического тома под файловую систему:
+```bash
+sudo mkfs.ext4 /dev/vg0_data/lv0_data
+```
+
+#### Монтирование логического тома:
+```bash
+sudo mkdir mnt/data
+sudo mount /dev/vg0_data/data /mnt/data
+```
+
+
+#### Добавить запись в /etc/fstab для автоматического монтирования при загрузке:
+```bash
+echo "/dev/vg0_data/lv0_data /mnt/data ext4 defaults 0 0" | sudo tee -a /etc/fstab
+или
+echo "UUID=97d1df92-e1c5-46d7-96be-ce00d57dd026 /mnt/data ext4 defaults 0 0" >> /etc/fstab
+```
+
+
 # Увеличение LVM диска в виртуальной машине
 ## Шаги:
 1. Увеличение размера диска виртуальной машины:
