@@ -49,6 +49,35 @@ echo "UUID=97d1df92-e1c5-46d7-96be-ce00d57dd026 /mnt/data ext4 defaults 0 0" >> 
 df -hT
 ```
 
+#### Проверьте текущие права и владельца:
+```bash
+ls -ld /mnt/data
+```
+
+#### Если владелец — root, а вам нужно дать доступ обычному пользователю:
+```bash
+sudo chown -R user:user /mnt/data
+```
+#### Полные права владельцу
+```bash
+sudo chmod -R u+rwX /mnt/data
+```
+
+#### Права для группы
+```bash
+sudo chmod -R g+rwX /mnt/data
+```
+
+#### Полные права всем
+```bash
+sudo chmod -R 777 /mnt/data
+```
+
+##### Если нужно добавить пользователя в группу:
+```bash
+sudo usermod -aG groupname username
+```
+
 
 # Увеличение LVM диска в виртуальной машине
 ## Шаги:
