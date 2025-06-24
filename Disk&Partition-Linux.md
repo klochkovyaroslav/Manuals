@@ -23,11 +23,11 @@ sudo parted /dev/sdb
 
 #### Установка типа раздела Если раздел 1 - LVM
 ```bash
-set 1 lvm on  
+    set 1 lvm on  
 ```
 
 ```bash
-        quit
+    quit
 ```
 
 #### Если не для LVM далее создаем файловую систему
