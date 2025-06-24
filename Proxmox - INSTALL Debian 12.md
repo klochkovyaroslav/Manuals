@@ -126,6 +126,11 @@ qemu-img check -r all VM_test_C.vhdx
 qemu-img convert -O qcow2 /mnt/data/exportvm/vhdx/TEST_SQL2_C.vhdx /mnt/data/exportvm/qcow2/TEST_SQL2_C.qcow2
 ```
 
+#### Установите virt-viewer :
+```bash
+sudo apt install virt-viewer
+```
+
 ## WINDOWS  
 ### Конвертируем диски с помощью этих утилит:
 
