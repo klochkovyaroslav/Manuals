@@ -123,7 +123,7 @@ qemu-img check -r all VM_test_C.vhdx
 
 #### Запустить процесс конвертации диска "vhdx" в "qcow2"
 ```bash
-qemu-img convert -O qcow2 VM_test_C.vhdx VM_test_sys.qcow2
+qemu-img convert -O qcow2 /mnt/data/exportvm/vhdx/TEST_SQL2_C.vhdx /mnt/data/exportvm/qcow2/TEST_SQL2_C.qcow2
 ```
 
 ## WINDOWS  
