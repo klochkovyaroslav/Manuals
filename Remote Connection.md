@@ -105,6 +105,7 @@ export $(dbus-launch)
 #### Если запрашивается авторизация для выполнения политик при удаленном входе
 ![image](https://github.com/user-attachments/assets/cf6cdc53-91bb-4a9f-a085-397b3ecf9061)
 
+#### Вариант 1
 #### Можно настроить управление запросами аутентификации, появляющимися при удаленном подключении к системе.
 
 ```bash
@@ -124,7 +125,27 @@ Modify <allow_any> settings
 ```
 ![image](https://github.com/user-attachments/assets/3f02e57d-eaee-4e83-aed4-016a5df0cabf)
 
+#### Вариант 2
+#### Создать переопределение Polkit, которое позволяет выполнять действия с цветовым профилем без запроса пароля
 
+##### Изменить файл "45-allow-colord.pkla" или создать при его отсутсвии
+```bash
+sudo nano /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
+```
+##### Вставить содержимое
+```
+[Allow Colord All Users]
+Identity=unix-user:*
+Action=org.freedesktop.color-manager.create-device;org.freedesktop.color-manager.create-profile;org.freedesktop.color-manager.delete-device;org.freedesktop.color-manager.delete-profile;org.freedesktop.color-manager.modify-device;org.freedesktop.color-manager.modify-profile
+ResultAny=no
+ResultInactive=no
+ResultActive=yes
+```
+
+#### Перезапустить службу
+```bash
+sudo systemctl restart polkit
+```
 
 ---
 
