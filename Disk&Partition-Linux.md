@@ -36,3 +36,7 @@ sudo parted /dev/sdb
 sudo mkfs.ext4 /dev/sdb1
 ```
 
+#### Можно создать раздел и отформатировать его, не входя в оболочку parted, например:
+```bash
+parted -a opt/dev/sdb mkpart primary ext4 0% 100% && mkfs.ext4 /dev/sdb1
+```
