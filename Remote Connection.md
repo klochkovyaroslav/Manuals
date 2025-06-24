@@ -116,11 +116,11 @@ sudo nano /usr/share/polkit-1/actions/org.freedesktop.color.policy
 
 Modify <allow_any> settings
 ```
-  <defaults>
+<defaults>
       <allow_any>yes</allow_any>
       <allow_inactive>no</allow_inactive>
       <allow_active>yes</allow_active>
-    </defaults>
+</defaults>
 ```
 ![image](https://github.com/user-attachments/assets/3f02e57d-eaee-4e83-aed4-016a5df0cabf)
 
