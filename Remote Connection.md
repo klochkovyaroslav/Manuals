@@ -147,6 +147,12 @@ ResultActive=yes
 sudo systemctl restart polkit
 ```
 
+#### Конфигурацию сервиса xrdp-sesman, который отвечает за управление сессиями удаленного рабочего стола
+```bash
+sudo nano /etc/xrdp/sesman.ini
+```
+
+
 ---
 
 
