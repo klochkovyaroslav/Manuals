@@ -1018,13 +1018,15 @@ negotiate security layer:i:0
 netsh advfirewall set all state off/on
 ```
 
+
+## Active Directory
 #### Зарегистрирован ли ServicePrincipalNames в домене AD
 ```cmd
 setspn -L TS-ADMIN
 ```
 
 
-#### Зарегистрировать вручную ли ServicePrincipalNames в домене AD
+#### Зарегистрировать вручную ServicePrincipalNames в домене AD(если выпал из домена)
 ```cmd
 setspn -A HOST/TS-ADMIN.KAN.LO TS-ADMIN
 ```
