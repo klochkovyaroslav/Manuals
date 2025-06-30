@@ -1014,6 +1014,17 @@ negotiate security layer:i:0
 
 #### Отключить/включить Брандмауэр Защитника Windows - Firewall
 
-```bash
+```cmd
 netsh advfirewall set all state off/on
+```
+
+#### Зарегистрирован ли ServicePrincipalNames в домене AD
+```cmd
+setspn -L TS-ADMIN
+```
+
+
+#### Зарегистрировать вручную ли ServicePrincipalNames в домене AD
+```cmd
+setspn -A HOST/TS-ADMIN.KAN.LO TS-ADMIN
 ```
