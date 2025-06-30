@@ -988,7 +988,7 @@ gpedit.msc
 
 Утилита позволяет подключиться к AD на более глубоком уровне  
 
-```bash
+```cmd
 adsiedit.msc
 ```
 
@@ -997,12 +997,12 @@ adsiedit.msc
 ## Connecting to Hyper-V VM console via RDP
 
 #### Get VM ID
-```bash
+```powershell
 Get-VM -Name Test-VM-01 | Select-Object id
 ```
 
 #### Create a new .rdp file
-```bash
+```cmd
 full address:s:10.0.1.20
 pcb:s:ca76a5af-bd93-4be9-82f8-135e29e99172
 server port:i:2179
@@ -1029,4 +1029,10 @@ setspn -L TS-ADMIN
 #### Зарегистрировать вручную ServicePrincipalNames в домене AD(если выпал из домена)
 ```cmd
 setspn -A HOST/TS-ADMIN.KAN.LO TS-ADMIN
+```
+
+
+#### Узнать SID домена
+```powershell
+(Get-ADForest).Domains | %{Get-ADDomain -Server $_} | Select name, domainsid
 ```
