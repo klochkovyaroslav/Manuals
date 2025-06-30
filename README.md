@@ -853,38 +853,37 @@ vboxmanage controlvm server3 poweroff
 
 
 #### Как проверить опцию TRIM
-```bash
+```cmd
 fsutil behavior query disabledeletenotify
 ```
 > TRIM Вкючен = **0**  
 > TRIM Откючен = **1**
 
 #### Включить опцию TRIM
-```bash
+```cmd
 fsutil behavior set disabledeletenotify NTFS 0
 ```
 
 ### Информация о диске
 
 #### Запрос сведений о томе NTFS
-```bash
+```cmd
 fsutil fsinfo ntfsinfo z:
 ```
 #### Отобразить сведения о секторах для диска
-```bash
+```cmd
 fsutil fsinfo sectorinfo g:
 ```
 
 #### Для получения статистических данных отдельного тома
-```bash
+```cmd
 fsutil fsinfo statistics z:
 ```
 
 #### Свойство компьютера
-
-```
-Свойство компьютера
+```cmd
 sysdm.cpl
+
 
 Брандмауэр Защитника Windows
 firewall.cpl
@@ -892,7 +891,7 @@ firewall.cpl
 
 #### Сброс настроек протокола TCP/IP в Windows
 
-```
+``` cmd
 ipconfig /flushdns
 nbtstat -R
 nbtstat -RR
@@ -903,8 +902,7 @@ netsh winsock reset
 ```
 
 #### Остановить зависшую службу Windows из командной строки
-
-```
+```cmd
 sc queryex wuauserv
 taskkill /PID 16980 /F
 или
@@ -914,8 +912,7 @@ TASKKILL /S test01.local /F /FI "SERVICES eq wuauserv" - На удаленном
 ```
 
 #### Остановить зависшую службу Windows из PowerShell
-
-```
+```powershell
 PS < 6 версии
 Get-WmiObject -Class win32_service | Where-Object {$_.state -eq 'stop pending'}
 PS >= 6 версии
@@ -923,28 +920,24 @@ Get-CimInstance -Class win32_service | where-Object state -eq 'stop pending'
 ```
 
 #### Выполнить скрипт по сети PowerShell
-
-```
+```powershell
 Invoke-Command -ComputerName Server1, PC2 -ScriptBlock {Get-NetAdapterAdvancedProperty –Name Ethernet –DisplayName "Jumbo Packet"}
 ```
 
 #### Проверка наличия скрытых сетевых адаптеров
-
-```
+```powershell
 Get-PnpDevice -class net | ? Status -eq Unknown | Select FriendlyName,InstanceId
 ```
 
 #### Удалить скрытый сетевой адаптер
-
-```
+```powershell
 $InstanceId = “PCI\VEN_8086&DEV_10D3&SUBSYS_07D015AD&REV_00\000C29FFFF66A80700”
 $RemoveKey = "HKLM:\SYSTEM\CurrentControlSet\Enum\$InstanceId"
 Get-Item $RemoveKey | Select-Object -ExpandProperty Property | %{ Remove-ItemProperty -Path $RemoveKey -Name $_ -Verbose}
 ```
 
 #### Удалить ВСЕ скрытые сетевые адаптеры
-
-```
+```powershell
 $Devs = Get-PnpDevice -class net | ? Status -eq Unknown | Select FriendlyName,InstanceId
 ForEach ($Dev in $Devs) {
 $RemoveKey = "HKLM:\SYSTEM\CurrentControlSet\Enum\$($Dev.InstanceId)"
@@ -952,20 +945,17 @@ Get-Item $RemoveKey | Select-Object -ExpandProperty Property | %{ Remove-ItemPro
 ```
 
 #### Удалить скрытый сетевой адаптер вручную из Реестра
-
 ```
 HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces
 ```
 
 #### Посмотреть текущие активные RDP сессии по сети 
-
-```
+```powershell
 query session /server:Server1
 или
 Invoke-Command -ComputerName Server1 -ScriptBlock {query session}
 ```
 #### Подключиться к удаленной RDP сессии по по RDP 
-
 ```
 Mstsc /v:10.0.0.100 /shadow:2 /control /Prompt
 Mstsc /v:10.0.0.100 /shadow:2 /control /Prompt /noConsentPrompt
