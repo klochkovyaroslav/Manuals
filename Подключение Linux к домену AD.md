@@ -8,8 +8,8 @@ sudo hostnamectl set-hostname ts-admin-linux.mak.lo
 ```
 
 #### Для корректного обновления PTR-записи нужно в файле /etc/hosts изменить:
-> 127.0.1.1 ts-admin-linux.mak.lo ts-admin-linux
-на адрес одного из сетевых интерфейсов
+> 127.0.1.1 ts-admin-linux.mak.lo ts-admin-linux  
+на адрес одного из сетевых интерфейсов  
 > 192.250.2.224 ts-admin-linux.mak.lo ts-admin-linux  
 
 
