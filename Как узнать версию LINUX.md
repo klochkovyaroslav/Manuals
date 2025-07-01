@@ -10,7 +10,7 @@ sudo cat /etc/os-release
 sudo hostnamectl
 sudo cat /etc/issue
 sudo cat /etc/debian_version
-cat /proc/version | awk '{print $6,$7}
+cat /proc/version | awk '{print $6,$7}'
 ```
 
 ## RedHat
