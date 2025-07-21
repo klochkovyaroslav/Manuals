@@ -19,6 +19,8 @@ sudo apt-get install network-manager-openconnect-gnome
 sudo systemctl restart NetworkManager
 ```
 
-<img width="1257" height="440" alt="image" src="https://github.com/user-attachments/assets/287c064f-e96a-42b2-97f7-5bc4ab47d3a2" />
 
+
+<img width="1257" height="440" alt="image" src="https://github.com/user-attachments/assets/287c064f-e96a-42b2-97f7-5bc4ab47d3a2" />
+<img width="354" height="355" alt="image" src="https://github.com/user-attachments/assets/ed123a12-d408-45b1-9fc3-5a9394db01d7" />
 <img width="582" height="785" alt="image" src="https://github.com/user-attachments/assets/3fa17b81-425e-4414-aad0-e9dd2094f003" />
