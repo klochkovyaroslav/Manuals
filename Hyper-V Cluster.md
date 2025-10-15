@@ -263,9 +263,9 @@ Get-WinEvent -LogName "Microsoft-Windows-Hyper-V-VMMS-Admin" |
 
 ---
 
-##  Слияние снимков - Merge
-
+#  Слияние снимков - Merge
+#### Выключить ВМ !!!
 ```powershell
-cd "C:\ClusterStorage\Volume4\Hyper-V\scm-prd-ascs\Virtual Hard Disks"
-Merge-VHD -Path .\scm-prd-ascs-disk-c_AEC99120-CAC3-4185-9859-A7FF6F24F1B4.avhdx -DestinationPath .\scm-prd-ascs-disk-c.vhdx -Verbose
+cd "C:\ClusterStorage\Volume4\Hyper-V\prd-asc\Virtual Hard Disks"
+Merge-VHD -Path .\prd-asc-disk-c_AEC99120-CAC3-4185-9859-A7FF6F24F1B4.avhdx -DestinationPath .\prd-asc-disk-c.vhdx -Verbose
 ```
