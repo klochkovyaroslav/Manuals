@@ -258,3 +258,14 @@ Get-WinEvent -LogName "Microsoft-Windows-Hyper-V-VMMS-Admin" |
 ```
 > нажать: "А, Yes to All"  
 > Отчет будет лежать в "C:\MS_DATA"
+
+
+
+---
+
+##  Слияние снимков - Merge
+
+```powershell
+cd "C:\ClusterStorage\Volume4\Hyper-V\scm-prd-ascs\Virtual Hard Disks"
+Merge-VHD -Path .\scm-prd-ascs-disk-c_AEC99120-CAC3-4185-9859-A7FF6F24F1B4.avhdx -DestinationPath .\scm-prd-ascs-disk-c.vhdx -Verbose
+```
