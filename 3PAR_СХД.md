@@ -68,6 +68,8 @@ createcert unified-server -selfsigned -CN "HP_3PAR 8400-CG33442X9B" -keysize 204
 
 <img width="600" height="524" alt="image" src="https://github.com/user-attachments/assets/3aa00046-c2e3-4975-92b8-d85a03d9c7cf" />
 <img width="1918" height="444" alt="image" src="https://github.com/user-attachments/assets/a7830379-8bfe-4af4-abbc-ad4970af676d" />
+<img width="1911" height="447" alt="image" src="https://github.com/user-attachments/assets/37dbe0bc-9292-40ad-bf36-22f31d5dbe5d" />
+
 
 #### Принимаем сертификат в SSMC Administrator Console  
 <img width="531" height="464" alt="image" src="https://github.com/user-attachments/assets/9a373201-e833-462f-a9a3-79d2e8e4bc27" />
