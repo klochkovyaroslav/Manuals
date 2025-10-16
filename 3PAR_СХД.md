@@ -47,7 +47,7 @@
 
 ## Перевыпустить сертификат
 
-#### Вводим команду: и (копируем название HP_3PAR 8400-CZ37442X9H)
+#### Вводим команду: и (копируем название HP_3PAR 8400-CG33442X9B)
 ```bash
 showcert
 ```
@@ -62,7 +62,7 @@ showcert -text
 
 #### Пересоздаем самоподписанный сертификат, вводим команду:
 ```bash
-createcert unified-server -selfsigned -CN "HP_3PAR 8400-CZ37442X9H" -keysize 2048 -days 730
+createcert unified-server -selfsigned -CN "HP_3PAR 8400-CG33442X9B" -keysize 2048 -days 730
 ```
 #### Удаляем и переподключаем массив в SSMC Administrator Console  
 
