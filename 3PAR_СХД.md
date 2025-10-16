@@ -62,9 +62,11 @@ createcert unified-server -selfsigned -CN "HP_3PAR 8400-CG33442X9B" -keysize 204
 #### Принимаем сертификат в SSMC Administrator Console  
 <img width="531" height="464" alt="image" src="https://github.com/user-attachments/assets/9a373201-e833-462f-a9a3-79d2e8e4bc27" />
 <img width="587" height="358" alt="image" src="https://github.com/user-attachments/assets/a0b37947-4b4b-49e9-80c8-ac17edab184e" />
-<img width="1909" height="760" alt="image" src="https://github.com/user-attachments/assets/7f6432b5-f80b-43f6-94c1-0e090cb7e084" />
+<img width="1889" height="756" alt="image" src="https://github.com/user-attachments/assets/7bc70c64-cb5d-4aa8-a067-e491e72beaa1" />
 
------
+
+---
+
 
 # HP StoreOnce 5100
 ##### Собрать логи
