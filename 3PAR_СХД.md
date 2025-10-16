@@ -3,7 +3,7 @@
 СОДЕРЖАНИЕ:  
 
 [1. Снять логи для ТП](#Снять-логи-для-ТП)  
-[2. Перевыпустить сертификат](#Перевыпустить-сертификат)
+[2. Перевыпустить сертификат](#Перевыпустить-сертификат-HP-3PAR)
 
 
 ## 3PAR 8400
@@ -32,20 +32,9 @@
 
 ![image](https://github.com/user-attachments/assets/4418efb8-2745-47ac-9567-42614b504bae)
 
------
-
-# HP StoreOnce 5100
-##### Собрать логи
-Старый интерфейс  
-![image](https://github.com/user-attachments/assets/b422cb52-122e-4b8a-9ba6-ebdae6cf01fb)
-
-Новый интерфейс  
-![image](https://github.com/user-attachments/assets/bfbd94d1-14ed-420d-983b-14bfa0445458)
-
-
 ---
 
-## Перевыпустить сертификат
+## Перевыпустить сертификат HP 3PAR
 
 #### Вводим команду: и (копируем название HP_3PAR 8400-CG33442X9B)
 ```bash
@@ -67,7 +56,6 @@ createcert unified-server -selfsigned -CN "HP_3PAR 8400-CG33442X9B" -keysize 204
 #### Удаляем и переподключаем массив в SSMC Administrator Console  
 
 <img width="600" height="524" alt="image" src="https://github.com/user-attachments/assets/3aa00046-c2e3-4975-92b8-d85a03d9c7cf" />
-<img width="1918" height="444" alt="image" src="https://github.com/user-attachments/assets/a7830379-8bfe-4af4-abbc-ad4970af676d" />
 <img width="1911" height="447" alt="image" src="https://github.com/user-attachments/assets/37dbe0bc-9292-40ad-bf36-22f31d5dbe5d" />
 
 
@@ -76,3 +64,12 @@ createcert unified-server -selfsigned -CN "HP_3PAR 8400-CG33442X9B" -keysize 204
 <img width="587" height="358" alt="image" src="https://github.com/user-attachments/assets/a0b37947-4b4b-49e9-80c8-ac17edab184e" />
 <img width="1909" height="760" alt="image" src="https://github.com/user-attachments/assets/7f6432b5-f80b-43f6-94c1-0e090cb7e084" />
 
+-----
+
+# HP StoreOnce 5100
+##### Собрать логи
+Старый интерфейс  
+![image](https://github.com/user-attachments/assets/b422cb52-122e-4b8a-9ba6-ebdae6cf01fb)
+
+Новый интерфейс  
+![image](https://github.com/user-attachments/assets/bfbd94d1-14ed-420d-983b-14bfa0445458)
