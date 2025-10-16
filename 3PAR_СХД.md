@@ -47,24 +47,24 @@
 
 ## Добавить сертификат в сервис консоль
 
-Вводим команду: и (копируем название HP_3PAR 8400-CZ37442X9H)
+#### Вводим команду: и (копируем название HP_3PAR 8400-CZ37442X9H)
 ```bash
 showcert
 ```
-Displays the certificates in human
+#### Displays the certificates in human
 ```bash
 showcert -text
 ```
-Пересоздаем самоподписанный сертификат, вводим команду:
+#### Пересоздаем самоподписанный сертификат, вводим команду:
 ```bash
-createcert unified-server -selfsigned -CN "HP_3PAR 8400-CZ37442X9H" -keysize 2048  -days 730
+createcert unified-server -selfsigned -CN "HP_3PAR 8400-CZ37442X9H" -keysize 2048 -days 730
 ```
-Удаляем и переподключаем массив в SSMC Administrator Console  
+#### Удаляем и переподключаем массив в SSMC Administrator Console  
 
 <img width="600" height="524" alt="image" src="https://github.com/user-attachments/assets/3aa00046-c2e3-4975-92b8-d85a03d9c7cf" />
 <img width="1918" height="444" alt="image" src="https://github.com/user-attachments/assets/a7830379-8bfe-4af4-abbc-ad4970af676d" />
 
-Принимаем сертификат в SSMC Administrator Console  
+#### Принимаем сертификат в SSMC Administrator Console  
 <img width="531" height="464" alt="image" src="https://github.com/user-attachments/assets/9a373201-e833-462f-a9a3-79d2e8e4bc27" />
 <img width="587" height="358" alt="image" src="https://github.com/user-attachments/assets/a0b37947-4b4b-49e9-80c8-ac17edab184e" />
 <img width="1909" height="760" alt="image" src="https://github.com/user-attachments/assets/7f6432b5-f80b-43f6-94c1-0e090cb7e084" />
