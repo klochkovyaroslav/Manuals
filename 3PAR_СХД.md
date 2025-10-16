@@ -51,10 +51,14 @@
 ```bash
 showcert
 ```
+<img width="985" height="70" alt="image" src="https://github.com/user-attachments/assets/24f188f5-0429-42b2-92c6-c10415a0d5e0" />
+
 #### Посмотреть информацию о сертификате
 ```bash
 showcert -text
 ```
+<img width="985" height="70" alt="image" src="https://github.com/user-attachments/assets/1d561695-db11-47a5-89ca-8e340ac7a08b" />
+
 #### Пересоздаем самоподписанный сертификат, вводим команду:
 ```bash
 createcert unified-server -selfsigned -CN "HP_3PAR 8400-CZ37442X9H" -keysize 2048 -days 730
