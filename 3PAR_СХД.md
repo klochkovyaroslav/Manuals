@@ -35,3 +35,18 @@
 Новый интерфейс  
 ![image](https://github.com/user-attachments/assets/bfbd94d1-14ed-420d-983b-14bfa0445458)
 
+
+---
+
+## Добавить сертификат в серис консоль
+
+Вводим команду: и (копируем название HP_3PAR 8400-CZ37442X9H)
+```bash
+showcert 
+```
+Пересоздаем самоподписанный сертификат, вводим команду:
+```bash
+createcert unified-server -selfsigned -CN "HP_3PAR 8400-CZ37442X9H"
+```
+Удаляем и переподключаем массив в SSMC Administrator Console  
+Принимаем сертификат в SSMC Administrator Console  
