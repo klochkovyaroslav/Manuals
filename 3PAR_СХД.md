@@ -57,7 +57,8 @@ showcert
 ```bash
 showcert -text
 ```
-<img width="985" height="70" alt="image" src="https://github.com/user-attachments/assets/1d561695-db11-47a5-89ca-8e340ac7a08b" />
+<img width="618" height="924" alt="image" src="https://github.com/user-attachments/assets/bacf8fcc-8a43-4159-b81f-1b51007eae59" />
+
 
 #### Пересоздаем самоподписанный сертификат, вводим команду:
 ```bash
