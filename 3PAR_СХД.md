@@ -51,7 +51,7 @@
 ```bash
 showcert
 ```
-#### Displays the certificates in human
+#### Посмотреть информацию о сертификате
 ```bash
 showcert -text
 ```
