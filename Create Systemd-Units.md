@@ -1,4 +1,33 @@
-# Create Systemd-Units
+# SYSTEMD
+
+## Target(Цели) systemd:
+
+```
+poweroff.target: выключение системы.
+rescue.target: запускает сеанс спасательной оболочки.
+multi-user.target: настраивает систему на неграфическую (консольную) многопользовательскую систему.
+graphical.target: настройка системы на использование графического многопользовательского интерфейса с сетевыми службами.
+reboot.target: перезагружает систему.
+halt.target: останавливает систему, не отключая её
+```
+
+#### Чтобы проверить текущую цель в вашей системе, выполните команду:F
+
+```bash
+systemctl get-default
+```
+
+#### команда переводит систему в неграфическое состояние (после перезагрузки).
+
+```bash
+sudo systemctl set-default multi-user.target
+```
+
+#### команда возвращает в загрузку в графический интерфейс:
+```bash
+sudo systemctl set-default graphical.target
+```
+## Create Systemd-Units
 
 ## Create Mount
 ### Собственные модули типа mount следует располагать в каталоге /etc/systemd/system
