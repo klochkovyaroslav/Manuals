@@ -179,5 +179,6 @@ rg -i "servers" ./
 sudo apt install silversearcher-ag
 ```
 > sudo ag "192.168.56.0/21" /
-> sudo ag -Q "if [ -r /etc/default/locale ]" /
+чтобы поисковый запрос рассматривался именно как строка, используйте опцию -Q  
+> sudo ag -Q "if [ -r /etc/default/locale ]" /  
 
