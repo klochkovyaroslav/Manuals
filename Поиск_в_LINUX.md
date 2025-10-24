@@ -178,4 +178,6 @@ rg -i "servers" ./
 ```bash
 sudo apt install silversearcher-ag
 ```
-> sudo ag "192.168.56.0/21" /  
+> sudo ag "192.168.56.0/21" /
+> sudo ag -Q "if [ -r /etc/default/locale ]" /
+
