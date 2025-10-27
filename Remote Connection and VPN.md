@@ -1,27 +1,29 @@
 # AnyDesk
 
-#### - add repository key to Trusted software providers list  
-
+#### bAdd the AnyDesk GPG key
 ```bash
-wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -  
+sudo apt update
+```
+```bash
+sudo apt install ca-certificates curl apt-transport-https
+```
+```bash
+sudo install -m 0755 -d /etc/apt/keyrings
+```
+```bash
+sudo curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY -o /etc/apt/keyrings/keys.anydesk.com.asc
+```
+```bash
+sudo chmod a+r /etc/apt/keyrings/keys.anydesk.com.asc
 ```
 
-#### - add the repository:  
-
+#### Add the AnyDesk apt repository
 ```bash
-echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list  
+echo "deb [signed-by=/etc/apt/keyrings/keys.anydesk.com.asc] https://deb.anydesk.com all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list > /dev/null
 ```
-
-#### - update apt cache:  
-
+#### Update apt caches and install the AnyDesk client
 ```bash
-apt update  
-```
-
-#### - install anydesk:  
-
-```bash
-apt install anydesk  
+sudo apt update
 ```
 
 ### Fix AnyDesk of Display_Server_Not_Supported Error for
