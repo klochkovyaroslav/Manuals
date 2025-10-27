@@ -774,6 +774,17 @@ vboxmanage controlvm server3 poweroff
 [Управление VirtualBox из консоли с помощью vboxmanage](https://eax.me/vboxmanage)
 
 
+# Отключить режим гибернации и сна в Ubuntu и Debian
+#### Историю перехода Ubuntu/Debian в спящий режим можно получить из журнала:
+```bash
+journalctl | grep systemd-sleep
+```
+#### Проверьте, включен ли в вашей системе режим гибернации и сна:
+```bash
+$ sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+![Uploading image.png…]()
+
 
 ---
 ##############################################################################################
