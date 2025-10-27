@@ -781,9 +781,36 @@ journalctl | grep systemd-sleep
 ```
 #### Проверьте, включен ли в вашей системе режим гибернации и сна:
 ```bash
-$ sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
+sudo systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
 ```
-![Uploading image.png…]()
+<img width="1000" height="357" alt="image" src="https://github.com/user-attachments/assets/599b9c4c-f99f-461f-bd86-3a61c317e6d4" />
+
+#### Отключить спящий режим и режим гибернации в Ubunt/Debian
+```bash
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+#### включить ждущий режим и гибернации
+```bash
+sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+#### Перезапустить службу
+```bash
+sudo systemctl restart systemd-logind.service
+```
+
+
+#### Можно отключить режим сна и гибернации, создав файл:
+```bash
+sudo nano /etc/systemd/sleep.conf.d/nosuspend.conf
+```
+
+```
+[Sleep]
+AllowSuspend=no
+AllowHibernation=no
+AllowSuspendThenHibernate=no
+AllowHybridSleep=no
+```
 
 
 ---
