@@ -1,6 +1,6 @@
 # AnyDesk
 
-#### bAdd the AnyDesk GPG key
+#### Add the AnyDesk GPG key
 ```bash
 sudo apt update
 ```
