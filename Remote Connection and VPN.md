@@ -25,6 +25,9 @@ echo "deb [signed-by=/etc/apt/keyrings/keys.anydesk.com.asc] https://deb.anydesk
 ```bash
 sudo apt update
 ```
+```bash
+sudo apt install anydesk
+```
 
 ### Fix AnyDesk of Display_Server_Not_Supported Error for
 
