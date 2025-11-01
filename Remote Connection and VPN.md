@@ -164,7 +164,8 @@ sudo nano /etc/xrdp/sesman.ini
 sudo nano /etc/systemd/logind.conf
 ```
 
-<img width="820" height="593" alt="image" src="https://github.com/user-attachments/assets/7702fc14-3ad1-4d4f-a334-901e506fdefb" />  
+<img width="823" height="527" alt="image" src="https://github.com/user-attachments/assets/ea78d32d-8994-4f25-9b77-908a078cc38a" />
+  
 
 ```bash
 sudo systemctl restart systemd-logind.service
