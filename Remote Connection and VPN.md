@@ -157,6 +157,19 @@ sudo systemctl restart polkit
 sudo nano /etc/xrdp/sesman.ini
 ```
 
+### Завершение всех процессов при выходе из сеанса
+
+#### Чтобы при выходе из системы завершались все процессы, запущенные от пользователя, нужно в файле /etc/systemd/logind.conf раскомментировать параметр KillUserProcesses и установить значение yes.
+```bash
+sudo nano /etc/systemd/logind.conf
+```
+
+<img width="820" height="593" alt="image" src="https://github.com/user-attachments/assets/7702fc14-3ad1-4d4f-a334-901e506fdefb" />  
+
+```bash
+sudo systemctl restart systemd-logind.service
+```
+
 
 ---
 
