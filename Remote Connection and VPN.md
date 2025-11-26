@@ -313,3 +313,11 @@ sudo systemctl restart NetworkManager
 <img width="354" height="355" alt="image" src="https://github.com/user-attachments/assets/ed123a12-d408-45b1-9fc3-5a9394db01d7" />
 <img width="582" height="785" alt="image" src="https://github.com/user-attachments/assets/3fa17b81-425e-4414-aad0-e9dd2094f003" />
 
+
+#### Посмотреть log подключения
+
+```bash
+sudo journalctl _COMM=openconnect
+```
+
+<img width="1583" height="159" alt="image" src="https://github.com/user-attachments/assets/0c7eef6a-6da1-4cbc-b6d3-7ef03b0c1dba" />
