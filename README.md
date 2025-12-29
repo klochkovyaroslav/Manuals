@@ -156,6 +156,24 @@ systemctl disable apparmor
 sudo apt remove --assume-yes --purge apparmor
 ```
 
+## Adding trusted root certificates to the server
+
+#### Add	
+##### Copy your CA to dir /usr/local/share/ca-certificates/
+```bash
+sudo cp foo.crt /usr/local/share/ca-certificates/foo.crt
+```
+##### Update the CA store:
+```bash
+sudo update-ca-certificates
+```
+#### Remove
+##### 1.Удалите сам файл с сертификатом
+##### 2.Обновить
+```bash
+sudo update-ca-certificates --fresh
+```
+
 
 ## Утилита ldapsearch
 
