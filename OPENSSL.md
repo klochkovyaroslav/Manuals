@@ -5,13 +5,13 @@
 ### Создание закрытого ключа
 
 ```bash
-sudo openssl genpkey -algorithm rsa -pkeyopt rsa_keygen_bits:2048 -out /tmp/private.key  
+sudo openssl genpkey -algorithm rsa -pkeyopt rsa_keygen_bits:2048 -out /tmp/private.key
 ```
 
 ### Создание запроса на сертификат
 
 ```bash
-sudo openssl req -new -key /tmp/private.key -out /tmp/request.csr  
+sudo openssl req -new -key /tmp/private.key -out /tmp/request.csr
 ```
 
 ### Выдать самоподписанный сертификат
@@ -49,7 +49,7 @@ An optional company name []: SL
 ```bash
 sudo openssl x509 -noout -text -in /tmp/public_cert.crt
 
-sudo openssl dhparam -text -noout -inform PEM -check -in /etc/openvpn-gost/easy-gost/keys/dh2048.pem  
+sudo openssl dhparam -text -noout -inform PEM -check -in /etc/openvpn-gost/easy-gost/keys/dh2048.pem
 ```
 ### Создать сертификат PFX PKCS#12 из пары сертификатв и ключа (для *.pfx или *.p12):
 ```bash
