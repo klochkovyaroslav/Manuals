@@ -25,6 +25,9 @@ sudo openssl x509 -req -days 365 -in /tmp/request.csr -signkey /tmp/private.key 
 ```bash
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/private.key -out /tmp/public_cert.crt
 ```
+```bash
+sudo  openssl req -new -x509 -days 1461 -nodes -out /etc/ssl/certs/vsftpd.pem -keyout /etc/ssl/private/vsftpd.key -subj "/C=RU/ST=Kaliningrad region/L=Kaliningrad/O=Global Security/OU=IT/CN=81.211.106.98"
+```
 
 ### Cоздание: закрытого ключа и сформироавать запрос на сертификат для выпуска сертификата в стороннем CA.
 
