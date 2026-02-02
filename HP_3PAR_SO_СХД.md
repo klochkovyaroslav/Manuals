@@ -76,3 +76,12 @@ createcert unified-server -selfsigned -CN "HP_3PAR 8400-CG33442X9B" -keysize 204
 
 Новый интерфейс  
 ![image](https://github.com/user-attachments/assets/bfbd94d1-14ed-420d-983b-14bfa0445458)
+
+
+
+
+# Подключение сторожда в Windows
+
+<img width="1104" height="512" alt="image_c14914683a00c5e3fbb423a3322eb7803f214a07ea7796cea0b186a62a6c25ed579719318" src="https://github.com/user-attachments/assets/d95e1a9d-45ae-4db9-b48e-0d869e139548" />
+
+
