@@ -9,6 +9,9 @@ sudo apt install -y chrony
 ```
 
 #### Серверы с которых NTP будет получать эталонное время и другие параметры
+/etc/chrony.conf — в CentOS, RHEL, Fedora  
+/etc/chrony/chrony.conf — в Ubuntu, Debian  
+
 ```bash
 sudo vi /etc/chrony.conf
 ```
