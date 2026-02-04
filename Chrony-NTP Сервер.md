@@ -28,6 +28,9 @@ sudo vi /etc/chrony.conf
 > leapsectz right/UTC  
 > logdir /var/log/chrony
 
+<img width="1288" height="792" alt="image" src="https://github.com/user-attachments/assets/43d47a6a-4efd-40fe-bd9e-917123bd2735" />
+
+
 
 - **server** — NTP-сервер для синхронизации
 - **stratumweight** — задержка синхронизации
