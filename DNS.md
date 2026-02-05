@@ -61,6 +61,10 @@ sudo systemctl enable --now named.service
 ```bash
 sudo vi /etc/named.conf
 ```
+#### Основной конфигурационный файл в Debian13
+```bash
+sudo nano /etc/bind/named.conf.options
+```
 
 ```
 acl my_local_net { 192.168.56.0/24; };
@@ -163,6 +167,145 @@ logging {
                 print-category yes;
                 };
 
+        // Канал безопасности
+        channel security_ch {
+                file "/var/cache/bind/logs/security.log" versions 4 size 100k;
+                severity info;
+                print-severity yes;
+                print-time yes;
+                print-category yes;
+                };
+
+        // Канал передачи зон между серверами
+        channel xfer_ch {
+                file "/var/cache/bind/logs/xfer.log" versions 4 size 100k;
+                severity info;
+                print-time yes;
+                print-category yes;
+                };
+
+        // Канал отладки обновлений зон
+        channel update_debug {
+                file "/var/cache/bind/logs/update_debug.log" versions 4 size 100k;
+                severity debug 3;
+                print-category yes;
+                print-severity yes;
+                print-time     yes;
+                };
+
+        // Канал обновлений зон
+        channel update_log {
+                file "/var/cache/bind/logs/update.log" versions 4 size 100k;
+                severity dynamic;
+                print-category yes;
+                print-severity yes;
+                print-time     yes;
+                };
+
+
+    category default { default_ch; };
+    category lame-servers { lame_ch; };
+    category queries { query_log; };
+    category security { security_ch; };
+    category update-security { update_debug; };
+    category xfer-in  { xfer_ch; };
+    category xfer-out { xfer_ch; };
+    category update   { update_debug; update_log; };
+
+    // Для отладки кэша можно использовать эти категории:
+    category resolver { query_log; };  # Разрешение имен (включая кэш)
+    category security { query_log; };  # Запросы, заблокированные из-за политик
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// "logging {"
+
+// Назначение: Начало блока конфигурации логирования
+// Объявляет, что следующие параметры относятся к настройке системы логирования BIND
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// "channel query_log {"
+
+// Назначение: Определение канала логирования с именем query_log
+// channel - ключевое слово для создания канала логирования
+// query_log - произвольное имя канала (можно использовать любое: my_log, dns_queries и т.д.)
+// Канал определяет КУДА и КАК писать логи
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// file "/var/log/bind/query.log" versions 3 size 5m;
+// Назначение: Настройка файла для записи логов
+// Описание по частям:
+// "file" - указывает, что вывод идет в файл (альтернативы: syslog, stderr, null)
+// "/var/log/bind/query.log" - абсолютный путь к файлу логов
+// "versions 3" - ротация логов: хранить 3 предыдущие версии файла
+// "size" 5m - максимальный размер файла: 5 мегабайт
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// "severity info;"
+
+// Назначение: Уровень детализации логирования
+//Описание: Какие сообщения записывать в лог. Уровни (от наиболее детального к наименее):
+// dynamic - динамический уровень (меняется через rndc)
+//debug [уровень] - отладка (1-99), где 99 - максимальная детализация
+// info - информационные сообщения (стандартный уровень)
+// notice - уведомления
+// warning - предупреждения
+// error - ошибки
+// critical - критические ошибки
+// fatal - фатальные ошибки
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// "print-time yes;"
+// Назначение: Включает вывод временной метки в лог
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// "print-category yes;"
+// Назначение: Включает вывод категории сообщения
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Дополнительные параметры:
+// Для syslog:
+// syslog daemon;        // Вместо file - писать в syslog с facility daemon
+// syslog local0;        // Другие facility: auth, user, local0-local7
+
+```
+```
+Все доступные категории в BIND:
+bind
+logging {
+    channel my_log {
+        file "/var/log/bind/all.log" versions 3 size 5m;
+        severity info;
+        print-time yes;
+        print-category yes;
+    };
+    
+    // Основные категории для мониторинга работы:
+    category default { my_log; };      // Общие сообщения
+    category general { my_log; };      // Общие информационные сообщения
+    category queries { my_log; };      // DNS запросы
+    category client { my_log; };       // Обработка клиентских запросов
+    category resolver { my_log; };     // Рекурсивное разрешение (кэш)
+    category security { my_log; };     // Сообщения безопасности
+    category dnssec { my_log; };       // DNSSEC-сообщения
+    category update { my_log; };       // Динамические обновления
+    category xfer-in { my_log; };      // Входящие трансферы зон
+    category xfer-out { my_log; };     // Исходящие трансферы зон
+    category notify { my_log; };       // NOTIFY-сообщения
+    category lame-servers { my_log; }; // "Хромые" серверы
+    category cname { my_log; };        // CNAME-записи
+    category dispatch { my_log; };     // Диспетчеризация пакетов
+    category network { my_log; };      // Сетевые операции
+    category config { my_log; };       // Конфигурация
+};
 ```
 
 #### Создать файлы логов в (Debian 13)
