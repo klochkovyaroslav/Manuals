@@ -120,8 +120,8 @@ touch /var/cache/bind/logs/lame_servers.log \
 	  /var/cache/bind/logs/named.log \
           /var/cache/bind/logs/query.log
 
-chown bind:bind /var/log/bind/*.log
-chmod 644 /var/log/bind/*.log
+chown bind:bind /var/cache/bind/logs/bind/*.log
+chmod 644 /var/cache/bind/logs/bind/*.log
 
 ```
 
