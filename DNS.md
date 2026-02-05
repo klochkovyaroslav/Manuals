@@ -110,6 +110,61 @@ zone "." IN {
 include "/etc/named.rfc1912.zones";
 include "/etc/named.root.key";
 ```
+##### Еще пример конфигурационного файла делал в Debian13
+```bash
+acl trusted_hosts {
+        10.250.21.240; //esxi host: ESXI-01
+        10.250.21.241; //esxi host: ESXI-02
+        10.250.21.242; //vm host: RDS-01
+        10.250.21.243;
+        10.250.21.244; //vm: DNS1
+        10.250.21.245; //vm: GW-01
+};
+
+options {
+        listen-on port 53 { 10.250.21.244; };
+        listen-on-v6 port 53 { none; };
+        allow-query { trusted_hosts; };
+        allow-recursion { localhost; trusted_hosts; };
+        recursion yes;
+        forwarders { 77.88.8.8; 77.88.8.1; };
+        directory "/var/cache/bind";
+        allow-transfer { localhost; };
+        dnssec-validation auto;
+};
+
+logging {
+        // Общий канал для всех запросов в DNS
+        channel default_ch {
+                file "/var/cache/bind/logs/named.log" versions 4 size 100k;
+                severity info;
+
+                // Стандартные параметры:
+                print-time yes;          // Время события
+                print-category yes;      // Категория (queries, security и т.д.)
+                print-severity yes;      // Уровень серьезности (info, warning и т.д.)
+
+               // Для отладки:
+               // severity debug 5;     // Детальный уровень отладки
+               };
+
+        channel query_log {
+                file "/var/cache/bind/logs/query.log" versions 4 size 100k;
+                severity info;
+                print-time yes;
+                print-category yes;
+                };
+
+        // Канал для упрощенных запросов
+        channel lame_ch {
+                file "/var/cache/bind/logs/lame_servers.log" versions 4 size 100k;
+                severity info;
+                print-time yes;
+                print-category yes;
+                };
+
+```
+
 #### Создать файлы логов в (Debian 13)
 ```bash
 touch /var/cache/bind/logs/lame_servers.log \
