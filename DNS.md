@@ -110,6 +110,21 @@ zone "." IN {
 include "/etc/named.rfc1912.zones";
 include "/etc/named.root.key";
 ```
+#### Создать файлы логов в (Debian 13)
+```bash
+touch /var/cache/bind/logs/lame_servers.log \
+          /var/cache/bind/logs/security.log \
+          /var/cache/bind/logs/xfer.log \
+          /var/cache/bind/logs/update_debug.log \
+          /var/cache/bind/logs/update.log \
+	  /var/cache/bind/logs/named.log \
+          /var/cache/bind/logs/query.log
+
+chown bind:bind /var/log/bind/*.log
+chmod 644 /var/log/bind/*.log
+
+```
+
 
 ```bash
 sudo grep -Pv "^(#|$)" /etc/named.conf
