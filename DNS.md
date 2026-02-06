@@ -61,7 +61,7 @@ sudo systemctl enable --now named.service
 ```bash
 sudo vi /etc/named.conf
 ```
-#### Основной конфигурационный файл в Debian13
+Основной конфигурационный файл в Debian13  
 ```bash
 sudo nano /etc/bind/named.conf.options
 ```
