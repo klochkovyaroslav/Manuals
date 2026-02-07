@@ -373,12 +373,12 @@ $TTL 86400
                                         1W      ; expire
                                         3H )    ; minimum
 ; name servers - NS records - определяем имена DNS-серверов
-        IN      NS      server1.klochkov.int.
+@	IN	NS	server1.klochkov.int.
 
-server1.klochkov.int.   IN      A       192.168.56.10
-server2.klochkov.int.   IN      A       192.168.56.11
-server3.klochkov.int.   IN      A       192.168.56.12
-server4.klochkov.int.   IN      A       192.168.56.13
+server1   IN      A       192.168.56.10
+server2   IN      A       192.168.56.11
+server3   IN      A       192.168.56.12
+server4   IN      A       192.168.56.13
 ```
 #### Проверка корректности синтаксиса конфигурации
 ```bash
