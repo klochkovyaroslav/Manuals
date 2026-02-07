@@ -90,6 +90,10 @@ systemctl restart networking.service
 ###  NMTUI - Утилита с псевдографикой
 
 ```bash
+sudo apt install network-manager
+```
+
+```bash
 sudo nmtui
 ```
 
