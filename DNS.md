@@ -126,9 +126,9 @@ acl trusted_hosts {
 };
 
 options {
-        listen-on port 53 { 10.250.21.244; };
+        listen-on port 53 { localhost; 10.250.21.244; };
         listen-on-v6 port 53 { none; };
-        allow-query { trusted_hosts; };
+        allow-query { localhost; trusted_hosts; };
         allow-recursion { localhost; trusted_hosts; };
         recursion yes;
         forwarders { 77.88.8.8; 77.88.8.1; };
