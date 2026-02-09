@@ -425,7 +425,9 @@ sudo systemctl status named.service
 ```bash
 dig @192.168.56.10 -t SOA klochkov.int
 ```
-
+```bash
+dig @127.0.0.1 google.com
+```
 
 ```bash
 nslookup vcenter.esxi.localdomain 10.100.4.244
