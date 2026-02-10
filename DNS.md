@@ -80,7 +80,7 @@ nano /etc/bind/named.conf
 include "/etc/bind/named.conf.options";
 include "/etc/bind/named.conf.local";
 include "/etc/bind/named.conf.root-hints";
-include "/etc/bind/named.conf.internal-zones";
+include "/etc/bind/named.conf.internal-zones"; // My own file zone
 ```
 
 Файл зоны  
