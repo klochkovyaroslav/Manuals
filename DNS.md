@@ -57,13 +57,18 @@ sudo yum install bind bind-utils -y
 ```bash
 sudo systemctl enable --now named.service
 ```
-#### Основной конфигурационный файл
+### Основные файлы конфигурации
+##### Centos/RHEL
 ```bash
 sudo vi /etc/named.conf
 ```
-Основной конфигурационный файл в Debian13  
+##### Debian13  
 ```bash
 sudo nano /etc/bind/named.conf.options
+```
+Файл зоны  
+```bash
+sudo nano /etc/bind/named.conf.internal-zones
 ```
 
 ```
