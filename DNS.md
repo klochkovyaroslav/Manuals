@@ -70,6 +70,24 @@ sudo nano /etc/bind/named.conf.options
 ```bash
 sudo nano /etc/bind/named.conf.internal-zones
 ```
+```
+zone "esxi.localdomain" {
+        type master;
+        file "/var/cache/bind/esxi.local.zone";
+};
+
+zone "4.100.10.in-addr.arpa" {
+        type master;
+        file "/var/cache/bind/esxi.local.rev.zone";
+};
+
+zone "1.100.10.in-addr.arpa" {
+        type master;
+        file "/var/cache/bind/esxi.local.host.rev.zone";
+};
+
+```
+
 
 ```
 acl my_local_net { 192.168.56.0/24; };
@@ -122,24 +140,37 @@ include "/etc/named.root.key";
 ##### Еще пример конфигурационного файла делал в Debian13
 ```bash
 acl trusted_hosts {
-        10.250.21.240; //esxi host: ESXI-01
-        10.250.21.241; //esxi host: ESXI-02
-        10.250.21.242; //vm host: RDS-01
-        10.250.21.243;
-        10.250.21.244; //vm: DNS1
-        10.250.21.245; //vm: GW-01
+        10.100.1.1; //esxi host: ESXI-01
+        10.100.1.2; //esxi host: ESXI-02
+        10.100.4.99; //vm host: RDS-01
+        10.100.4.100; //vm host: RDS-02
+        10.100.4.244; //vm: DNS1
+        10.100.4.199; //vm: GW-01
+        10.100.4.200; //vm: GW-02
+};
+
+acl internal-network {
+        10.100.1.0/24;
+        10.100.4.0/24;
+        //127.0.0.0/8;
 };
 
 options {
-        listen-on port 53 { localhost; 10.250.21.244; };
+        listen-on port 53 { localhost; 10.250.21.244; }; // IP-адреса интерфейсов, которые слушает BIND
         listen-on-v6 port 53 { none; };
-        allow-query { localhost; trusted_hosts; };
-        allow-recursion { localhost; trusted_hosts; };
-        recursion yes;
+        allow-query { localhost; internal-network; }; // Кто может отправлять обычные DNS-запросы
+        allow-query-cache { localhost; internal-network; }; // Кто может запрашивать данные из кэша
+        recursion yes; // Включить рекурсивные запросы для клиентов
+        allow-recursion { localhost; internal-network; }; // Кому разрешена рекурсия
         forwarders { 77.88.8.8; 77.88.8.1; };
         directory "/var/cache/bind";
         allow-transfer { localhost; };
         dnssec-validation auto;
+        version none;
+        auth-nxdomain no;
+
+        // Блокировать запросы с подозрительных или зарезервированных адресов
+        // blackhole { 0.0.0.0/0; ::/0; };
 };
 
 logging {
