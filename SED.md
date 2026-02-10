@@ -103,3 +103,11 @@ sed -i 's/'$HOSTNAME'/'$hostnm'/' /etc/sysconfig/network
 sed -i 's/'$HOSTNAME'/'$hostnm'/' /etc/sysctl.conf
 sed -i 's/'$HOSTNAME'/'$hostnm'/' /etc/hosts
 ```
+
+#### В файлах зон для BIND9 заменить имя зоны .esxi.local на .esxi.localdomain
+
+```bash
+sed -i 's/esxi\.local/esxi.localdomain/g' /var/cache/bind/esxi.local.zone
+sed -i 's/esxi\.local/esxi.localdomain/g' /var/cache/bind/esxi.local.rev.zone
+sed -i 's/esxi\.local/esxi.localdomain/g' /var/cache/bind/esxi.local.host.rev.zone
+```
