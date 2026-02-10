@@ -62,14 +62,32 @@ sudo systemctl enable --now named.service
 ```bash
 sudo vi /etc/named.conf
 ```
-##### Debian13  
+##### Debian13
+
 ```bash
-sudo nano /etc/bind/named.conf.options
+nano /etc/bind/named.conf
 ```
+Содержание файла:  
+```
+// This is the primary configuration file for the BIND DNS server named.
+//
+// Please read /usr/share/doc/bind9/README.Debian for information on the
+// structure of BIND configuration files in Debian, *BEFORE* you customize
+// this configuration file.
+//
+// If you are just adding zones, please do that in /etc/bind/named.conf.local
+
+include "/etc/bind/named.conf.options";
+include "/etc/bind/named.conf.local";
+include "/etc/bind/named.conf.root-hints";
+include "/etc/bind/named.conf.internal-zones";
+```
+
 Файл зоны  
 ```bash
 sudo nano /etc/bind/named.conf.internal-zones
 ```
+Содержание файла:  
 ```
 zone "esxi.localdomain" {
         type master;
@@ -88,7 +106,10 @@ zone "1.100.10.in-addr.arpa" {
 
 ```
 
-
+```bash
+sudo nano /etc/bind/named.conf.options
+```
+Содержание файла:  
 ```
 acl my_local_net { 192.168.56.0/24; };
 options {
