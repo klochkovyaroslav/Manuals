@@ -80,10 +80,10 @@ nano /etc/bind/named.conf
 include "/etc/bind/named.conf.options";
 include "/etc/bind/named.conf.local";
 include "/etc/bind/named.conf.root-hints";
-include "/etc/bind/named.conf.internal-zones"; // My own file zone
+include "/etc/bind/named.conf.internal-zones"; // Insert My own file zone
 ```
 
-Файл зоны  
+#### Файл зоны  
 ```bash
 sudo nano /etc/bind/named.conf.internal-zones
 ```
@@ -407,6 +407,8 @@ sudo less /var/named/data/named.run
 ```
 ----
 ### Конфигурирование доменных зон
+### Зона прямого просмотра
+
 #### Centos/RHEL
 #### Создаем новый файл зоны прямого просмотра копированием файла: /var/named/named.localhost в новый файл: /var/named/klochkov.int.zone
 ```bash
@@ -482,12 +484,12 @@ sudo named-checkzone klochkov.int /var/named/klochkov.int.zone
 ```bash
 sudo named-checkzone esxi.localdomain /var/cache/bind/esxi.local.zone
 ```
-
+### Зона обратного просмотра
+#### Centos/RHEL
 #### Конфигурация файла зоны обратного просмотра
 ```bash
 sudo vi /var/named/klochkov.int.rev.zone
 ```
-
 #### Нужно сменить владельца группы для нового файла
 ```bash
 sudo chgrp named /var/named/klochkov.int.rev.zone
@@ -507,11 +509,66 @@ $TTL 86400
 12      IN      PTR     server3.klochkov.int.
 13      IN      PTR     server4.klochkov.int.
 ```
+#### DEBIAN 13
+#### Конфигурация файла зоны обратного просмотра
+
+```bash
+ nano /var/cache/bind/esxi.local.rev.zone
+```
+Содержание файла:  
+
+```bash
+$TTL 86400
+@       IN SOA DNS-01.esxi.localdomain. yaroslav.klochkov.soft.com. (
+                                2026020501      ; serial
+                                1D      ; refresh
+                                1H      ; retry
+                                1W      ; expire
+                                3H )    ; minimum
+@       IN       NS     DNS-01.esxi.localdomain.
+
+99      IN      PTR     RDS-01.esxi.localdomain.
+100     IN      PTR     RDS-02.esxi.localdomain.
+199     IN      PTR     GW-01.esxi.localdomain.
+200     IN      PTR     GW-02.esxi.localdomain.
+244     IN      PTR     DNS-01.esxi.localdomain.
+```
+
+Если Хосты и ВМ разных сетях, создать еще один файл для зоны обратного просмотра  
+
+```bash
+nano /var/cache/bind/esxi.local.host.rev.zone
+```
+
+Содержание файла:  
+
+```bash
+$TTL 86400
+@       IN SOA DNS-01.esxi.localdomain. yaroslav.klochkov.soft.com. (
+                                2026020501      ; serial
+                                1D      ; refresh
+                                1H      ; retry
+                                1W      ; expire
+                                3H )    ; minimum
+        IN NS DNS-01.esxi.localdomain.
+
+1       IN      PTR     ESXI-01.esxi.localdomain.
+2       IN      PTR     ESXI-02.esxi.localdomain.
+100     IN      PTR     vcs-01.esxi.localdomain.
+```
+
 
 #### Проверка корректности синтаксиса конфигурации
 ```bash
 sudo named-checkzone 0.168.192.in-addr.arpa /var/named/klochkov.int.rev.zone
 ```
+```bash
+sudo named-checkzone 4.100.10.in-addr.arpa /var/cache/bind/esxi.local.rev.zone
+```
+```bash
+sudo named-checkzone 1.100.10.in-addr.arpa /var/cache/bind/esxi.local.host.rev.zone
+```
+
 #### Перечитываем конфигурацию зон в BIND 9
 ```bash
 sudo rndc reload
