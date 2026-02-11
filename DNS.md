@@ -348,6 +348,8 @@ logging {
 
 #### Создать файлы логов в (Debian 13)
 ```bash
+mkdir -p /var/cache/bind/logs
+
 touch /var/cache/bind/logs/lame_servers.log \
           /var/cache/bind/logs/security.log \
           /var/cache/bind/logs/xfer.log \
@@ -390,7 +392,8 @@ sudo less /var/named/data/named.run
 
 ### Конфигурирование доменных зон
 
-#### Конфигурационный Файл зон  
+#### Конфигурационный Файл зон
+#### Debian
 ```bash
 sudo nano /etc/bind/named.conf.internal-zones
 ```
@@ -539,6 +542,11 @@ $TTL 86400
 200     IN      PTR     GW-02.esxi.localdomain.
 244     IN      PTR     DNS-01.esxi.localdomain.
 ```
+#### DEBIAN
+#### Нужно сменить владельца группы для нового файла
+```bash
+sudo chown bind:bind /var/cache/bind/esxi.local.rev.zone
+```
 
 Если Хосты и ВМ разных сетях, создать еще один файл для зоны обратного просмотра  
 
@@ -561,6 +569,10 @@ $TTL 86400
 1       IN      PTR     ESXI-01.esxi.localdomain.
 2       IN      PTR     ESXI-02.esxi.localdomain.
 100     IN      PTR     vcs-01.esxi.localdomain.
+```
+#### Нужно сменить владельца группы для нового файла
+```bash
+sudo chown bind:bind /var/cache/bind/esxi.local.host.rev.zone
 ```
 
 
@@ -591,7 +603,7 @@ dig @127.0.0.1 google.com
 ```
 
 ```bash
-nslookup vcenter.esxi.localdomain 10.100.4.244
+nslookup vcs.esxi.localdomain 10.100.4.244
 ```
 
 # 🐳 Docker Monitoring Stack — cAdvisor + Prometheus + Grafana
