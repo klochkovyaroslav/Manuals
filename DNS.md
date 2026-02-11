@@ -423,7 +423,7 @@ sudo vi /var/named/klochkov.int.zone
 ```
 ```
 $TTL 86400
-@       IN SOA  server1.klochkov.int. klochkovyaroslav.gmail.com. (
+@       IN SOA  server1.klochkov.int. klochkovyaroslav.mail.com. (
                                         2024102904      ; serial
                                         1D      ; refresh
                                         1H      ; retry
@@ -437,9 +437,37 @@ server2   IN      A       192.168.56.11
 server3   IN      A       192.168.56.12
 server4   IN      A       192.168.56.13
 ```
+Еще пример Конфигурация файла зоны прямого просмотра  
+```bash
+nano /var/cache/bind/esxi.local.zone
+```
+```
+$TTL 86400
+@       IN SOA DNS-01.esxi.localdomain. yaroslav.klochkov.soft.com. (
+                                2026020501      ; serial
+                                1D      ; refresh
+                                1H      ; retry
+                                1W      ; expire
+                                3H )    ; minimum
+; name servers - NS records
+@       IN      NS      DNS-01.esxi.localdomain.
+
+ESXI-01         IN      A       10.100.1.1
+ESXI-02         IN      A       10.100.1.2
+vcs-01          IN      A       10.100.1.100
+RDS-01          IN      A       10.100.4.99
+RDS-02          IN      A       10.100.4.100
+GW-01           IN      A       10.100.4.199
+GW-02           IN      A       10.100.4.200
+DNS-01          IN      A       10.100.4.244
+```
+
 #### Проверка корректности синтаксиса конфигурации
 ```bash
 sudo named-checkzone klochkov.int /var/named/klochkov.int.zone
+```
+```bash
+sudo named-checkzone esxi.localdomain /var/cache/bind/esxi.local.zone
 ```
 
 #### Конфигурация файла зоны обратного просмотра
@@ -453,7 +481,7 @@ sudo chgrp named /var/named/klochkov.int.rev.zone
 ```
 ```
 $TTL 86400
-@       IN SOA  klochkov.int. klochkovyaroslav.gmail.com. (
+@       IN SOA  klochkov.int. klochkovyaroslav.mail.com. (
                                         2024102904      ; serial
                                         1D      ; refresh
                                         1H      ; retry
