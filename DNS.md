@@ -83,9 +83,9 @@ include "/etc/bind/named.conf.root-hints";
 include "/etc/bind/named.conf.internal-zones"; // Insert My own file zone
 ```
 
-
+##### Centos/RHEL
 ```bash
-sudo nano /etc/bind/named.conf.options
+sudo vi /etc/named.conf
 ```
 Содержание файла:  
 ```
@@ -136,7 +136,10 @@ zone "." IN {
 include "/etc/named.rfc1912.zones";
 include "/etc/named.root.key";
 ```
-##### Еще пример конфигурационного файла делал в Debian13
+##### Еще пример конфигурационного файла в Debian13
+```bash
+sudo nano /etc/bind/named.conf.options
+```
 ```bash
 acl trusted_hosts {
         10.100.1.1; //esxi host: ESXI-01
@@ -355,13 +358,13 @@ touch /var/cache/bind/logs/lame_servers.log \
 
 chown bind:bind /var/cache/bind/logs/bind/*.log
 chmod 644 /var/cache/bind/logs/bind/*.log
-
 ```
 
-
+#### Посмотреть конфигурационный файл без комментариев
 ```bash
 sudo grep -Pv "^(#|$)" /etc/named.conf
 ```
+
 #### Проверка корректности синтаксиса конфигурации
 ```bash
 sudo named-checkconf
@@ -383,7 +386,8 @@ sudo firewall-cmd --add-service=dns --permanent
 ```bash
 sudo less /var/named/data/named.run
 ```
-----
+---
+
 ### Конфигурирование доменных зон
 
 #### Конфигурационный Файл зон  
