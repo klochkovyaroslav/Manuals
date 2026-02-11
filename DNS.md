@@ -83,7 +83,7 @@ include "/etc/bind/named.conf.root-hints";
 include "/etc/bind/named.conf.internal-zones"; // Insert My own file zone
 ```
 
-#### Файл зоны  
+#### Конфигурационный Файл зон  
 ```bash
 sudo nano /etc/bind/named.conf.internal-zones
 ```
