@@ -83,28 +83,6 @@ include "/etc/bind/named.conf.root-hints";
 include "/etc/bind/named.conf.internal-zones"; // Insert My own file zone
 ```
 
-#### Конфигурационный Файл зон  
-```bash
-sudo nano /etc/bind/named.conf.internal-zones
-```
-Содержание файла:  
-```
-zone "esxi.localdomain" {
-        type master;
-        file "/var/cache/bind/esxi.local.zone";
-};
-
-zone "4.100.10.in-addr.arpa" {
-        type master;
-        file "/var/cache/bind/esxi.local.rev.zone";
-};
-
-zone "1.100.10.in-addr.arpa" {
-        type master;
-        file "/var/cache/bind/esxi.local.host.rev.zone";
-};
-
-```
 
 ```bash
 sudo nano /etc/bind/named.conf.options
@@ -407,6 +385,30 @@ sudo less /var/named/data/named.run
 ```
 ----
 ### Конфигурирование доменных зон
+
+#### Конфигурационный Файл зон  
+```bash
+sudo nano /etc/bind/named.conf.internal-zones
+```
+Содержание файла:  
+```
+zone "esxi.localdomain" {
+        type master;
+        file "/var/cache/bind/esxi.local.zone";
+};
+
+zone "4.100.10.in-addr.arpa" {
+        type master;
+        file "/var/cache/bind/esxi.local.rev.zone";
+};
+
+zone "1.100.10.in-addr.arpa" {
+        type master;
+        file "/var/cache/bind/esxi.local.host.rev.zone";
+};
+
+```
+
 ### Зона прямого просмотра
 
 #### Centos/RHEL
