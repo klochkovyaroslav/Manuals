@@ -407,20 +407,32 @@ sudo less /var/named/data/named.run
 ```
 ----
 ### Конфигурирование доменных зон
+#### Centos/RHEL
 #### Создаем новый файл зоны прямого просмотра копированием файла: /var/named/named.localhost в новый файл: /var/named/klochkov.int.zone
 ```bash
 sudo cp /var/named/named.localhost /var/named/klochkov.int.zone
 ```
-
+#### DEBIAN
+#### Создаем новый файл зоны прямого просмотра вручную
+```bash
+sudo touch /var/cache/bind/esxi.local.zone
+```
+#### Centos/RHEL
 #### Нужно сменить владельца группы для нового файла
 ```bash
 sudo chgrp named /var/named/klochkov.int.zone
+```
+#### DEBIAN
+#### Нужно сменить владельца группы для нового файла
+```bash
+sudo chown bind:bind /var/cache/bind/esxi.local.zone
 ```
 
 #### Конфигурация файла зоны прямого просмотра
 ```bash
 sudo vi /var/named/klochkov.int.zone
 ```
+Сожержание файла:  
 ```
 $TTL 86400
 @       IN SOA  server1.klochkov.int. klochkovyaroslav.mail.com. (
@@ -441,6 +453,7 @@ server4   IN      A       192.168.56.13
 ```bash
 nano /var/cache/bind/esxi.local.zone
 ```
+Сожержание файла:  
 ```
 $TTL 86400
 @       IN SOA DNS-01.esxi.localdomain. yaroslav.klochkov.soft.com. (
