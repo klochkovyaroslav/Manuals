@@ -217,9 +217,8 @@ ssh-keygen -t ecdsa -b 521
 ```
 
 Ключи генеряться по умолчанию:  
-C:\Users\yklochkov\.ssh\  
+C:\Users\%username%\.ssh  
 
-----
 
 #### OpenSSH Authentication Agent
 ```powershell
