@@ -207,7 +207,13 @@ scp /home/file1.tar.gz root@192.168.1.28:/home/admin/Documents
 id_rsa.pub перенести на Linux server/Router  
 
 ```powershell
- ssh-keygen -t rsa -b 2048
+ssh-keygen -t rsa -b 2048
+```
+```powershell
+ssh-keygen -t ed25519
+```
+```powershell
+ssh-keygen -t ecdsa -b 521
 ```
 
 Ключи генеряться по умолчанию:  
