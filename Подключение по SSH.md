@@ -195,3 +195,18 @@ sudo scp file1.tar.gz root@server2:/root/
 scp /home/file1.tar.gz root@192.168.1.28:/home/admin/Documents
 ```
 > Файл file1.tar.gz будет скопирован на хост 192.168.1.28 в директорию "/home/admin/Documents"  
+
+
+
+----
+
+# Windows
+
+```powershell
+ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAcceptedKeyTypes=ssh-rsa -o MACs=hmac-sha1 -i C:\Users\yklochkov\Documents\ssh_keys\snr_sw-01-dis
+```
+```powershell
+ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAcceptedKeyTypes=ssh-rsa -o MACs=hmac-sha1 -i C:\Users\yklochkov\.ssh\id_rsa -o FingerprintHash=sha256
+```
+
+#### Создать пару ключей
