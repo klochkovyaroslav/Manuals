@@ -210,3 +210,44 @@ ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAccept
 ```
 
 #### Создать пару ключей
+
+```powershell
+ ssh-keygen -t rsa -b 2048
+```
+
+#### OpenSSH Authentication Agent
+```powershell
+Get-Service ssh-agent
+```
+
+```powershell
+Set-Service -Name "ssh-agent" -StartupType Automatic
+```
+
+<img width="530" height="104" alt="image" src="https://github.com/user-attachments/assets/7c74839b-8ef5-4b6b-936c-53fdb6d04846" />
+
+```powershell
+Start-Service -Name "ssh-agent"
+```
+
+<img width="408" height="85" lt="image" src="https://github.com/user-attachments/assets/d9015500-0044-4285-ae90-ac10d5bdf132" />
+
+Ключи генеряться по умолчанию:  
+C:\Users\yklochkov\.ssh\  
+
+
+#### Добавить приватный ключ
+```powershell
+ssh-add 'C:\Users\yklochkov\Documents\ssh_keys\snr_sw-01-dis'
+```
+#### Посмотреть добавленный приватный ключ в агенте
+```powershell
+ssh-add -l
+```
+
+#### Можно подключаться без указания ключа
+
+```powershell
+ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAcceptedKeyTypes=ssh-rsa -o MACs=hmac-sha1
+```
+
