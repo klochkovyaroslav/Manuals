@@ -202,18 +202,18 @@ scp /home/file1.tar.gz root@192.168.1.28:/home/admin/Documents
 
 # Windows
 
-```powershell
-ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAcceptedKeyTypes=ssh-rsa -o MACs=hmac-sha1 -i C:\Users\yklochkov\Documents\ssh_keys\snr_sw-01-dis
-```
-```powershell
-ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAcceptedKeyTypes=ssh-rsa -o MACs=hmac-sha1 -i C:\Users\yklochkov\.ssh\id_rsa -o FingerprintHash=sha256
-```
-
 #### Создать пару ключей
+
+id_rsa.pub перенести на Linux server/Router  
 
 ```powershell
  ssh-keygen -t rsa -b 2048
 ```
+
+Ключи генеряться по умолчанию:  
+C:\Users\yklochkov\.ssh\  
+
+----
 
 #### OpenSSH Authentication Agent
 ```powershell
@@ -232,9 +232,6 @@ Start-Service -Name "ssh-agent"
 
 <img width="408" height="85" lt="image" src="https://github.com/user-attachments/assets/d9015500-0044-4285-ae90-ac10d5bdf132" />
 
-Ключи генеряться по умолчанию:  
-C:\Users\yklochkov\.ssh\  
-
 
 #### Добавить приватный ключ
 ```powershell
@@ -245,7 +242,15 @@ ssh-add 'C:\Users\yklochkov\Documents\ssh_keys\snr_sw-01-dis'
 ssh-add -l
 ```
 
-#### Можно подключаться без указания ключа
+#### Можно подключаться
+```powershell
+ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAcceptedKeyTypes=ssh-rsa -o MACs=hmac-sha1 -i C:\Users\yklochkov\Documents\ssh_keys\snr_sw-01-dis
+```
+```powershell
+ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAcceptedKeyTypes=ssh-rsa -o MACs=hmac-sha1 -i C:\Users\yklochkov\.ssh\id_rsa -o FingerprintHash=sha256
+```
+
+#### Можно подключаться без указания приватного ключа
 
 ```powershell
 ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAcceptedKeyTypes=ssh-rsa -o MACs=hmac-sha1
