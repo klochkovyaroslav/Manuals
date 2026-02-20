@@ -242,6 +242,12 @@ ssh-add 'C:\Users\yklochkov\Documents\ssh_keys\snr_sw-01-dis'
 ssh-add -l
 ```
 
+#### Удалить приватный ключ из агента
+```powershell
+ssh-add -D
+```
+
+
 #### Можно подключаться
 ```powershell
 ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAcceptedKeyTypes=ssh-rsa -o MACs=hmac-sha1 -i C:\Users\yklochkov\Documents\ssh_keys\snr_sw-01-dis
