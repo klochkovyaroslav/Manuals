@@ -9,9 +9,19 @@
 Перезапустите службу: sudo systemctl restart ssh.  
 ### 2. Настройка брандмауэра (Iptables / UFW)
 Хотя у вас установлен iptables, в Ubuntu проще управлять им через UFW (надстройка над iptables).  
-Разрешите ваш новый SSH порт: sudo ufw allow 2222/tcp.  
-Разрешите HTTP/HTTPS (если нужно): sudo ufw allow 80/tcp и sudo ufw allow 443/tcp.  
-Включите защиту: sudo ufw enable.  
+```
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 6982/tcp
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow 4433/udp
+```
+```
+sudo ufw enable
+sudo ufw status verbose
+```
+
 ### 3. Установка Fail2Ban
 Эта утилита сканирует логи и временно блокирует IP-адреса, которые пытаются подобрать пароль.  
 Установка:  
