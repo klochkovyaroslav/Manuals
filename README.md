@@ -33,6 +33,10 @@ backend = systemd
 ```
 
 ```bash
+sudo fail2ban-client get sshd maxretry
+```
+
+```bash
 sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 ```
