@@ -64,10 +64,14 @@ sudo fail2ban-client ping (должен ответить pong)
 Разблокировать IP вручную:  
 ```bash
 sudo fail2ban-client set <название_jail> unbanip <IP-адрес>
+sudo fail2ban-client set sshd unbanip 183.171.113.19
+
 ```
 Заблокировать IP вручную:  
 ```bash
 sudo fail2ban-client set <название_jail> banip <IP-адрес>
+sudo fail2ban-client set sshd banip 183.171.113.19
+
 ```
 
 
