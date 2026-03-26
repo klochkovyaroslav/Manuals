@@ -103,7 +103,7 @@ sudo fail2ban-client set sshd banip 183.171.113.19
 ### Как узнать, какой менеджер отображения используется на Linux
 
 ```bash
- systemctl status display-manager.service
+systemctl status display-manager.service
 ```
 ```bash
 dpkg -l | grep -i 'Display Manager\|Login Manager' | awk '$2 !~ /^lib/'
