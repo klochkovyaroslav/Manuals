@@ -1,5 +1,56 @@
 # LINUX
 
+## Чтобы обезопасить ваш VPS на Ubuntu 22.04, пройдите по этому списку базовых настроек. Это значительно снизит риск автоматических атак.
+
+### 1. Настройка SSH (самый важный этап)
+Большинство атак направлено на стандартный порт SSH.
+Смените порт: В файле /etc/ssh/sshd_config замените Port 22 на любой свободный (например, 2222).
+Отключите вход по паролю: Используйте SSH-ключи. Установите PasswordAuthentication no.
+Запретите вход для root: Установите PermitRootLogin no.
+Перезапустите службу: sudo systemctl restart ssh.
+### 2. Настройка брандмауэра (Iptables / UFW)
+Хотя у вас установлен iptables, в Ubuntu проще управлять им через UFW (надстройка над iptables).
+Разрешите ваш новый SSH порт: sudo ufw allow 2222/tcp.
+Разрешите HTTP/HTTPS (если нужно): sudo ufw allow 80/tcp и sudo ufw allow 443/tcp.
+Включите защиту: sudo ufw enable.
+### 3. Установка Fail2Ban
+Эта утилита сканирует логи и временно блокирует IP-адреса, которые пытаются подобрать пароль.
+Установка:  
+```bash
+sudo apt install fail2ban
+```
+
+```bash
+sudo nano /etc/fail2ban/jail.local
+```
+Внести в файл:  
+```
+[sshd]
+enabled = true
+backend = systemd
+```
+
+```bash
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+```
+
+
+
+
+###v4. Автоматические обновления
+Включите unattended-upgrades, чтобы система сама устанавливала патчи безопасности.
+Установка: sudo apt install unattended-upgrades.
+Настройка: sudo dpkg-reconfigure -plow unattended-upgrades. [2]
+### 5. Удаление лишнего
+Проверьте открытые порты командой ss -tulpn. Если видите службу, которую не используете — отключите её.
+Создайте обычного пользователя с правами sudo и работайте под ним, а не под root. [1, 2]
+
+
+
+
+
+
 ### Как узнать, какой менеджер отображения используется на Linux
 
 ```bash
