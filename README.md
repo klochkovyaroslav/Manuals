@@ -32,8 +32,18 @@ findtime = 300
 backend = systemd
 ```
 
+
 ```bash
 sudo fail2ban-client get sshd maxretry
+```
+
+#### Проверка
+Убедитесь, что Fail2ban увидел ваш белый список:  
+```bash
+sudo fail2ban-client get sshd ignoreip
+```
+```bash
+sudo systemctl restart fail2ban
 ```
 
 ```bash
