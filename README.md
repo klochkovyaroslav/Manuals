@@ -26,6 +26,7 @@ sudo nano /etc/fail2ban/jail.local
 ```
 [sshd]
 enabled = true
+port = 3333 # Если порт не стандартный
 backend = systemd
 ```
 
