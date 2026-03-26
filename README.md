@@ -34,7 +34,7 @@ sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 ```
 
-#### Проверка общего статуса
+### Проверка общего статуса
 Самый быстрый способ узнать, запущен ли сервис и какие «тюрьмы» (jails) активны:  
 
 ```bash
