@@ -65,8 +65,8 @@ sudo iptables -S | grep f2b
 ```bash
 sudo nano /etc/fail2ban/action.d/iptables-common.conf
 ```
-> #blocktype = REJECT --reject-with icmp-port-unreachable
-> blocktype =DROP
+> #blocktype = REJECT --reject-with icmp-port-unreachable  
+> blocktype =DROP  
 
 
 
