@@ -71,7 +71,9 @@ sudo nano /etc/fail2ban/action.d/iptables-common.conf
 > #blocktype = REJECT --reject-with icmp6-port-unreachable  
 > blocktype =DROP  
 
-
+```bash
+sudo systemctl restart fail2ban
+```
 
 ### Полезные команды управления
 Проверить соединение с сервером:  
