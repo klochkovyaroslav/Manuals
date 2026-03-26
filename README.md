@@ -54,6 +54,21 @@ sudo fail2ban-client status sshd
 ```bash
 sudo tail -f /var/log/fail2ban.log
 ```
+#### Проверить правила файервола
+```bash
+sudo iptables -S | grep f2b
+```
+
+
+#### Заменить REJECT на DROP
+
+```bash
+sudo nano /etc/fail2ban/action.d/iptables-common.conf
+```
+> #blocktype = REJECT --reject-with icmp-port-unreachable
+> blocktype =DROP
+
+
 
 ### Полезные команды управления
 Проверить соединение с сервером:  
