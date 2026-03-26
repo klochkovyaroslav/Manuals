@@ -31,7 +31,9 @@ maxretry = 5
 findtime = 300
 backend = systemd
 ```
-
+```bash
+sudo systemctl restart fail2ban
+```
 
 ```bash
 sudo fail2ban-client get sshd maxretry
@@ -42,9 +44,7 @@ sudo fail2ban-client get sshd maxretry
 ```bash
 sudo fail2ban-client get sshd ignoreip
 ```
-```bash
-sudo systemctl restart fail2ban
-```
+
 
 ```bash
 sudo systemctl enable fail2ban
