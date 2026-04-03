@@ -72,6 +72,12 @@ ip link set enp0s3 up
 sudo nano /etc/resolv.conf
 sudo nano /etc/resolvconf/resolv.conf.d/head
 sudo systemctl restart resolvconf.service
+
+resolvectl status
+ip route
+ip route show
+ip route show default
+nmcli device show | grep IP4.GATEWAY
 ```
 
 #### Проверить имя сервиса
