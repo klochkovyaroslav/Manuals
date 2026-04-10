@@ -435,6 +435,7 @@ echo 'export LD_LIBRARY_PATH=/path/to/your/library:$LD_LIBRARY_PATH' >> ~/.bashr
 ps axu
 ```
 ```bash
+ps aux | grep имя_процесса
 ps axu | grep bash
 ps aux | grep docker | tail -n 2
 pidof bash
@@ -444,6 +445,11 @@ kill — убить процесс по его идентификатору (Pro
 pkill — убить процесс по его имени;
 killall — убить все процессы с указанным именем.
 ```
+
+```bash
+kill -15 $(pgrep -i keepassx)
+```
+
 
 ## Узнать версию пакета в системе DEB
 #### Узнать версию уже установленного пакета
