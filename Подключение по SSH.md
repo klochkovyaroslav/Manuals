@@ -203,7 +203,7 @@ scp /home/file1.tar.gz root@192.168.1.28:/home/admin/Documents
 Самый простой способ — использовать встроенный флаг -proxy (если поддерживается) или утилиту nc (netcat).  
 
 ```bash
-ssh -o ProxyCommand='nc -x proxy_address:port %h %p' user@target_host
+ssh -o ProxyCommand="ncat -X 5 -x 192.168.1.100:1080 %h %p" user@222.222.222.22
 ```
 
 ----
@@ -270,8 +270,13 @@ ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAccept
 ```
 
 #### Можно подключаться без указания приватного ключа
-
 ```powershell
 ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAcceptedKeyTypes=ssh-rsa -o MACs=hmac-sha1
 ```
 
+#### Подключение через SOCKS5 прокси
+Самый простой способ — использовать встроенный флаг -proxy (если поддерживается) или утилиту ncat  
+
+```bash
+ssh -o ProxyCommand="ncat --proxy-type socks5 --proxy 192.168.1.100:1080 %h %p" user@222.222.222.22
+```
