@@ -197,6 +197,14 @@ scp /home/file1.tar.gz root@192.168.1.28:/home/admin/Documents
 > Файл file1.tar.gz будет скопирован на хост 192.168.1.28 в директорию "/home/admin/Documents"  
 
 
+# Для подключения по SSH через прокси-сервер (HTTP или SOCKS)
+
+#### Подключение через SOCKS5 прокси
+Самый простой способ — использовать встроенный флаг -proxy (если поддерживается) или утилиту nc (netcat).  
+
+```bash
+ssh -o ProxyCommand='nc -x proxy_address:port %h %p' user@target_host
+```
 
 ----
 
