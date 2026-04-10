@@ -197,7 +197,7 @@ scp /home/file1.tar.gz root@192.168.1.28:/home/admin/Documents
 > Файл file1.tar.gz будет скопирован на хост 192.168.1.28 в директорию "/home/admin/Documents"  
 
 
-# Для подключения по SSH через прокси-сервер (HTTP или SOCKS)
+## Для подключения по SSH через прокси-сервер SOCKS
 
 #### Подключение через SOCKS5 прокси
 Самый простой способ — использовать встроенный флаг -proxy (если поддерживается) или утилиту nc (netcat).  
@@ -273,6 +273,7 @@ ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAccept
 ```powershell
 ssh yklochkov@192.168.20.5 -o PreferredAuthentications=publickey -o PubkeyAcceptedKeyTypes=ssh-rsa -o MACs=hmac-sha1
 ```
+## Для подключения по SSH через прокси-сервер SOCKS
 
 #### Подключение через SOCKS5 прокси
 Самый простой способ — использовать встроенный флаг -proxy (если поддерживается) или утилиту ncat  
