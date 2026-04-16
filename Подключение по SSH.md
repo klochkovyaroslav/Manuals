@@ -156,8 +156,8 @@ sed -i 's/#LoginGraceTime 2m/LoginGraceTime 10s/' /etc/ssh/sshd_config
 ```
 
 
-#### Если не удается подключиться к коммутаторам(SNR)
-##### запускаем с verbose (-v -vv -vvv)
+### Если не удается подключиться к коммутаторам(SNR)
+#### запускаем с verbose (-v -vv -vvv)
 ```bash
 ssh -vv myuser@192.168.100.3
 ```
@@ -173,17 +173,16 @@ ssh -vv myuser@192.168.100.3
 ```bash
 ssh -o PubkeyAcceptedAlgorithms=+ssh-rsa myuser@192.168.100.3
 ```
-Если подключение прошло, то для включение поддержки RSA в конфиге:
+Если подключение прошло, то для включения поддержки RSA в конфиге:
 
 ```bash
 nano ~/.ssh/config
 ```
 Добавить в файл:  
-```
-Host 192.168.100.3
-    HostkeyAlgorithms +ssh-rsa
-    PubkeyAcceptedAlgorithms +ssh-rsa
-```
+
+> Host 192.168.100.3  
+>    HostkeyAlgorithms +ssh-rsa  
+>    PubkeyAcceptedAlgorithms +ssh-rsa  
 
 
 # Автоматическое подключение по SSH с паролем: 
