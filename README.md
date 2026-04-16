@@ -968,6 +968,35 @@ AllowHybridSleep=no
 ```
 
 
+
+## Автоматическое отключение тачпада
+
+#### Автоматическое отключение тачпада при наборе текста в Ubuntu
+Включить функцию:  
+```bash
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
+```
+Отключить функцию:  
+```bash
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
+```
+
+Проверить состояние:  
+```bash
+gsettings get org.gnome.desktop.peripherals.touchpad disable-while-typing
+```
+
+#### Автоматическое отключение тачпада при подключении мыши в Ubuntu
+Включить функцию:  
+```bash
+gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled-on-external-mouse
+```
+Отключить функцию:  
+```bash
+gsettings set org.gnome.desktop.peripherals.touchpad send-events enabled
+```
+
+
 ---
 ##############################################################################################
 
