@@ -233,7 +233,7 @@ scp /home/file1.tar.gz root@192.168.1.28:/home/admin/Documents
 Самый простой способ — использовать встроенный флаг -proxy (если поддерживается) или утилиту nc (netcat).  
 
 ```bash
-ssh -o ProxyCommand="ncat -X 5 -x 192.168.1.100:1080 %h %p" user@222.222.222.22
+ssh -o ProxyCommand="nc -X 5 -x 192.168.1.100:1080 %h %p" user@222.222.222.22
 ```
 
 ----
