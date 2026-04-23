@@ -15,6 +15,11 @@
 ssh-keygen 
 ```
 
+#### ECDSA ключ с длиной 521 бит
+``` bash 
+ssh-keygen -b 521 -t ecdsa
+```
+
 #### RSA-ключ с длиной 4096 бит указываем именя ключа, путь к месту хранения ключа, пароль(passphrase) в явном виде (-N «P@sswd»):
 ``` bash 
 ssh-keygen -b 4096 -t rsa -C "My_ssh_key-name" -N "P@sswd" -f /users/admin/my_ssh_key
@@ -28,6 +33,8 @@ ssh-keygen -b 4096 -t rsa -C "My_ssh_key-name" -N "" -f /users/admin/my_ssh_key
  Секретный ключ будет называться **id_rsa**, а публичный **id_rsa.pub**.  
  Можно создать ключи с произвольным именем, для этого нужно ввести путь и имя ключа  
  В строку "Enter file in which to save the file(/home/user/.ssh/id_rsa):" /home/user/.ssh/my_own_key  
+
+
  
  #### Загрузка ключа на удаленный сервер
  Скопировать ключ с локального на удаленный сервер - это использовать утилиту ssh-copy-id  в файл **~/.ssh/authorized_keys**  
@@ -35,6 +42,8 @@ ssh-keygen -b 4096 -t rsa -C "My_ssh_key-name" -N "" -f /users/admin/my_ssh_key
  
 ``` bash  
 ssh-copy-id username@remote_host
+
+ssh-copy-id -i ~/.ssh/id_ecdsa.pub -p 60235 myuser@136.48.110.4
 ```
 или вручную командой: 
 
