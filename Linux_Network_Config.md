@@ -167,3 +167,55 @@ nmcli connection up bond0.21
 sudo systemctl restart NetworkManager
 sudo nmcli connection up Wired\ connection\ 1
 ```
+
+
+----
+
+
+# NETPLAN
+
+
+#### Конфигурационный файл
+
+```bash
+sudo nano /etc/netplan/..........yaml
+```
+
+```
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens192:
+      addresses:
+        - 146.43.10.214/28
+      routes:
+        - to: default
+          via: 126.283.110.13
+      nameservers:
+        addresses:
+          - 1.1.1.1
+          - 8.8.8.8
+    ens224:
+      addresses:
+        - 10.110.15.1/24
+    lo:
+      addresses:
+        - 10.110.1.1/32 
+```
+
+
+
+#### Для проверки нашего конфигурационного файла
+
+```bash
+netplan --debug generate
+```
+
+
+#### Для применения настроек вводим:
+
+```bash
+netplan apply
+```
+
