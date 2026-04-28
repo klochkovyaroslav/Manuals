@@ -173,7 +173,7 @@ sudo nmcli connection up Wired\ connection\ 1
 
 
 # NETPLAN
-
+[Настройка сети в Linux с помощью netplan](https://www.dmosk.ru/miniinstruktions.php?mini=network-netplan#yaml)
 
 #### Конфигурационный файл
 
