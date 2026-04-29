@@ -83,6 +83,10 @@ sudo fail2ban-client status sshd
 ```bash
 sudo tail -f /var/log/fail2ban.log
 ```
+<img width="1026" height="254" alt="image" src="https://github.com/user-attachments/assets/ebb161fa-8d22-4d3a-8ae7-e7892b1b2e9a" />
+
+
+
 #### Проверить правила файервола
 ```bash
 sudo iptables -S | grep f2b
