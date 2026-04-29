@@ -73,6 +73,9 @@ sudo fail2ban-client status
 ```bash
 sudo fail2ban-client status sshd
 ```
+<img width="633" height="184" alt="image" src="https://github.com/user-attachments/assets/67c65fa5-8f51-42b4-b287-f8fc38895886" />
+
+
 
 #### Просмотр системных логов
 Если что-то идет не так, проверьте файл журнала. Там отображаются попытки входа и действия по блокировке/разблокировке:  
