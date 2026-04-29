@@ -607,6 +607,10 @@ ss -tanp | grep 6514
 watch ss -tulpn
 ```
 
+```bash
+sudo watch -n 5 -d -c "WG_COLOR_MODE=always wg show"
+```
+
 ### Повторить предыдущую команду (ss -tulpn) в bash:
 
 ```bash
