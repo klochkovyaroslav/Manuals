@@ -372,6 +372,12 @@ nano ~/.bashrc
 alias ospf_stat_core1='ssh -i ~/.ssh/zabbix/id_rsa sshro@192.168.10.76 show ip ospf neighbor'
 ```
 
+#### Чтобы применить изменения в файле ~/.bashrc без перезагрузки терминала
+```bash
+source ~/.bashrc
+```
+
+
 #### Linux команда FOLD: управление шириной строки
 ```bash
 fold -s -w 60 some_file.txt
