@@ -344,6 +344,6 @@ ps aux | grep openconnect
 
 #### Отключить соединение открытое в фоне
 ```bash
-sudo kill $(cat /tmp/vpn.pid)
+sudo kill $(cat /tmp/oconnect.pid)
 ```
 
