@@ -322,6 +322,7 @@ sudo journalctl _COMM=openconnect
 
 <img width="1583" height="159" alt="image" src="https://github.com/user-attachments/assets/0c7eef6a-6da1-4cbc-b6d3-7ef03b0c1dba" />
 
+----
 
 ### CLi
 #### Подключиться интеррактивно
