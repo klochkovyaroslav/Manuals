@@ -321,3 +321,29 @@ sudo journalctl _COMM=openconnect
 ```
 
 <img width="1583" height="159" alt="image" src="https://github.com/user-attachments/assets/0c7eef6a-6da1-4cbc-b6d3-7ef03b0c1dba" />
+
+
+### CLi
+#### Подключиться интеррактивно
+```bash
+sudo openconnect https://kingdom.innoseti.ru -u=vpupkin -c ~/Documents/Certificates/my_cert.p12
+```
+
+#### Запускать openconnect в фоне(--background)
+```bash
+sudo openconnect https://kingdom.innoseti.ru -u=vpupkin -c ~/Documents/Certificates/my_cert.p12 -b --pid-file=/tmp/oconnect.pid
+```
+
+#### Как проверить
+```bash
+ps aux | grep openconnect
+```
+
+<img width="2154" height="62" alt="image" src="https://github.com/user-attachments/assets/5e1a8c6b-46cf-4b75-86f4-701f9df57935" />
+
+
+#### Отключить соединение открытое в фоне
+```bash
+sudo kill $(cat /tmp/vpn.pid)
+```
+
