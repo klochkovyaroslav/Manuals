@@ -30,7 +30,7 @@ find . -type f -exec du -sh {} \; | sort -h | tail -3
 find . -type f -exec cat {} \;
 find . -type f -exec ls -l {} \; -exec cat {} \;
 find . -type f -exec ls -l {} \; -exec cat {} \; -exec echo "----" \;
-find . -type f -name "*.conf -exec grep "ip_forward" {} +   (Выполнение команды grep непосредственно для найденных файлов)
+find . -type f -name "*.conf -exec grep "ip_forward" {} +  /(Выполнение команды grep непосредственно для найденных файлов)
 
 ```
 
@@ -55,7 +55,7 @@ find some_files?? - искать 2 символа в конце
 find some_files?.*
 find . -type f -name "*.log" -o -type f -name "*.conf"
 find / -name acrocmd
-find . -name "*.conf" | xargs grep "ip_forward"     (Эффективная обработка больших списков файлов.)
+find . -name "*.conf" | xargs grep "ip_forward"  /(Эффективная обработка больших списков файлов.)
 
 ```
 
