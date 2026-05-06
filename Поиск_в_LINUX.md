@@ -29,7 +29,9 @@ find . -type f -exec du -sh {} \; | sort -h | tail -3
 ```bash
 find . -type f -exec cat {} \;
 find . -type f -exec ls -l {} \; -exec cat {} \;
-find . -type f -exec ls -l {} \; -exec cat {} \; -exec echo "----" \; 
+find . -type f -exec ls -l {} \; -exec cat {} \; -exec echo "----" \;
+find . -type f -name "*.conf -exec grep "ip_forward" {} +   (Выполнение команды grep непосредственно для найденных файлов)
+
 ```
 
 #### Найти файлы и удалить их:
@@ -52,7 +54,8 @@ find some_files? - искать символ в конце
 find some_files?? - искать 2 символа в конце
 find some_files?.*
 find . -type f -name "*.log" -o -type f -name "*.conf"
-sudo find / -name acrocmd
+find / -name acrocmd
+find . -name "*.conf" | xargs grep "ip_forward"     (Эффективная обработка больших списков файлов.)
 
 ```
 
@@ -155,6 +158,7 @@ find ~ -type f -name "*.txt" -exec cat {} + > one_big.file
 #### Найти файлы по содержимому:
 
 ```bash
+grep -r "search_term" /path/to/directory
 grep -rin --include="*.conf" "servers" ./
 grep "mail" /etc/passwd
 grep "^mail" /etc/passwd
