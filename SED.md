@@ -111,3 +111,9 @@ sed -i 's/esxi\.local/esxi.localdomain/g' /var/cache/bind/esxi.local.zone
 sed -i 's/esxi\.local/esxi.localdomain/g' /var/cache/bind/esxi.local.rev.zone
 sed -i 's/esxi\.local/esxi.localdomain/g' /var/cache/bind/esxi.local.host.rev.zone
 ```
+
+#### Команда ищет в файле строку, начинающуюся с [daemon], и сразу под ней вставляет новую строку DefaultSession=gnome-xorg.desktop
+##### для настройки GDM3 (GNOME Display Manager)
+```bash
+sudo sed -i "/^\[daemon\]/a DefaultSession=gnome-xorg.desktop" "/etc/gdm3/custom.conf"
+```
