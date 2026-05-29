@@ -1,5 +1,15 @@
 # Zabbix и все что с ним связано
 
+## SNMP
+
+```bash
+snmpwalk -v3 -l authPriv -u <логин> -a <алгоритм_аут> -A "<пароль_аут>" -x <алгоритм_шифр> -X "<пароль_шифр>" <IP_адрес> [OID]
+
+snmpwalk -v3 -l authPriv -u myuser -a SHA -A "AuthPassword123" -x AES -X "PrivPassword123" 192.168.1.100 .1.3.6.1.2.1.1
+
+snmpwalk -v3 -l authPriv -u mon -a SHA1 -A monitoring -x AES -X monitoring 192.168.21.2:161
+```
+
 #### Мониторинг загрузки процессора
 ```
 **Item:**
