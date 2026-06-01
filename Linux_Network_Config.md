@@ -219,3 +219,16 @@ netplan --debug generate
 netplan apply
 ```
 
+
+
+----
+# Траблшутинг сети
+
+#### Команда выводит текущую скорость сетевого интерфейса ens192, отфильтровывая лишнюю информацию
+```bash
+sudo ethtool ens192 | grep -i speed
+```
+#### Альтернативные варианты
+```bash
+cat /sys/class/net/ens192/speed
+```
