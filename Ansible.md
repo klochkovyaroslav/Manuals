@@ -1,5 +1,41 @@
 # Ansible
- 
+
+## Установка
+
+```bash
+sudo apt install python3-pip python3-venv -y
+```
+
+### Вариант А: В виртуальном окружении (Рекомендуется) Виртуальное окружение защитит ваши системные библиотеки от конфликтов версий  
+
+```bash
+python3 -m venv ansible-env
+```
+
+#### Активируйте его:
+```bash
+source ansible-env/bin/activate
+```
+
+#### Установите Ansible:
+```bash
+pip install ansible
+```
+
+### Вариант Б: Локально для текущего пользователя
+
+```bash
+pip3 install --user ansible
+```
+Примечание: Если после такой установки система «не видит» команду ansible, вам нужно добавить путь к бинарникам в переменную окружения.  
+Для этого выполните export PATH=$PATH:~/.local/bin или добавьте эту строку в конец файла ~/.bashrc
+
+#### Проверка установки:
+```bash
+ansible --version
+```
+
+
 ----
  
 ## ansible.cfg
