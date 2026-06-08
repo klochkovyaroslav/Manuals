@@ -153,3 +153,17 @@ git remote set-url origin git@github.com:user_github/Any_project.git
 git push origin
 ```
 
+---
+
+# Удаление локального Git-репозитория
+
+```bash
+rm -rf .git
+```
+
+Еще один вариант – удаление .gitignore и .gitmodules в случае их наличия. Тогда команда меняет свой вид на:  
+
+```bash
+rm -rf .git*
+```
+
