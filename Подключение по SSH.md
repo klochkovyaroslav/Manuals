@@ -236,6 +236,12 @@ scp /home/file1.tar.gz root@192.168.1.28:/home/admin/Documents
 > Файл file1.tar.gz будет скопирован на хост 192.168.1.28 в директорию "/home/admin/Documents"  
 
 
+## Подключиться к удаленному серверу через промежуточный сервер (Jump Host) с помощью SSH (ProxyJump)
+```bash
+ssh -J yklochkov@192.210.1.1:61235 yklochkov@192.210.1.2 -p 61235
+```
+
+
 ## Для подключения по SSH через прокси-сервер SOCKS
 
 #### Подключение через SOCKS5 прокси
