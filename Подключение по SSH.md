@@ -238,7 +238,7 @@ scp /home/file1.tar.gz root@192.168.1.28:/home/admin/Documents
 
 ## Подключиться к удаленному серверу через промежуточный сервер (Jump Host) с помощью SSH (ProxyJump)
 ```bash
-ssh -J yklochkov@192.210.1.1:61235 yklochkov@192.210.1.2 -p 61235
+ssh -J user1@192.210.1.1:61235 user2@192.210.1.2 -p 61235
 ```
 
 
