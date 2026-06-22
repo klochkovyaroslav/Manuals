@@ -260,6 +260,11 @@ ssh -J user1@192.210.1.1:61235 user2@192.210.1.2 -p 61235
 ssh -o ProxyCommand="nc -X 5 -x 192.168.1.100:1080 %h %p" user@222.222.222.22
 ```
 
+
+#### Отключить автоматическое обновление системы на удаленном сервере Ubuntu или Debian через SSH.
+```bash
+ssh admin@10.121.1.1 -p 222 "sudo sed -i 's/\"1\";/\"0\";/g' /etc/apt/apt.conf.d/20auto-upgrades"
+
 ----
 
 # Windows
