@@ -117,3 +117,8 @@ sed -i 's/esxi\.local/esxi.localdomain/g' /var/cache/bind/esxi.local.host.rev.zo
 ```bash
 sudo sed -i "/^\[daemon\]/a DefaultSession=gnome-xorg.desktop" "/etc/gdm3/custom.conf"
 ```
+
+#### Отключить автоматическое обновление системы на удаленном сервере Ubuntu или Debian через SSH.
+```bash
+ssh admin@10.121.1.1 -p 222 "sudo sed -i 's/\"1\";/\"0\";/g' /etc/apt/apt.conf.d/20auto-upgrades"
+```
