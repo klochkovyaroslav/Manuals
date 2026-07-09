@@ -186,6 +186,13 @@ sed -i 's/'$HOSTNAME'/'$hostnm'/' /etc/sysctl.conf
 sed -i 's/'$HOSTNAME'/'$hostnm'/' /etc/hosts
 ```
 
+## Мониторинг использования батареи ноутбука
+```bash
+upower -m
+upower -i /org/freedesktop/UPower/devices/battery_BAT0
+```
+
+
 ## Включение TRIM на SSD
 
 ```bash
