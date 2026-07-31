@@ -20,6 +20,13 @@ ssh-keygen
 ssh-keygen -b 521 -t ecdsa
 ```
 
+#### Hash ключа ECDSA
+``` bash 
+awk '{print $2}' ~/.ssh/id_ecdsa.pub | base64 -d | sha256sum | awk '{print $1}' | sed 's/\(..\)/\1:/g;s/:$//'
+```
+
+
+
 #### RSA-ключ с длиной 4096 бит указываем именя ключа, путь к месту хранения ключа, пароль(passphrase) в явном виде (-N «P@sswd»):
 ``` bash 
 ssh-keygen -b 4096 -t rsa -C "My_ssh_key-name" -N "P@sswd" -f /users/admin/my_ssh_key
