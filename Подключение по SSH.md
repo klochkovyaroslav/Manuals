@@ -20,7 +20,7 @@ ssh-keygen
 ssh-keygen -b 521 -t ecdsa
 ```
 
-#### Hash ключа ECDSA
+#### Hash ключа ECDSA - SHA-256
 ``` bash 
 awk '{print $2}' ~/.ssh/id_ecdsa.pub | base64 -d | sha256sum | awk '{print $1}' | sed 's/\(..\)/\1:/g;s/:$//'
 ```
