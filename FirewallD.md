@@ -15,7 +15,7 @@ sudo iptables -t nat -vnL PREROUTING --line-numbers
 
 ---
 
-## NFABLES
+## NFTABLES
 
 
 #### Посмотреть вообще все правила на вашем сервере:
