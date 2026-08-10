@@ -23,6 +23,12 @@ sudo iptables -t nat -vnL PREROUTING --line-numbers
 sudo nft list ruleset
 ```
 
+#### Вывод с номерами дескрипторов (handles)
+```bash
+sudo nft -a list ruleset
+```
+
+
 #### Выводит подробный список правил NAT
 ```bash
 sudo nft list table ip nat
