@@ -240,6 +240,8 @@ scp user@192.168.1.28:/var/lib/vz/template/iso/installation-1.7.5.16-06.02.24_14
 
 ```bash
 sudo scp file1.tar.gz root@server2:/root/
+sudo scp /home/admin/Downloads/asav9-23-1-195.qcow2 myuser@192.168.88.20:/home/myuser/Downloads
+
 ```
 > Файл file1.tar.gz будет скопирован на хост server2 в директорию "/root"  
 
