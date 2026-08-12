@@ -786,6 +786,7 @@ ansible-playbook playbook.yml --extra-vars "MYHOSTS=prod_DB owner=Petya"
 ```bash
 ansible-vault create mysecret.txt
 ```
+#### Просмотр содержимого без расшифровки файла на диске
 ```bash
 ansible-vault view mysecret.txt
 ```
