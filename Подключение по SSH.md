@@ -189,17 +189,18 @@ ssh -vv myuser@192.168.100.3
 
 Это происходит при использовании старых RSA-ключей с новыми версиями OpenSSH (8.8 и выше), где алгоритм ssh-rsa (использующий SHA-1) отключен по умолчанию из-за уязвимостей.  
 
-```bash
-ssh -o HostKeyAlgorithms=+ssh-rsa 10.111.105.137
-ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa 10.111.105.137
-```
+
 
 ## Локальный конфигурационный файл для клиента SSH (~/.ssh/config)
 #### Как исправить проблему
 Для проверки:  
 
 ```bash
+ssh -o HostKeyAlgorithms=+ssh-rsa 10.111.105.137
+
 ssh -o PubkeyAcceptedAlgorithms=+ssh-rsa myuser@192.168.100.3
+
+ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa 10.111.105.137
 ```
 Если подключение прошло, то для включения поддержки RSA в конфиге:
 
