@@ -492,6 +492,36 @@ apt update && apt upgrade && apt dist-upgrade && apt --purge autoremove
  ls -A | xargs -d"\n" du -msc | sort -n
 ```
 
+```bash
+sudo df -h
+```
+```
+Filesystem                  Size  Used Avail Use% Mounted on
+tmpfs                       193M  1.4M  192M   1% /run
+/dev/mapper/ubuntu_vg-root  7.3G  5.5G  1.5G  80% /
+tmpfs                       964M     0  964M   0% /dev/shm
+tmpfs                       5.0M     0  5.0M   0% /run/lock
+/dev/sda2                  1007M  261M  696M  28% /boot
+/dev/sda1                   511M  6.1M  505M   2% /boot/efi
+tmpfs                       193M  4.0K  193M   1% /run/user/1002
+```
+
+
+```bash
+sudo du -sh /* 2>/dev/null | sort -h
+```
+
+
+```bash
+sudo du -ahx / 2>/dev/null | sort -rh | head -n 20
+```
+
+
+```bash
+sudo du -sh /var/log/* | sort -h
+```
+
+
 #### Найти файлы, которые занимают больше 1Gb
 
 ```bash
