@@ -547,6 +547,31 @@ faillog -u root (reset count)
 faillog -r (reset count)
 ```
 
+## Безопасный план очистки
+
+#### Сжимаем системные логи (освободит ~500 МБ)
+Ограничим размер логов journald до 300 мегабайт (все, что старше и больше этого лимита, удалится):  
+```bash
+sudo journalctl --vacuum-size=300M
+```
+
+#### Очищаем кэш пакетов Snap (освободит ~700 МБ)
+Удаляем сохраненные загрузочные файлы Snap-пакетов, которые больше не нужны:  
+```bash
+sudo rm -rf /var/lib/snapd/cache/*
+затем
+sudo systemctl restart snapd
+```
+
+
+#### Очищаем кэш обычных пакетов APT (освободит немного места)
+```bash
+sudo apt-get clean
+```
+
+
+
+
 ## SIGNAL
 
 ### Команда: pkill
