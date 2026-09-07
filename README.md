@@ -161,6 +161,19 @@ sudo dpkg-reconfigure gdm3
 
 [Как установить новый Display Manager в Debian, Ubuntu, Linux Mint, Kali Linux и их производных](https://zalinux.ru/?p=8982#1)
 
+---
+
+## Установка модулей VMWARE Workstation на Linux
+
+```bash
+git clone -b workstation-17.5.0 https://github.com/mkubecek/vmware-host-modules.git
+cd vmware-host-modules
+tar -cf vmmon.tar vmmon-only
+tar -cf vmnet.tar vmnet-only
+sudo cp -v vmmon.tar vmnet.tar /usr/lib/vmware/modules/source/
+sudo vmware-modconfig --console --install-all
+```
+---
 
 ## Имя в системе (Hostname)
 
