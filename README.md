@@ -173,6 +173,9 @@ tar -cf vmnet.tar vmnet-only
 sudo cp -v vmmon.tar vmnet.tar /usr/lib/vmware/modules/source/
 sudo vmware-modconfig --console --install-all
 ```
+<img width="633" height="124" alt="image" src="https://github.com/user-attachments/assets/696ed341-09e9-4872-a3ce-e6f7e5489f07" />
+
+
 ---
 
 ## Имя в системе (Hostname)
