@@ -1266,6 +1266,13 @@ setspn -L TS-ADMIN
 ```
 
 
+### Команда устанавливает инструменты администрирования Active Directory (RSAT) на вашем компьютере с Windows.
+
+```powershell
+Add-WindowsCapability -Online -Name "Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0"
+```
+
+
 #### Зарегистрировать вручную ServicePrincipalNames в домене AD(если выпал из домена)
 ```cmd
 setspn -A HOST/TS-ADMIN.KAN.LO TS-ADMIN
