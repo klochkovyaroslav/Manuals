@@ -24,6 +24,13 @@ sudo iptables -A INPUT -p tcp -s 10.111.109.10 --dport 9102 -j ACCEPT
 ```
 
 
+### Как сохранить правила после перезагрузки
+
+```bash
+sudo apt install iptables-persistent
+sudo netfilter-persistent save
+```
+
 ---
 
 ## NFTABLES
