@@ -17,6 +17,13 @@ sudo iptables -v -n -L --line-numbers
 sudo iptables -t nat -vnL PREROUTING --line-numbers
 ```
 
+#### Добавить правило в Input
+разрешить доступ только конкретному серверу 10.111.109.10  
+```bash
+sudo iptables -A INPUT -p tcp -s 10.111.109.10 --dport 9102 -j ACCEPT
+```
+
+
 ---
 
 ## NFTABLES
