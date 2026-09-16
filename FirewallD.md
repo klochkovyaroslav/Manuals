@@ -28,8 +28,16 @@ sudo iptables -A INPUT -p tcp -s 10.111.109.10 --dport 9102 -j ACCEPT
 
 ```bash
 sudo apt install iptables-persistent
+```
+```bash
 sudo netfilter-persistent save
 ```
+
+#### Или вручную перезапишите файлы конфигурации:
+```bash
+sudo iptables-save | sudo tee /etc/iptables/rules.v4
+```
+
 
 ---
 
