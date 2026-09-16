@@ -18,7 +18,7 @@ sudo iptables -t nat -vnL PREROUTING --line-numbers
 ```
 
 #### Добавить правило в Input
-разрешить доступ только конкретному серверу 10.111.109.10  
+разрешить доступ только от конкретного сервера: 10.111.109.10 по порту tcp 9102
 ```bash
 sudo iptables -A INPUT -p tcp -s 10.111.109.10 --dport 9102 -j ACCEPT
 ```
