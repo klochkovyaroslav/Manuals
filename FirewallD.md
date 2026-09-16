@@ -7,6 +7,10 @@ sudo systemctl status firewalld
 
 ## IPTABLES
 
+```bash
+sudo iptables -v -n -L --line-numbers
+```
+
 
 #### Выводит подробный список правил в цепочке PREROUTING таблицы NAT
 ```bash
