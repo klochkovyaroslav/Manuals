@@ -35,6 +35,9 @@ sudo netfilter-persistent save
 
 #### Или вручную перезапишите файлы конфигурации:
 ```bash
+sudo cat /etc/iptables/rules.v4
+```
+```bash
 sudo iptables-save | sudo tee /etc/iptables/rules.v4
 ```
 
