@@ -332,7 +332,7 @@ sudo openconnect https://kingdom.innoseti.ru -u=vpupkin -c ~/Documents/Certifica
 
 #### Запускать openconnect в фоне(--background)
 ```bash
-sudo openconnect https://kingdom.innoseti.ru -u=vpupkin -c ~/Documents/Certificates/my_cert.p12 -b --pid-file=/tmp/oconnect.pid
+sudo openconnect https://dom.seti.ru -u=vpupkin -c ~/Documents/Certificates/my_cert.p12 -b --pid-file=/tmp/oconnect.pid
 ```
 
 #### Как проверить
