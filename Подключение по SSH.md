@@ -261,6 +261,11 @@ https://linux-notes.org/zapustit-komandy-cherez-ssh-v-unix-linux/
 ```bash
 scp user@192.168.1.28:/var/lib/vz/template/iso/installation-1.7.5.16-06.02.24_14.21.iso /home/admin/Documents
 ```
+# Скопировать файл с удаленного сервера на локальный через прокси
+```bash
+scp -P 20235 -o ProxyCommand="nc -X 5 -x 192.168.21.4:1080 %h %p" user@157.118.16.122:/tmp/ca.crt ~/
+```
+
 > Файл installation-1.7.5.16-06.02.24_14.21.iso будет загружен с сервера 192.168.1.28 на локальный компьютер в папку "/home/admin/Documents"  
 
 #### Копировать файл по SSH с локальной машины на удалённый сервер
