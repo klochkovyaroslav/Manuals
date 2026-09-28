@@ -12,11 +12,13 @@
 ```
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-sudo ufw allow 6982/tcp
+sudo ufw limit 6982/tcp
 sudo ufw allow http
 sudo ufw allow https
 sudo ufw allow 4433/udp
+sudo ufw delete limit 22/tcp
 ```
+
 ```
 sudo ufw enable
 sudo ufw status verbose
@@ -31,6 +33,7 @@ sudo apt install fail2ban
 Настройка:  
 ```bash
 sudo nano /etc/fail2ban/jail.local
+vi /etc/fail2ban/jail.d/amneziawg.conf
 ```
 Внести в файл:  
 ```
@@ -53,6 +56,11 @@ sudo fail2ban-client get sshd maxretry
 Убедитесь, что Fail2ban увидел ваш белый список:  
 ```bash
 sudo fail2ban-client get sshd ignoreip
+```
+
+#### Добавить в белый список IP
+```bash
+fail2ban-client set sshd addignoreip 763c0ab2a.sn.mynetname.net
 ```
 
 
