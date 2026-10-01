@@ -167,6 +167,21 @@ sudo systemctl enable sddm.service
 sudo dpkg-reconfigure gdm3
 ```
 
+
+#### узнать текущую графическую оболочку и тип сессии
+```bash
+echo $XDG_SESSION_TYPE
+```
+- Если команда вернет wayland, вы уже на нем  
+- Если вернет x11, то используется старая система  
+
+
+#### Чтобы узнать саму оболочку (GNOME, KDE, Cinnamon и т.д.)
+```bash
+echo $XDG_CURRENT_DESKTOP
+```
+
+
 [Как установить новый Display Manager в Debian, Ubuntu, Linux Mint, Kali Linux и их производных](https://zalinux.ru/?p=8982#1)
 
 ---
