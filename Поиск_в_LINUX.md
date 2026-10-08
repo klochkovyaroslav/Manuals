@@ -163,7 +163,12 @@ grep -rin --include="*.conf" "servers" ./
 grep "mail" /etc/passwd
 grep "^mail" /etc/passwd
 grep "mail$" /etc/passwd
+sudo grep -r -B 11 "195.239.64.246" /etc/ipsec.conf
 ```
+• -A <число> (After) — показать указанное количество строк после совпадения.  
+• -B <число> (Before) — показать указанное количество строк до совпадения.  
+• -C <число> (Context) — показать указанное количество строк и до, и после совпадения.  
+
 
 ----
 
