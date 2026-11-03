@@ -15,6 +15,11 @@
 ssh-keygen 
 ```
 
+``` bash 
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/bareos.lnsk
+```
+
+
 #### ECDSA ключ с длиной 521 бит
 ``` bash 
 ssh-keygen -b 521 -t ecdsa
